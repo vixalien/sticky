@@ -9,33 +9,36 @@ gnome = import('gnome')
 
 gjs_dep = dependency('gjs-1.0', version: '>= 1.54.0')
 gjs_console = gjs_dep.get_variable(pkgconfig: 'gjs_console')
-yarn = find_program('yarn', required: true)
 
-yarn_args = []
+pm_name = get_option('package-manager')
+
+package_manager = find_program(pm_name, required: true)
+
+package_manager_args = []
 
 offline_mirror = get_option('offline-mirror')
-if offline_mirror != ''
+if pm_name == 'yarn' and offline_mirror != ''
   run_command(
-    'yarn',
+    package_manager,
     'config',
     '--offline',
     'set',
     'yarn-offline-mirror',
     offline_mirror,
     env: { 'HOME': meson.project_build_root() },
-    check: true,
+    check: true
   )
 
-  yarn_args += [
+  package_manager_args += [
     '--offline',
     '--use-yarnrc', meson.project_build_root() / '.yarnrc'
   ]
 endif
 
-yarn_deps = custom_target(
-  'yarn-deps',
-  command: [ yarn, 'install', yarn_args ],
-  output: ['yarn-deps-out']
+package_manager_deps = custom_target(
+  'node-package-manager-deps',
+  command: [ package_manager, 'install', package_manager_args ],
+  output: ['node-package-manager-out']
 )
 
 subdir('data')
