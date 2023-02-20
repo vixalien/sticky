@@ -13,7 +13,7 @@ typescript = custom_target(
   input: sources,
   build_by_default: true,
   build_always_stale: true,
-  command: [ package_manager, package_manager_args, 'run', 'build', '--outDir', tsc_out ],
+  command: [ package_manager, package_manager_args, 'run', 'build', '--outdir=' + tsc_out ],
   depends: package_manager_deps,
   output: ['tsc-output'],
 )
