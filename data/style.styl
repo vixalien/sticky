@@ -27,8 +27,10 @@
 
 for name, info in colors {
   .container.style-{name} {
-    background-color: info.bg;
-    color: info.fg;
+    &, & popover > arrow, & popover > contents {
+      background-color: info.bg;
+      color: info.fg;
+    }
   }
 
   .container.style-{name} .header-bar {

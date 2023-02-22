@@ -106,6 +106,7 @@ export class Window extends Adw.ApplicationWindow {
       console.log("style changed", style);
       this.set_style(style);
     });
+
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
     popover.add_child(selector, "notestyleswitcher");
 
