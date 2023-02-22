@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk" version="4.0" />
+  <requires lib="gtk" version="4.0"/>
   <template class="StickyNoteWindow" parent="AdwApplicationWindow">
     <property name="default-width">300</property>
     <property name="default-height">300</property>
@@ -8,7 +8,7 @@
       <object class="GtkBox" id="container">
         <property name="orientation">vertical</property>
         <style>
-          <class name="container" />
+          <class name="container"/>
         </style>
         <child>
           <object class="AdwHeaderBar">
@@ -29,8 +29,8 @@
               <object class="GtkBox"></object>
             </property>
             <style>
-              <class name="flat" />
-              <class name="header-bar" />
+              <class name="flat"/>
+              <class name="header-bar"/>
             </style>
           </object>
         </child>
@@ -42,7 +42,7 @@
                 <property name="editable">true</property>
                 <property name="wrap-mode">word-char</property>
                 <style>
-                  <class name="text-view" />
+                  <class name="text-view"/>
                 </style>
               </object>
             </child>
@@ -56,7 +56,7 @@
               <object class="GtkSeparator">
                 <property name="valign">end</property>
                 <style>
-                  <class name="separator" />
+                  <class name="separator"/>
                 </style>
               </object>
             </child>
@@ -64,31 +64,35 @@
               <object class="GtkBox">
                 <property name="valign">end</property>
                 <style>
-                  <class name="toolbar" />
-                  <class name="flat" />
+                  <class name="toolbar"/>
+                  <class name="flat"/>
                 </style>
                 <child>
-                  <object class="GtkToggleButton">
+                  <object class="GtkToggleButton" id="bold_button">
                     <property name="icon-name">format-text-bold-symbolic</property>
                     <property name="action-name">win.bold</property>
+                    <property name="focus-on-click">false</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkToggleButton">
+                  <object class="GtkToggleButton" id="italic_button">
                     <property name="icon-name">format-text-italic-symbolic</property>
                     <property name="action-name">win.italic</property>
+                    <property name="focus-on-click">false</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkToggleButton">
+                  <object class="GtkToggleButton" id="underline_button">
                     <property name="icon-name">format-text-underline-symbolic</property>
                     <property name="action-name">win.underline</property>
+                    <property name="focus-on-click">false</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkToggleButton">
+                  <object class="GtkToggleButton" id="strikethrough_button">
                     <property name="icon-name">format-text-strikethrough-symbolic</property>
                     <property name="action-name">win.strikethrough</property>
+                    <property name="focus-on-click">false</property>
                   </object>
                 </child>
               </object>
