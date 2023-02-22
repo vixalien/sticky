@@ -1,0 +1,56 @@
+@import 'util.styl';
+@import 'colors.styl';
+
+.container.style-specifity {
+  background-color: at(window_bg_color);
+  color: at(window_fg_color);
+
+  .header-bar {
+    opacity: 1;
+    color: transparent;
+    background-color: transparent;
+    background-size: 100% 10%;
+    background-repeat: no-repeat; /* transition: .3s color, .3s background-size .3s; */
+    transition-property: color, background-size;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+  }
+
+  & popover > arrow, & popover > contents {
+    background-color: at(popover_bg_color);
+    color: at(popover_fg_color);
+  }
+}
+
+for name, info in colors {
+  .container.style-{name} .header-bar {
+    background-image: linear-gradient(
+      to bottom,
+      info.header,
+      info.header
+    );
+  }
+
+  .container.style-{name} .header-bar:hover {
+    color: info.fg;
+  }
+
+  .container.style-{name}:focus-within .header-bar {
+    color: info.fg;
+  }
+}
+
+activate() {
+  transition-timing-function: ease-out;
+  transition-duration: 0.25s;
+  /* transition: .3s color .3s, .3s background-size; */
+  background-size: 100% 100%;
+}
+
+.container.style-specifity .header-bar:hover {
+  activate();
+}
+
+.container.style-specifity:focus-within .header-bar {
+  activate();
+}

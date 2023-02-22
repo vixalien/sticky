@@ -60,6 +60,7 @@ pkgdatadir = join_paths(get_option('datadir'), meson.project_name())
 stylus_sources = [
   'style.styl',
   'style-selector.styl',
+  'style-dark.styl',
 ]
 
 stylus_out = meson.project_build_root() / 'stylus-out'

@@ -9,6 +9,7 @@
         <property name="orientation">vertical</property>
         <style>
           <class name="container"/>
+          <class name="style-specifity"/>
         </style>
         <child>
           <object class="AdwHeaderBar">

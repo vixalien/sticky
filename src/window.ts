@@ -103,7 +103,6 @@ export class Window extends Adw.ApplicationWindow {
 
     const selector = new StyleSelector({ style: DEFAULT_STYLE });
     selector.connect("style-changed", (_selector, style) => {
-      console.log("style changed", style);
       this.set_style(style);
     });
 
@@ -195,7 +194,7 @@ export class Window extends Adw.ApplicationWindow {
 
   set_style(style: Style) {
     for (const s of this._container.get_css_classes()) {
-      if (s.startsWith("style-")) {
+      if (s.startsWith("style-") && s !== `style-specifity`) {
         this._container.remove_css_class(s);
       }
     }
