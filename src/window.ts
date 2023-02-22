@@ -32,7 +32,7 @@ export class Window extends Adw.ApplicationWindow {
         GObject.registerClass(
             {
                 Template: 'resource:///org/example/TypescriptTemplate/window.ui',
-                InternalChildren: ['label'],
+                GTypeName: 'StickyNoteWindow',
             },
             this,
         );

@@ -16,6 +16,7 @@ pkg.initFormat();
 
 const loop = new GLib.MainLoop(null, false);
 import("resource://@resource_path@/js/main.js")
+// import("../tsc-out/main.js")
   .then((main) => {
     GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
       loop.quit();
