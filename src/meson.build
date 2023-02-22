@@ -49,12 +49,5 @@ app_launcher = configure_file(
 run_target(
   'devel',
   command: [gjs_console, '-m', app_launcher],
-  depends: [src_res, data_res]
-)
-
-run_target(
-  'run',
-  command: app_launcher,
-  depends: [
-  ]
+  depends: [stylus, typescript, src_res, data_res]
 )
