@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-        input: 'org.example.TypescriptTemplate.desktop.in',
-       output: 'org.example.TypescriptTemplate.desktop',
+        input: 'com.vixalien.sticky.desktop.in',
+       output: 'com.vixalien.sticky.desktop',
          type: 'desktop',
        po_dir: '../po',
       install: true,
@@ -13,8 +13,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-        input: 'org.example.TypescriptTemplate.appdata.xml.in',
-       output: 'org.example.TypescriptTemplate.appdata.xml',
+        input: 'com.vixalien.sticky.appdata.xml.in',
+       output: 'com.vixalien.sticky.appdata.xml',
        po_dir: '../po',
       install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
@@ -25,7 +25,7 @@ if appstream_util.found()
   test('Validate appstream file', appstream_util, args: ['validate', appstream_file])
 endif
 
-gsettings_schema = 'org.example.TypescriptTemplate.gschema.xml'
+gsettings_schema = 'com.vixalien.sticky.gschema.xml'
 
 install_data(gsettings_schema,
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
@@ -76,8 +76,8 @@ stylus = custom_target(
 )
 
 data_res = gnome.compile_resources(
-  'org.example.TypescriptTemplate.data',
-  'org.example.TypescriptTemplate.data.gresource.xml',
+  'com.vixalien.sticky.data',
+  'com.vixalien.sticky.data.gresource.xml',
   source_dir: stylus_out,
   gresource_bundle: true,
   install: true,

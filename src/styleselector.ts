@@ -93,7 +93,7 @@ export class StyleSelector extends Gtk.Box {
     if (!provider) {
       provider = new Gtk.CssProvider();
       provider.load_from_resource(
-        "/org/example/TypescriptTemplate/style-selector.css",
+        "/com/vixalien/sticky/style-selector.css",
       );
       Gtk.StyleContext.add_provider_for_display(
         Gdk.Display.get_default()!,

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/example/TypescriptTemplate/js">
+  <gresource prefix="/com/vixalien/sticky/js">
     <file>application.js</file>
     <file>main.js</file>
     <file>styleselector.js</file>

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=sticky-notes
+Exec=com.vixalien.sticky
+Icon=com.vixalien.sticky
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

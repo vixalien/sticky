@@ -19,8 +19,8 @@ typescript = custom_target(
 )
 
 src_res = gnome.compile_resources(
-  'org.example.TypescriptTemplate.src',
-  'org.example.TypescriptTemplate.src.gresource.xml',
+  'com.vixalien.sticky.src',
+  'com.vixalien.sticky.src.gresource.xml',
   dependencies: typescript,
   source_dir: tsc_out,
   gresource_bundle: true,
@@ -35,11 +35,11 @@ bin_conf.set('PACKAGE_NAME', meson.project_name())
 bin_conf.set('prefix', get_option('prefix'))
 bin_conf.set('libdir', join_paths(get_option('prefix'), get_option('libdir')))
 bin_conf.set('datadir', join_paths(get_option('prefix'), get_option('datadir')))
-bin_conf.set('resource_path', '/org/example/TypescriptTemplate')
+bin_conf.set('resource_path', '/com/vixalien/sticky')
 
 app_launcher = configure_file(
-  input: 'org.example.TypescriptTemplate.in',
-  output: 'org.example.TypescriptTemplate',
+  input: 'com.vixalien.sticky.in',
+  output: 'com.vixalien.sticky',
   configuration: bin_conf,
   install: true,
   install_dir: get_option('bindir'),

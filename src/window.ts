@@ -77,7 +77,7 @@ export class Window extends Adw.ApplicationWindow {
   static {
     GObject.registerClass(
       {
-        Template: "resource:///org/example/TypescriptTemplate/window.ui",
+        Template: "resource:///com/vixalien/sticky/window.ui",
         GTypeName: "StickyNoteWindow",
         InternalChildren: [
           "container",

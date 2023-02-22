@@ -38,7 +38,7 @@ export class Application extends Adw.Application {
 
   constructor() {
     super({
-      application_id: "org.example.TypescriptTemplate",
+      application_id: "com.vixalien.sticky",
       flags: Gio.ApplicationFlags.DEFAULT_FLAGS,
     });
 
@@ -53,8 +53,8 @@ export class Application extends Adw.Application {
     show_about_action.connect("activate", () => {
       let aboutParams = {
         transient_for: this.active_window,
-        application_name: "gnome-typescript-template",
-        application_icon: "org.example.TypescriptTemplate",
+        application_name: "sticky-notes",
+        application_icon: "com.vixalien.sticky",
         developer_name: "Christopher Davis",
         version: "0.1.0",
         developers: [
