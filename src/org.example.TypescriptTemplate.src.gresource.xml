@@ -3,6 +3,7 @@
   <gresource prefix="/org/example/TypescriptTemplate/js">
     <file>application.js</file>
     <file>main.js</file>
+    <file>styleselector.js</file>
     <file>window.js</file>
   </gresource>
 </gresources>

@@ -29,13 +29,7 @@ import Adw from "gi://Adw";
 import Pango from "gi://Pango";
 import Gio from "gi://Gio";
 
-type Style =
-  | "accent"
-  | "destructive"
-  | "success"
-  | "warning"
-  | "error"
-  | "window";
+import { Style, StyleSelector } from "./styleselector.js";
 
 interface Note {
   content: string;
@@ -47,6 +41,7 @@ const DEFAULT_STYLE = "window";
 export class Window extends Adw.ApplicationWindow {
   _container!: Gtk.Box;
   _text!: Gtk.TextView;
+  _menu_button!: Gtk.MenuButton;
 
   _bold_button!: Gtk.ToggleButton;
   _underline_button!: Gtk.ToggleButton;
@@ -84,6 +79,7 @@ export class Window extends Adw.ApplicationWindow {
           "underline_button",
           "italic_button",
           "strikethrough_button",
+          "menu_button",
         ],
       },
       this,
@@ -104,6 +100,17 @@ export class Window extends Adw.ApplicationWindow {
     this.set_style(DEFAULT_STYLE);
     this.add_tags();
     this.add_actions();
+
+    const selector = new StyleSelector();
+    selector.connect("style-changed", (_selector, style) => {
+      console.log("style changed", style);
+      this.set_style(style);
+    });
+    const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
+    popover.add_child(selector, "notestyleswitcher");
+
+    // (this._text.get_parent()?.get_parent() as Gtk.Box)
+    //   .append(selector);
   }
 
   check_tags() {
@@ -186,7 +193,7 @@ export class Window extends Adw.ApplicationWindow {
   }
 
   set_style(style: Style) {
-    for (const s of this.css_classes) {
+    for (const s of this._container.get_css_classes()) {
       if (s.startsWith("style-")) {
         this._container.remove_css_class(s);
       }

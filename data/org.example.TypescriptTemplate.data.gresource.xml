@@ -4,5 +4,6 @@
     <file>window.ui</file>
     <file>gtk/help-overlay.ui</file>
     <file>style.css</file>
+    <file>style-selector.css</file>
   </gresource>
 </gresources>

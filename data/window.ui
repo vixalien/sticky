@@ -20,7 +20,7 @@
               </object>
             </child>
             <child type="end">
-              <object class="GtkMenuButton">
+              <object class="GtkMenuButton" id="menu_button">
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">app_menu</property>
               </object>
@@ -105,7 +105,7 @@
   <menu id="app_menu">
     <section>
       <item>
-        <attribute name="custom">themeswitcher</attribute>
+        <attribute name="custom">notestyleswitcher</attribute>
       </item>
     </section>
     <section>

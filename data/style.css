@@ -5,6 +5,10 @@
   background-image: linear-gradient(to bottom, @transparent_overlay, @transparent_overlay);
 }
 
+.container {
+  transition: .35s background-color ease-out, .35s color ease-out;
+}
+
 .container.style-accent {
   background-color: @accent_bg_color;
   color: @accent_fg_color;

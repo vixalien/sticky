@@ -1,0 +1,82 @@
+styleselector {
+  margin: 9px;
+}
+
+styleselector checkbutton {
+  padding: 0;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 1px;
+  background-clip: content-box;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 1px @borders;
+}
+
+styleselector checkbutton:checked {
+  box-shadow: inset 0 0 0 2px @accent_bg_color;
+}
+
+styleselector checkbutton.follow {
+  background-image: linear-gradient(
+    to bottom right,
+    #fff 49.99%,
+    #202020 50.01%
+  );
+}
+
+styleselector checkbutton.light {
+  background-color: #fff;
+}
+
+styleselector checkbutton.dark {
+  background-color: #202020;
+}
+
+styleselector checkbutton radio {
+  -gtk-icon-source: none;
+  border: none;
+  background: none;
+  box-shadow: none;
+  color: @accent_fg_color;
+  min-width: 12px;
+  min-height: 12px;
+  transform: translate(27px, 14px);
+  padding: 2px;
+}
+
+checkbutton.style-selector radio:checked {
+  -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
+  border: 2px solid @borders;
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+styleselector checkbutton.style-accent {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+styleselector checkbutton.style-destructive {
+  background-color: @destructive_bg_color;
+  color: @destructive_fg_color;
+}
+
+styleselector checkbutton.style-success {
+  background-color: @success_bg_color;
+  color: @success_fg_color;
+}
+
+styleselector checkbutton.style-warning {
+  background-color: @warning_bg_color;
+  color: @warning_fg_color;
+}
+
+styleselector checkbutton.style-error {
+  background-color: @error_bg_color;
+  color: @error_fg_color;
+}
+
+styleselector checkbutton.style-window {
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+}
