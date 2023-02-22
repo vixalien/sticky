@@ -4,6 +4,7 @@
     <file>application.js</file>
     <file>main.js</file>
     <file>styleselector.js</file>
+    <file>view.js</file>
     <file>window.js</file>
   </gresource>
 </gresources>

@@ -3,6 +3,7 @@ gnome = import('gnome')
 sources = files(
   'main.ts',
   'window.ts',
+  'view.ts',
   'styleselector.ts',
 )
 
