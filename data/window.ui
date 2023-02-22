@@ -35,12 +35,16 @@
           </object>
         </child>
         <child>
-          <object class="GtkTextView" id="text">
+          <object class="GtkScrolledWindow">
             <property name="vexpand">true</property>
-            <property name="editable">true</property>
-            <style>
-              <class name="text-view" />
-            </style>
+            <child>
+              <object class="GtkTextView" id="text">
+                <property name="editable">true</property>
+                <style>
+                  <class name="text-view" />
+                </style>
+              </object>
+            </child>
           </object>
         </child>
         <child>
