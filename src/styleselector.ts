@@ -66,7 +66,7 @@ export class StyleSelector extends Gtk.Box {
     hexpand: true,
   });
 
-  _style: Style = "window";
+  private _style: Style;
 
   get style() {
     return this._style;
@@ -80,16 +80,14 @@ export class StyleSelector extends Gtk.Box {
     this._style = style;
     this.notify("style");
     this.emit("style-changed", style);
-
-    this.set_selected_style(style);
   }
 
   constructor(params: { style?: Style } = {}) {
     super();
 
     this.append(this.box);
+    this._style = this.style = params.style ?? "yellow";
     this.build_styles();
-    this.style = params.style ?? "window";
     this.hexpand = true;
 
     if (!provider) {
@@ -110,6 +108,7 @@ export class StyleSelector extends Gtk.Box {
 
     styles.forEach((style) => {
       const button = new StyleButton(style, group);
+      button.active = style === this.style;
       button.connect("toggled", () => {
         if (button.active) {
           this.style = style;
@@ -120,16 +119,6 @@ export class StyleSelector extends Gtk.Box {
       }
       this.box.append(button);
     });
-  }
-
-  private set_selected_style(style: Style) {
-    let child = this.box.get_first_child();
-
-    while (child) {
-      const button = child as StyleButton;
-      button.active = button.style === style;
-      child = child.get_next_sibling();
-    }
   }
 
   static {

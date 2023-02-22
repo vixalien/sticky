@@ -36,7 +36,7 @@ interface Note {
   style: Style;
 }
 
-const DEFAULT_STYLE = "window";
+const DEFAULT_STYLE: Style = "yellow";
 
 export class Window extends Adw.ApplicationWindow {
   _container!: Gtk.Box;
@@ -101,7 +101,7 @@ export class Window extends Adw.ApplicationWindow {
     this.add_tags();
     this.add_actions();
 
-    const selector = new StyleSelector();
+    const selector = new StyleSelector({ style: DEFAULT_STYLE });
     selector.connect("style-changed", (_selector, style) => {
       console.log("style changed", style);
       this.set_style(style);
