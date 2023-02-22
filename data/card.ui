@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="StickyNoteCard" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <style>
+      <class name="note-card" />
+    </style>
+    <child>
+      <object class="GtkBox" id="details">
+        <property name="halign">end</property>
+        <property name="hexpand">true</property>
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkLabel" id="modified_label">
+            <style>
+              <class name="caption"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="menu_button">
+            <property name="icon-name">view-more-horizontal-symbolic</property>
+            <property name="menu-model">note_menu</property>
+            <style>
+              <class name="flat"/>
+            </style>
+          </object>
+        </child>
+        <style>
+          <class name="dim-label"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkTextView" id="text_view">
+        <property name="editable">false</property>
+        <property name="cursor-visible">false</property>
+        <property name="wrap-mode">word-char</property>
+        <style>
+          <class name="no-background"/>
+        </style>
+      </object>
+    </child>
+    <style>
+      <class name="card"/>
+      <class name="activatable"/>
+      <class name="note-view"/>
+    </style>
+  </template>
+  <menu id="note_menu">
+    <section>
+      <item>
+        <attribute name="id">open</attribute>
+        <attribute name="label">Open note</attribute>
+      </item>
+      <item>
+        <attribute name="id">close</attribute>
+        <attribute name="label">Close note</attribute>
+      </item>
+      <item>
+        <attribute name="id">delete</attribute>
+        <attribute name="label">Delete note</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

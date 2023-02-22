@@ -2,7 +2,9 @@
 <gresources>
   <gresource prefix="/com/vixalien/sticky/js">
     <file>application.js</file>
+    <file>card.js</file>
     <file>main.js</file>
+    <file>notes.js</file>
     <file>styleselector.js</file>
     <file>view.js</file>
     <file>window.js</file>

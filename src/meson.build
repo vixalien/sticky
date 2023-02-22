@@ -1,10 +1,12 @@
 gnome = import('gnome')
 
 sources = files(
+  'card.ts',
   'main.ts',
-  'window.ts',
-  'view.ts',
+  'notes.ts',
   'styleselector.ts',
+  'view.ts',
+  'window.ts',
 )
 
 tsc_out = meson.project_build_root() / 'tsc-out'

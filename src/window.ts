@@ -31,6 +31,7 @@ import Gio from "gi://Gio";
 import { Style, StyleSelector } from "./styleselector.js";
 
 import { StickyNoteView } from "./view.js";
+import { Note } from "./card.js";
 
 export class Window extends Adw.ApplicationWindow {
   _container!: Gtk.Box;
@@ -71,14 +72,18 @@ export class Window extends Adw.ApplicationWindow {
     return this.selector.style;
   }
 
-  constructor(params?: Partial<Gtk.TextView.ConstructorProperties>) {
+  constructor(
+    { note, ...params }: Partial<Gtk.TextView.ConstructorProperties> & {
+      note: Note;
+    },
+  ) {
     super(params);
 
     const DEFAULT_STYLE = "yellow";
 
     this.set_style(DEFAULT_STYLE);
 
-    this.view = new StickyNoteView({ style: DEFAULT_STYLE });
+    this.view = new StickyNoteView(note);
 
     this.view.connect("selection-changed", this.check_tags.bind(this));
     this.view.connect(

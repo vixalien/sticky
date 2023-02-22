@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/com/vixalien/sticky">
+    <file>card.ui</file>
+    <file>notes.ui</file>
     <file>window.ui</file>
     <file>gtk/help-overlay.ui</file>
     <file>style.css</file>

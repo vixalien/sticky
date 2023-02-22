@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <template class="StickyNotes" parent="AdwApplicationWindow">
+    <property name="default-width">300</property>
+    <property name="default-height">400</property>
+    <style>
+      <class name="notes-window" />
+    </style>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="AdwHeaderBar">
+            <property name="hexpand">true</property>
+            <child type="start">
+              <object class="GtkButton">
+                <property name="icon-name">list-add-symbolic</property>
+                <property name="action-name">app.new-note</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkMenuButton" id="menu_button">
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="menu-model">app_menu</property>
+              </object>
+            </child>
+            <property name="title-widget">
+              <object class="AdwWindowTitle">
+                <property name="title">Sticky Notes</property>
+              </object>
+            </property>
+            <style>
+              <class name="flat" />
+              <class name="header-bar" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="vexpand">true</property>
+            <child>
+              <object class="GtkBox" id="notes">
+                <property name="orientation">vertical</property>
+                <style>
+                  <class name="notes" />
+                </style>
+                <child>
+                  <object class="GtkBox" id="search">
+                    <style>
+                      <class name="search-bar" />
+                    </style>
+                    <child>
+                      <object class="GtkSearchEntry">
+                        <property name="placeholder-text">Search...</property>
+                        <property name="hexpand">true</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwStatusPage" id="no_notes">
+                    <property name="vexpand">true</property>
+                    <property name="visible">false</property>
+                    <property name="icon-name">editor-symbolic</property>
+                    <property name="title">No notes</property>
+                    <property name="description">After you create notes, they will appear here</property>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="halign">center</property>
+                        <property name="label">Create a new Note</property>
+                        <style>
+                          <class name="pill" />
+                          <class name="suggested-action" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwStatusPage" id="no_results">
+                    <property name="vexpand">true</property>
+                    <property name="visible">false</property>
+                    <property name="icon-name">system-search-symbolic</property>
+                    <property name="title">No Results</property>
+                    <property name="description">Try a different search</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkListBox" id="notes_box">
+                    <property name="selection-mode">none</property>
+                    <style>
+                      <class name="background" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <menu id="app_menu">
+    <section>
+      <item>
+        <attribute name="label">Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label">Keyboard shortcuts</attribute>
+        <attribute name="action">app.shortcuts</attribute>
+      </item>
+      <item>
+        <attribute name="label">About Sticky Notes</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

@@ -27,10 +27,12 @@ import GObject from "gi://GObject";
 import Gio from "gi://Gio";
 import Adw from "gi://Adw";
 
-import { Window } from "./window.js";
+// import { Window } from "./window.js";
+import { Note } from "./card.js";
+import { StickyNotes } from "./notes.js";
 
 export class Application extends Adw.Application {
-  private window?: Window;
+  private window?: StickyNotes;
 
   static {
     GObject.registerClass(this);
@@ -70,9 +72,86 @@ export class Application extends Adw.Application {
 
   public vfunc_activate(): void {
     if (!this.window) {
-      this.window = new Window({ application: this });
+      this.window = new StickyNotes({
+        application: this,
+        notes: SAMPLE_NOTES,
+      });
     }
 
     this.window.present();
   }
 }
+
+const SAMPLE_NOTE: Note = {
+  content:
+    "Hello World! Lorem Ipsum dolor sit amet, lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ",
+  style: "yellow",
+  height: 300,
+  width: 300,
+  modified: new Date(),
+  tags: [],
+};
+
+const SAMPLE_NOTES: Note[] = [
+  {
+    ...SAMPLE_NOTE,
+    style: "pink",
+    tags: [
+      {
+        name: "bold",
+        start: 0,
+        end: 15,
+      },
+    ],
+  },
+  SAMPLE_NOTE,
+  {
+    ...SAMPLE_NOTE,
+    style: "window",
+    tags: [
+      {
+        name: "bold",
+        start: 0,
+        end: 15,
+      },
+      {
+        name: "italic",
+        start: 3,
+        end: 10,
+      },
+    ],
+  },
+  {
+    ...SAMPLE_NOTE,
+    style: "green",
+    tags: [
+      {
+        name: "bold",
+        start: 0,
+        end: 15,
+      },
+    ],
+  },
+  {
+    ...SAMPLE_NOTE,
+    style: "purple",
+    tags: [
+      {
+        name: "strikethrough",
+        start: 12,
+        end: 31,
+      },
+    ],
+  },
+  {
+    ...SAMPLE_NOTE,
+    style: "gray",
+    tags: [
+      {
+        name: "underline",
+        start: 13,
+        end: 21,
+      },
+    ],
+  },
+];

@@ -1,12 +1,10 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
-import Adw from "gi://Adw";
 import Pango from "gi://Pango";
-import Gio from "gi://Gio";
 
 import { Style } from "./styleselector.js";
 
-interface Note {
+export interface Note {
   content: string;
   style: Style;
   tags: {
@@ -14,6 +12,7 @@ interface Note {
     start: number;
     end: number;
   }[];
+  modified: Date;
 }
 
 export class StickyNoteView extends Gtk.TextView {
@@ -30,18 +29,30 @@ export class StickyNoteView extends Gtk.TextView {
   ] as [string, Gtk.TextTag, string][];
 
   style: Style;
+  _note: Note;
+
+  get note() {
+    return this.save();
+  }
+
+  set note(note: Note) {
+    this._note = note;
+    this.clear_tags();
+    this.buffer.text = note.content;
+    this.style = note.style;
+    this.init_tags(note.tags);
+  }
 
   constructor(
-    { style, ...params }: Partial<Gtk.TextView.ConstructorProperties> & {
-      style?: Style;
-    } = {},
+    note: Note,
   ) {
-    super(params);
+    super();
 
-    this.style = style ?? "yellow";
     this.buffer = new Gtk.TextBuffer();
 
     this.add_tags();
+    this.style = note.style;
+    this._note = this.note = note;
 
     this.buffer.connect("mark-set", (buffer, _loc, mark) => {
       if (mark == buffer.get_insert() || buffer.get_selection_bounds()[0]) {
@@ -63,6 +74,14 @@ export class StickyNoteView extends Gtk.TextView {
       },
       this,
     );
+  }
+
+  init_tags(tags: Note["tags"]) {
+    for (const tag of tags) {
+      const start = this.buffer.get_iter_at_offset(tag.start);
+      const end = this.buffer.get_iter_at_offset(tag.end);
+      this.buffer.apply_tag_by_name(tag.name, start, end);
+    }
   }
 
   add_tags() {
@@ -121,6 +140,16 @@ export class StickyNoteView extends Gtk.TextView {
     this.emit("tag-toggle", tag.name, has_tag);
   }
 
+  clear_tags() {
+    const start = this.buffer.get_start_iter();
+    const end = this.buffer.get_end_iter();
+
+    for (const [name, tag] of this.actions) {
+      this.buffer.remove_tag(tag, start, end);
+      this.emit("tag-toggle", name, false);
+    }
+  }
+
   save(): Note {
     const start = this.buffer.get_start_iter();
     const end = this.buffer.get_end_iter();
@@ -154,6 +183,7 @@ export class StickyNoteView extends Gtk.TextView {
       content,
       style: this.style,
       tags,
+      modified: new Date(),
     };
   }
 }

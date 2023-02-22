@@ -1,4 +1,5 @@
 @import 'colors.styl';
+@import 'notes.styl';
 
 .container {
   transition: 0.35s background-color ease-out, 0.35s color ease-out;
@@ -25,12 +26,25 @@
   }
 }
 
+.note-card {
+  background-size: 100% 6px;
+  background-repeat: no-repeat;
+}
+
 for name, info in colors {
   .container.style-{name} {
     &, & popover > arrow, & popover > contents {
       background-color: info.bg;
       color: info.fg;
     }
+  }
+
+  .note-card.style-{name} {
+    background-image: linear-gradient(
+      to bottom,
+      info.hc,
+      info.hc
+    );
   }
 
   .container.style-{name} .header-bar {
