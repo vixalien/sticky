@@ -1,0 +1,37 @@
+@import 'colors.styl';
+
+.container {
+  transition: 0.35s background-color ease-out, 0.35s color ease-out;
+}
+
+.header-bar {
+  color: inherit;
+}
+
+.text-view {
+  background-color: transparent;
+  padding: 12px;
+  color: inherit;
+}
+
+.header-bar, .toolbar, .separator {
+  transition: none;
+}
+
+.container:not(:focus-within) {
+  .header-bar, .toolbar, .separator {
+    transition: 0.25s opacity ease-out;
+    opacity: 0;
+  }
+}
+
+for name, info in colors {
+  .container.style-{name} {
+    background-color: info.bg;
+    color: info.fg;
+  }
+
+  .container.style-{name} .header-bar {
+    background-color: info.header;
+  }
+}

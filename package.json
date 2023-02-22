@@ -13,10 +13,12 @@
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "esbuild": "^0.17.10",
-    "eslint": "^8.21.0"
+    "eslint": "^8.21.0",
+    "stylus": "^0.59.0"
   },
   "scripts": {
     "build": "esbuild src/**.ts",
-    "typecheck": "tsc --strict --noEmit"
+    "typecheck": "tsc --strict --noEmit",
+    "css": "stylus data/**.styl -o stylus-out"
   }
 }

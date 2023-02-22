@@ -43,11 +43,13 @@ class StyleButton extends Gtk.CheckButton {
 }
 
 export const styles = [
-  "accent",
-  "destructive",
-  "success",
-  "warning",
-  "error",
+  "yellow",
+  "pink",
+  "green",
+  "purple",
+  "blue",
+  "gray",
+  "charcoal",
   "window",
 ] as const;
 
@@ -56,8 +58,8 @@ export type Style = typeof styles[number];
 export class StyleSelector extends Gtk.Box {
   box = new Gtk.FlowBox({
     orientation: Gtk.Orientation.HORIZONTAL,
-    max_children_per_line: 3,
-    min_children_per_line: 3,
+    max_children_per_line: 4,
+    min_children_per_line: 4,
     row_spacing: 12,
     column_spacing: 12,
     selection_mode: Gtk.SelectionMode.NONE,

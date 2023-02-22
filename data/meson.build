@@ -56,10 +56,28 @@ local_schemas = configure_file(
 
 pkgdatadir = join_paths(get_option('datadir'), meson.project_name())
 
+
+stylus_sources = [
+  'style.styl',
+  'style-selector.styl',
+]
+
+stylus_out = meson.project_build_root() / 'stylus-out'
+
+stylus = custom_target(
+  'stylus-compile',
+  input: stylus_sources,
+  build_by_default: true,
+  build_always_stale: true,
+  command: [ package_manager, package_manager_args, 'run', 'css', '--out', stylus_out ],
+  depends: package_manager_deps,
+  output: ['stylus-out'],
+)
+
 data_res = gnome.compile_resources(
   'org.example.TypescriptTemplate.data',
   'org.example.TypescriptTemplate.data.gresource.xml',
-  source_dir: '.',
+  source_dir: stylus_out,
   gresource_bundle: true,
   install: true,
   install_dir: join_paths(pkgdatadir, 'resource`'),
