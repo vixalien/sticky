@@ -34,6 +34,11 @@ import { Style, StyleSelector } from "./styleselector.js";
 interface Note {
   content: string;
   style: Style;
+  tags: {
+    name: string;
+    start: number;
+    end: number;
+  }[];
 }
 
 const DEFAULT_STYLE: Style = "yellow";
@@ -67,6 +72,8 @@ export class Window extends Adw.ApplicationWindow {
     ],
   ] as [string, Gtk.TextTag, Gtk.ToggleButton, string][];
 
+  selector: StyleSelector;
+
   static {
     GObject.registerClass(
       {
@@ -86,6 +93,46 @@ export class Window extends Adw.ApplicationWindow {
     );
   }
 
+  get_style() {
+    return this.selector.style;
+  }
+
+  save(): Note {
+    const start = this.buffer.get_start_iter();
+    const end = this.buffer.get_end_iter();
+    const content = this.buffer.get_text(start, end, false);
+
+    const tags: Note["tags"] = [];
+
+    const init_tags: Gtk.TextTag[] = [];
+
+    this.buffer.get_tag_table().foreach((tag) => init_tags.push(tag));
+
+    do {
+      const current = start.copy();
+
+      for (const tag of init_tags) {
+        if (current.starts_tag(tag)) {
+          const tag_end = current.copy();
+          tag_end.forward_to_tag_toggle(tag);
+          tags.push({
+            name: tag.name,
+            start: current.get_offset(),
+            end: tag_end.get_offset(),
+          });
+        }
+      }
+
+      start.forward_char();
+    } while (start.compare(end) < 0);
+
+    return {
+      content,
+      style: this.get_style(),
+      tags,
+    };
+  }
+
   constructor(params?: Partial<Adw.ApplicationWindow.ConstructorProperties>) {
     super(params);
 
@@ -101,13 +148,13 @@ export class Window extends Adw.ApplicationWindow {
     this.add_tags();
     this.add_actions();
 
-    const selector = new StyleSelector({ style: DEFAULT_STYLE });
-    selector.connect("style-changed", (_selector, style) => {
+    this.selector = new StyleSelector({ style: DEFAULT_STYLE });
+    this.selector.connect("style-changed", (_selector, style) => {
       this.set_style(style);
     });
 
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
-    popover.add_child(selector, "notestyleswitcher");
+    popover.add_child(this.selector, "notestyleswitcher");
 
     // (this._text.get_parent()?.get_parent() as Gtk.Box)
     //   .append(selector);
