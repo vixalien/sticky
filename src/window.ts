@@ -23,22 +23,53 @@
  * SPDX-License-Identifier: MIT
  */
 
-import GObject from 'gi://GObject';
-import Gtk from 'gi://Gtk?version=4.0';
-import Adw from 'gi://Adw';
+type Style =
+  | "accent"
+  | "destructive"
+  | "success"
+  | "warning"
+  | "error"
+  | "window";
+
+interface Note {
+  content: string;
+  style: Style;
+}
+
+import GObject from "gi://GObject";
+import Gtk from "gi://Gtk?version=4.0";
+import Adw from "gi://Adw";
 
 export class Window extends Adw.ApplicationWindow {
-    static {
-        GObject.registerClass(
-            {
-                Template: 'resource:///org/example/TypescriptTemplate/window.ui',
-                GTypeName: 'StickyNoteWindow',
-            },
-            this,
-        );
+  _container!: Gtk.Box;
+  _text!: Gtk.TextView;
+
+  buffer = new Gtk.TextBuffer();
+
+  static {
+    GObject.registerClass(
+      {
+        Template: "resource:///org/example/TypescriptTemplate/window.ui",
+        GTypeName: "StickyNoteWindow",
+        InternalChildren: ["container", "text"],
+      },
+      this,
+    );
+  }
+
+  constructor(params?: Partial<Adw.ApplicationWindow.ConstructorProperties>) {
+    super(params);
+
+    this.set_style("warning");
+  }
+
+  set_style(style: Style) {
+    for (const s of this.css_classes) {
+      if (s.startsWith("style-")) {
+        this._container.remove_css_class(s);
+      }
     }
 
-    constructor(params?: Partial<Adw.ApplicationWindow.ConstructorProperties>) {
-        super(params);
-    }
+    this._container.add_css_class(`style-${style}`);
+  }
 }

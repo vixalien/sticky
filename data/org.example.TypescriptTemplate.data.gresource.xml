@@ -3,5 +3,6 @@
   <gresource prefix="/org/example/TypescriptTemplate">
     <file>window.ui</file>
     <file>gtk/help-overlay.ui</file>
+    <file>style.css</file>
   </gresource>
 </gresources>

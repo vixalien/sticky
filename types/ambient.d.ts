@@ -11,6 +11,7 @@ declare const pkg: {
 declare module console {
   export function error(obj: object, others?: object[]): void;
   export function error(msg: string, subsitutions?: any[]): void;
+  export function log(...args: any[]): void;
 }
 
 declare interface String {
