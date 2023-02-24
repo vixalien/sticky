@@ -1,31 +1,32 @@
 gnome = import('gnome')
 
-sources = files(
+sources = [
   'card.ts',
   'main.ts',
   'notes.ts',
   'styleselector.ts',
   'view.ts',
-  'window.ts',
-)
+  'window.ts'
+]
 
-tsc_out = meson.project_build_root() / 'tsc-out'
+outputs = []
+foreach source : sources
+	outputs += source.replace('.ts', '.js')
+endforeach
 
 typescript = custom_target(
   'typescript-compile',
-  input: sources,
   build_by_default: true,
-  build_always_stale: true,
-  command: [ package_manager, package_manager_args, 'run', 'build', '--outdir=' + tsc_out ],
+  input: files(sources),
+  command: [ package_manager, package_manager_args, 'run', 'build', '--outdir=' + meson.project_build_root() / '@OUTDIR@' ],
   depends: package_manager_deps,
-  output: ['tsc-output'],
+  output: outputs,
 )
 
 src_res = gnome.compile_resources(
   'com.vixalien.sticky.src',
   'com.vixalien.sticky.src.gresource.xml',
   dependencies: typescript,
-  source_dir: tsc_out,
   gresource_bundle: true,
   install: true,
   install_dir: pkgdatadir,
@@ -52,5 +53,5 @@ app_launcher = configure_file(
 run_target(
   'devel',
   command: [gjs_console, '-m', app_launcher],
-  depends: [stylus, typescript, src_res, data_res]
+  depends: [src_res, data_res]
 )

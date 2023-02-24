@@ -63,22 +63,24 @@ stylus_sources = [
   'style-dark.styl',
 ]
 
-stylus_out = meson.project_build_root() / 'stylus-out'
+stylus_outputs = []
+foreach source : stylus_sources
+	stylus_outputs += source.replace('.styl', '.css')
+endforeach
 
 stylus = custom_target(
   'stylus-compile',
   input: stylus_sources,
   build_by_default: true,
-  build_always_stale: true,
-  command: [ package_manager, package_manager_args, 'run', 'css', '--out', stylus_out ],
+  command: [find_program('echo'), 'building-styl', '@INPUT@'],
   depends: package_manager_deps,
-  output: ['stylus-out'],
+  output: stylus_outputs,
 )
 
 data_res = gnome.compile_resources(
   'com.vixalien.sticky.data',
   'com.vixalien.sticky.data.gresource.xml',
-  source_dir: stylus_out,
+  dependencies: stylus,
   gresource_bundle: true,
   install: true,
   install_dir: join_paths(pkgdatadir, 'resource`'),
