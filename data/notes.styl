@@ -1,3 +1,6 @@
+@import 'util.styl';
+@import 'colors.styl';
+
 .notes-window {
   .notes {
     padding: 0 6px 6px 6px;
@@ -18,5 +21,19 @@
 
   .no-background {
     background-color: transparent;
+  }
+}
+
+for name, info in colors {
+  .note-card.style-{name} {
+    background-color: info.bg;
+    color: info.fg;
+
+    selection:focus-within {
+      background-color: gtkalpha(
+        info.ink,
+        0.3
+      );
+    }
   }
 }

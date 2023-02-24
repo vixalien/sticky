@@ -26,27 +26,14 @@
   }
 }
 
-.note-card {
-  background-size: 100% 6px;
-  background-repeat: no-repeat;
-}
-
 for name, info in colors {
   .container.style-{name} {
-    &, & popover > arrow, & popover > contents {
+    &, & popover > arrow, & popover > contents, ~/ {
       background-color: info.bg;
       color: info.fg;
     }
   }
-
-  .note-card.style-{name} {
-    background-image: linear-gradient(
-      to bottom,
-      info.hc,
-      info.hc
-    );
-  }
-
+  
   .container.style-{name} .header-bar {
     background-color: info.header;
   }

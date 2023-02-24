@@ -1,0 +1,18 @@
+@import 'colors.styl';
+
+.note-card {
+  color: at(card_fg_color);
+  background-color: at(card_bg_color);
+  background-size: 100% 6px;
+  background-repeat: no-repeat;
+}
+
+for name, info in colors {
+  .note-card.style-{name} {
+    background-image: linear-gradient(
+      to bottom,
+      info.hc,
+      info.hc
+    );
+  }
+}

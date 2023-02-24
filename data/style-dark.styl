@@ -1,5 +1,6 @@
 @import 'util.styl';
 @import 'colors.styl';
+@import 'notes-dark.styl';
 
 .container.style-specifity {
   background-color: at(window_bg_color);
@@ -32,11 +33,11 @@ for name, info in colors {
   }
 
   .container.style-{name} .header-bar:hover {
-    color: info.fg;
+    color: info.hc;
   }
 
   .container.style-{name}:focus-within .header-bar {
-    color: info.fg;
+    color: info.hc;
   }
 }
 
