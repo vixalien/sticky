@@ -167,11 +167,12 @@ export class Window extends Adw.ApplicationWindow {
   }
 
   save() {
-    return {
-      ...this.view.save(),
-      style: this.get_style(),
-      width: this.get_allocated_width(),
-      height: this.get_allocated_height(),
-    };
+    const note = this.view.save();
+
+    note.style = this.get_style();
+    note.width = this.get_allocated_width();
+    note.height = this.get_allocated_height();
+
+    return note;
   }
 }

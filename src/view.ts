@@ -19,13 +19,9 @@ export class StickyNoteView extends Gtk.TextView {
   ] as [string, Gtk.TextTag][];
 
   style: Style;
-  _note: Note;
+  _note?: Note;
 
   updating = false;
-
-  get note() {
-    return this.save();
-  }
 
   set note(note: Note) {
     // console.log("setting note", note.content);
@@ -41,7 +37,7 @@ export class StickyNoteView extends Gtk.TextView {
   }
 
   constructor(
-    note: Note,
+    note?: Note,
     editable = true,
   ) {
     super();
@@ -49,8 +45,8 @@ export class StickyNoteView extends Gtk.TextView {
     this.buffer = new Gtk.TextBuffer();
 
     this.add_tags();
-    this.style = note.style;
-    this._note = this.note = note;
+    this.style = note?.style ?? SETTINGS.DEFAULT_STYLE;
+    if (note) this._note = this.note = note;
 
     this.buffer.connect("mark-set", (buffer, _loc, mark) => {
       if (mark == buffer.get_insert() || buffer.get_selection_bounds()[0]) {
@@ -64,7 +60,8 @@ export class StickyNoteView extends Gtk.TextView {
           this.updating = false;
           return;
         }
-        this.emit("changed", note.uuid, "content");
+        if (!this._note) return;
+        this.emit("changed", this._note.uuid, "content");
       });
     }
   }
@@ -189,13 +186,15 @@ export class StickyNoteView extends Gtk.TextView {
       start.forward_char();
     } while (start.compare(end) < 0);
 
-    return {
-      ...this._note,
-      v: 1,
-      content,
-      style: this.style,
-      tags,
-      modified: new Date(),
-    };
+    if (!this._note) {
+      throw new Error("No note to save");
+    }
+
+    const note = this._note.copy();
+    note.content = content;
+    note.style = this.style, note.tags = tags;
+    note.modified = GLib.DateTime.new_now_utc();
+
+    return note;
   }
 }

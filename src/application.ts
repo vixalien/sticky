@@ -27,9 +27,10 @@ import GObject from "gi://GObject";
 import Gio from "gi://Gio";
 import Adw from "gi://Adw";
 import GLib from "gi://GLib";
+import Gtk from "gi://Gtk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
-import { gen_new_note, Note, Style } from "./util.js";
+import { Note, Style } from "./util.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
@@ -40,7 +41,14 @@ export class Application extends Adw.Application {
     GObject.registerClass(this);
   }
 
-  notes: Note[] = [];
+  // notes: Note[] = [];
+  notes_list = Gio.ListStore.new(Note.$gtype) as Gio.ListStore<Note>;
+
+  sort_notes() {
+    this.notes_list.sort((note1: Note, note2: Note) => {
+      return note1.modified.compare(note2.modified);
+    });
+  }
 
   constructor() {
     super({
@@ -50,7 +58,7 @@ export class Application extends Adw.Application {
 
     this.init_actions();
 
-    this.notes = SAMPLE_NOTES;
+    SAMPLE_NOTES.map((note) => this.notes_list.append(note));
   }
 
   public vfunc_activate(): void {
@@ -94,8 +102,8 @@ export class Application extends Adw.Application {
     this.set_accels_for_action("app.quit", ["<Primary>q"]);
     this.set_accels_for_action("app.new-note", ["<Primary>n"]);
     this.set_accels_for_action("app.all-notes", ["<Primary>h"]);
-    // this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
-    // this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
+    this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
+    this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
 
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
     this.set_accels_for_action("win.show-help-overlay", ["<Primary>question"]);
@@ -106,61 +114,62 @@ export class Application extends Adw.Application {
     this.set_accels_for_action("win.strikethrough", ["<Primary>s"]);
   }
 
-  get sorted_notes() {
-    return this.notes.sort((note1, note2) => {
-      const date1 = GLib.DateTime.new_from_iso8601(
-        note1.modified.toISOString(),
-        null,
-      );
-      const date2 = GLib.DateTime.new_from_iso8601(
-        note2.modified.toISOString(),
-        null,
-      );
-
-      return date2.compare(date1);
-    });
-  }
-
   get_note_window(uuid: string) {
     return this.note_windows.find((w) => w.note.uuid === uuid);
   }
 
   cycle(reverse = false) {
-    const sorted_notes = this.sorted_notes
-      .filter((note) => this.is_note_open(note.uuid));
+    this.sort_notes();
 
-    if (sorted_notes.length <= 0) return;
+    if (this.notes_list.n_items <= 0) return;
+
+    const filter = Gtk.CustomFilter.new((item) => {
+      const note = item as Note;
+      return this.is_note_open(note.uuid);
+    });
+
+    const notes = Gtk.FilterListModel.new(
+      this.notes_list,
+      filter,
+    ) as Gtk.FilterListModel<Note>;
 
     const presented = this.active_window;
 
     if (presented instanceof StickyNotes) {
       if (reverse) {
-        this.get_note_window(sorted_notes[sorted_notes.length - 1].uuid)
+        this.get_note_window(notes.get_item(notes.n_items - 1)!.uuid)
           ?.present();
       } else {
-        this.get_note_window(sorted_notes[0].uuid)?.present();
+        this.get_note_window(notes.get_item(0)!.uuid)?.present();
       }
     } else if (presented instanceof Window) {
-      const id = sorted_notes.findIndex((note) =>
-        note.uuid === presented.note.uuid
-      );
+      let id = 0;
+
+      while (id < notes.n_items) {
+        if (notes.get_item(id)!.uuid === presented.note.uuid) {
+          break;
+        }
+        id++;
+      }
 
       const focus_id = id + (reverse ? -1 : 1);
 
-      if (focus_id < 0 || focus_id >= sorted_notes.length) {
+      if (focus_id < 0 || focus_id >= notes.n_items) {
         this.all_notes();
       } else {
-        this.get_note_window(sorted_notes[focus_id].uuid)?.present();
+        this.get_note_window(notes.get_item(focus_id)!.uuid)?.present();
       }
     }
   }
 
   cycle_linear() {
-    return this.cycle(false);
+    // reverse the order (makes it loop oldest first)
+    return this.cycle(true);
   }
 
   cycle_reverse() {
-    return this.cycle(true);
+    // reverse the order (makes it loop oldest first)
+    return this.cycle(false);
   }
 
   show_about() {
@@ -180,29 +189,24 @@ export class Application extends Adw.Application {
     aboutWindow.present();
   }
 
-  changed_note(uuid: string, render = false) {
+  changed_note(uuid: string) {
     const saved_note = this.note_windows.find((window) =>
       window.note.uuid === uuid
     )?.save() as Note;
 
-    this.window?.changed_note(uuid, saved_note);
+    if (!saved_note) return;
 
-    this.notes = this.notes.map((note) => {
-      if (note.uuid === uuid) return saved_note;
-      return note;
-    });
+    const [found, id] = this.notes_list.find_with_equal_func(
+      saved_note,
+      (note: Note, other: Note) => {
+        return note?.uuid === other?.uuid;
+      },
+    );
 
-    // this.window.notes = this.window.notes.map((note) => {
-    //   if (note.uuid === uuid) {
-    //     const saved_note = this.note_windows.find((window) =>
-    //       window.note.uuid === uuid
-    //     )?.save() as Note;
-    //     return saved_note;
-    //   }
-    //   return note;
-    // });
+    if (!found) return;
 
-    // if (render) this.window.render_notes();
+    this.notes_list.remove(id);
+    this.notes_list.insert(id, saved_note);
   }
 
   all_notes() {
@@ -224,21 +228,24 @@ export class Application extends Adw.Application {
   }
 
   new_note() {
-    const note = gen_new_note();
+    const note = Note.generate();
 
-    this.notes.push(note);
+    this.notes_list.append(note);
 
-    if (this.window) {
-      this.window.add_note(note, () => {
-        this.show_note(note.uuid);
-      });
-    } else {
-      this.show_note(note.uuid);
-    }
+    this.show_note(note.uuid);
   }
 
   show_note(uuid: string) {
-    const note = this.notes.find((note) => note.uuid === uuid);
+    let note: Note | undefined = undefined, id = 0;
+
+    while (id < this.notes_list.n_items) {
+      const _note = this.notes_list.get_item(id)!;
+      if (_note.uuid === uuid) {
+        note = _note;
+        break;
+      }
+      id++;
+    }
 
     if (!note) {
       return;
@@ -264,101 +271,86 @@ export class Application extends Adw.Application {
 
     window.connect("close-request", () => {
       this.note_windows = this.note_windows.filter((win) => win !== window);
-      this.window?.set_note_visible(note.uuid, false);
+      this.window?.set_note_visible(note!.uuid, false);
       return false;
     });
 
     window.connect("changed", (_, uuid, what: string) => {
-      this.changed_note(uuid, what !== "width" && what !== "height");
+      this.changed_note(uuid);
     });
 
     this.window?.set_note_visible(uuid, true);
-
-    // window.connect("save", () => {
-    //   this.window?.save(note);
-    // });
-
-    // window.connect("delete", () => {
-    //   this.window?.delete(note);
-    // });
   }
 }
 
-const SAMPLE_NOTE = {
-  ...gen_new_note(),
-  content:
-    "Hello World! Lorem Ipsum dolor sit amet, lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ",
-};
+const SAMPLE_NOTE = Note.generate();
+SAMPLE_NOTE.content =
+  "Hello World! Lorem Ipsum dolor sit amet, lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ";
+
+const SAMPLE_2 = SAMPLE_NOTE.copy();
+SAMPLE_2.content = "hola amigos";
+SAMPLE_2.uuid = GLib.uuid_string_random();
+SAMPLE_2.style = Style.pink;
+SAMPLE_2.tags = [{
+  name: "bold",
+  start: 0,
+  end: 15,
+}];
+SAMPLE_2.modified_date = new Date("2019-01-01");
+
+const SAMPLE_3 = SAMPLE_NOTE.copy();
+SAMPLE_3.content = "halo!";
+SAMPLE_3.uuid = GLib.uuid_string_random();
+SAMPLE_3.style = Style.window;
+SAMPLE_3.tags = [{
+  name: "bold",
+  start: 0,
+  end: 15,
+}, {
+  name: "italic",
+  start: 3,
+  end: 10,
+}];
+SAMPLE_3.modified_date = new Date("2021-01-05");
+
+const SAMPLE_4 = SAMPLE_NOTE.copy();
+SAMPLE_4.content = "bonjour";
+SAMPLE_4.uuid = GLib.uuid_string_random();
+SAMPLE_4.style = Style.green;
+SAMPLE_4.tags = [{
+  name: "bold",
+  start: 0,
+  end: 15,
+}];
+SAMPLE_4.modified_date = new Date("2005-08-01");
+
+const SAMPLE_5 = SAMPLE_NOTE.copy();
+SAMPLE_5.content = "muraho";
+SAMPLE_5.uuid = GLib.uuid_string_random();
+SAMPLE_5.style = Style.purple;
+SAMPLE_5.tags = [{
+  name: "strikethrough",
+  start: 12,
+  end: 31,
+}];
+SAMPLE_5.modified_date = new Date("2005-03-01");
+
+const SAMPLE_6 = SAMPLE_NOTE.copy();
+SAMPLE_6.content = "mwiriwe";
+SAMPLE_6.uuid = GLib.uuid_string_random();
+SAMPLE_6.style = Style.gray;
+SAMPLE_6.tags = [{
+  name: "underline",
+  start: 13,
+  end: 21,
+}];
+SAMPLE_6.modified_date = new Date("1981-01-01");
 
 const SAMPLE_NOTES: Note[] = [
-  {
-    ...SAMPLE_NOTE,
-    uuid: GLib.uuid_string_random(),
-    style: Style.pink,
-    tags: [
-      {
-        name: "bold",
-        start: 0,
-        end: 15,
-      },
-    ],
-    modified: new Date("2019-01-01"),
-  },
   SAMPLE_NOTE,
-  {
-    ...SAMPLE_NOTE,
-    uuid: GLib.uuid_string_random(),
-    style: Style.window,
-    tags: [
-      {
-        name: "bold",
-        start: 0,
-        end: 15,
-      },
-      {
-        name: "italic",
-        start: 3,
-        end: 10,
-      },
-    ],
-    modified: new Date("2021-01-05"),
-  },
-  {
-    ...SAMPLE_NOTE,
-    uuid: GLib.uuid_string_random(),
-    style: Style.green,
-    tags: [
-      {
-        name: "bold",
-        start: 0,
-        end: 15,
-      },
-    ],
-  },
-  {
-    ...SAMPLE_NOTE,
-    uuid: GLib.uuid_string_random(),
-    style: Style.purple,
-    tags: [
-      {
-        name: "strikethrough",
-        start: 12,
-        end: 31,
-      },
-    ],
-    modified: new Date("2020-01-01"),
-  },
-  {
-    ...SAMPLE_NOTE,
-    uuid: GLib.uuid_string_random(),
-    style: Style.gray,
-    tags: [
-      {
-        name: "underline",
-        start: 13,
-        end: 21,
-      },
-    ],
-    modified: new Date("1981-01-01"),
-  },
+  SAMPLE_2,
+  SAMPLE_3,
+  SAMPLE_4,
+  SAMPLE_5,
+  SAMPLE_6,
 ];

@@ -27,14 +27,14 @@ export class StickyNoteCard extends Gtk.Box {
   _menu_button!: Gtk.MenuButton;
   _view_image!: Gtk.Image;
 
-  private _note: Note;
+  private _note?: Note;
   view: StickyNoteView;
 
   set show_visible_image(visible: boolean) {
     this._view_image.visible = visible;
   }
 
-  constructor(note: Note) {
+  constructor(note?: Note) {
     super();
 
     this.view = new StickyNoteView(note, false);
@@ -45,7 +45,7 @@ export class StickyNoteCard extends Gtk.Box {
 
     this.append(this.view);
 
-    this._note = this.note = note;
+    if (note) this._note = this.note = note;
   }
 
   clip_content(content: string) {
@@ -61,19 +61,15 @@ export class StickyNoteCard extends Gtk.Box {
     return cut.length < content.length ? `${cut}…` : cut;
   }
 
-  get note() {
-    return this._note;
-  }
-
   set note(note: Note) {
     if (note.style !== this._note?.style) this.set_style(note.style);
 
-    this._note = this.view.note = {
-      ...note,
-      content: this.clip_content(note.content),
-    };
+    const note2 = note.copy();
+    note2.content = this.clip_content(note.content);
 
-    if (!this.note.content.replace(/\s/g, "")) {
+    this._note = this.view.note = note2;
+
+    if (!this._note.content.replace(/\s/g, "")) {
       this.view.buffer.text = "";
       this.view.buffer.insert_markup(
         this.view.buffer.get_start_iter(),
@@ -86,22 +82,22 @@ export class StickyNoteCard extends Gtk.Box {
   }
 
   get uuid() {
-    return this.note.uuid;
+    return this._note?.uuid;
   }
 
   set_modified_label() {
-    const modified = this.note.modified;
+    const modified = this._note?.modified;
 
-    const date = GLib.DateTime.new_from_unix_local(modified.getTime() / 1000);
+    if (!modified) return;
 
     // if date is today, show time
     // otherwise, show date
     const format =
-      GLib.DateTime.new_now_local().format("%F") === date.format("%F")
+      GLib.DateTime.new_now_local().format("%F") === modified.format("%F")
         ? "%R"
         : "%F";
 
-    this._modified_label.label = date.format(format)!;
+    this._modified_label.label = modified.format(format)!;
   }
 
   set_style(style: Style) {
