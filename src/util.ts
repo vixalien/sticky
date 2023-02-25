@@ -1,5 +1,6 @@
 import Gio from "gi://Gio";
 import GLib from "gi://GLib";
+import GObject from "gi://GObject";
 
 export interface Note {
   v: 1;
@@ -27,7 +28,9 @@ export enum Style {
   "window",
 }
 
-export const styles = Object.values(Style) as Style[];
+export const styles = Object.values(Style).filter(
+  (style) => typeof style === "number",
+) as Style[];
 
 export const settings = new Gio.Settings({ schema_id: "com.vixalien.sticky" });
 
