@@ -127,7 +127,7 @@ export class StyleSelector extends Gtk.Box {
       },
       Signals: {
         "style-changed": {
-          param_types: [GObject.TYPE_STRING],
+          param_types: [GObject.TYPE_UINT],
         },
       },
     }, this);
