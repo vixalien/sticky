@@ -152,11 +152,6 @@ export class Window extends Adw.ApplicationWindow {
     for (const [name, tag] of this.view.actions) {
       const action = Gio.SimpleAction.new(name, null);
       action.connect("activate", () => this.view.apply_tag(tag));
-      // add accelerator
-      this.application.set_accels_for_action(
-        `win.${name}`,
-        [this.view.actions.find((a) => a[1] == tag)![2]],
-      );
       this.add_action(action);
     }
   }

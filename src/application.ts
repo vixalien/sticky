@@ -63,22 +63,15 @@ export class Application extends Adw.Application {
 
   init_actions() {
     const quit_action = new Gio.SimpleAction({ name: "quit" });
-    quit_action.connect("activate", () => {
-      this.quit();
-    });
+    quit_action.connect("activate", this.quit.bind(this));
     this.add_action(quit_action);
-    this.set_accels_for_action("app.quit", ["<primary>q"]);
 
     const show_about_action = new Gio.SimpleAction({ name: "about" });
-    show_about_action.connect("activate", () => {
-      this.show_about();
-    });
+    show_about_action.connect("activate", this.show_about.bind(this));
     this.add_action(show_about_action);
 
     const new_note = new Gio.SimpleAction({ name: "new-note" });
-    new_note.connect("activate", () => {
-      this.new_note();
-    });
+    new_note.connect("activate", this.new_note.bind(this));
     this.add_action(new_note);
 
     const all_notes = new Gio.SimpleAction({ name: "all-notes" });
@@ -89,6 +82,85 @@ export class Application extends Adw.Application {
       });
     });
     this.add_action(all_notes);
+
+    const cycle_linear = new Gio.SimpleAction({ name: "cycle" });
+    cycle_linear.connect("activate", this.cycle_linear.bind(this));
+    this.add_action(cycle_linear);
+
+    const cycle_reverse = new Gio.SimpleAction({ name: "cycle-reverse" });
+    cycle_reverse.connect("activate", this.cycle_reverse.bind(this));
+    this.add_action(cycle_reverse);
+
+    this.set_accels_for_action("app.quit", ["<Primary>q"]);
+    this.set_accels_for_action("app.new-note", ["<Primary>n"]);
+    this.set_accels_for_action("app.all-notes", ["<Primary>h"]);
+    // this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
+    // this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
+
+    this.set_accels_for_action("win.open-primary-menu", ["F10"]);
+    this.set_accels_for_action("win.show-help-overlay", ["<Primary>question"]);
+
+    this.set_accels_for_action("win.bold", ["<Primary>b"]);
+    this.set_accels_for_action("win.italic", ["<Primary>i"]);
+    this.set_accels_for_action("win.underline", ["<Primary>u"]);
+    this.set_accels_for_action("win.strikethrough", ["<Primary>s"]);
+  }
+
+  get sorted_notes() {
+    return this.notes.sort((note1, note2) => {
+      const date1 = GLib.DateTime.new_from_iso8601(
+        note1.modified.toISOString(),
+        null,
+      );
+      const date2 = GLib.DateTime.new_from_iso8601(
+        note2.modified.toISOString(),
+        null,
+      );
+
+      return date2.compare(date1);
+    });
+  }
+
+  get_note_window(uuid: string) {
+    return this.note_windows.find((w) => w.note.uuid === uuid);
+  }
+
+  cycle(reverse = false) {
+    const sorted_notes = this.sorted_notes
+      .filter((note) => this.is_note_open(note.uuid));
+
+    if (sorted_notes.length <= 0) return;
+
+    const presented = this.active_window;
+
+    if (presented instanceof StickyNotes) {
+      if (reverse) {
+        this.get_note_window(sorted_notes[sorted_notes.length - 1].uuid)
+          ?.present();
+      } else {
+        this.get_note_window(sorted_notes[0].uuid)?.present();
+      }
+    } else if (presented instanceof Window) {
+      const id = sorted_notes.findIndex((note) =>
+        note.uuid === presented.note.uuid
+      );
+
+      const focus_id = id + (reverse ? -1 : 1);
+
+      if (focus_id < 0 || focus_id >= sorted_notes.length) {
+        this.all_notes();
+      } else {
+        this.get_note_window(sorted_notes[focus_id].uuid)?.present();
+      }
+    }
+  }
+
+  cycle_linear() {
+    return this.cycle(false);
+  }
+
+  cycle_reverse() {
+    return this.cycle(true);
   }
 
   show_about() {

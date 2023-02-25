@@ -12,11 +12,11 @@ export class StickyNoteView extends Gtk.TextView {
   strikethrough_tag = Gtk.TextTag.new("strikethrough");
 
   actions = [
-    ["bold", this.bold_tag, "<Ctrl>b"],
-    ["underline", this.underline_tag, "<Ctrl>u"],
-    ["italic", this.italic_tag, "<Ctrl>i"],
-    ["strikethrough", this.strikethrough_tag, "<Ctrl>s"],
-  ] as [string, Gtk.TextTag, string][];
+    ["bold", this.bold_tag],
+    ["underline", this.underline_tag],
+    ["italic", this.italic_tag],
+    ["strikethrough", this.strikethrough_tag],
+  ] as [string, Gtk.TextTag][];
 
   style: Style;
   _note: Note;
