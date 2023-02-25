@@ -33,8 +33,8 @@ import { gen_new_note, Note, Style } from "./util.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
-  private window?: StickyNotes;
-  private note_windows: StickyNotes[] = [];
+  private window!: StickyNotes;
+  private note_windows: Window[] = [];
 
   static {
     GObject.registerClass(this);
@@ -78,9 +78,81 @@ export class Application extends Adw.Application {
         application: this,
         notes: SAMPLE_NOTES,
       });
+
+      this.window.connect("note-activated", (_, uuid) => {
+        this.show_note(uuid);
+      });
     }
 
     this.window.present();
+  }
+
+  changed_note(uuid: string, render = false) {
+    const saved_note = this.note_windows.find((window) =>
+      window.view.note.uuid === uuid
+    )?.save() as Note;
+
+    this.window.changed_note(uuid, saved_note);
+
+    this.window.notes = this.window.notes.map((note) => {
+      if (note.uuid === uuid) return saved_note;
+      return note;
+    });
+
+    // this.window.notes = this.window.notes.map((note) => {
+    //   if (note.uuid === uuid) {
+    //     const saved_note = this.note_windows.find((window) =>
+    //       window.view.note.uuid === uuid
+    //     )?.save() as Note;
+    //     return saved_note;
+    //   }
+    //   return note;
+    // });
+
+    // if (render) this.window.render_notes();
+  }
+
+  show_note(uuid: string) {
+    const note = this.window?.notes.find((note) => note.uuid === uuid);
+
+    if (!note) {
+      return;
+    }
+
+    const note_window = this.note_windows.find((window) =>
+      window.view.note.uuid === uuid
+    );
+
+    if (note_window) {
+      note_window.present();
+      return;
+    }
+
+    const window = new Window({
+      application: this,
+      note,
+    });
+
+    this.note_windows.push(window);
+
+    window.present();
+
+    window.connect("close-request", () => {
+      this.note_windows = this.note_windows.filter((win) => win !== window);
+      return false;
+    });
+
+    window.connect("changed", (_, uuid, what: string) => {
+      this.changed_note(uuid, what !== "width" && what !== "height");
+    });
+
+    // window.connect("save", () => {
+    //   this.window?.save(note);
+    // });
+
+    // window.connect("delete", () => {
+    //   this.window?.delete(note);
+    // });
   }
 }
 

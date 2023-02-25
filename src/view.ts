@@ -1,6 +1,7 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Pango from "gi://Pango";
+import GLib from "gi://GLib";
 
 import { Note, SETTINGS, Style } from "./util.js";
 
@@ -20,11 +21,18 @@ export class StickyNoteView extends Gtk.TextView {
   style: Style;
   _note: Note;
 
+  updating = false;
+
   get note() {
     return this.save();
   }
 
   set note(note: Note) {
+    // console.log("setting note", note.content);
+
+    // this.buffer.text = "Hello world!";
+
+    this.updating = true;
     this._note = note;
     this.clear_tags();
     this.buffer.text = note.content;
@@ -34,11 +42,11 @@ export class StickyNoteView extends Gtk.TextView {
 
   constructor(
     note: Note,
+    editable = true,
   ) {
     super();
 
     this.buffer = new Gtk.TextBuffer();
-    this.buffer.emit("changed");
 
     this.add_tags();
     this.style = note.style;
@@ -49,6 +57,16 @@ export class StickyNoteView extends Gtk.TextView {
         this.emit("selection-changed");
       }
     });
+
+    if (editable) {
+      this.buffer.connect("changed", () => {
+        if (this.updating) {
+          this.updating = false;
+          return;
+        }
+        this.emit("changed", note.uuid, "content");
+      });
+    }
   }
 
   static {
@@ -60,6 +78,9 @@ export class StickyNoteView extends Gtk.TextView {
             param_types: [GObject.TYPE_STRING, GObject.TYPE_BOOLEAN],
           },
           "selection-changed": {},
+          "changed": {
+            param_types: [GObject.TYPE_STRING, GObject.TYPE_STRING],
+          },
         },
       },
       this,
@@ -93,6 +114,7 @@ export class StickyNoteView extends Gtk.TextView {
         this.buffer.get_insert(),
       );
       end = start.copy();
+      end.forward_cursor_position();
     }
 
     do {
@@ -109,14 +131,11 @@ export class StickyNoteView extends Gtk.TextView {
     let [selection, start, end] = this.buffer.get_selection_bounds();
     // if no selection, apply to the current word
     if (!selection) {
-      const iter = this.buffer.get_iter_at_mark(
+      const start = this.buffer.get_iter_at_mark(
         this.buffer.get_insert(),
       );
-      start = iter.copy();
-      end = iter.copy();
-      start.backward_word_start();
-      end.forward_word_end();
-      this.buffer.select_range(start, end);
+      end = start.copy();
+      end.forward_cursor_position();
     }
 
     const has_tag = this.has_tag(tag);
@@ -127,7 +146,8 @@ export class StickyNoteView extends Gtk.TextView {
       this.buffer.apply_tag(tag, start, end);
     }
 
-    this.emit("tag-toggle", tag.name, has_tag);
+    this.emit("tag-toggle", tag.name, !has_tag);
+    this.emit("changed", this.note.uuid, "tags");
   }
 
   clear_tags() {
@@ -170,7 +190,7 @@ export class StickyNoteView extends Gtk.TextView {
     } while (start.compare(end) < 0);
 
     return {
-      ...this.note,
+      ...this._note,
       v: 1,
       content,
       style: this.style,

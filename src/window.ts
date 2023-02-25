@@ -62,6 +62,11 @@ export class Window extends Adw.ApplicationWindow {
           "strikethrough_button",
           "menu_button",
         ],
+        Signals: {
+          changed: {
+            param_types: [GObject.TYPE_STRING, GObject.TYPE_STRING],
+          },
+        },
       },
       this,
     );
@@ -78,29 +83,49 @@ export class Window extends Adw.ApplicationWindow {
   ) {
     super(params);
 
-    this.width_request = note.width;
-    this.height_request = note.height;
-    this.set_style(SETTINGS.DEFAULT_STYLE);
+    this.default_width = note.width;
+    this.default_height = note.height;
+    this.connect("close-request", () => {
+      const current_note = this.save();
+      if (current_note.width !== note.width) {
+        this.emit("changed", note.uuid, "width");
+      }
+      if (current_note.height !== note.height) {
+        this.emit("changed", note.uuid, "height");
+      }
+    });
+    // this.connect("notify::default-width", () => {
+    //   this.emit("changed", note.uuid, "width");
+    // });
+    // this.connect("notify::default-height", () => {
+    //   this.emit("changed", note.uuid, "height");
+    // });
+    this.set_style(note.style);
 
     this.view = new StickyNoteView(note);
-
     this.view.connect("selection-changed", this.check_tags.bind(this));
     this.view.connect(
       "tag-toggle",
-      (_view: StickyNoteView, tag: Gtk.TextTag, active: boolean) => {
+      (_view: StickyNoteView, tag: string, active: boolean) => {
         const button =
-          this[`_${tag.name}_button` as keyof typeof this] as Gtk.ToggleButton;
+          this[`_${tag}_button` as keyof typeof this] as Gtk.ToggleButton;
+        if (!button) return;
         button.active = active;
       },
+    );
+    this.view.connect(
+      "changed",
+      (_, _uuid, what: string) => this.emit("changed", note.uuid, what),
     );
 
     this._text.buffer = this.view.buffer;
 
     this.add_actions();
 
-    this.selector = new StyleSelector({ style: SETTINGS.DEFAULT_STYLE });
+    this.selector = new StyleSelector({ style: note.style });
     this.selector.connect("style-changed", (_selector, style) => {
       this.set_style(style);
+      this.emit("changed", note.uuid, "style");
     });
 
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
@@ -145,6 +170,7 @@ export class Window extends Adw.ApplicationWindow {
   save() {
     return {
       ...this.view.save(),
+      style: this.get_style(),
       width: this.get_allocated_width(),
       height: this.get_allocated_height(),
     };
