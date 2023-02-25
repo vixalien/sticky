@@ -139,12 +139,15 @@ export class Application extends Adw.Application {
 
     window.connect("close-request", () => {
       this.note_windows = this.note_windows.filter((win) => win !== window);
+      this.window.set_note_visible(note.uuid, false);
       return false;
     });
 
     window.connect("changed", (_, uuid, what: string) => {
       this.changed_note(uuid, what !== "width" && what !== "height");
     });
+
+    this.window.set_note_visible(uuid, true);
 
     // window.connect("save", () => {
     //   this.window?.save(note);

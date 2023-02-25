@@ -10,7 +10,7 @@ export class StickyNoteCard extends Gtk.Box {
     GObject.registerClass({
       GTypeName: "StickyNoteCard",
       Template: "resource:///com/vixalien/sticky/card.ui",
-      InternalChildren: ["modified_label", "menu_button"],
+      InternalChildren: ["modified_label", "menu_button", "view_image"],
       Properties: {
         uuid: GObject.ParamSpec.string(
           "uuid",
@@ -25,9 +25,14 @@ export class StickyNoteCard extends Gtk.Box {
 
   _modified_label!: Gtk.Label;
   _menu_button!: Gtk.MenuButton;
+  _view_image!: Gtk.Image;
 
   private _note: Note;
   view: StickyNoteView;
+
+  set show_visible_image(visible: boolean) {
+    this._view_image.visible = visible;
+  }
 
   constructor(note: Note) {
     super();

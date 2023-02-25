@@ -69,6 +69,14 @@ export class StickyNotes extends Adw.ApplicationWindow {
     }
   }
 
+  set_note_visible(uuid: string, visible: boolean) {
+    const card = this.cards.find((card) => card.note.uuid === uuid);
+
+    if (!card) return;
+
+    card.show_visible_image = visible;
+  }
+
   render_notes() {
     this.clear_notes();
 
