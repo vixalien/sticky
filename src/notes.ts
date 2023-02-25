@@ -2,7 +2,8 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
 
-import { Note, StickyNoteCard } from "./card.js";
+import { StickyNoteCard } from "./card.js";
+import { Note } from "./util.js";
 
 export class StickyNotes extends Adw.ApplicationWindow {
   static {
@@ -41,6 +42,13 @@ export class StickyNotes extends Adw.ApplicationWindow {
     super(params);
 
     this.notes = notes;
+
+    this._notes_box.connect("row-activated", (list, row) => {
+      console.log(
+        "note-activated",
+        (row.get_first_child() as StickyNoteCard).uuid,
+      );
+    });
   }
 
   clear_notes() {
@@ -60,7 +68,9 @@ export class StickyNotes extends Adw.ApplicationWindow {
     }
 
     this._notes.forEach((note) => {
-      this._notes_box.append(new StickyNoteCard(note));
+      const card = new StickyNoteCard(note);
+
+      this._notes_box.append(card);
     });
   }
 

@@ -26,13 +26,15 @@
 import GObject from "gi://GObject";
 import Gio from "gi://Gio";
 import Adw from "gi://Adw";
+import GLib from "gi://GLib";
 
-// import { Window } from "./window.js";
 import { StickyNotes } from "./notes.js";
-import { Note, Style } from "./util.js";
+import { gen_new_note, Note, Style } from "./util.js";
+import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
   private window?: StickyNotes;
+  private note_windows: StickyNotes[] = [];
 
   static {
     GObject.registerClass(this);
@@ -82,20 +84,16 @@ export class Application extends Adw.Application {
   }
 }
 
-const SAMPLE_NOTE: Note = {
-  v: 1,
+const SAMPLE_NOTE = {
+  ...gen_new_note(),
   content:
     "Hello World! Lorem Ipsum dolor sit amet, lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ",
-  style: Style.yellow,
-  height: 300,
-  width: 300,
-  modified: new Date(),
-  tags: [],
 };
 
 const SAMPLE_NOTES: Note[] = [
   {
     ...SAMPLE_NOTE,
+    uuid: GLib.uuid_string_random(),
     style: Style.pink,
     tags: [
       {
@@ -108,6 +106,7 @@ const SAMPLE_NOTES: Note[] = [
   SAMPLE_NOTE,
   {
     ...SAMPLE_NOTE,
+    uuid: GLib.uuid_string_random(),
     style: Style.window,
     tags: [
       {
@@ -124,6 +123,7 @@ const SAMPLE_NOTES: Note[] = [
   },
   {
     ...SAMPLE_NOTE,
+    uuid: GLib.uuid_string_random(),
     style: Style.green,
     tags: [
       {
@@ -135,6 +135,7 @@ const SAMPLE_NOTES: Note[] = [
   },
   {
     ...SAMPLE_NOTE,
+    uuid: GLib.uuid_string_random(),
     style: Style.purple,
     tags: [
       {
@@ -146,6 +147,7 @@ const SAMPLE_NOTES: Note[] = [
   },
   {
     ...SAMPLE_NOTE,
+    uuid: GLib.uuid_string_random(),
     style: Style.gray,
     tags: [
       {

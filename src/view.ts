@@ -170,13 +170,12 @@ export class StickyNoteView extends Gtk.TextView {
     } while (start.compare(end) < 0);
 
     return {
+      ...this.note,
       v: 1,
       content,
       style: this.style,
       tags,
       modified: new Date(),
-      width: this.note.width || SETTINGS.DEFAULT_WIDTH,
-      height: this.note.height || SETTINGS.DEFAULT_HEIGHT,
     };
   }
 }

@@ -1,7 +1,9 @@
 import Gio from "gi://Gio";
+import GLib from "gi://GLib";
 
 export interface Note {
   v: 1;
+  uuid: string;
   content: string;
   style: Style;
   tags: {
@@ -39,4 +41,15 @@ export let SETTINGS = get_settings();
 
 settings.connect("changed", () => {
   SETTINGS = get_settings();
+});
+
+export const gen_new_note = (): Note => ({
+  v: 1,
+  uuid: GLib.uuid_string_random(),
+  content: "",
+  style: SETTINGS.DEFAULT_STYLE,
+  tags: [],
+  modified: new Date(),
+  width: SETTINGS.DEFAULT_WIDTH,
+  height: SETTINGS.DEFAULT_HEIGHT,
 });

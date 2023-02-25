@@ -11,6 +11,15 @@ export class StickyNoteCard extends Gtk.Box {
       GTypeName: "StickyNoteCard",
       Template: "resource:///com/vixalien/sticky/card.ui",
       InternalChildren: ["modified_label", "text_view", "menu_button"],
+      Properties: {
+        uuid: GObject.ParamSpec.string(
+          "uuid",
+          "UUID",
+          "The UUID of the note",
+          GObject.ParamFlags.READABLE,
+          "",
+        ),
+      },
     }, this);
   }
 
@@ -55,6 +64,10 @@ export class StickyNoteCard extends Gtk.Box {
 
     this.set_style(note.style);
     this.set_modified_label();
+  }
+
+  get uuid() {
+    return this.note.uuid;
   }
 
   set_modified_label() {
