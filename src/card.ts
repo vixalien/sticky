@@ -10,7 +10,7 @@ export class StickyNoteCard extends Gtk.Box {
     GObject.registerClass({
       GTypeName: "StickyNoteCard",
       Template: "resource:///com/vixalien/sticky/card.ui",
-      InternalChildren: ["modified_label", "text_view", "menu_button"],
+      InternalChildren: ["modified_label", "menu_button"],
       Properties: {
         uuid: GObject.ParamSpec.string(
           "uuid",
@@ -24,7 +24,6 @@ export class StickyNoteCard extends Gtk.Box {
   }
 
   _modified_label!: Gtk.Label;
-  _text_view!: Gtk.TextView;
   _menu_button!: Gtk.MenuButton;
 
   private _note: Note;
@@ -33,10 +32,15 @@ export class StickyNoteCard extends Gtk.Box {
   constructor(note: Note) {
     super();
 
-    this.view = new StickyNoteView(note);
-    this._note = this.note = note;
+    this.view = new StickyNoteView(note, false);
+    this.view.set_css_classes([...this.view.css_classes, "card-text-view"]);
+    this.view.editable = false;
+    this.view.cursor_visible = false;
+    this.view.wrap_mode = Gtk.WrapMode.WORD_CHAR;
 
-    this._text_view.buffer = this.view.buffer;
+    this.append(this.view);
+
+    this._note = this.note = note;
   }
 
   clip_content(content: string) {
@@ -57,12 +61,13 @@ export class StickyNoteCard extends Gtk.Box {
   }
 
   set note(note: Note) {
+    if (note.style !== this._note?.style) this.set_style(note.style);
+
     this._note = this.view.note = {
       ...note,
       content: this.clip_content(note.content),
     };
 
-    this.set_style(note.style);
     this.set_modified_label();
   }
 

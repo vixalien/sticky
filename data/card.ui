@@ -32,16 +32,6 @@
         </style>
       </object>
     </child>
-    <child>
-      <object class="GtkTextView" id="text_view">
-        <property name="editable">false</property>
-        <property name="cursor-visible">false</property>
-        <property name="wrap-mode">word-char</property>
-        <style>
-          <class name="no-background"/>
-        </style>
-      </object>
-    </child>
     <style>
       <class name="card"/>
       <class name="activatable"/>
