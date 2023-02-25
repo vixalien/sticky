@@ -46,6 +46,25 @@ export class Application extends Adw.Application {
       flags: Gio.ApplicationFlags.DEFAULT_FLAGS,
     });
 
+    this.init_actions();
+  }
+
+  public vfunc_activate(): void {
+    if (!this.window) {
+      this.window = new StickyNotes({
+        application: this,
+        notes: SAMPLE_NOTES,
+      });
+
+      this.window.connect("note-activated", (_, uuid) => {
+        this.show_note(uuid);
+      });
+    }
+
+    this.window.present();
+  }
+
+  init_actions() {
     const quit_action = new Gio.SimpleAction({ name: "quit" });
     quit_action.connect("activate", () => {
       this.quit();
@@ -70,21 +89,12 @@ export class Application extends Adw.Application {
       aboutWindow.present();
     });
     this.add_action(show_about_action);
-  }
 
-  public vfunc_activate(): void {
-    if (!this.window) {
-      this.window = new StickyNotes({
-        application: this,
-        notes: SAMPLE_NOTES,
-      });
-
-      this.window.connect("note-activated", (_, uuid) => {
-        this.show_note(uuid);
-      });
-    }
-
-    this.window.present();
+    const new_note = new Gio.SimpleAction({ name: "new-note" });
+    new_note.connect("activate", () => {
+      this.new_note();
+    });
+    this.add_action(new_note);
   }
 
   changed_note(uuid: string, render = false) {
@@ -110,6 +120,13 @@ export class Application extends Adw.Application {
     // });
 
     // if (render) this.window.render_notes();
+  }
+
+  new_note() {
+    const note = gen_new_note();
+    this.window.add_note(note, () => {
+      this.show_note(note.uuid);
+    });
   }
 
   show_note(uuid: string) {
@@ -177,6 +194,7 @@ const SAMPLE_NOTES: Note[] = [
         end: 15,
       },
     ],
+    modified: new Date("2019-01-01"),
   },
   SAMPLE_NOTE,
   {
@@ -195,6 +213,7 @@ const SAMPLE_NOTES: Note[] = [
         end: 10,
       },
     ],
+    modified: new Date("2021-01-05"),
   },
   {
     ...SAMPLE_NOTE,
@@ -219,6 +238,7 @@ const SAMPLE_NOTES: Note[] = [
         end: 31,
       },
     ],
+    modified: new Date("2020-01-01"),
   },
   {
     ...SAMPLE_NOTE,
@@ -231,5 +251,6 @@ const SAMPLE_NOTES: Note[] = [
         end: 21,
       },
     ],
+    modified: new Date("1981-01-01"),
   },
 ];

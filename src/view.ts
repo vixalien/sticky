@@ -32,7 +32,7 @@ export class StickyNoteView extends Gtk.TextView {
 
     // this.buffer.text = "Hello world!";
 
-    this.updating = true;
+    this.updating = false;
     this._note = note;
     this.clear_tags();
     this.buffer.text = note.content;

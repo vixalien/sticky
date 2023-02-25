@@ -47,6 +47,22 @@ export class StickyNotes extends Adw.ApplicationWindow {
   ) {
     super(params);
 
+    this._notes_box.set_sort_func((row1, row2) => {
+      const card1 = row1.get_first_child() as StickyNoteCard;
+      const card2 = row2.get_first_child() as StickyNoteCard;
+
+      const date1 = GLib.DateTime.new_from_iso8601(
+        card1.note.modified.toISOString(),
+        null,
+      );
+      const date2 = GLib.DateTime.new_from_iso8601(
+        card2.note.modified.toISOString(),
+        null,
+      );
+
+      return date2.compare(date1);
+    });
+
     this.notes = notes;
 
     this._notes_box.activate_on_single_click = false;
@@ -96,13 +112,13 @@ export class StickyNotes extends Adw.ApplicationWindow {
       index++;
 
       if (index < this._notes.length) {
-        GLib.timeout_add(GLib.PRIORITY_DEFAULT_IDLE, 0, add_card);
+        GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, add_card);
       }
 
       return GLib.SOURCE_REMOVE;
     };
 
-    add_card();
+    GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, add_card);
   }
 
   changed_note(uuid: string, note: Note) {
@@ -111,6 +127,28 @@ export class StickyNotes extends Adw.ApplicationWindow {
     if (!card) return;
 
     card.note = note;
+
+    this._notes_box.invalidate_sort();
+  }
+
+  add_note(note: Note, cb?: () => void) {
+    GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+      this._notes.push(note);
+
+      const card = new StickyNoteCard(note);
+
+      this.cards.push(card);
+
+      this._notes_box.append(card);
+
+      GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+        cb?.();
+        return GLib.SOURCE_REMOVE;
+      });
+
+      return GLib.SOURCE_REMOVE;
+    });
+    // this._notes_box.invalidate_sort();
   }
 
   set_visible_child(child: "no_notes" | "no_results" | "notes_box") {
