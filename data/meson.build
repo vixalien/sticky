@@ -47,15 +47,14 @@ local_schemas = configure_file(
   output: gsettings_schema
 )
 
-# compile_local_schemas = custom_target(
-#   'compile_local_schemas',
-#   input: local_schemas,
-#   output: 'gschemas.compiled',
-#   command: [compile_schemas, meson.current_build_dir()]
-# )
+compile_local_schemas = custom_target(
+  'compile_local_schemas',
+  input: local_schemas,
+  output: 'gschemas.compiled',
+  command: [compile_schemas, meson.current_build_dir()]
+)
 
 pkgdatadir = join_paths(get_option('datadir'), meson.project_name())
-
 
 stylus_sources = [
   'style.styl',

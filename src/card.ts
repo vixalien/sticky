@@ -1,17 +1,9 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
-import Adw from "gi://Adw";
-import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 
-import { Style, StyleSelector } from "./styleselector.js";
-
-import { Note as ViewNote, StickyNoteView } from "./view.js";
-
-export interface Note extends ViewNote {
-  width: number;
-  height: number;
-}
+import { Note, Style } from "./util.js";
+import { StickyNoteView } from "./view.js";
 
 export class StickyNoteCard extends Gtk.Box {
   static {
@@ -87,6 +79,6 @@ export class StickyNoteCard extends Gtk.Box {
       }
     }
 
-    this.add_css_class(`style-${style}`);
+    this.add_css_class(`style-${Style[style]}`);
   }
 }

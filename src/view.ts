@@ -2,18 +2,7 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Pango from "gi://Pango";
 
-import { Style } from "./styleselector.js";
-
-export interface Note {
-  content: string;
-  style: Style;
-  tags: {
-    name: string;
-    start: number;
-    end: number;
-  }[];
-  modified: Date;
-}
+import { Note, SETTINGS, Style } from "./util.js";
 
 export class StickyNoteView extends Gtk.TextView {
   bold_tag = Gtk.TextTag.new("bold");
@@ -49,6 +38,7 @@ export class StickyNoteView extends Gtk.TextView {
     super();
 
     this.buffer = new Gtk.TextBuffer();
+    this.buffer.emit("changed");
 
     this.add_tags();
     this.style = note.style;
@@ -180,10 +170,13 @@ export class StickyNoteView extends Gtk.TextView {
     } while (start.compare(end) < 0);
 
     return {
+      v: 1,
       content,
       style: this.style,
       tags,
       modified: new Date(),
+      width: this.note.width || SETTINGS.DEFAULT_WIDTH,
+      height: this.note.height || SETTINGS.DEFAULT_HEIGHT,
     };
   }
 }

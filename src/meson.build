@@ -7,7 +7,8 @@ sources = [
   'notes.ts',
   'styleselector.ts',
   'view.ts',
-  'window.ts'
+  'window.ts',
+  'util.ts'
 ]
 
 outputs = []
@@ -56,5 +57,5 @@ app_launcher = configure_file(
 run_target(
   'devel',
   command: [gjs_console, '-m', app_launcher],
-  depends: [src_res, data_res]
+  depends: [src_res, data_res, compile_local_schemas]
 )

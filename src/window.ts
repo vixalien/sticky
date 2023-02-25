@@ -28,10 +28,9 @@ import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
 import Gio from "gi://Gio";
 
-import { Style, StyleSelector } from "./styleselector.js";
-
+import { StyleSelector } from "./styleselector.js";
+import { Note, SETTINGS, Style } from "./util.js";
 import { StickyNoteView } from "./view.js";
-import { Note } from "./card.js";
 
 export class Window extends Adw.ApplicationWindow {
   _container!: Gtk.Box;
@@ -79,9 +78,9 @@ export class Window extends Adw.ApplicationWindow {
   ) {
     super(params);
 
-    const DEFAULT_STYLE = "yellow";
-
-    this.set_style(DEFAULT_STYLE);
+    this.width_request = note.width;
+    this.height_request = note.height;
+    this.set_style(SETTINGS.DEFAULT_STYLE);
 
     this.view = new StickyNoteView(note);
 
@@ -99,7 +98,7 @@ export class Window extends Adw.ApplicationWindow {
 
     this.add_actions();
 
-    this.selector = new StyleSelector({ style: DEFAULT_STYLE });
+    this.selector = new StyleSelector({ style: SETTINGS.DEFAULT_STYLE });
     this.selector.connect("style-changed", (_selector, style) => {
       this.set_style(style);
     });
@@ -140,6 +139,14 @@ export class Window extends Adw.ApplicationWindow {
       }
     }
 
-    this._container.add_css_class(`style-${style}`);
+    this._container.add_css_class(`style-${Style[style]}`);
+  }
+
+  save() {
+    return {
+      ...this.view.save(),
+      width: this.get_allocated_width(),
+      height: this.get_allocated_height(),
+    };
   }
 }

@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="sticky-notes">
+	<enum id="com.vixalien.sticky.styles">
+    <value nick="yellow" value="1"/>
+    <value nick="pink" value="2"/>
+    <value nick="green" value="3"/>
+    <value nick="purple" value="4"/>
+    <value nick="blue" value="5"/>
+    <value nick="gray" value="6"/>
+    <value nick="charcoal" value="7"/>
+    <value nick="window" value="8"/>
+  </enum>
 	<schema id="com.vixalien.sticky" path="/com/vixalien/sticky/">
+		<key name="default-height" type="i">
+			<default>300</default>
+			<summary>Note window default height</summary>
+			<description>The default height of a new sticky note</description>
+		</key>
+		<key name="default-width" type="i">
+			<default>300</default>
+			<summary>Note window default width</summary>
+			<description>The default width of a new sticky note</description>
+		</key>
+		<key name='default-style' enum='com.vixalien.sticky.styles'>
+      <default>'yellow'</default>
+			<summary>Default note style</summary>
+			<description>The default style assigned to a new note</description>
+    </key>
 	</schema>
 </schemalist>

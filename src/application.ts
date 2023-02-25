@@ -28,8 +28,8 @@ import Gio from "gi://Gio";
 import Adw from "gi://Adw";
 
 // import { Window } from "./window.js";
-import { Note } from "./card.js";
 import { StickyNotes } from "./notes.js";
+import { Note, Style } from "./util.js";
 
 export class Application extends Adw.Application {
   private window?: StickyNotes;
@@ -83,9 +83,10 @@ export class Application extends Adw.Application {
 }
 
 const SAMPLE_NOTE: Note = {
+  v: 1,
   content:
     "Hello World! Lorem Ipsum dolor sit amet, lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ",
-  style: "yellow",
+  style: Style.yellow,
   height: 300,
   width: 300,
   modified: new Date(),
@@ -95,7 +96,7 @@ const SAMPLE_NOTE: Note = {
 const SAMPLE_NOTES: Note[] = [
   {
     ...SAMPLE_NOTE,
-    style: "pink",
+    style: Style.pink,
     tags: [
       {
         name: "bold",
@@ -107,7 +108,7 @@ const SAMPLE_NOTES: Note[] = [
   SAMPLE_NOTE,
   {
     ...SAMPLE_NOTE,
-    style: "window",
+    style: Style.window,
     tags: [
       {
         name: "bold",
@@ -123,7 +124,7 @@ const SAMPLE_NOTES: Note[] = [
   },
   {
     ...SAMPLE_NOTE,
-    style: "green",
+    style: Style.green,
     tags: [
       {
         name: "bold",
@@ -134,7 +135,7 @@ const SAMPLE_NOTES: Note[] = [
   },
   {
     ...SAMPLE_NOTE,
-    style: "purple",
+    style: Style.purple,
     tags: [
       {
         name: "strikethrough",
@@ -145,7 +146,7 @@ const SAMPLE_NOTES: Note[] = [
   },
   {
     ...SAMPLE_NOTE,
-    style: "gray",
+    style: Style.gray,
     tags: [
       {
         name: "underline",

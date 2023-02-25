@@ -2,20 +2,23 @@
 
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
-import Adw from "gi://Adw";
 import Gdk from "gi://Gdk?version=4.0";
+
+import { Style, styles } from "./util.js";
 
 let provider: Gtk.CssProvider | null = null;
 
 const capitalize = (str: string) => str[0].toUpperCase() + str.slice(1);
 
 class StyleButton extends Gtk.CheckButton {
-  style: string;
+  style: Style;
 
-  constructor(style: string, group?: Gtk.CheckButton) {
+  constructor(style: Style, group?: Gtk.CheckButton) {
+    const style_name = Style[style];
+
     super({
       // focus_on_click: false,
-      tooltip_text: `Switch to ${capitalize(style)} style`,
+      tooltip_text: `Switch to ${capitalize(style_name)} style`,
       width_request: 44,
       height_request: 44,
       hexpand: true,
@@ -31,7 +34,7 @@ class StyleButton extends Gtk.CheckButton {
     this.set_css_classes([
       ...this.css_classes,
       `style-selector`,
-      `style-${style}`,
+      `style-${style_name}`,
     ]);
   }
 
@@ -41,19 +44,6 @@ class StyleButton extends Gtk.CheckButton {
     }, this);
   }
 }
-
-export const styles = [
-  "yellow",
-  "pink",
-  "green",
-  "purple",
-  "blue",
-  "gray",
-  "charcoal",
-  "window",
-] as const;
-
-export type Style = typeof styles[number];
 
 export class StyleSelector extends Gtk.Box {
   box = new Gtk.FlowBox({
@@ -86,7 +76,7 @@ export class StyleSelector extends Gtk.Box {
     super();
 
     this.append(this.box);
-    this._style = this.style = params.style ?? "yellow";
+    this._style = this.style = params.style ?? Style.yellow;
     this.build_styles();
     this.hexpand = true;
 

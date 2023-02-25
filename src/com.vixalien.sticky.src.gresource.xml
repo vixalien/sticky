@@ -8,5 +8,6 @@
     <file>styleselector.js</file>
     <file>view.js</file>
     <file>window.js</file>
+    <file>util.js</file>
   </gresource>
 </gresources>
