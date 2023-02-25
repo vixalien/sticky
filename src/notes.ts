@@ -13,7 +13,13 @@ export class StickyNotes extends Adw.ApplicationWindow {
       {
         Template: "resource:///com/vixalien/sticky/notes.ui",
         GTypeName: "StickyNotes",
-        InternalChildren: ["search", "notes_box", "no_notes", "no_results"],
+        InternalChildren: [
+          "search",
+          "notes_box",
+          "no_notes",
+          "no_results",
+          "search_entry",
+        ],
         Signals: {
           "note-activated": {
             param_types: [GObject.TYPE_STRING],
@@ -25,6 +31,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   }
 
   _search!: Gtk.Box;
+  _search_entry!: Gtk.SearchEntry;
   _notes_box!: Gtk.ListBox;
   _no_notes!: Adw.StatusPage;
   _no_results!: Adw.StatusPage;
@@ -33,6 +40,10 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
   get notes() {
     return (this.application as Application).notes;
+  }
+
+  get query() {
+    return this._search_entry.text.toLowerCase();
   }
 
   constructor(
@@ -54,6 +65,19 @@ export class StickyNotes extends Adw.ApplicationWindow {
       );
 
       return date2.compare(date1);
+    });
+
+    this._notes_box.set_filter_func((row) => {
+      const query = this.query;
+      if (!query) return true;
+
+      const card = row.get_first_child() as StickyNoteCard;
+
+      return card.note.content.toLowerCase().includes(query);
+    });
+
+    this._search_entry.connect("search-changed", () => {
+      this._notes_box.invalidate_filter();
     });
 
     this._notes_box.activate_on_single_click = false;

@@ -55,7 +55,7 @@
                           <class name="search-bar"/>
                         </style>
                         <child>
-                          <object class="GtkSearchEntry">
+                          <object class="GtkSearchEntry" id="search_entry">
                             <property name="placeholder-text">Search...</property>
                             <property name="hexpand">true</property>
                           </object>
