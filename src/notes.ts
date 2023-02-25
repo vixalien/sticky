@@ -3,6 +3,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
 import GLib from "gi://GLib";
 
+import type { Application } from "./application.js";
 import { StickyNoteCard } from "./card.js";
 import { Note } from "./util.js";
 
@@ -28,22 +29,14 @@ export class StickyNotes extends Adw.ApplicationWindow {
   _no_notes!: Adw.StatusPage;
   _no_results!: Adw.StatusPage;
 
-  _notes: Note[] = [];
-
   cards: StickyNoteCard[] = [];
 
   get notes() {
-    return this._notes;
-  }
-
-  set notes(notes: Note[]) {
-    this._notes = notes;
+    return (this.application as Application).notes;
   }
 
   constructor(
-    { notes, ...params }: Partial<Gtk.Window.ConstructorProperties> & {
-      notes: Note[];
-    },
+    params: Partial<Gtk.Window.ConstructorProperties>,
   ) {
     super(params);
 
@@ -62,8 +55,6 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
       return date2.compare(date1);
     });
-
-    this.notes = notes;
 
     this._notes_box.activate_on_single_click = false;
     this._notes_box.connect("row-activated", (list, row) => {
@@ -96,14 +87,19 @@ export class StickyNotes extends Adw.ApplicationWindow {
   render_notes() {
     this.clear_notes();
 
-    if (this._notes.length === 0) {
+    if (this.notes.length === 0) {
       this.set_visible_child("no_notes");
     }
 
     let index = 0;
 
     const add_card = () => {
-      const card = new StickyNoteCard(this._notes[index]);
+      const note = this.notes[index];
+
+      const card = new StickyNoteCard(note);
+      card.show_visible_image = (this.application as Application).is_note_open(
+        note.uuid,
+      );
 
       this.cards.push(card);
 
@@ -111,14 +107,14 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
       index++;
 
-      if (index < this._notes.length) {
+      if (index < this.notes.length) {
         GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, add_card);
       }
 
       return GLib.SOURCE_REMOVE;
     };
 
-    GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, add_card);
+    if (this.notes[index]) GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, add_card);
   }
 
   changed_note(uuid: string, note: Note) {
@@ -133,8 +129,6 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
   add_note(note: Note, cb?: () => void) {
     GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
-      this._notes.push(note);
-
       const card = new StickyNoteCard(note);
 
       this.cards.push(card);

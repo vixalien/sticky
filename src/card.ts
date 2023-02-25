@@ -73,6 +73,15 @@ export class StickyNoteCard extends Gtk.Box {
       content: this.clip_content(note.content),
     };
 
+    if (!this.note.content.replace(/\s/g, "")) {
+      this.view.buffer.text = "";
+      this.view.buffer.insert_markup(
+        this.view.buffer.get_start_iter(),
+        "<i>(Empty note)</i>",
+        -1,
+      );
+    }
+
     this.set_modified_label();
   }
 

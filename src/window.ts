@@ -48,6 +48,8 @@ export class Window extends Adw.ApplicationWindow {
 
   selector: StyleSelector;
 
+  note: Note;
+
   static {
     GObject.registerClass(
       {
@@ -82,6 +84,8 @@ export class Window extends Adw.ApplicationWindow {
     },
   ) {
     super(params);
+
+    this.note = note;
 
     this.default_width = note.width;
     this.default_height = note.height;

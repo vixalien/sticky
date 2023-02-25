@@ -33,12 +33,14 @@ import { gen_new_note, Note, Style } from "./util.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
-  private window!: StickyNotes;
+  private window: StickyNotes | null = null;
   private note_windows: Window[] = [];
 
   static {
     GObject.registerClass(this);
   }
+
+  notes: Note[] = [];
 
   constructor() {
     super({
@@ -47,21 +49,16 @@ export class Application extends Adw.Application {
     });
 
     this.init_actions();
+
+    this.notes = SAMPLE_NOTES;
   }
 
   public vfunc_activate(): void {
-    if (!this.window) {
-      this.window = new StickyNotes({
-        application: this,
-        notes: SAMPLE_NOTES,
-      });
+    this.all_notes();
+  }
 
-      this.window.connect("note-activated", (_, uuid) => {
-        this.show_note(uuid);
-      });
-    }
-
-    this.window.present();
+  is_note_open(uuid: string) {
+    return this.note_windows.some((w: Window) => w.note.uuid === uuid);
   }
 
   init_actions() {
@@ -74,19 +71,7 @@ export class Application extends Adw.Application {
 
     const show_about_action = new Gio.SimpleAction({ name: "about" });
     show_about_action.connect("activate", () => {
-      let aboutParams = {
-        transient_for: this.active_window,
-        application_name: "sticky-notes",
-        application_icon: "com.vixalien.sticky",
-        developer_name: "Christopher Davis",
-        version: "0.1.0",
-        developers: [
-          "Christopher Davis <christopherdavis@gnome.org>",
-        ],
-        copyright: "© 2023 Christopher Davis",
-      };
-      const aboutWindow = new Adw.AboutWindow(aboutParams);
-      aboutWindow.present();
+      this.show_about();
     });
     this.add_action(show_about_action);
 
@@ -95,16 +80,42 @@ export class Application extends Adw.Application {
       this.new_note();
     });
     this.add_action(new_note);
+
+    const all_notes = new Gio.SimpleAction({ name: "all-notes" });
+    all_notes.connect("activate", () => {
+      GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
+        this.all_notes();
+        return GLib.SOURCE_REMOVE;
+      });
+    });
+    this.add_action(all_notes);
+  }
+
+  show_about() {
+    const aboutParams = {
+      transient_for: this.active_window,
+      application_name: "sticky-notes",
+      application_icon: "com.vixalien.sticky",
+      developer_name: "Christopher Davis",
+      version: "0.1.0",
+      developers: [
+        "Christopher Davis <christopherdavis@gnome.org>",
+      ],
+      copyright: "© 2023 Christopher Davis",
+    };
+
+    const aboutWindow = new Adw.AboutWindow(aboutParams);
+    aboutWindow.present();
   }
 
   changed_note(uuid: string, render = false) {
     const saved_note = this.note_windows.find((window) =>
-      window.view.note.uuid === uuid
+      window.note.uuid === uuid
     )?.save() as Note;
 
-    this.window.changed_note(uuid, saved_note);
+    this.window?.changed_note(uuid, saved_note);
 
-    this.window.notes = this.window.notes.map((note) => {
+    this.notes = this.notes.map((note) => {
       if (note.uuid === uuid) return saved_note;
       return note;
     });
@@ -112,7 +123,7 @@ export class Application extends Adw.Application {
     // this.window.notes = this.window.notes.map((note) => {
     //   if (note.uuid === uuid) {
     //     const saved_note = this.note_windows.find((window) =>
-    //       window.view.note.uuid === uuid
+    //       window.note.uuid === uuid
     //     )?.save() as Note;
     //     return saved_note;
     //   }
@@ -122,22 +133,47 @@ export class Application extends Adw.Application {
     // if (render) this.window.render_notes();
   }
 
+  all_notes() {
+    if (!this.window) {
+      this.window = new StickyNotes({
+        application: this,
+      });
+
+      this.window.connect("note-activated", (_, uuid) => {
+        this.show_note(uuid);
+      });
+
+      this.window.connect("close-request", () => {
+        this.window = null;
+      });
+    }
+
+    this.window.present();
+  }
+
   new_note() {
     const note = gen_new_note();
-    this.window.add_note(note, () => {
+
+    this.notes.push(note);
+
+    if (this.window) {
+      this.window.add_note(note, () => {
+        this.show_note(note.uuid);
+      });
+    } else {
       this.show_note(note.uuid);
-    });
+    }
   }
 
   show_note(uuid: string) {
-    const note = this.window?.notes.find((note) => note.uuid === uuid);
+    const note = this.notes.find((note) => note.uuid === uuid);
 
     if (!note) {
       return;
     }
 
     const note_window = this.note_windows.find((window) =>
-      window.view.note.uuid === uuid
+      window.note.uuid === uuid
     );
 
     if (note_window) {
@@ -156,7 +192,7 @@ export class Application extends Adw.Application {
 
     window.connect("close-request", () => {
       this.note_windows = this.note_windows.filter((win) => win !== window);
-      this.window.set_note_visible(note.uuid, false);
+      this.window?.set_note_visible(note.uuid, false);
       return false;
     });
 
@@ -164,7 +200,7 @@ export class Application extends Adw.Application {
       this.changed_note(uuid, what !== "width" && what !== "height");
     });
 
-    this.window.set_note_visible(uuid, true);
+    this.window?.set_note_visible(uuid, true);
 
     // window.connect("save", () => {
     //   this.window?.save(note);

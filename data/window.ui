@@ -112,7 +112,7 @@
     <section>
       <item>
         <attribute name="label">All Notes</attribute>
-        <attribute name="action">app.all</attribute>
+        <attribute name="action">app.all-notes</attribute>
       </item>
       <item>
         <attribute name="label">Delete Note</attribute>
