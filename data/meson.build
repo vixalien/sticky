@@ -72,7 +72,9 @@ stylus = custom_target(
   'stylus-compile',
   input: stylus_sources,
   build_by_default: true,
-  command: [find_program('echo'), 'building-styl', '@INPUT@'],
+  command: [
+    package_manager, package_manager_args, 'run', 'css', '--out', meson.project_build_root() / '@OUTDIR@', '--cwd', meson.current_source_dir(), '@INPUT@',
+  ],
   depends: package_manager_deps,
   output: stylus_outputs,
 )

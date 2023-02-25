@@ -9,16 +9,21 @@
   "dependencies": {
     "typescript": "^4.7.4"
   },
+  "type": "module",
   "devDependencies": {
+    "@types/minimist": "^1.2.2",
+    "@types/stylus": "^0.48.38",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "esbuild": "^0.17.10",
     "eslint": "^8.21.0",
+    "minimist": "^1.2.8",
+    "mkdirp": "^2.1.3",
     "stylus": "^0.59.0"
   },
   "scripts": {
-    "build": "esbuild src/**.ts",
-    "typecheck": "tsc --strict --noEmit",
-    "css": "stylus data/**.styl -o stylus-out"
+    "build": "node lib/build.js",
+    "css": "node lib/stylus.js",
+    "typecheck": "tsc --strict --noEmit"
   }
 }

@@ -1,6 +1,7 @@
 gnome = import('gnome')
 
 sources = [
+  'application.ts',
   'card.ts',
   'main.ts',
   'notes.ts',
@@ -18,7 +19,9 @@ typescript = custom_target(
   'typescript-compile',
   build_by_default: true,
   input: files(sources),
-  command: [ package_manager, package_manager_args, 'run', 'build', '--outdir=' + meson.project_build_root() / '@OUTDIR@' ],
+  command: [
+    package_manager, package_manager_args, 'run', 'build', '--out', meson.project_build_root() / '@OUTDIR@', '--cwd', meson.current_source_dir(), '@INPUT@',
+  ],
   depends: package_manager_deps,
   output: outputs,
 )
