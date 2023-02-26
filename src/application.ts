@@ -196,17 +196,19 @@ export class Application extends Adw.Application {
 
     if (!saved_note) return;
 
-    const [found, id] = this.notes_list.find_with_equal_func(
-      saved_note,
-      (note: Note, other: Note) => {
-        return note?.uuid === other?.uuid;
-      },
-    );
+    let found = false, id = 0;
+
+    while (id < this.notes_list.n_items) {
+      if (this.notes_list.get_item(id)!.uuid === uuid) {
+        found = true;
+        break;
+      }
+      id++;
+    }
 
     if (!found) return;
 
-    this.notes_list.remove(id);
-    this.notes_list.insert(id, saved_note);
+    this.notes_list.splice(id, 1, [saved_note]);
   }
 
   all_notes() {

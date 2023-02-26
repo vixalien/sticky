@@ -23,6 +23,10 @@ export class StickyNoteView extends Gtk.TextView {
 
   updating = false;
 
+  get note() {
+    return this._note!;
+  }
+
   set note(note: Note) {
     // console.log("setting note", note.content);
 
