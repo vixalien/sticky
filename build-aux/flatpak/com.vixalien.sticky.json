@@ -1,7 +1,7 @@
 {
-    "app-id" : "org.example.TypescriptTemplate",
+    "app-id" : "com.vixalien.sticky",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
+    "runtime-version" : "43",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.node18"
@@ -12,7 +12,7 @@
     "build-options" : {
         "append-path" : "/usr/lib/sdk/node18/bin"
     },
-    "command" : "org.example.TypescriptTemplate",
+    "command" : "com.vixalien.sticky",
     "finish-args" : [
         "--share=ipc",
         "--device=dri",
@@ -46,7 +46,7 @@
             ]
         },
         {
-            "name" : "gnome-typescript-template",
+            "name" : "sticky-notes",
             "buildsystem" : "meson",
             "config-opts" : [
                 "-Doffline-mirror=/app/yarn-mirror/"
