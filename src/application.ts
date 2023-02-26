@@ -143,14 +143,7 @@ export class Application extends Adw.Application {
         this.get_note_window(notes.get_item(0)!.uuid)?.present();
       }
     } else if (presented instanceof Window) {
-      let id = 0;
-
-      while (id < notes.n_items) {
-        if (notes.get_item(id)!.uuid === presented.note.uuid) {
-          break;
-        }
-        id++;
-      }
+      const id = this.find_note_id(presented.note.uuid)!;
 
       const focus_id = id + (reverse ? -1 : 1);
 
@@ -189,26 +182,50 @@ export class Application extends Adw.Application {
     aboutWindow.present();
   }
 
-  changed_note(uuid: string) {
-    const saved_note = this.note_windows.find((window) =>
-      window.note.uuid === uuid
-    )?.save() as Note;
-
-    if (!saved_note) return;
-
+  find_note_id(uuid: string) {
     let found = false, id = 0;
 
     while (id < this.notes_list.n_items) {
       if (this.notes_list.get_item(id)!.uuid === uuid) {
-        found = true;
-        break;
+        return id;
       }
       id++;
     }
+  }
 
-    if (!found) return;
+  find_note(uuid: string) {
+    let found = false, id = 0;
 
-    this.notes_list.splice(id, 1, [saved_note]);
+    while (id < this.notes_list.n_items) {
+      const note = this.notes_list.get_item(id)!;
+      if (note.uuid === uuid) {
+        return note;
+      }
+      id++;
+    }
+  }
+
+  find_open_note(uuid: string) {
+    const saved_note = this.note_windows.find((window) =>
+      window.note.uuid === uuid
+    )?.save() as Note;
+
+    return saved_note ?? undefined;
+  }
+
+  changed_note(uuid: string) {
+    const found_id = this.find_note_id(uuid);
+    const found_note = this.find_open_note(uuid);
+
+    if (found_id !== undefined && found_note) {
+      this.notes_list.splice(found_id, 1, [found_note]);
+    }
+  }
+
+  delete_note(uuid: string) {
+    const found_id = this.find_note_id(uuid);
+
+    if (found_id !== undefined) this.notes_list.splice(found_id, 1, []);
   }
 
   all_notes() {
@@ -219,6 +236,10 @@ export class Application extends Adw.Application {
 
       this.window.connect("note-activated", (_, uuid) => {
         this.show_note(uuid);
+      });
+
+      this.window.connect("deleted", (_, uuid) => {
+        this.delete_note(uuid);
       });
 
       this.window.connect("close-request", () => {
@@ -238,20 +259,11 @@ export class Application extends Adw.Application {
   }
 
   show_note(uuid: string) {
-    let note: Note | undefined = undefined, id = 0;
+    const note = this.find_note(uuid);
 
-    while (id < this.notes_list.n_items) {
-      const _note = this.notes_list.get_item(id)!;
-      if (_note.uuid === uuid) {
-        note = _note;
-        break;
-      }
-      id++;
-    }
+    console.log("showing note: ", uuid, note);
 
-    if (!note) {
-      return;
-    }
+    if (!note) return;
 
     const note_window = this.note_windows.find((window) =>
       window.note.uuid === uuid
@@ -279,6 +291,10 @@ export class Application extends Adw.Application {
 
     window.connect("changed", (_, uuid, what: string) => {
       this.changed_note(uuid);
+    });
+
+    window.connect("deleted", (_, uuid) => {
+      this.delete_note(uuid);
     });
 
     this.window?.set_note_visible(uuid, true);

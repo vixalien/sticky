@@ -23,6 +23,9 @@ export class StickyNotes extends Adw.ApplicationWindow {
           "note-activated": {
             param_types: [GObject.TYPE_STRING],
           },
+          deleted: {
+            param_types: [GObject.TYPE_STRING],
+          },
         },
       },
       this,
@@ -44,7 +47,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   }
 
   setup_cb(_factory: Gtk.ListItemFactory, list_item: Gtk.ListItem) {
-    const card = new StickyNoteCard();
+    const card = new StickyNoteCard(this);
 
     list_item.set_child(card);
   }
@@ -52,6 +55,8 @@ export class StickyNotes extends Adw.ApplicationWindow {
   bind_cb(_factory: Gtk.ListItemFactory, list_item: Gtk.ListItem) {
     const card = list_item.get_child() as StickyNoteCard;
     const note = list_item.get_item() as Note;
+
+    card.connect("deleted", (_) => this.emit("deleted", note.uuid));
 
     card.note = note;
   }

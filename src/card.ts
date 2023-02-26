@@ -2,7 +2,7 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import GLib from "gi://GLib";
 
-import { Note, Style } from "./util.js";
+import { confirm_delete, Note, Style } from "./util.js";
 import { StickyNoteView } from "./view.js";
 
 export class StickyNoteCard extends Gtk.Box {
@@ -10,7 +10,7 @@ export class StickyNoteCard extends Gtk.Box {
     GObject.registerClass({
       GTypeName: "StickyNoteCard",
       Template: "resource:///com/vixalien/sticky/card.ui",
-      InternalChildren: ["modified_label", "menu_button", "view_image"],
+      InternalChildren: ["modified_label", "view_image", "delete_button"],
       Properties: {
         uuid: GObject.ParamSpec.string(
           "uuid",
@@ -20,12 +20,15 @@ export class StickyNoteCard extends Gtk.Box {
           "",
         ),
       },
+      Signals: {
+        deleted: {},
+      },
     }, this);
   }
 
   _modified_label!: Gtk.Label;
-  _menu_button!: Gtk.MenuButton;
   _view_image!: Gtk.Image;
+  _delete_button!: Gtk.Button;
 
   private _note?: Note;
   view: StickyNoteView;
@@ -34,7 +37,7 @@ export class StickyNoteCard extends Gtk.Box {
     this._view_image.visible = visible;
   }
 
-  constructor(note?: Note) {
+  constructor(public window: Gtk.Window, note?: Note) {
     super();
 
     this.view = new StickyNoteView(note, false);
@@ -44,6 +47,8 @@ export class StickyNoteCard extends Gtk.Box {
     this.view.wrap_mode = Gtk.WrapMode.WORD_CHAR;
 
     this.append(this.view);
+
+    this._delete_button.connect("clicked", this.delete.bind(this));
 
     if (note) this._note = this.note = note;
   }
@@ -108,5 +113,12 @@ export class StickyNoteCard extends Gtk.Box {
     }
 
     this.add_css_class(`style-${Style[style]}`);
+  }
+
+  delete() {
+    if (!this._note) return;
+    confirm_delete(this.window, () => {
+      this.emit("deleted");
+    });
   }
 }

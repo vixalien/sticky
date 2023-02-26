@@ -3,9 +3,6 @@
   <requires lib="gtk" version="4.0"/>
   <template class="StickyNoteCard" parent="GtkBox">
     <property name="orientation">vertical</property>
-    <style>
-      <class name="note-card"/>
-    </style>
     <child>
       <object class="GtkBox" id="details">
         <property name="spacing">6</property>
@@ -13,6 +10,9 @@
           <object class="GtkImage" id="view_image">
             <property name="visible">false</property>
             <property name="icon-name">view-reveal-symbolic</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
         </child>
         <child>
@@ -28,43 +28,25 @@
           <object class="GtkLabel" id="modified_label">
             <style>
               <class name="caption"/>
+              <class name="dim-label"/>
             </style>
           </object>
         </child>
         <child>
-          <object class="GtkMenuButton" id="menu_button">
-            <property name="icon-name">view-more-horizontal-symbolic</property>
-            <property name="menu-model">note_menu</property>
+          <object class="GtkButton" id="delete_button">
+            <property name="icon-name">user-trash-symbolic</property>
             <style>
               <class name="flat"/>
             </style>
           </object>
         </child>
-        <style>
-          <class name="dim-label"/>
-        </style>
       </object>
     </child>
     <style>
       <class name="card"/>
       <class name="activatable"/>
       <class name="note-view"/>
+      <class name="note-card"/>
     </style>
   </template>
-  <menu id="note_menu">
-    <section>
-      <item>
-        <attribute name="id">open</attribute>
-        <attribute name="label">Open note</attribute>
-      </item>
-      <item>
-        <attribute name="id">close</attribute>
-        <attribute name="label">Close note</attribute>
-      </item>
-      <item>
-        <attribute name="id">delete</attribute>
-        <attribute name="label">Delete note</attribute>
-      </item>
-    </section>
-  </menu>
 </interface>

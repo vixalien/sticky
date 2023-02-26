@@ -1,6 +1,8 @@
+import Adw from "gi://Adw";
 import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 import GObject from "gi://GObject";
+import Gtk from "gi://Gtk?version=4.0";
 
 export interface ITag {
   name: string;
@@ -40,6 +42,7 @@ const get_settings = () => ({
   DEFAULT_STYLE: settings.get_enum("default-style") as Style,
   DEFAULT_WIDTH: settings.get_int("default-width"),
   DEFAULT_HEIGHT: settings.get_int("default-height"),
+  CONFIRM_DELETE: settings.get_boolean("confirm-delete"),
 });
 
 export let SETTINGS = get_settings();
@@ -195,3 +198,29 @@ export class Note extends GObject.Object {
     }, this);
   }
 }
+
+export const confirm_delete = (window: Gtk.Window, cb: () => void) => {
+  if (SETTINGS.CONFIRM_DELETE) {
+    const dialog = Adw.MessageDialog.new(
+      window,
+      "Are you sure you want to delete this note?",
+      "This action cannot be undone. If you want to hide the note, you can close it instead.",
+    );
+    dialog.add_response("cancel", "Cancel");
+    dialog.add_response("delete", "Delete");
+    dialog.set_response_appearance(
+      "delete",
+      Adw.ResponseAppearance.DESTRUCTIVE,
+    );
+    dialog.set_default_response("cancel");
+    dialog.set_close_response("cancel");
+    dialog.connect("response", (_dialog, response) => {
+      if (response === "delete") {
+        cb();
+      }
+    });
+    dialog.present();
+  } else {
+    cb();
+  }
+};

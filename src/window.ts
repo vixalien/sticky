@@ -29,7 +29,7 @@ import Adw from "gi://Adw";
 import Gio from "gi://Gio";
 
 import { StyleSelector } from "./styleselector.js";
-import { Note, SETTINGS, Style } from "./util.js";
+import { confirm_delete, Note, SETTINGS, Style } from "./util.js";
 import { StickyNoteView } from "./view.js";
 
 export class Window extends Adw.ApplicationWindow {
@@ -49,6 +49,7 @@ export class Window extends Adw.ApplicationWindow {
   selector: StyleSelector;
 
   note: Note;
+  deleted = false;
 
   static {
     GObject.registerClass(
@@ -67,6 +68,9 @@ export class Window extends Adw.ApplicationWindow {
         Signals: {
           changed: {
             param_types: [GObject.TYPE_STRING, GObject.TYPE_STRING],
+          },
+          deleted: {
+            param_types: [GObject.TYPE_STRING],
           },
         },
       },
@@ -90,6 +94,7 @@ export class Window extends Adw.ApplicationWindow {
     this.default_width = note.width;
     this.default_height = note.height;
     this.connect("close-request", () => {
+      if (this.deleted) return;
       const current_note = this.save();
       if (current_note.width !== note.width) {
         this.emit("changed", note.uuid, "width");
@@ -149,6 +154,10 @@ export class Window extends Adw.ApplicationWindow {
   }
 
   add_actions() {
+    const delete_ = Gio.SimpleAction.new("delete", null);
+    delete_.connect("activate", () => this.delete());
+    this.add_action(delete_);
+
     for (const [name, tag] of this.view.actions) {
       const action = Gio.SimpleAction.new(name, null);
       action.connect("activate", () => this.view.apply_tag(tag));
@@ -164,6 +173,14 @@ export class Window extends Adw.ApplicationWindow {
     }
 
     this._container.add_css_class(`style-${Style[style]}`);
+  }
+
+  delete() {
+    confirm_delete(this, () => {
+      this.deleted = true;
+      this.emit("deleted", this.note.uuid);
+      this.close();
+    });
   }
 
   save() {
