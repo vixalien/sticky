@@ -62,7 +62,7 @@ export class StickyNoteCard extends Gtk.Box {
   }
 
   set note(note: Note) {
-    if (note.style !== this._note?.style) this.set_style(note.style);
+    if (note?.style !== this._note?.style) this.set_style(note.style);
 
     const note2 = note.copy();
     note2.content = this.clip_content(note.content);
