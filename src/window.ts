@@ -179,7 +179,6 @@ export class Window extends Adw.ApplicationWindow {
     confirm_delete(this, () => {
       this.deleted = true;
       this.emit("deleted", this.note.uuid);
-      this.close();
     });
   }
 

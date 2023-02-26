@@ -174,6 +174,19 @@ export class Note extends GObject.Object {
     });
   }
 
+  toJSON() {
+    return {
+      v: this.v,
+      uuid: this.uuid,
+      content: this.content,
+      style: this.style,
+      tags: this.tags,
+      modified: this.modified_date,
+      width: this.width,
+      height: this.height,
+    };
+  }
+
   static {
     GObject.registerClass({
       GTypeName: "NoteObject",
@@ -223,4 +236,64 @@ export const confirm_delete = (window: Gtk.Window, cb: () => void) => {
   } else {
     cb();
   }
+};
+
+export const NotesDir = Gio.file_new_for_path(
+  GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name, "notes.json"]),
+);
+
+const decoder = new TextDecoder();
+
+export const load_notes = () => {
+  try {
+    NotesDir.get_parent()!.make_directory_with_parents(null);
+  } catch (e: unknown) {
+    if (e instanceof GLib.Error) {
+      if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
+        console.error(`Failed to create directory ${e}`);
+      }
+    }
+  }
+
+  const file = NotesDir;
+  try {
+    const [success, contents] = file.load_contents(null);
+    if (success) {
+      const notes = JSON.parse(decoder.decode(contents)) as INote[];
+      return notes.map((note) => new Note(note));
+    } else {
+      return [];
+    }
+  } catch (e: unknown) {
+    if (e instanceof GLib.Error) {
+      if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
+        return [];
+      } else {
+        console.error(`Failed to load notes ${e}`);
+        return [];
+      }
+    }
+  }
+};
+
+export const save_notes = (notes: Note[]) => {
+  try {
+    NotesDir.get_parent()!.make_directory_with_parents(null);
+  } catch (e: unknown) {
+    if (e instanceof GLib.Error) {
+      if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
+        console.error(`Failed to create directory ${e}`);
+      }
+    }
+  }
+
+  const file = NotesDir;
+  const contents = JSON.stringify(notes.map((note) => note.toJSON()), null, 2);
+  file.replace_contents(
+    contents,
+    null,
+    false,
+    Gio.FileCreateFlags.REPLACE_DESTINATION,
+    null,
+  );
 };

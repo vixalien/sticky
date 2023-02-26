@@ -30,7 +30,7 @@ import GLib from "gi://GLib";
 import Gtk from "gi://Gtk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
-import { Note, Style } from "./util.js";
+import { load_notes, Note, save_notes, Style } from "./util.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
@@ -58,7 +58,26 @@ export class Application extends Adw.Application {
 
     this.init_actions();
 
-    SAMPLE_NOTES.map((note) => this.notes_list.append(note));
+    load_notes()?.forEach((note) => this.notes_list.append(note));
+
+    // this.connect("");
+
+    this.sort_notes();
+  }
+
+  public vfunc_shutdown() {
+    let array = [], index = 0;
+
+    while (index < this.notes_list.get_n_items()) {
+      const note = this.notes_list.get_item(index) as Note;
+      const open_window = this.find_open_window(note.uuid);
+      array.push(open_window?.save() ?? note);
+      index++;
+    }
+
+    save_notes(array);
+
+    super.vfunc_shutdown();
   }
 
   public vfunc_activate(): void {
@@ -71,15 +90,15 @@ export class Application extends Adw.Application {
 
   init_actions() {
     const quit_action = new Gio.SimpleAction({ name: "quit" });
-    quit_action.connect("activate", this.quit.bind(this));
+    quit_action.connect("activate", () => this.quit());
     this.add_action(quit_action);
 
     const show_about_action = new Gio.SimpleAction({ name: "about" });
-    show_about_action.connect("activate", this.show_about.bind(this));
+    show_about_action.connect("activate", () => this.show_about());
     this.add_action(show_about_action);
 
     const new_note = new Gio.SimpleAction({ name: "new-note" });
-    new_note.connect("activate", this.new_note.bind(this));
+    new_note.connect("activate", () => this.new_note());
     this.add_action(new_note);
 
     const all_notes = new Gio.SimpleAction({ name: "all-notes" });
@@ -92,11 +111,11 @@ export class Application extends Adw.Application {
     this.add_action(all_notes);
 
     const cycle_linear = new Gio.SimpleAction({ name: "cycle" });
-    cycle_linear.connect("activate", this.cycle_linear.bind(this));
+    cycle_linear.connect("activate", () => this.cycle_linear());
     this.add_action(cycle_linear);
 
     const cycle_reverse = new Gio.SimpleAction({ name: "cycle-reverse" });
-    cycle_reverse.connect("activate", this.cycle_reverse.bind(this));
+    cycle_reverse.connect("activate", () => this.cycle_reverse());
     this.add_action(cycle_reverse);
 
     this.set_accels_for_action("app.quit", ["<Primary>q"]);
@@ -184,7 +203,7 @@ export class Application extends Adw.Application {
   }
 
   find_note_id(uuid: string) {
-    let found = false, id = 0;
+    let id = 0;
 
     while (id < this.notes_list.n_items) {
       if (this.notes_list.get_item(id)!.uuid === uuid) {
@@ -195,7 +214,7 @@ export class Application extends Adw.Application {
   }
 
   find_note(uuid: string) {
-    let found = false, id = 0;
+    let id = 0;
 
     while (id < this.notes_list.n_items) {
       const note = this.notes_list.get_item(id)!;
@@ -206,12 +225,14 @@ export class Application extends Adw.Application {
     }
   }
 
-  find_open_note(uuid: string) {
-    const saved_note = this.note_windows.find((window) =>
-      window.note.uuid === uuid
-    )?.save() as Note;
+  find_open_window(uuid: string) {
+    const win = this.note_windows.find((window) => window.note.uuid === uuid);
 
-    return saved_note ?? undefined;
+    return win ?? undefined;
+  }
+
+  find_open_note(uuid: string) {
+    return this.find_open_window(uuid)?.save() as Note ?? undefined;
   }
 
   changed_note(uuid: string) {
@@ -225,8 +246,10 @@ export class Application extends Adw.Application {
 
   delete_note(uuid: string) {
     const found_id = this.find_note_id(uuid);
+    const found_window = this.find_open_window(uuid);
 
     if (found_id !== undefined) this.notes_list.splice(found_id, 1, []);
+    if (found_window) found_window.close();
   }
 
   all_notes() {
@@ -299,75 +322,3 @@ export class Application extends Adw.Application {
     this.window?.set_note_visible(uuid, true);
   }
 }
-
-const SAMPLE_NOTE = Note.generate();
-SAMPLE_NOTE.content =
-  "Hello World! Lorem Ipsum dolor sit amet, lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ";
-
-const SAMPLE_2 = SAMPLE_NOTE.copy();
-SAMPLE_2.content = "hola amigos";
-SAMPLE_2.uuid = GLib.uuid_string_random();
-SAMPLE_2.style = Style.pink;
-SAMPLE_2.tags = [{
-  name: "bold",
-  start: 0,
-  end: 15,
-}];
-SAMPLE_2.modified_date = new Date("2019-01-01");
-
-const SAMPLE_3 = SAMPLE_NOTE.copy();
-SAMPLE_3.content = "halo!";
-SAMPLE_3.uuid = GLib.uuid_string_random();
-SAMPLE_3.style = Style.window;
-SAMPLE_3.tags = [{
-  name: "bold",
-  start: 0,
-  end: 15,
-}, {
-  name: "italic",
-  start: 3,
-  end: 10,
-}];
-SAMPLE_3.modified_date = new Date("2021-01-05");
-
-const SAMPLE_4 = SAMPLE_NOTE.copy();
-SAMPLE_4.content = "bonjour";
-SAMPLE_4.uuid = GLib.uuid_string_random();
-SAMPLE_4.style = Style.green;
-SAMPLE_4.tags = [{
-  name: "bold",
-  start: 0,
-  end: 15,
-}];
-SAMPLE_4.modified_date = new Date("2005-08-01");
-
-const SAMPLE_5 = SAMPLE_NOTE.copy();
-SAMPLE_5.content = "muraho";
-SAMPLE_5.uuid = GLib.uuid_string_random();
-SAMPLE_5.style = Style.purple;
-SAMPLE_5.tags = [{
-  name: "strikethrough",
-  start: 12,
-  end: 31,
-}];
-SAMPLE_5.modified_date = new Date("2005-03-01");
-
-const SAMPLE_6 = SAMPLE_NOTE.copy();
-SAMPLE_6.content = "mwiriwe";
-SAMPLE_6.uuid = GLib.uuid_string_random();
-SAMPLE_6.style = Style.gray;
-SAMPLE_6.tags = [{
-  name: "underline",
-  start: 13,
-  end: 21,
-}];
-SAMPLE_6.modified_date = new Date("1981-01-01");
-
-const SAMPLE_NOTES: Note[] = [
-  SAMPLE_NOTE,
-  SAMPLE_2,
-  SAMPLE_3,
-  SAMPLE_4,
-  SAMPLE_5,
-  SAMPLE_6,
-];

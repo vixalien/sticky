@@ -73,6 +73,7 @@
                           <object class="GtkButton">
                             <property name="halign">center</property>
                             <property name="label">Create a new Note</property>
+                            <property name="action-name">app.new-note</property>
                             <style>
                               <class name="pill"/>
                               <class name="suggested-action"/>

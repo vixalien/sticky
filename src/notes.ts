@@ -1,6 +1,7 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
+import Gio from "gi://Gio";
 
 import type { Application } from "./application.js";
 import { StickyNoteCard } from "./card.js";
@@ -41,6 +42,8 @@ export class StickyNotes extends Adw.ApplicationWindow {
   cards: StickyNoteCard[] = [];
 
   old_query = "";
+
+  last_model: Gtk.SelectionModel<Note>;
 
   get query() {
     return this._search_entry.text.toLowerCase();
@@ -96,12 +99,18 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
     const sorter_model = Gtk.SortListModel.new(filter_model, sorter);
 
-    const selection_model = Gtk.SingleSelection.new(sorter_model);
+    this.last_model = Gtk.SingleSelection.new(
+      sorter_model,
+    ) as Gtk.SingleSelection<Note>;
+
+    this.last_model.connect("items-changed", () => {
+      this.set_status();
+    });
 
     this._notes_box.connect("activate", this.activate_cb.bind(this));
 
     this._notes_box.set_factory(factory);
-    this._notes_box.set_model(selection_model);
+    this._notes_box.set_model(this.last_model);
 
     this._search_entry.connect("search-changed", () => {
       const query = this.query.toLowerCase();
@@ -117,6 +126,20 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
       this.old_query = query;
     });
+
+    this.set_status();
+  }
+
+  set_status() {
+    if (this.last_model.get_n_items() > 0) {
+      this.set_visible_child("notes_box");
+    } else {
+      if (this.query) {
+        this.set_visible_child("no_results");
+      } else {
+        this.set_visible_child("no_notes");
+      }
+    }
   }
 
   set_note_visible(uuid: string, visible: boolean) {
