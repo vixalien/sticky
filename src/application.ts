@@ -111,6 +111,37 @@ export class Application extends Adw.Application {
     return this.note_windows.some((w: Window) => w.note.uuid === uuid);
   }
 
+  new_controller() {
+    const controller = new Gtk.ShortcutController();
+
+    const add_shortcut = (fn: () => void, accels: string[]) => {
+      const shortcut = new Gtk.Shortcut({
+        trigger: Gtk.ShortcutTrigger.parse_string(accels.join("|")),
+        // @ts-ignore
+        action: Gtk.CallbackAction.new(() => {
+          fn();
+          return true;
+        }),
+      });
+      controller.add_shortcut(shortcut);
+    };
+
+    add_shortcut(this.cycle_linear.bind(this), [
+      "<Primary>Page_Down",
+      "<Primary>Tab",
+      "<Primary>ISO_Left_Tab",
+      "<Primary>KP_Tab",
+    ]);
+    add_shortcut(this.cycle_reverse.bind(this), [
+      "<Primary>Page_Up",
+      "<Primary><Shift>Tab",
+      "<Primary><Shift>ISO_Left_Tab",
+      "<Primary><Shift>KP_Tab",
+    ]);
+
+    return controller;
+  }
+
   init_actions() {
     const quit_action = new Gio.SimpleAction({ name: "quit" });
     quit_action.connect("activate", () => this.quit());
@@ -144,8 +175,8 @@ export class Application extends Adw.Application {
     this.set_accels_for_action("app.quit", ["<Primary>q"]);
     this.set_accels_for_action("app.new-note", ["<Primary>n"]);
     this.set_accels_for_action("app.all-notes", ["<Primary>h"]);
-    this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
-    this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
+    // this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
+    // this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
     this.set_accels_for_action("app.save", ["<Primary>s"]);
 
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
@@ -180,14 +211,18 @@ export class Application extends Adw.Application {
     const presented = this.active_window;
 
     if (presented instanceof StickyNotes) {
-      if (reverse) {
-        this.get_note_window(notes.get_item(notes.n_items - 1)!.uuid)
-          ?.present();
-      } else {
-        this.get_note_window(notes.get_item(0)!.uuid)?.present();
-      }
+      this.get_note_window(
+        notes.get_item(reverse ? notes.n_items - 1 : 0)!.uuid,
+      )
+        ?.present();
     } else if (presented instanceof Window) {
-      const id = this.find_note_id(presented.note.uuid)!;
+      let id;
+
+      for (id = 0; id < notes.n_items; id++) {
+        if (notes.get_item(id)!.uuid === presented.note.uuid) {
+          break;
+        }
+      }
 
       const focus_id = id + (reverse ? -1 : 1);
 
@@ -201,12 +236,12 @@ export class Application extends Adw.Application {
 
   cycle_linear() {
     // reverse the order (makes it loop oldest first)
-    return this.cycle(true);
+    return this.cycle(false);
   }
 
   cycle_reverse() {
     // reverse the order (makes it loop oldest first)
-    return this.cycle(false);
+    return this.cycle(true);
   }
 
   show_about() {
@@ -226,11 +261,11 @@ export class Application extends Adw.Application {
     aboutWindow.present();
   }
 
-  foreach_note(cb: (note: Note) => void) {
+  foreach_note(cb: (note: Note, id?: number) => void) {
     let id = 0;
 
     while (id < this.notes_list.n_items) {
-      cb(this.notes_list.get_item(id)!);
+      cb(this.notes_list.get_item(id)!, id);
       id++;
     }
   }
@@ -303,6 +338,8 @@ export class Application extends Adw.Application {
         this.window = null;
         this.show_all_notes = false;
       });
+
+      this.window.add_controller(this.new_controller());
     }
 
     this.window.present();
@@ -337,7 +374,7 @@ export class Application extends Adw.Application {
 
     this.note_windows.push(window);
 
-    window.present();
+    window.add_controller(this.new_controller());
 
     window.connect("close-request", () => {
       note.open = false;
@@ -346,14 +383,12 @@ export class Application extends Adw.Application {
       return false;
     });
 
-    // window.connect("changed", (_, uuid, what: string) => {
-    //   this.changed_note(uuid);
-    // });
-
     window.connect("deleted", (_, uuid) => {
       this.delete_note(uuid);
     });
 
     note.open = true;
+
+    window.present();
   }
 }

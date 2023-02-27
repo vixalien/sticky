@@ -11,12 +11,6 @@
             <property name="title" translatable="yes" context="shortcut window">General</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">New Note</property>
-                <property name="action-name">app.new-note</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Show Shortcuts</property>
                 <property name="action-name">win.show-help-overlay</property>
               </object>
@@ -25,6 +19,23 @@
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Quit</property>
                 <property name="action-name">app.quit</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes" context="shortcut window">Notes</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">New Note</property>
+                <property name="action-name">app.new-note</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Delete note</property>
+                <property name="action-name">win.delete</property>
               </object>
             </child>
           </object>
@@ -41,24 +52,13 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Cycle between notes</property>
-                <property name="action-name">app.cycle</property>
+                <property name="accelerator">&lt;Ctrl&gt;Tab</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Cycle between notes in reverse order</property>
-                <property name="action-name">app.cycle-reverse</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes" context="shortcut window">Note</property>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Delete note</property>
-                <property name="action-name">win.delete</property>
+                <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;Tab</property>
               </object>
             </child>
           </object>
