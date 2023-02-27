@@ -1,10 +1,11 @@
 {
   "name": "sticky-notes",
   "version": "1.0.0",
-  "description": "Template for writing GNOME applications in TypeScript",
+  "description": "A simple sticky notes app for GNOME.",
+  "private": true,
   "main": "src/main.ts",
   "repository": "https://gitlab.gnome.org/BrainBlasted/sticky-notes",
-  "author": "Christopher Davis <christopherdavis@gnome.org>",
+  "author": "Angelo Verlain <hey@vixalien.com>",
   "license": "MIT",
   "dependencies": {
     "typescript": "^4.7.4"

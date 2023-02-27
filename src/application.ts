@@ -1,6 +1,6 @@
 /* MIT License
  *
- * Copyright (c) 2023 Chris Davis
+ * Copyright (c) 2023 Angelo Verlain, Chris Davis
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -57,6 +57,8 @@ export class Application extends Adw.Application {
       application_id: "com.vixalien.sticky",
       flags: Gio.ApplicationFlags.DEFAULT_FLAGS,
     });
+
+    GLib.set_application_name("Sticky Notes");
 
     this.init_actions();
 
@@ -245,16 +247,20 @@ export class Application extends Adw.Application {
   }
 
   show_about() {
-    const aboutParams = {
+    const aboutParams: Partial<Adw.AboutWindow.ConstructorProperties> = {
       transient_for: this.active_window,
-      application_name: "sticky-notes",
-      application_icon: "com.vixalien.sticky",
-      developer_name: "Christopher Davis",
-      version: "0.1.0",
+      application_name: "Sticky Notes",
+      application_icon: pkg.name,
+      developer_name: "Angelo Verlain",
+      version: pkg.version,
       developers: [
+        "Angelo Verlain <hey@vixalien.com>",
         "Christopher Davis <christopherdavis@gnome.org>",
       ],
-      copyright: "© 2023 Christopher Davis",
+      copyright: "© 2023 Angelo Verlain, Christopher Davis",
+      license_type: Gtk.License.MIT_X11,
+      comments: "A simple sticky notes app",
+      website: "https://github.com/vixalien/sticky",
     };
 
     const aboutWindow = new Adw.AboutWindow(aboutParams);
