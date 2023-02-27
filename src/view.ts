@@ -251,6 +251,8 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
     for (const listener of this.listeners) {
       this.note!.disconnect(listener);
     }
+
+    this.listeners.clear();
   }
 }
 

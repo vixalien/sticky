@@ -44,6 +44,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   old_query = "";
 
   last_model: Gtk.SelectionModel<Note>;
+  sorter: Gtk.Sorter;
 
   get query() {
     return this._search_entry.text.toLowerCase();
@@ -62,13 +63,20 @@ export class StickyNotes extends Adw.ApplicationWindow {
     card.show_visible_image = note.open;
     card.connect("deleted", (_) => this.emit("deleted", note.uuid));
 
-    card.view.remove_listeners();
-
     card.note = note;
+
+    note.connect("notify::modified", () => {
+      card.update_modified_label();
+      this.sorter.changed(Gtk.SorterChange.DIFFERENT);
+    });
 
     note.connect("notify::open", (_) => {
       card.show_visible_image = note.open;
     });
+
+    note.connect("notify::style", () => {
+      card.set_style(note.style);
+    })
   }
 
   unbind_cb(_factory: Gtk.ListItemFactory, list_item: Gtk.ListItem) {
@@ -105,13 +113,13 @@ export class StickyNotes extends Adw.ApplicationWindow {
       filter,
     );
 
-    const sorter = Gtk.CustomSorter.new((note1, note2) => {
+    this.sorter = Gtk.CustomSorter.new((note1, note2) => {
       const date1 = (note1 as Note).modified;
       const date2 = (note2 as Note).modified;
       return date2.compare(date1);
     });
 
-    const sorter_model = Gtk.SortListModel.new(filter_model, sorter);
+    const sorter_model = Gtk.SortListModel.new(filter_model, this.sorter);
 
     this.last_model = Gtk.SingleSelection.new(
       sorter_model,

@@ -56,14 +56,14 @@ export class StickyNoteCard extends Gtk.Box {
 
     this._note = this.view.note = note
 
-    this.set_modified_label();
+    this.update_modified_label();
   }
 
   get uuid() {
     return this._note?.uuid;
   }
 
-  set_modified_label() {
+  update_modified_label() {
     const modified = this._note?.modified?.to_local();
 
     if (!modified) return;
