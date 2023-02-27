@@ -21,3 +21,13 @@ declare interface String {
 declare interface Number {
   toFixed(digits: number): number;
 }
+
+interface TextDecoderOptions {
+  fatal?: boolean;
+  ignoreBOM?: boolean;
+}
+
+declare class TextDecoder {
+  constructor(encoding?: string, options?: TextDecoderOptions);
+  decode(input?: ArrayBufferView, options?: TextDecodeOptions): string;
+}
