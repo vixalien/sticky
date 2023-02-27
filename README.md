@@ -16,7 +16,7 @@ To install from source, you need `nodejs` installed. Then, you need to clone the
 repository and run the following commands:
 
 ```sh
-meson build
+meson setup build
 ninja -C build
 sudo ninja -C build install
 ```
@@ -26,6 +26,6 @@ Tips:
 - If you want to run the application without installing it, you can run
   `ninja -C build devel` instead of `sudo ninja -C build install`.
 - If you use a different node package manager (like `pnpm`, `bun` etc), you can
-  use `meson configure build -Dpackage_manager=<your package manager>` to set
+  use `meson configure build -Dpackage-manager=<your package manager>` to set
   the package manager. The package manager must support the `install` and `run`
   commands.
