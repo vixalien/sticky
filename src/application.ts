@@ -89,7 +89,7 @@ export class Application extends Adw.Application {
     super.vfunc_shutdown();
   }
 
-  public vfunc_activate(): void {
+  public vfunc_activate() {
     // this is used to track if there is atleast one window open. id there isn't,
     // we show the all_notes
     let has_one_open = false;

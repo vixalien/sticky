@@ -84,5 +84,5 @@ data_res = gnome.compile_resources(
   dependencies: stylus,
   gresource_bundle: true,
   install: true,
-  install_dir: join_paths(pkgdatadir, 'resource`'),
+  install_dir: pkgdatadir,
 )
