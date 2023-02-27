@@ -100,10 +100,10 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
     note.connect("notify::style", () => {
       card.set_style(note.style);
-    })
+    });
   }
 
-  unbind_cb(_factory: Gtk.ListItemFactory, list_item: Gtk.ListItem) {
+  unbind_cb(_factory: Gtk.ListItemFactory, _list_item: Gtk.ListItem) {
     const card = new StickyNoteCard(this);
 
     card.view.remove_listeners();

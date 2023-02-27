@@ -79,7 +79,7 @@ export class StickyNoteCard extends Gtk.Box {
   set note(note: Note) {
     if (note?.style !== this._note?.style) this.set_style(note.style);
 
-    this._note = this.view.note = note
+    this._note = this.view.note = note;
 
     this.update_modified_label();
   }

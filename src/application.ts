@@ -72,7 +72,7 @@ export class Application extends Adw.Application {
   }
 
   save() {
-    let array: Note[] = [];
+    const array: Note[] = [];
 
     this.foreach_note((note) => {
       array.push(note);
@@ -119,7 +119,7 @@ export class Application extends Adw.Application {
     const add_shortcut = (fn: () => void, accels: string[]) => {
       const shortcut = new Gtk.Shortcut({
         trigger: Gtk.ShortcutTrigger.parse_string(accels.join("|")),
-        // @ts-ignore
+        // @ts-ignore bad types
         action: Gtk.CallbackAction.new(() => {
           fn();
           return true;

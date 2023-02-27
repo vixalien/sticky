@@ -29,7 +29,7 @@ import Adw from "gi://Adw";
 import Gio from "gi://Gio";
 
 import { StyleSelector } from "./styleselector.js";
-import { confirm_delete, Note, SETTINGS, Style } from "./util.js";
+import { confirm_delete, Note, Style } from "./util.js";
 import { WriteableStickyNote } from "./view.js";
 
 export class Window extends Adw.ApplicationWindow {
