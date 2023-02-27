@@ -30,7 +30,7 @@ import GLib from "gi://GLib";
 import Gtk from "gi://Gtk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
-import { load_notes, Note, save_notes, Style } from "./util.js";
+import { load_notes, Note, save_notes } from "./util.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
@@ -44,13 +44,13 @@ export class Application extends Adw.Application {
   // notes: Note[] = [];
   notes_list = Gio.ListStore.new(Note.$gtype) as Gio.ListStore<Note>;
 
+  show_all_notes = false;
+
   sort_notes() {
     this.notes_list.sort((note1: Note, note2: Note) => {
       return note1.modified.compare(note2.modified);
     });
   }
-
-  show_all_notes = false;
 
   constructor() {
     super({
@@ -69,7 +69,7 @@ export class Application extends Adw.Application {
     this.sort_notes();
   }
 
-  public vfunc_shutdown() {
+  save() {
     let array: Note[] = [];
 
     this.foreach_note((note) => {
@@ -79,6 +79,10 @@ export class Application extends Adw.Application {
     save_notes(array, {
       all_notes: this.show_all_notes,
     });
+  }
+
+  public vfunc_shutdown() {
+    this.save();
 
     super.vfunc_shutdown();
   }
@@ -142,6 +146,7 @@ export class Application extends Adw.Application {
     this.set_accels_for_action("app.all-notes", ["<Primary>h"]);
     this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
     this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
+    this.set_accels_for_action("app.save", ["<Primary>s"]);
 
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
     this.set_accels_for_action("win.show-help-overlay", ["<Primary>question"]);
@@ -150,7 +155,7 @@ export class Application extends Adw.Application {
     this.set_accels_for_action("win.bold", ["<Primary>b"]);
     this.set_accels_for_action("win.italic", ["<Primary>i"]);
     this.set_accels_for_action("win.underline", ["<Primary>u"]);
-    this.set_accels_for_action("win.strikethrough", ["<Primary>s"]);
+    this.set_accels_for_action("win.strikethrough", ["<Primary>t"]);
   }
 
   get_note_window(uuid: string) {

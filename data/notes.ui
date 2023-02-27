@@ -112,10 +112,6 @@
   <menu id="primaryMenu">
     <section>
       <item>
-        <attribute name="label">Preferences</attribute>
-        <attribute name="action">app.preferences</attribute>
-      </item>
-      <item>
         <attribute name="label">Keyboard shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
