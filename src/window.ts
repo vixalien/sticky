@@ -163,6 +163,8 @@ export class Window extends Adw.ApplicationWindow {
     }
 
     this._container.add_css_class(`style-${Style[style]}`);
+
+    this.note.modified_date = new Date();
   }
 
   delete() {
