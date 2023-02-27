@@ -19,6 +19,7 @@ export interface INote {
   modified: Date;
   width: number;
   height: number;
+  open: boolean;
 }
 
 export enum Style {
@@ -81,22 +82,31 @@ export class Tag extends GObject.Object {
 }
 
 export class Note extends GObject.Object {
+  private static tag_list_pspec = GObject.ParamSpec.object(
+    "tag_list",
+    "Tags",
+    "Tags of the note",
+    GObject.ParamFlags.READWRITE,
+    Gio.ListStore,
+  );
+
   static $gtype: GObject.GType<Note>;
 
   v: 1;
   uuid: string;
   content: string;
   style: Style;
-  _tags: Gio.ListStore<Tag>;
+  tag_list: Gio.ListStore<Tag>;
   modified: GLib.DateTime;
   width: number;
   height: number;
+  open: boolean;
 
   get tags() {
     const items = [];
 
-    for (let i = 0; i < this._tags.get_n_items(); i++) {
-      const tag = this._tags.get_item(i)!;
+    for (let i = 0; i < this.tag_list.get_n_items(); i++) {
+      const tag = this.tag_list.get_item(i)!;
       items.push({
         name: tag.name,
         start: tag.start,
@@ -108,12 +118,14 @@ export class Note extends GObject.Object {
   }
 
   set tags(tags: INote["tags"]) {
-    this._tags.remove_all();
+    this.tag_list.remove_all();
 
     for (const tag of tags) {
       const tag_object = new Tag(tag.name, tag.start, tag.end);
-      this._tags.append(tag_object);
+      this.tag_list.append(tag_object);
     }
+
+    this.emit("notify::tag_list", Note.tag_list_pspec);
   }
 
   get modified_date() {
@@ -134,7 +146,7 @@ export class Note extends GObject.Object {
     this.uuid = note.uuid;
     this.content = note.content;
     this.style = note.style;
-    this._tags = Gio.ListStore.new(Tag.$gtype) as Gio.ListStore<Tag>;
+    this.tag_list = Gio.ListStore.new(Tag.$gtype) as Gio.ListStore<Tag>;
     this.tags = note.tags;
     this.modified = GLib.DateTime.new_from_iso8601(
       new Date(note.modified).toISOString(),
@@ -142,6 +154,7 @@ export class Note extends GObject.Object {
     );
     this.width = note.width;
     this.height = note.height;
+    this.open = note.open ?? false;
   }
 
   static generate() {
@@ -154,6 +167,7 @@ export class Note extends GObject.Object {
       modified: new Date(),
       width: SETTINGS.DEFAULT_WIDTH,
       height: SETTINGS.DEFAULT_HEIGHT,
+      open: false,
     });
   }
 
@@ -171,10 +185,11 @@ export class Note extends GObject.Object {
       modified: new Date(this.modified.to_unix() * 1000),
       width: this.width,
       height: this.height,
+      open: this.open,
     });
   }
 
-  toJSON() {
+  toJSON(): INote {
     return {
       v: this.v,
       uuid: this.uuid,
@@ -184,6 +199,7 @@ export class Note extends GObject.Object {
       modified: this.modified_date,
       width: this.width,
       height: this.height,
+      open: this.open,
     };
   }
 
@@ -200,13 +216,15 @@ export class Note extends GObject.Object {
         // deno-fmt-ignore
         style: GObject.ParamSpec.int("style", "Style", "Style of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
         // deno-fmt-ignore
-        tags: GObject.ParamSpec.object("tags", "Tags", "Tags of the note", GObject.ParamFlags.READWRITE, Gio.ListStore),
+        tag_list: this.tag_list_pspec,
         // // deno-fmt-ignore
         modified: GObject.ParamSpec.boxed("modified", "Modified", "Date the note was modified", GObject.ParamFlags.READWRITE, GLib.DateTime),
         // deno-fmt-ignore
         width: GObject.ParamSpec.int("width", "Width", "Width of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
         // deno-fmt-ignore
         height: GObject.ParamSpec.int("height", "Height", "Height of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
+        // deno-fmt-ignore
+        open: GObject.ParamSpec.boolean("open", "Open", "Whether the note was open when the application was closed", GObject.ParamFlags.READWRITE, false),
       },
     }, this);
   }
@@ -244,7 +262,20 @@ export const NotesDir = Gio.file_new_for_path(
 
 const decoder = new TextDecoder();
 
-export const load_notes = () => {
+interface SavedNoteData {
+  v: 1;
+  notes: INote[];
+  state: State;
+}
+
+interface LoadNotesReturn {
+  notes: Note[];
+  state: State;
+}
+
+export const load_notes: () => LoadNotesReturn = () => {
+  const bogus_data: LoadNotesReturn = { state: { all_notes: true }, notes: [] };
+
   try {
     NotesDir.get_parent()!.make_directory_with_parents(null);
   } catch (e: unknown) {
@@ -259,24 +290,37 @@ export const load_notes = () => {
   try {
     const [success, contents] = file.load_contents(null);
     if (success) {
-      const notes = JSON.parse(decoder.decode(contents)) as INote[];
-      return notes.map((note) => new Note(note));
+      const data = JSON.parse(decoder.decode(contents)) as SavedNoteData;
+      if (data.v !== 1) {
+        console.error(`Invalid notes version ${data.v}`);
+        return bogus_data;
+      }
+      return {
+        notes: data.notes.map((note) => new Note(note)),
+        state: data.state,
+      };
     } else {
-      return [];
+      return bogus_data;
     }
   } catch (e: unknown) {
     if (e instanceof GLib.Error) {
       if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
-        return [];
+        return bogus_data;
       } else {
         console.error(`Failed to load notes ${e}`);
-        return [];
+        return bogus_data;
       }
     }
   }
+
+  return bogus_data;
 };
 
-export const save_notes = (notes: Note[]) => {
+interface State {
+  all_notes: boolean;
+}
+
+export const save_notes = (notes: Note[], state: State) => {
   try {
     NotesDir.get_parent()!.make_directory_with_parents(null);
   } catch (e: unknown) {
@@ -288,7 +332,15 @@ export const save_notes = (notes: Note[]) => {
   }
 
   const file = NotesDir;
-  const contents = JSON.stringify(notes.map((note) => note.toJSON()), null, 2);
+  const contents = JSON.stringify(
+    {
+      v: 1,
+      notes: notes.map((note) => note.toJSON()),
+      state: state,
+    } as SavedNoteData,
+    null,
+    2,
+  );
   file.replace_contents(
     contents,
     null,

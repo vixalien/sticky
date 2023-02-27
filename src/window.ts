@@ -30,7 +30,7 @@ import Gio from "gi://Gio";
 
 import { StyleSelector } from "./styleselector.js";
 import { confirm_delete, Note, SETTINGS, Style } from "./util.js";
-import { StickyNoteView } from "./view.js";
+import { WriteableStickyNote } from "./view.js";
 
 export class Window extends Adw.ApplicationWindow {
   _container!: Gtk.Box;
@@ -44,7 +44,7 @@ export class Window extends Adw.ApplicationWindow {
 
   // buffer = new Gtk.TextBuffer();
 
-  view: StickyNoteView;
+  view: WriteableStickyNote;
 
   selector: StyleSelector;
 
@@ -66,9 +66,6 @@ export class Window extends Adw.ApplicationWindow {
           "menu_button",
         ],
         Signals: {
-          changed: {
-            param_types: [GObject.TYPE_STRING, GObject.TYPE_STRING],
-          },
           deleted: {
             param_types: [GObject.TYPE_STRING],
           },
@@ -95,36 +92,29 @@ export class Window extends Adw.ApplicationWindow {
     this.default_height = note.height;
     this.connect("close-request", () => {
       if (this.deleted) return;
-      const current_note = this.save();
-      if (current_note.width !== note.width) {
-        this.emit("changed", note.uuid, "width");
+      const width = this.get_allocated_width();
+      const height = this.get_allocated_height();
+
+      if (width !== note.width) {
+        this.note.width = width;
       }
-      if (current_note.height !== note.height) {
-        this.emit("changed", note.uuid, "height");
+      if (height !== note.height) {
+        this.note.width = width;
       }
     });
-    // this.connect("notify::default-width", () => {
-    //   this.emit("changed", note.uuid, "width");
-    // });
-    // this.connect("notify::default-height", () => {
-    //   this.emit("changed", note.uuid, "height");
-    // });
+
     this.set_style(note.style);
 
-    this.view = new StickyNoteView(note);
+    this.view = new WriteableStickyNote(note);
     this.view.connect("selection-changed", this.check_tags.bind(this));
     this.view.connect(
       "tag-toggle",
-      (_view: StickyNoteView, tag: string, active: boolean) => {
+      (_view: WriteableStickyNote, tag: string, active: boolean) => {
         const button =
           this[`_${tag}_button` as keyof typeof this] as Gtk.ToggleButton;
         if (!button) return;
         button.active = active;
       },
-    );
-    this.view.connect(
-      "changed",
-      (_, _uuid, what: string) => this.emit("changed", note.uuid, what),
     );
 
     this._text.buffer = this.view.buffer;
@@ -134,7 +124,7 @@ export class Window extends Adw.ApplicationWindow {
     this.selector = new StyleSelector({ style: note.style });
     this.selector.connect("style-changed", (_selector, style) => {
       this.set_style(style);
-      this.emit("changed", note.uuid, "style");
+      this.note.style = style;
     });
 
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
@@ -182,13 +172,13 @@ export class Window extends Adw.ApplicationWindow {
     });
   }
 
-  save() {
-    const note = this.view.save();
+  // save() {
+  //   const note = this.view.save();
 
-    note.style = this.get_style();
-    note.width = this.get_allocated_width();
-    note.height = this.get_allocated_height();
+  //   note.style = this.get_style();
+  //   note.width = this.get_allocated_width();
+  //   note.height = this.get_allocated_height();
 
-    return note;
-  }
+  //   return note;
+  // }
 }

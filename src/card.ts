@@ -3,7 +3,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import GLib from "gi://GLib";
 
 import { confirm_delete, Note, Style } from "./util.js";
-import { StickyNoteView } from "./view.js";
+import { ReadonlyStickyNote } from "./view.js";
 
 export class StickyNoteCard extends Gtk.Box {
   static {
@@ -31,7 +31,7 @@ export class StickyNoteCard extends Gtk.Box {
   _delete_button!: Gtk.Button;
 
   private _note?: Note;
-  view: StickyNoteView;
+  view: ReadonlyStickyNote;
 
   set show_visible_image(visible: boolean) {
     this._view_image.visible = visible;
@@ -40,10 +40,8 @@ export class StickyNoteCard extends Gtk.Box {
   constructor(public window: Gtk.Window, note?: Note) {
     super();
 
-    this.view = new StickyNoteView(note, false);
+    this.view = new ReadonlyStickyNote(note);
     this.view.set_css_classes([...this.view.css_classes, "card-text-view"]);
-    this.view.editable = false;
-    this.view.cursor_visible = false;
     this.view.wrap_mode = Gtk.WrapMode.WORD_CHAR;
 
     this.append(this.view);
@@ -53,35 +51,10 @@ export class StickyNoteCard extends Gtk.Box {
     if (note) this._note = this.note = note;
   }
 
-  clip_content(content: string) {
-    const MAX_LINES = 5;
-    const MAX_CHARS = 240;
-
-    let cut = content.split("\n").slice(0, MAX_LINES).join("\n");
-
-    if (cut.length > MAX_CHARS) {
-      cut = cut.slice(0, MAX_CHARS);
-    }
-
-    return cut.length < content.length ? `${cut}…` : cut;
-  }
-
   set note(note: Note) {
     if (note?.style !== this._note?.style) this.set_style(note.style);
 
-    const note2 = note.copy();
-    note2.content = this.clip_content(note.content);
-
-    this._note = this.view.note = note2;
-
-    if (!this._note.content.replace(/\s/g, "")) {
-      this.view.buffer.text = "";
-      this.view.buffer.insert_markup(
-        this.view.buffer.get_start_iter(),
-        "<i>(Empty note)</i>",
-        -1,
-      );
-    }
+    this._note = this.view.note = note
 
     this.set_modified_label();
   }

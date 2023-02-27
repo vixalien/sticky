@@ -59,9 +59,22 @@ export class StickyNotes extends Adw.ApplicationWindow {
     const card = list_item.get_child() as StickyNoteCard;
     const note = list_item.get_item() as Note;
 
+    card.show_visible_image = note.open;
     card.connect("deleted", (_) => this.emit("deleted", note.uuid));
 
+    card.view.remove_listeners();
+
     card.note = note;
+
+    note.connect("notify::open", (_) => {
+      card.show_visible_image = note.open;
+    });
+  }
+
+  unbind_cb(_factory: Gtk.ListItemFactory, list_item: Gtk.ListItem) {
+    const card = new StickyNoteCard(this);
+
+    card.view.remove_listeners();
   }
 
   activate_cb(list: Gtk.ListView, position: number) {
@@ -78,6 +91,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
     const factory = new Gtk.SignalListItemFactory();
     factory.connect("setup", this.setup_cb.bind(this));
     factory.connect("bind", this.bind_cb.bind(this));
+    factory.connect("unbind", this.unbind_cb.bind(this));
 
     const filter = Gtk.CustomFilter.new((note) => {
       const query = this.query;

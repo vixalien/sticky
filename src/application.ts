@@ -50,6 +50,8 @@ export class Application extends Adw.Application {
     });
   }
 
+  show_all_notes = false;
+
   constructor() {
     super({
       application_id: "com.vixalien.sticky",
@@ -58,30 +60,47 @@ export class Application extends Adw.Application {
 
     this.init_actions();
 
-    load_notes()?.forEach((note) => this.notes_list.append(note));
+    const data = load_notes() || [];
 
-    // this.connect("");
+    this.show_all_notes = data.state.all_notes;
+
+    data.notes.forEach((note) => this.notes_list.append(note));
 
     this.sort_notes();
   }
 
   public vfunc_shutdown() {
-    let array = [], index = 0;
+    let array: Note[] = [];
 
-    while (index < this.notes_list.get_n_items()) {
-      const note = this.notes_list.get_item(index) as Note;
-      const open_window = this.find_open_window(note.uuid);
-      array.push(open_window?.save() ?? note);
-      index++;
-    }
+    this.foreach_note((note) => {
+      array.push(note);
+    });
 
-    save_notes(array);
+    save_notes(array, {
+      all_notes: this.show_all_notes,
+    });
 
     super.vfunc_shutdown();
   }
 
   public vfunc_activate(): void {
-    this.all_notes();
+    // this is used to track if there is atleast one window open. id there isn't,
+    // we show the all_notes
+    let has_one_open = false;
+
+    if (this.show_all_notes) this.all_notes();
+
+    this.foreach_note((note) => {
+      if (note.open) {
+        has_one_open = true;
+        this.show_note(note.uuid);
+      }
+    });
+
+    if (!has_one_open) {
+      this.show_all_notes = true;
+      this.all_notes();
+    }
   }
 
   is_note_open(uuid: string) {
@@ -202,6 +221,15 @@ export class Application extends Adw.Application {
     aboutWindow.present();
   }
 
+  foreach_note(cb: (note: Note) => void) {
+    let id = 0;
+
+    while (id < this.notes_list.n_items) {
+      cb(this.notes_list.get_item(id)!);
+      id++;
+    }
+  }
+
   find_note_id(uuid: string) {
     let id = 0;
 
@@ -232,7 +260,7 @@ export class Application extends Adw.Application {
   }
 
   find_open_note(uuid: string) {
-    return this.find_open_window(uuid)?.save() as Note ?? undefined;
+    return this.find_open_window(uuid)?.note as Note ?? undefined;
   }
 
   changed_note(uuid: string) {
@@ -240,7 +268,7 @@ export class Application extends Adw.Application {
     const found_note = this.find_open_note(uuid);
 
     if (found_id !== undefined && found_note) {
-      this.notes_list.splice(found_id, 1, [found_note]);
+      // this.notes_list.splice(found_id, 1, [found_note]);
     }
   }
 
@@ -268,6 +296,7 @@ export class Application extends Adw.Application {
 
       this.window.connect("close-request", () => {
         this.window = null;
+        this.show_all_notes = false;
       });
     }
 
@@ -306,19 +335,20 @@ export class Application extends Adw.Application {
     window.present();
 
     window.connect("close-request", () => {
+      note.open = false;
       this.note_windows = this.note_windows.filter((win) => win !== window);
       this.window?.set_note_visible(note!.uuid, false);
       return false;
     });
 
-    window.connect("changed", (_, uuid, what: string) => {
-      this.changed_note(uuid);
-    });
+    // window.connect("changed", (_, uuid, what: string) => {
+    //   this.changed_note(uuid);
+    // });
 
     window.connect("deleted", (_, uuid) => {
       this.delete_note(uuid);
     });
 
-    this.window?.set_note_visible(uuid, true);
+    note.open = true;
   }
 }

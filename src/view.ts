@@ -3,9 +3,24 @@ import Gtk from "gi://Gtk?version=4.0";
 import Pango from "gi://Pango";
 import GLib from "gi://GLib";
 
-import { Note, SETTINGS, Style } from "./util.js";
+import { INote, ITag, Note, SETTINGS, Style, Tag } from "./util.js";
 
-export class StickyNoteView extends Gtk.TextView {
+class AbstractStickyNote extends Gtk.TextView {
+  static {
+    GObject.registerClass(
+      {
+        GTypeName: "AbstractStickyNote",
+        Signals: {
+          "tag-toggle": {
+            param_types: [GObject.TYPE_STRING, GObject.TYPE_BOOLEAN],
+          },
+          "selection-changed": {},
+        },
+      },
+      this,
+    );
+  }
+
   bold_tag = Gtk.TextTag.new("bold");
   underline_tag = Gtk.TextTag.new("underline");
   italic_tag = Gtk.TextTag.new("italic");
@@ -18,38 +33,29 @@ export class StickyNoteView extends Gtk.TextView {
     ["strikethrough", this.strikethrough_tag],
   ] as [string, Gtk.TextTag][];
 
-  style: Style;
   _note?: Note;
 
-  updating = false;
-
   get note() {
-    return this._note!;
+    return this._note;
   }
 
-  set note(note: Note) {
-    // console.log("setting note", note.content);
+  set note(note: Note | undefined) {
+    if (!note) return;
 
-    // this.buffer.text = "Hello world!";
-
-    this.updating = false;
     this._note = note;
     this.clear_tags();
     this.buffer.text = note.content;
-    this.style = note.style;
     this.init_tags(note.tags);
   }
 
   constructor(
     note?: Note,
-    editable = true,
   ) {
     super();
 
     this.buffer = new Gtk.TextBuffer();
 
-    this.add_tags();
-    this.style = note?.style ?? SETTINGS.DEFAULT_STYLE;
+    this.register_tags();
     if (note) this._note = this.note = note;
 
     this.buffer.connect("mark-set", (buffer, _loc, mark) => {
@@ -57,46 +63,9 @@ export class StickyNoteView extends Gtk.TextView {
         this.emit("selection-changed");
       }
     });
-
-    if (editable) {
-      this.buffer.connect("changed", () => {
-        if (this.updating) {
-          this.updating = false;
-          return;
-        }
-        if (!this._note) return;
-        this.emit("changed", this._note.uuid, "content");
-      });
-    }
   }
 
-  static {
-    GObject.registerClass(
-      {
-        GTypeName: "StickyNoteView",
-        Signals: {
-          "tag-toggle": {
-            param_types: [GObject.TYPE_STRING, GObject.TYPE_BOOLEAN],
-          },
-          "selection-changed": {},
-          "changed": {
-            param_types: [GObject.TYPE_STRING, GObject.TYPE_STRING],
-          },
-        },
-      },
-      this,
-    );
-  }
-
-  init_tags(tags: Note["tags"]) {
-    for (const tag of tags) {
-      const start = this.buffer.get_iter_at_offset(tag.start);
-      const end = this.buffer.get_iter_at_offset(tag.end);
-      this.buffer.apply_tag_by_name(tag.name, start, end);
-    }
-  }
-
-  add_tags() {
+  private register_tags() {
     this.bold_tag.weight = Pango.Weight.BOLD;
     this.underline_tag.underline = Pango.Underline.SINGLE;
     this.italic_tag.style = Pango.Style.ITALIC;
@@ -106,6 +75,14 @@ export class StickyNoteView extends Gtk.TextView {
     this.buffer.tag_table.add(this.underline_tag);
     this.buffer.tag_table.add(this.italic_tag);
     this.buffer.tag_table.add(this.strikethrough_tag);
+  }
+
+  init_tags(tags: Note["tags"]) {
+    for (const tag of tags) {
+      const start = this.buffer.get_iter_at_offset(tag.start);
+      const end = this.buffer.get_iter_at_offset(tag.end);
+      this.buffer.apply_tag_by_name(tag.name, start, end);
+    }
   }
 
   has_tag(tag: Gtk.TextTag) {
@@ -148,7 +125,6 @@ export class StickyNoteView extends Gtk.TextView {
     }
 
     this.emit("tag-toggle", tag.name, !has_tag);
-    this.emit("changed", this.note.uuid, "tags");
   }
 
   clear_tags() {
@@ -161,10 +137,9 @@ export class StickyNoteView extends Gtk.TextView {
     }
   }
 
-  save(): Note {
+  get_tags() {
     const start = this.buffer.get_start_iter();
     const end = this.buffer.get_end_iter();
-    const content = this.buffer.get_text(start, end, false);
 
     const tags: Note["tags"] = [];
 
@@ -190,15 +165,157 @@ export class StickyNoteView extends Gtk.TextView {
       start.forward_char();
     } while (start.compare(end) < 0);
 
-    if (!this._note) {
-      throw new Error("No note to save");
-    }
-
-    const note = this._note.copy();
-    note.content = content;
-    note.style = this.style, note.tags = tags;
-    note.modified = GLib.DateTime.new_now_utc();
-
-    return note;
+    return tags;
   }
 }
+
+export class ReadonlyStickyNote extends AbstractStickyNote {
+  static {
+    GObject.registerClass(
+      {
+        GTypeName: "ReadonlyStickyNote",
+      },
+      this,
+    );
+  }
+
+  listeners = new Set<number>();
+
+  constructor(note?: Note) {
+    super(note);
+
+    this.note = note;
+    this.editable = false;
+    this.cursor_visible = false;
+    this.show_content();
+  }
+
+  set note(note: Note | undefined) {
+    this._note = super.note = note;
+
+    this.remove_listeners();
+    this.init_listeners();
+    this.show_content();
+  }
+
+  get note() {
+    return super.note;
+  }
+
+  clip_content(content: string) {
+    const MAX_LINES = 5;
+    const MAX_CHARS = 240;
+
+    let cut = content.split("\n").slice(0, MAX_LINES).join("\n");
+
+    if (cut.length > MAX_CHARS) {
+      cut = cut.slice(0, MAX_CHARS);
+    }
+
+    return cut.length < content.length ? `${cut}…` : cut;
+  }
+
+  show_content() {
+    if (!this.note) return;
+
+    if (!this.note.content.replace(/\s/g, "")) {
+      this.buffer.text = "";
+      this.buffer.insert_markup(
+        this.buffer.get_start_iter(),
+        "<i>(Empty note)</i>",
+        -1,
+      );
+    } else {
+      this.buffer.text = this.clip_content(this.note!.content);
+      this.clear_tags();
+      this.init_tags(this.note!.tags);
+    }
+  }
+
+  init_listeners() {
+    if (!this.note) return;
+
+    this.listeners.add(this.note.connect("notify::content", () => {
+      this.show_content();
+    }));
+
+    this.listeners.add(this.note.connect("notify::tag_list", () => {
+      this.clear_tags();
+      this.init_tags(this.note!.tags);
+    }));
+  }
+
+  remove_listeners() {
+    if (!this.note) return;
+
+    for (const listener of this.listeners) {
+      this.note!.disconnect(listener);
+    }
+  }
+}
+
+export class WriteableStickyNote extends AbstractStickyNote {
+  static {
+    GObject.registerClass(
+      {
+        GTypeName: "WriteableStickyNote",
+      },
+      this,
+    );
+  }
+
+  updating = false;
+
+  get note() {
+    return super.note;
+  }
+
+  set note(note: Note | undefined) {
+    this.updating = true;
+    super.note = note;
+  }
+
+  change<T extends keyof Note>(key: T, value: Note[T]) {
+    if (!this.note) return;
+    this.note[key] = value;
+    this.note.modified_date = new Date();
+  }
+
+  constructor(note?: Note) {
+    super(note);
+
+    this.buffer.connect("changed", () => {
+      if (this.updating) {
+        this.updating = false;
+        return;
+      }
+      this.change("content", this.buffer.text);
+    });
+  }
+
+  clear_tags() {
+    super.clear_tags();
+    // this.change("tags", []);
+  }
+
+  apply_tag(tag: Gtk.TextTag) {
+    super.apply_tag(tag);
+    const tags = this.get_tags();
+    if (compare_tags(tags, this.note!.tags)) return;
+    this.change("tags", tags);
+  }
+}
+
+const compare_tags = (a: ITag[], b: ITag[]) => {
+  if (a.length != b.length) return false;
+  for (const tag of a) {
+    if (
+      !b.find((t) =>
+        t.name == tag.name && t.start == tag.start && t.end == tag.end
+      )
+    ) {
+      return false;
+    }
+  }
+  return true;
+};
