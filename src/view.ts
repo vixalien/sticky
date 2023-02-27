@@ -206,7 +206,9 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
     const MAX_LINES = 5;
     const MAX_CHARS = 240;
 
-    let cut = content.split("\n").slice(0, MAX_LINES).join("\n");
+    let cut = content
+      .split("\n").slice(0, MAX_LINES).join("\n")
+      .replace(/\s+$/, "");
 
     if (cut.length > MAX_CHARS) {
       cut = cut.slice(0, MAX_CHARS);
