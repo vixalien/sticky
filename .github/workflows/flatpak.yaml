@@ -2,11 +2,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
-name: CI
+      - main
+name: "Flatpak"
 jobs:
   flatpak:
     name: "Flatpak"
@@ -15,20 +15,38 @@ jobs:
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-43
       options: --privileged
+    strategy:
+      matrix:
+        # arch: [x86_64, aarch64]
+        arch: [x86_64]
+      fail-fast: false
     steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-      - name: Prepare Node
-        uses: actions/setup-node@v3
-      - name: echo
-        run: echo $PATH
-      - name: Prepare Runtime
-        run: |
-          flatpak --system install -y --noninteractive flathub org.freedesktop.Sdk.Extension.node18/${{ matrix.arch }}/22.08
-      - uses: flatpak/flatpak-github-actions/flatpak-builder@v5
-        with:
-          bundle: sticky.flatpak
-          manifest-path: com.vixalien.sticky.json
-          cache-key: flatpak-builder-${{ github.sha }}
-          arch: ${{ matrix.arch }}
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - name: Install Dependencies
+      run: |
+        dnf -y install nodejs
+    # - name: Prepare Node
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: 18
+    - name: Install yarn
+      run: |
+        npm i -gy yarn
+    - name: Install Docker
+      run: |
+        dnf -y install docker
+    - name: Setup QEMU
+      id: qemu
+      uses: docker/setup-qemu-action@v1
+      with:
+        platforms: arm64
+    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+      name: "Build"
+      with:
+        bundle: com.vixalien.sticky.flatpak
+        manifest-path: com.vixalien.sticky.json
+        cache-key: flatpak-builder-${{ github.sha }}
+        arch: ${{ matrix.arch }}
+        

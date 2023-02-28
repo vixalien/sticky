@@ -55,7 +55,7 @@
                 {
                     "type" : "git",
                     "url" : ".",
-                    "branch": "main"
+                    "branch": "flatpak"
                 }
             ]
         }
