@@ -10,28 +10,39 @@ gnome = import('gnome')
 gjs_dep = dependency('gjs-1.0', version: '>= 1.54.0')
 gjs_console = gjs_dep.get_variable(pkgconfig: 'gjs_console')
 
+echo = find_program('echo')
+
 pm_name = 'yarn'
 
-package_manager = find_program(pm_name, required: true)
+package_manager = find_program(pm_name, '/usr/local/bin/yarn', required: true)
 
 package_manager_args = ['--cwd', meson.project_build_root()]
 
 offline_mirror = get_option('offline-mirror')
 if pm_name == 'yarn' and offline_mirror != ''
   run_command(
-    package_manager,
-    'config',
-    '--offline',
-    'set',
-    'yarn-offline-mirror',
-    offline_mirror,
-    env: { 'HOME': meson.project_build_root() },
-    check: true
+    echo,
+    'yarn-offline-mirror ' + offline_mirror,
+    '>',
+    meson.current_source_dir() / '.yarnrc',
   )
+  # run_command(
+  #   package_manager,
+  #   'config',
+  #   '--offline',
+  #   'set',
+  #   'yarn-offline-mirror',
+  #   offline_mirror,
+  #   env: { 'HOME': meson.current_source_dir() },
+  #   check: true
+  # )
 
   package_manager_args += [
+    # note that this does not affect network requests, as it's getting them from
+    # the offline mirror
+    '--network-concurrency 1',
     '--offline',
-    '--use-yarnrc', meson.project_build_root() / '.yarnrc'
+    '--use-yarnrc', meson.current_source_dir() / '.yarnrc'
   ]
 endif
 
