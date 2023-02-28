@@ -174,12 +174,17 @@ export class Application extends Adw.Application {
     cycle_reverse.connect("activate", () => this.cycle_reverse());
     this.add_action(cycle_reverse);
 
+    const save = new Gio.SimpleAction({ name: "save" });
+    save.connect("activate", () => this.save());
+    this.add_action(save);
+
     this.set_accels_for_action("app.quit", ["<Primary>q"]);
     this.set_accels_for_action("app.new-note", ["<Primary>n"]);
     this.set_accels_for_action("app.all-notes", ["<Primary>h"]);
     // this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
     // this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
     this.set_accels_for_action("app.save", ["<Primary>s"]);
+
 
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
     this.set_accels_for_action("win.show-help-overlay", ["<Primary>question"]);
