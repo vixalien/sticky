@@ -14,7 +14,7 @@ pm_name = get_option('package-manager')
 
 package_manager = find_program(pm_name, required: true)
 
-package_manager_args = []
+package_manager_args = ['--cwd', meson.project_build_root()]
 
 offline_mirror = get_option('offline-mirror')
 if pm_name == 'yarn' and offline_mirror != ''

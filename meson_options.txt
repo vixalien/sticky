@@ -11,8 +11,3 @@ option(
         'offline-mirror',
         type: 'string'
 )
-option(
-        'package-manager',
-        type: 'string',
-        value: 'yarn'
-)
