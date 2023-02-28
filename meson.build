@@ -10,7 +10,7 @@ gnome = import('gnome')
 gjs_dep = dependency('gjs-1.0', version: '>= 1.54.0')
 gjs_console = gjs_dep.get_variable(pkgconfig: 'gjs_console')
 
-pm_name = get_option('package-manager')
+pm_name = 'yarn'
 
 package_manager = find_program(pm_name, required: true)
 
