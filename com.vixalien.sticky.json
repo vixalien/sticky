@@ -46,10 +46,17 @@
             ]
         },
         {
+            "name": "write-yarnrc",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo yarn-offline-mirror /app/yarn-mirror > /app/.yarnrc"
+            ]
+        },
+        {
             "name" : "sticky-notes",
             "buildsystem" : "meson",
             "config-opts" : [
-                "-Doffline-mirror=/app/yarn-mirror/"
+                "-Dyarnrc=/app/.yarnrc"
             ],
             "sources" : [
                 {
