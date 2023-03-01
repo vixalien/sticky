@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-	<id>com.vixalien.sticky.desktop</id>
+<component type="desktop-application">
+	<id>com.vixalien.sticky</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>MIT</project_license>
+	<name>Sticky Notes</name>
+	<summary>A simple sticky notes app for GNOME</summary>
 	<description>
-	  <p>No description</p>
+		<p>
+			Sticky Notes is a simple sticky notes app for GNOME. It allows you to create
+			notes and format them.
+		</p>
+		<p>Current features:</p>
+		<ul>
+			<li>simple formatting (bold, italic, underline and strikethrough)</li>
+			<li>notes are restored if they were open when the application was closed</li>
+			<li>changing color of notes</li>
+			<li>dark theme support</li>
+		</ul>
 	</description>
+	<screenshots>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/vixalien/sticky/main/.github/note.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/vixalien/sticky/main/.github/notes.png</image>
+		</screenshot>
+	</screenshots>
+	<launchable type="desktop-id">com.vixalien.sticky.desktop</launchable>
+	<url type="homepage">https://github.com/vixalien/sticky</url>
+	<url type="bugtracker">https://github.com/vixalien/sticky/issues</url>
+	<developer_name>Angelo Verlain</developer_name>
+	<update_contact>hey_at_vixalien.com</update_contact>
+	<translation type="gettext">sticky</translation>
+	<custom>
+		<value key="Purism::form_facamberoltor">workstation</value>
+		<value key="Purism::form_factor">mobile</value>
+	</custom>
+	<requires>
+		<display_length compare="ge">360</display_length>
+	</requires>
+	<recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+    <control>tablet</control>
+	</recommends>
+	<releases>
+		<release version="0.1.0" date="2023-03-01">
+			<description>
+				<p>First beta release!</p>
+			</description>
+		</release>
+	</releases>
+	<kudos>
+		<kudo>ModernToolkit</kudo>
+		<kudo>Notifications</kudo>
+	</kudos>
+	<content_rating type="oars-1.1" />
+	<provides>com.vixalien.sticky.desktop</provides>
 </component>
