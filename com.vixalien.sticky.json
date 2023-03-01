@@ -62,7 +62,7 @@
                 {
                     "type" : "git",
                     "url" : ".",
-                    "branch": "flatpak"
+                    "branch": "main"
                 }
             ]
         }
