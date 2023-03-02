@@ -14,7 +14,7 @@ pm_name = 'yarn'
 
 package_manager = find_program(pm_name, '/usr/local/bin/yarn', required: true)
 
-package_manager_args = ['--cwd', meson.project_build_root()]
+package_manager_args = ['--cwd', meson.project_source_root()]
 
 yarnrc = get_option('yarnrc')
 
