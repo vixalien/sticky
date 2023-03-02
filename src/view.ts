@@ -83,8 +83,14 @@ class AbstractStickyNote extends Gtk.TextView {
     if (note) this._note = this.note = note;
 
     this.buffer.connect("mark-set", (buffer, _loc, mark) => {
-      if (mark == buffer.get_insert() || buffer.get_selection_bounds()[0]) {
+      if (mark.name === "insert" || mark.name === "selection_bound") {
         this.emit("selection-changed");
+      }
+
+      if (!this.note) return;
+      const tags = this.get_tags();
+      if (!compare_tags(tags, this.note.tags)) {
+        this.note.tags = tags;
       }
     });
   }
@@ -133,11 +139,23 @@ class AbstractStickyNote extends Gtk.TextView {
     let [selection, start, end] = this.buffer.get_selection_bounds();
     // if no selection, apply to the current word
     if (!selection) {
-      const start = this.buffer.get_iter_at_mark(
-        this.buffer.get_insert(),
-      );
-      end = start.copy();
-      end.forward_cursor_position();
+      /**
+       * If the user has not selected anything, we insert zero-width spaces
+       * around the cursor and mark them as the start and end of the selection.
+       */
+      const get_cursor = () =>
+        this.buffer.get_iter_at_mark(
+          this.buffer.get_insert(),
+        );
+
+      const get_cursor_position = () => this.buffer.cursor_position;
+
+      this.buffer.insert_at_cursor("\u200B\u200B\u200B", 9);
+      start = this.buffer.get_iter_at_offset(get_cursor_position() - 3);
+      end = this.buffer.get_iter_at_offset(get_cursor_position() - 1);
+      const selec = this.buffer.get_iter_at_offset(get_cursor_position());
+      selec.backward_chars(2);
+      this.buffer.place_cursor(selec);
     }
 
     const has_tag = this.has_tag(tag);
@@ -317,6 +335,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
         this.updating = false;
         return;
       }
+      if (this.buffer.text == this.note!.content) return;
       this.change("content", this.buffer.text);
     });
   }
