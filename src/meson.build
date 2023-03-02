@@ -21,7 +21,7 @@ typescript = custom_target(
   build_by_default: true,
   input: files(sources),
   command: [
-    package_manager, package_manager_args, 'run', 'build', '--out', meson.project_build_root() / '@OUTDIR@', '--cwd', meson.current_source_dir(), '@INPUT@',
+    package_manager, package_manager_args, 'run', 'build', '--out', meson.project_build_root() / '@OUTDIR@', '--cwd', meson.project_source_root(), '@INPUT@',
   ],
   depends: package_manager_deps,
   output: outputs,
