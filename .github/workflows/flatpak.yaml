@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - "*"
   pull_request:
     branches:
       - main
@@ -20,29 +20,28 @@ jobs:
         arch: [x86_64, aarch64]
       fail-fast: false
     steps:
-    - uses: actions/checkout@v3
-      with:
-        submodules: recursive
-    - name: Prepare Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-    - name: Install yarn
-      run: |
-        npm i -gy yarn
-    - name: Install Docker
-      run: |
-        dnf -y install docker
-    - name: Setup QEMU
-      id: qemu
-      uses: docker/setup-qemu-action@v2
-      with:
-        platforms: arm64
-    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v5
-      name: "Build"
-      with:
-        bundle: com.vixalien.sticky.flatpak
-        manifest-path: com.vixalien.sticky.json
-        cache-key: flatpak-builder-${{ github.sha }}
-        arch: ${{ matrix.arch }}
-        
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Prepare Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install yarn
+        run: |
+          npm i -gy yarn
+      - name: Install Docker
+        run: |
+          dnf -y install docker
+      - name: Setup QEMU
+        id: qemu
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v5
+        name: "Build"
+        with:
+          bundle: com.vixalien.sticky.flatpak
+          manifest-path: com.vixalien.sticky.json
+          cache-key: flatpak-builder-${{ github.sha }}
+          arch: ${{ matrix.arch }}
