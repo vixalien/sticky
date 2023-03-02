@@ -34,7 +34,7 @@ export class StickyNoteCard extends Gtk.Box {
   static {
     GObject.registerClass({
       GTypeName: "StickyNoteCard",
-      Template: "resource:///com/vixalien/sticky/card.ui",
+      Template: "resource:///com/vixalien/sticky/ui/card.ui",
       InternalChildren: ["modified_label", "view_image", "delete_button"],
       Properties: {
         uuid: GObject.ParamSpec.string(

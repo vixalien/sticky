@@ -35,7 +35,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   static {
     GObject.registerClass(
       {
-        Template: "resource:///com/vixalien/sticky/notes.ui",
+        Template: "resource:///com/vixalien/sticky/ui/notes.ui",
         GTypeName: "StickyNotes",
         InternalChildren: [
           "search",
