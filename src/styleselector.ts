@@ -29,7 +29,7 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
 
-import { Style, styles } from "./util.js";
+import { Style, StyleNames, styles } from "./util.js";
 
 let provider: Gtk.CssProvider | null = null;
 
@@ -40,10 +40,11 @@ class StyleButton extends Gtk.CheckButton {
 
   constructor(style: Style, group?: Gtk.CheckButton) {
     const style_name = Style[style];
+    const display_name = StyleNames.get(style)!;
 
     super({
       // focus_on_click: false,
-      tooltip_text: `Switch to ${capitalize(style_name)} style`,
+      tooltip_text: _("Switch to %s style").format(display_name),
       width_request: 44,
       height_request: 44,
       hexpand: true,

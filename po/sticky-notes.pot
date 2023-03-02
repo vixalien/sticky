@@ -1,0 +1,210 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sticky-notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-02 21:47+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
+msgid "A simple sticky notes app for GNOME"
+msgstr ""
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:61
+#: src/application.ts:256 data/notes.ui:33
+msgid "Sticky Notes"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:32
+msgid "Angelo Verlain"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:51
+msgid "First beta release!"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr ""
+
+#. focus_on_click: false,
+#: src/styleselector.ts:47
+#, c-format
+msgid "Switch to %s style"
+msgstr ""
+
+#: src/util.ts:62
+msgid "Yellow"
+msgstr ""
+
+#: src/util.ts:63
+msgid "Pink"
+msgstr ""
+
+#: src/util.ts:64
+msgid "Green"
+msgstr ""
+
+#: src/util.ts:65
+msgid "Purple"
+msgstr ""
+
+#: src/util.ts:66
+msgid "Blue"
+msgstr ""
+
+#: src/util.ts:67
+msgid "Gray"
+msgstr ""
+
+#: src/util.ts:68
+msgid "Charcoal"
+msgstr ""
+
+#: src/util.ts:69
+msgid "Window"
+msgstr ""
+
+#: src/view.ts:251
+msgid "Empty Note"
+msgstr ""
+
+#: data/card.ui:13
+msgid "Note is open"
+msgstr ""
+
+#: data/card.ui:39
+msgid "Delete note"
+msgstr ""
+
+#: data/notes.ui:21 data/notes.ui:76 data/window.ui:21
+msgid "Create a new note"
+msgstr ""
+
+#: data/notes.ui:60
+msgid "Search..."
+msgstr ""
+
+#: data/notes.ui:71
+msgid "No notes"
+msgstr ""
+
+#: data/notes.ui:72
+msgid "After you create notes, they will appear here"
+msgstr ""
+
+#: data/notes.ui:91
+msgid "No Results"
+msgstr ""
+
+#: data/notes.ui:92
+msgid "Try a different search"
+msgstr ""
+
+#: data/notes.ui:116
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: data/notes.ui:120
+msgid "About Sticky Notes"
+msgstr ""
+
+#: data/notes.ui:126
+msgid "Quit"
+msgstr ""
+
+#: data/window.ui:77
+msgid "Bold"
+msgstr ""
+
+#: data/window.ui:85
+msgid "Italic"
+msgstr ""
+
+#: data/window.ui:93
+msgid "Underline"
+msgstr ""
+
+#: data/window.ui:101
+msgid "Strikethrough"
+msgstr ""
+
+#: data/window.ui:119
+msgid "All Notes"
+msgstr ""
+
+#: data/window.ui:123
+msgid "Delete Note"
+msgstr ""

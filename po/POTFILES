@@ -1,6 +1,16 @@
-data/com.vixalien.sticky.desktop.in
-data/com.vixalien.sticky.appdata.xml.in
-data/com.vixalien.sticky.gschema.xml
-src/main.js
-src/window.js
-src/window.ui
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/com.vixalien.sticky.desktop.in.in
+data/com.vixalien.sticky.appdata.xml.in.in
+data/com.vixalien.sticky.gschema.xml.in
+src/application.ts
+src/card.ts
+src/main.ts
+src/notes.ts
+src/styleselector.ts
+src/util.ts
+src/view.ts
+src/window.ts
+data/card.ui
+data/notes.ui
+data/window.ui

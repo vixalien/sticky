@@ -1,0 +1,11 @@
+[Desktop Entry]
+Comment=A simple sticky notes app for GNOME
+Name=Sticky Notes
+Exec=@app-id@
+Icon=@app-id@
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
+# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+Keywords=Sticky;Notes;Write;

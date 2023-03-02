@@ -58,7 +58,7 @@ export class Application extends Adw.Application {
       flags: Gio.ApplicationFlags.DEFAULT_FLAGS,
     });
 
-    GLib.set_application_name("Sticky Notes");
+    GLib.set_application_name(_("Sticky Notes"));
 
     this.init_actions();
 
@@ -185,7 +185,6 @@ export class Application extends Adw.Application {
     // this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
     this.set_accels_for_action("app.save", ["<Primary>s"]);
 
-
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
     this.set_accels_for_action("win.show-help-overlay", ["<Primary>question"]);
     this.set_accels_for_action("win.delete", ["<Primary>w"]);
@@ -254,7 +253,7 @@ export class Application extends Adw.Application {
   show_about() {
     const aboutParams: Partial<Adw.AboutWindow.ConstructorProperties> = {
       transient_for: this.active_window,
-      application_name: "Sticky Notes",
+      application_name: _("Sticky Notes"),
       application_icon: pkg.name,
       developer_name: "Angelo Verlain",
       version: pkg.version,
@@ -264,7 +263,7 @@ export class Application extends Adw.Application {
       ],
       copyright: "© 2023 Angelo Verlain, Christopher Davis",
       license_type: Gtk.License.MIT_X11,
-      comments: "A simple sticky notes app",
+      comments: _("A simple sticky notes app for GNOME"),
       website: "https://github.com/vixalien/sticky",
     };
 

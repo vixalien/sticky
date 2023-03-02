@@ -1,4 +1,6 @@
-declare function _(id: string): string;
+declare function _(
+  id: string,
+): string & { printf: (...reps: string[]) => string };
 declare function print(args: string): void;
 declare function log(obj: object, others?: object[]): void;
 declare function log(msg: string, subsitutions?: any[]): void;

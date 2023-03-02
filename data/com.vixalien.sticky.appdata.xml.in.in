@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-	<id>com.vixalien.sticky</id>
+	<id>@app-id@</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>MIT</project_license>
 	<name>Sticky Notes</name>
@@ -26,7 +26,7 @@
 			<image>https://raw.githubusercontent.com/vixalien/sticky/main/.github/notes.png</image>
 		</screenshot>
 	</screenshots>
-	<launchable type="desktop-id">com.vixalien.sticky.desktop</launchable>
+	<launchable type="desktop-id">@app-id@.desktop</launchable>
 	<url type="homepage">https://github.com/vixalien/sticky</url>
 	<url type="bugtracker">https://github.com/vixalien/sticky/issues</url>
 	<developer_name>Angelo Verlain</developer_name>
@@ -57,5 +57,6 @@
 		<kudo>Notifications</kudo>
 	</kudos>
 	<content_rating type="oars-1.1" />
-	<provides>com.vixalien.sticky.desktop</provides>
+	<provides>@app-id@.desktop</provides>
+  <translation type="gettext">@gettext-package@</translation>
 </component>

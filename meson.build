@@ -4,6 +4,9 @@ project('sticky-notes',
   default_options: [ 'warning_level=2', 'werror=false', ],
 )
 
+application_id = 'com.vixalien.sticky'
+GETTEXT_PACKAGE = application_id
+
 i18n = import('i18n')
 gnome = import('gnome')
 

@@ -58,6 +58,17 @@ export enum Style {
   "window",
 }
 
+export const StyleNames = new Map([
+  [Style.yellow, _("Yellow")],
+  [Style.pink, _("Pink")],
+  [Style.green, _("Green")],
+  [Style.purple, _("Purple")],
+  [Style.blue, _("Blue")],
+  [Style.gray, _("Gray")],
+  [Style.charcoal, _("Charcoal")],
+  [Style.window, _("Window")],
+]);
+
 export const styles = Object.values(Style).filter(
   (style) => typeof style === "number",
 ) as Style[];

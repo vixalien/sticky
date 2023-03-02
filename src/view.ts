@@ -248,7 +248,7 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
       this.buffer.text = "";
       this.buffer.insert_markup(
         this.buffer.get_start_iter(),
-        "<i>(Empty note)</i>",
+        `<i>(${_("Empty Note")})</i>`,
         -1,
       );
     } else {
