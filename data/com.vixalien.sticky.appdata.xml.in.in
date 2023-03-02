@@ -40,10 +40,10 @@
 		<display_length compare="ge">360</display_length>
 	</requires>
 	<recommends>
-    <control>pointing</control>
-    <control>keyboard</control>
-    <control>touch</control>
-    <control>tablet</control>
+		<control>pointing</control>
+		<control>keyboard</control>
+		<control>touch</control>
+		<control>tablet</control>
 	</recommends>
 	<releases>
 		<release version="0.1.0" date="2023-03-01">
@@ -58,5 +58,9 @@
 	</kudos>
 	<content_rating type="oars-1.1" />
 	<provides>@app-id@.desktop</provides>
-  <translation type="gettext">@gettext-package@</translation>
+	<translation type="gettext">@gettext-package@</translation>
+	<custom>
+		<value key="Purism::form_factor">workstation</value>
+		<value key="Purism::form_factor">mobile</value>
+	</custom>
 </component>
