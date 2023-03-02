@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 500 500" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="50" y="50" width="400" height="400" style="stroke: #000; fill: #2e3436; fill-opacity: 0; stroke-width: 54px;" rx="23.519" ry="23.519">
-    <title>Top note</title>
-  </rect>
-  <path d="M 359.115 337.723 L 449.884 330.541 C 449.223 417.761 444.648 432.119 421.569 442.876 C 396.393 454.611 323.06 446.932 278.678 448.279 C 256.968 461.848 291.807 386.859 291.807 386.859 C 311.476 364.319 320.324 345.475 359.115 337.723 Z" style="fill-rule: nonzero; stroke: rgb(0, 0, 0); fill: rgba(0, 0, 0, 0.24); stroke-width: 47px;"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#241f31">
+        <path d="m 6 1 h 2 v 4 h -2 z m 0 0"/>
+        <path d="m 7 10 l -1 -1 v -2 h 2 v 2 z m 0 0"/>
+        <path d="m 6 0 h 2 c 0.550781 0 1 0.449219 1 1 s -0.449219 1 -1 1 h -2 c -0.550781 0 -1 -0.449219 -1 -1 s 0.449219 -1 1 -1 z m 0 0" fill-rule="evenodd"/>
+        <path d="m 7 3 c -1.65625 0 -3 1.34375 -3 3 h 6 c 0 -1.65625 -1.34375 -3 -3 -3 z m 0 0"/>
+        <path d="m 3 2 c -1.644531 0 -3 1.355469 -3 3 v 6 c 0 1.644531 1.355469 3 3 3 h 7 l 4 -4 v -5 c 0 -1.644531 -1.355469 -3 -3 -3 v 2 c 0.570312 0 1 0.429688 1 1 v 4 l -3 3 h -6 c -0.570312 0 -1 -0.429688 -1 -1 v -6 c 0 -0.570312 0.429688 -1 1 -1 z m 0 0"/>
+        <path d="m 15 6 v 5 l -4 4 h -7 v 1 h 8 l 4 -4 v -6 z m 0 0"/>
+    </g>
 </svg>
