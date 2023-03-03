@@ -20,10 +20,12 @@
 	</description>
 	<screenshots>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/vixalien/sticky/v0.1.1/data/resources/screenshots/note.png</image>
+			<image>
+				https://raw.githubusercontent.com/vixalien/sticky/v0.1.1/data/resources/screenshots/note.png</image>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/vixalien/sticky/v0.1.1/data/resources/screenshots/notes.png</image>
+			<image>
+				https://raw.githubusercontent.com/vixalien/sticky/v0.1.1/data/resources/screenshots/notes.png</image>
 		</screenshot>
 	</screenshots>
 	<launchable type="desktop-id">@app-id@.desktop</launchable>
@@ -46,6 +48,29 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
+		<release version="0.1.2" date="2023-03-02">
+			<description>
+				<p>this is unexpectedly a large release</p>
+				<ul>
+					<li>new icon</li>
+					<li>added translations (french, russian, italian, dutch, ocitan)</li>
+					<li>bug fixes</li>
+				</ul>
+			</description>
+		</release>
+		<release version="0.1.1" date="2023-03-01">
+			<description>
+				<p>this is mostly a cleanup release</p>
+				<ul>
+					<li>added translation support (starting with french)</li>
+					<li>apply tag to location under the cursor when nothing is selected. this means that for
+						example if you click Ctrl+B while there's nothing selected, the new content you'll write
+						will come out as bold</li>
+					<li>fixed builds</li>
+					<li>restructured/cleaned source</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.1.0" date="2023-03-01">
 			<description>
 				<p>First beta release!</p>
