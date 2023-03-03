@@ -3,9 +3,9 @@
 Sticky Notes is a simple note taking application for the GNOME desktop. It is
 written in GJS and uses GTK4.
 
-![Note](.github/note.png)
+![Note](data/resources/screenshots/note.png)
 
-![All notes](.github/notes.png)
+![All notes](data/resources/screenshots/notes.png)
 
 ## Installation
 

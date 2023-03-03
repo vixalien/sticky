@@ -43,6 +43,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
           "no_notes",
           "no_results",
           "search_entry",
+          "scrolled",
         ],
         Signals: {
           "note-activated": {
@@ -62,6 +63,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   _notes_box!: Gtk.ListView;
   _no_notes!: Adw.StatusPage;
   _no_results!: Adw.StatusPage;
+  _scrolled!: Gtk.ScrolledWindow;
 
   cards: StickyNoteCard[] = [];
 
@@ -199,7 +201,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   set_visible_child(child: "no_notes" | "no_results" | "notes_box") {
     this._no_notes.visible = child === "no_notes";
     this._no_results.visible = child === "no_results";
-    this._notes_box.visible = child === "notes_box";
+    this._scrolled.visible = child === "notes_box";
     this._search.visible = child === "notes_box" || child === "no_results";
   }
 }
