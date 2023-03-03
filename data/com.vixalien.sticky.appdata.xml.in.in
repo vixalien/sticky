@@ -33,7 +33,7 @@
 	<update_contact>hey_at_vixalien.com</update_contact>
 	<translation type="gettext">sticky</translation>
 	<custom>
-		<value key="Purism::form_facamberoltor">workstation</value>
+		<value key="Purism::form_factor">workstation</value>
 		<value key="Purism::form_factor">mobile</value>
 	</custom>
 	<requires>
