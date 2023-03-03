@@ -13,9 +13,9 @@
     </linearGradient>
     <linearGradient id="d" gradientTransform="matrix(1.333333 0 0 1.378125 -149.333313 -341.762497)" gradientUnits="userSpaceOnUse" x1="154" x2="166" y1="266.857147" y2="266.857147">
         <stop offset="0" stop-color="#c01c28"/>
-        <stop offset="0.166666" stop-color="#e01b24"/>
+        <stop offset="0.124999" stop-color="#e01b24"/>
         <stop offset="0.499999" stop-color="#f66151"/>
-        <stop offset="0.833333" stop-color="#e01b24"/>
+        <stop offset="0.875" stop-color="#e01b24"/>
         <stop offset="1" stop-color="#c01c28"/>
     </linearGradient>
     <clipPath id="e">
