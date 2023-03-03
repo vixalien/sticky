@@ -20,10 +20,10 @@
 	</description>
 	<screenshots>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/vixalien/sticky/0.1.0/.github/note.png</image>
+			<image>https://raw.githubusercontent.com/vixalien/sticky/0.1.1/data/resources/screenshots/note.png</image>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/vixalien/sticky/0.1.0/.github/note.png</image>
+			<image>https://raw.githubusercontent.com/vixalien/sticky/0.1.1/data/resources/screenshots/notes.png</image>
 		</screenshot>
 	</screenshots>
 	<launchable type="desktop-id">@app-id@.desktop</launchable>
