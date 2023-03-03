@@ -1,6 +1,6 @@
 {
   "name": "sticky-notes",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "A simple sticky notes app for GNOME.",
   "private": true,
   "main": "src/main.ts",
