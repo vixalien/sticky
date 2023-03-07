@@ -253,3 +253,17 @@ export async function save_notes(notes: Note[]) {
     ),
   );
 }
+
+export function save_note(note: Note) {
+  const file = NewNotesDir.get_child(`${note.uuid}.json`);
+
+  return save_file(file, note);
+}
+
+export function delete_note(uuid: string) {
+  const file = NewNotesDir.get_child(`${uuid}.json`);
+
+  try {
+    return file.delete(null);
+  } catch {}
+}

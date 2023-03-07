@@ -31,7 +31,7 @@ import Gtk from "gi://Gtk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
 import { Note, settings } from "./util.js";
-import { load_notes, save_notes } from "./store.js";
+import { delete_note, load_notes, save_notes } from "./store.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
@@ -325,6 +325,8 @@ export class Application extends Adw.Application {
 
     if (found_id !== undefined) this.notes_list.splice(found_id, 1, []);
     if (found_window) found_window.close();
+
+    delete_note(uuid);
   }
 
   all_notes() {
