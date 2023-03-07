@@ -28,20 +28,20 @@ msgstr "Простое приложение заметок для GNOME"
 #: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:61
 #: src/application.ts:256 data/notes.ui:33
 msgid "Sticky Notes"
-msgstr "Записки"
+msgstr "Заметки"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.vixalien.sticky.desktop.in.in:12
 msgid "Sticky;Notes;Write;"
-msgstr "Клейкие;Записки;Писать;"
+msgstr "Клейкие;Заметки;Писать;"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:9
 msgid ""
 "Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
 "notes and format them."
 msgstr ""
-"Записки это простое приложение заметок для GNOME. Оно позволяет создавать "
-"записки и форматировать их."
+"Заметки это простое приложение заметок для GNOME. Оно позволяет создавать "
+"заметки и форматировать их."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:13
 msgid "Current features:"
@@ -54,11 +54,11 @@ msgstr "простое форматирование (жирный, курсив,
 #: data/com.vixalien.sticky.appdata.xml.in.in:16
 msgid "notes are restored if they were open when the application was closed"
 msgstr ""
-"записки восстанавливаются если они были открыты во время закрытия приложения"
+"заметки восстанавливаются если они были открыты во время закрытия приложения"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:17
 msgid "changing color of notes"
-msgstr "изменение цвета записок"
+msgstr "изменение цвета заметок"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:18
 msgid "dark theme support"
@@ -74,35 +74,35 @@ msgstr "Первый бета выпуск!"
 
 #: data/com.vixalien.sticky.gschema.xml.in:16
 msgid "Note window default height"
-msgstr "Высота окна записок по умолчанию"
+msgstr "Высота окна заметок по умолчанию"
 
 #: data/com.vixalien.sticky.gschema.xml.in:17
 msgid "The default height of a new sticky note"
-msgstr "Высота по умолчанию для новых записок"
+msgstr "Высота по умолчанию для новых заметок"
 
 #: data/com.vixalien.sticky.gschema.xml.in:21
 msgid "Note window default width"
-msgstr "Ширина окна записок по умолчанию"
+msgstr "Ширина окна заметок по умолчанию"
 
 #: data/com.vixalien.sticky.gschema.xml.in:22
 msgid "The default width of a new sticky note"
-msgstr "Ширина по умолчанию для новых записок"
+msgstr "Ширина по умолчанию для новых заметок"
 
 #: data/com.vixalien.sticky.gschema.xml.in:26
 msgid "Default note style"
-msgstr "Стиль записок по умолчанию"
+msgstr "Стиль заметок по умолчанию"
 
 #: data/com.vixalien.sticky.gschema.xml.in:27
 msgid "The default style assigned to a new note"
-msgstr "Стиль по умолчанию назначаемый новой записке"
+msgstr "Стиль по умолчанию, назначаемый новой заметке"
 
 #: data/com.vixalien.sticky.gschema.xml.in:31
 msgid "Confirm note deletion"
-msgstr "Подтверждение удаления записок"
+msgstr "Подтвердить удаления заметки"
 
 #: data/com.vixalien.sticky.gschema.xml.in:32
 msgid "Whether to confirm note deletion"
-msgstr "Подтверждать ли удаление записок"
+msgstr "Нужно ли подтверждать удаление заметки"
 
 #. focus_on_click: false,
 #: src/styleselector.ts:47
@@ -144,19 +144,19 @@ msgstr "Окно"
 
 #: src/view.ts:251
 msgid "Empty Note"
-msgstr "Пустая записка"
+msgstr "Пустая заметка"
 
 #: data/card.ui:13
 msgid "Note is open"
-msgstr "Записка открыта"
+msgstr "Заметка открыта"
 
 #: data/card.ui:39
 msgid "Delete note"
-msgstr "Удалить записку"
+msgstr "Удалить заметку"
 
 #: data/notes.ui:21 data/notes.ui:76 data/window.ui:21
 msgid "Create a new note"
-msgstr "Создать новую записку"
+msgstr "Создать новую заметку"
 
 #: data/notes.ui:60
 msgid "Search..."
@@ -164,11 +164,11 @@ msgstr "Поиск..."
 
 #: data/notes.ui:71
 msgid "No notes"
-msgstr "Нет записок"
+msgstr "Нет заметок"
 
 #: data/notes.ui:72
 msgid "After you create notes, they will appear here"
-msgstr "После того как вы создадите записки, они будут отображены здесь"
+msgstr "После создания заметок, они будут отображаться здесь"
 
 #: data/notes.ui:91
 msgid "No Results"
@@ -184,7 +184,7 @@ msgstr "Комбинации клавиш"
 
 #: data/notes.ui:120
 msgid "About Sticky Notes"
-msgstr "О Записках"
+msgstr "О Заметках"
 
 #: data/notes.ui:126
 msgid "Quit"
@@ -208,8 +208,8 @@ msgstr "Зачеркнутый"
 
 #: data/window.ui:119
 msgid "All Notes"
-msgstr "Все записки"
+msgstr "Все заметки"
 
 #: data/window.ui:123
 msgid "Delete Note"
-msgstr "Удалить записку"
+msgstr "Удалить заметку"
