@@ -42,10 +42,7 @@ export class Application extends Adw.Application {
     GObject.registerClass(this);
   }
 
-  // notes: Note[] = [];
   notes_list = Gio.ListStore.new(Note.$gtype) as Gio.ListStore<Note>;
-
-  show_all_notes = false;
 
   sort_notes() {
     this.notes_list.sort((note1: Note, note2: Note) => {
@@ -64,10 +61,8 @@ export class Application extends Adw.Application {
     this.init_actions();
 
     load_notes()
-      .then((data) => {
-        this.show_all_notes = data.state.all_notes;
-
-        data.notes.forEach((note) => this.notes_list.append(note));
+      .then((notes) => {
+        notes.forEach((note) => this.notes_list.append(note));
 
         this.sort_notes();
       });
@@ -80,9 +75,7 @@ export class Application extends Adw.Application {
       array.push(note);
     });
 
-    return save_notes(array, {
-      all_notes: this.show_all_notes,
-    });
+    return save_notes(array);
   }
 
   public vfunc_shutdown() {
@@ -96,7 +89,7 @@ export class Application extends Adw.Application {
     // we show the all_notes
     let has_one_open = false;
 
-    if (this.show_all_notes) this.all_notes();
+    if (settings.get_boolean("show-all-notes")) this.all_notes();
 
     this.foreach_note((note) => {
       if (note.open) {
@@ -106,7 +99,7 @@ export class Application extends Adw.Application {
     });
 
     if (!has_one_open) {
-      this.show_all_notes = true;
+      settings.set_boolean("show-all-notes", true);
       this.all_notes();
     }
   }
@@ -350,11 +343,13 @@ export class Application extends Adw.Application {
 
       this.window.connect("close-request", () => {
         this.window = null;
-        this.show_all_notes = false;
+        settings.set_boolean("show-all-notes", false);
       });
 
       this.window.add_controller(this.new_controller());
     }
+
+    settings.set_boolean("show-all-notes", true);
 
     this.window.present();
   }

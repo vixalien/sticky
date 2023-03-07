@@ -35,12 +35,20 @@ interface State {
 }
 
 export const NotesDir = Gio.file_new_for_path(
-  GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name, "notes.json"]),
+  GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name]),
+);
+
+export const NewNotesDir = Gio.file_new_for_path(
+  GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name, "notes"]),
+);
+
+export const Notes = Gio.file_new_for_path(
+  GLib.build_filenamev([NotesDir.get_path()!, "notes.json"]),
 );
 
 export const load_file = (file: Gio.File) => {
   try {
-    NotesDir.get_parent()!.make_directory_with_parents(null);
+    Notes.get_parent()!.make_directory_with_parents(null);
   } catch (e: unknown) {
     if (e instanceof GLib.Error) {
       if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
@@ -127,40 +135,121 @@ export const ensure_dir = (dir: Gio.File) => {
   }
 };
 
-export const load_notes: () => Promise<LoadNotesReturn> = async () => {
-  const bogus_data: LoadNotesReturn = { state: { all_notes: true }, notes: [] };
+const bogus_data: LoadNotesReturn = { state: { all_notes: true }, notes: [] };
 
-  return load_file(NotesDir)
-    .then((notes) => {
-      if (notes.v !== 1) {
-        console.error(`Invalid notes version ${notes.v}`);
-        return bogus_data;
-      }
-      return {
-        notes: notes.notes.map((note: INote) => new Note(note)),
-        state: notes.state,
-      } as LoadNotesReturn;
-    }).catch((e: unknown) => {
+const load_notes_v1 = (notes: any) => {
+  if (notes.v !== 1) {
+    console.error(`Invalid notes version ${notes.v}`);
+    return bogus_data;
+  }
+  return {
+    notes: notes.notes.map((note: INote) => new Note(note)),
+    state: notes.state,
+  } as LoadNotesReturn;
+};
+
+export async function load_notes() {
+  const index = await load_file(Notes)
+    .catch((e: unknown) => {
       if (e instanceof StickyError) {
-        if (e.type === StickyErrorType.FILE_NOT_FOUND) {
-          return bogus_data;
+        if (
+          e.type == StickyErrorType.FILE_NOT_FOUND ||
+          e.type == StickyErrorType.FILE_CORRUPTED
+        ) {
+          return null;
         } else {
-          console.error(e.message);
-          return bogus_data;
+          throw e;
         }
-      } else {
-        console.error("Failed to load notes");
-        return bogus_data;
       }
     });
+
+  if (index !== null) {
+    // if the index exists, load the notes from the index
+    const notes = load_notes_v1(index).notes;
+    Notes.delete(null);
+    save_notes(notes);
+    return notes;
+  }
+
+  ensure_dir(NewNotesDir);
+
+  const files = list_files(NewNotesDir);
+
+  return Promise.all(
+    files
+      .filter((file) => file.get_basename()!.endsWith(".json"))
+      .map((file) =>
+        load_file(file)
+          .then((note) => new Note(note))
+      ),
+  );
+}
+
+export const list_files = (dir: Gio.File) => {
+  const enumerator = dir.enumerate_children(
+    "standard::name,standard::type",
+    Gio.FileQueryInfoFlags.NONE,
+    null,
+  );
+
+  const files: Gio.File[] = [];
+
+  let info: Gio.FileInfo | null;
+
+  while ((info = enumerator.next_file(null)) !== null) {
+    const file = enumerator.get_child(info);
+    files.push(file);
+  }
+
+  return files;
 };
 
-export const save_notes = (notes: Note[], state: State) => {
-  ensure_dir(NotesDir.get_parent()!);
+export async function save_notes(notes: Note[]) {
+  ensure_dir(NewNotesDir);
 
-  return save_file(NotesDir, {
-    v: 1,
-    notes: notes.map((note) => note.toJSON()),
-    state: state,
-  } as SavedNoteData);
-};
+  const files = list_files(NewNotesDir);
+
+  let writes: [Note, Gio.File][] = [];
+  const deletes: Gio.File[] = [];
+
+  for (const file of files) {
+    const basename = file.get_basename()!;
+
+    if (basename.endsWith(".json")) {
+      const uuid = basename.slice(0, -5);
+
+      if (uuid.length !== 36) {
+        deletes.push(file);
+        continue;
+      }
+
+      const note = notes.find((note) => note.uuid === uuid);
+      if (note) {
+        writes.push([note, file]);
+      } else {
+        deletes.push(file);
+      }
+    } else {
+      deletes.push(file);
+    }
+  }
+
+  for (const note of notes) {
+    if (!writes.some(([n]) => n.uuid === note.uuid)) {
+      const file = NewNotesDir.get_child(`${note.uuid}.json`);
+      writes.push([note, file]);
+    }
+  }
+
+  for (const file of deletes) {
+    file.delete(null);
+  }
+
+  return Promise.all(
+    writes.map(([note, file]) =>
+      save_file(file, note).catch((e) => {
+        throw e;
+      })
+    ),
+  );
+}
