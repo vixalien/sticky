@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sticky-notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-02 21:47+0200\n"
+"PO-Revision-Date: 2023-03-05 14:51+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
+msgid "A simple sticky notes app for GNOME"
+msgstr "Egyszerű sticky notes app GNOME-ra"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:61
+#: src/application.ts:256 data/notes.ui:33
+msgid "Sticky Notes"
+msgstr "Sticky Notes"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "Sticky;Notes;Írás;"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+"A Sticky Notes egy egyszerű jegyzet alkalmazás a GNOME-hoz. Lehetővé teszi "
+"jegyzetek létrehozását és formázását."
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "Aktuális jellemzők:"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr "egyszerű formázás (kövér, dőlt, aláhúzott és áthúzott)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr ""
+"a jegyzetek visszatöltődnek, ha az alkalmazás bezárásakor nyitva voltak"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "a jegyzet színének változtatása"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "sötét téma támogatása"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:32
+msgid "Angelo Verlain"
+msgstr "Angelo Verlain"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:51
+msgid "First beta release!"
+msgstr "Első béta kiadás!"
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "A jegyzet ablak alapértelmezett magassága"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "Alapértelmezett magasság az új jegyezthez"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "A jegyzet ablak alapértelmezett szélessége"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "Alapértelmezett szélesség az új jegyzethez"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "Alapértelmezett jegyzet stílus"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "Alapértelmezett jegyzet stílus az új jegyzethez"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "Jegyzet törlésének megerősítése"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "Valóban törölni kívánja a jegyzetet?"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:47
+#, c-format
+msgid "Switch to %s style"
+msgstr "Váltás a %s stílusra"
+
+#: src/util.ts:62
+msgid "Yellow"
+msgstr "Sárga"
+
+#: src/util.ts:63
+msgid "Pink"
+msgstr "Pink"
+
+#: src/util.ts:64
+msgid "Green"
+msgstr "Zöld"
+
+#: src/util.ts:65
+msgid "Purple"
+msgstr "Lila"
+
+#: src/util.ts:66
+msgid "Blue"
+msgstr "Kék"
+
+#: src/util.ts:67
+msgid "Gray"
+msgstr "Szürke"
+
+#: src/util.ts:68
+msgid "Charcoal"
+msgstr "Faszén"
+
+#: src/util.ts:69
+msgid "Window"
+msgstr "Ablak"
+
+#: src/view.ts:251
+msgid "Empty Note"
+msgstr "Üres jegyzet"
+
+#: data/card.ui:13
+msgid "Note is open"
+msgstr "Jegyzet nyitva"
+
+#: data/card.ui:39
+msgid "Delete note"
+msgstr "Jegyzet törlése"
+
+#: data/notes.ui:21 data/notes.ui:76 data/window.ui:21
+msgid "Create a new note"
+msgstr "Új jegyzet létrehozása"
+
+#: data/notes.ui:60
+msgid "Search..."
+msgstr "Keresés..."
+
+#: data/notes.ui:71
+msgid "No notes"
+msgstr "Nincs jegyzet"
+
+#: data/notes.ui:72
+msgid "After you create notes, they will appear here"
+msgstr "A jegyzet létrehozása után itt fognak megjelenni"
+
+#: data/notes.ui:91
+msgid "No Results"
+msgstr "Nincs találat"
+
+#: data/notes.ui:92
+msgid "Try a different search"
+msgstr "Próbálkozzon másik kereséssel"
+
+#: data/notes.ui:116
+msgid "Keyboard shortcuts"
+msgstr "Gyorsbillentyűk"
+
+#: data/notes.ui:120
+msgid "About Sticky Notes"
+msgstr "A Sticky Notes névjegye"
+
+#: data/notes.ui:126
+msgid "Quit"
+msgstr "Bezárás"
+
+#: data/window.ui:77
+msgid "Bold"
+msgstr "Kövér"
+
+#: data/window.ui:85
+msgid "Italic"
+msgstr "Dőlt"
+
+#: data/window.ui:93
+msgid "Underline"
+msgstr "Aláhúzott"
+
+#: data/window.ui:101
+msgid "Strikethrough"
+msgstr "Áthúzott"
+
+#: data/window.ui:119
+msgid "All Notes"
+msgstr "Összes jegyzet"
+
+#: data/window.ui:123
+msgid "Delete Note"
+msgstr "Jegyzet törlése"
