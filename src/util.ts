@@ -82,6 +82,14 @@ const get_settings = () => ({
   CONFIRM_DELETE: settings.get_boolean("confirm-delete"),
 });
 
+const style_manager = Adw.StyleManager.get_default();
+function setColorScheme() {
+  const color_scheme = settings.get_int("color-scheme");
+  style_manager.set_color_scheme(color_scheme);
+}
+setColorScheme();
+settings.connect("changed::color-scheme", setColorScheme);
+
 export let SETTINGS = get_settings();
 
 settings.connect("changed", () => {

@@ -113,6 +113,11 @@
   <menu id="primaryMenu">
     <section>
       <item>
+        <attribute name="custom">themeswitcher</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="true">Keyboard shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>

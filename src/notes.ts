@@ -31,6 +31,8 @@ import type { Application } from "./application.js";
 import { StickyNoteCard } from "./card.js";
 import { Note } from "./util.js";
 
+import { ThemeSelector } from "./themeselector.js";
+
 export class StickyNotes extends Adw.ApplicationWindow {
   static {
     GObject.registerClass(
@@ -44,6 +46,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
           "no_results",
           "search_entry",
           "scrolled",
+          "menu_button",
         ],
         Signals: {
           "note-activated": {
@@ -64,6 +67,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   _no_notes!: Adw.StatusPage;
   _no_results!: Adw.StatusPage;
   _scrolled!: Gtk.ScrolledWindow;
+  _menu_button!: Gtk.MenuButton;
 
   cards: StickyNoteCard[] = [];
 
@@ -176,6 +180,10 @@ export class StickyNotes extends Adw.ApplicationWindow {
     });
 
     this.set_status();
+
+    // Popover menu theme switcher
+    const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
+    popover.add_child(new ThemeSelector(), "themeswitcher");
   }
 
   set_status() {

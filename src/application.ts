@@ -30,7 +30,7 @@ import GLib from "gi://GLib";
 import Gtk from "gi://Gtk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
-import { load_notes, Note, save_notes } from "./util.js";
+import { load_notes, Note, save_notes, settings } from "./util.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
@@ -177,6 +177,8 @@ export class Application extends Adw.Application {
     const save = new Gio.SimpleAction({ name: "save" });
     save.connect("activate", () => this.save());
     this.add_action(save);
+
+    this.add_action(settings.create_action("color-scheme"));
 
     this.set_accels_for_action("app.quit", ["<Primary>q"]);
     this.set_accels_for_action("app.new-note", ["<Primary>n"]);
