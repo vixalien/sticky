@@ -332,7 +332,6 @@ export class WriteableStickyNote extends AbstractStickyNote {
     if (!this.note) return;
     if (this.source) GLib.source_remove(this.source);
     this.source = this.buffer.connect("modified-changed", (buffer) => {
-      console.log("modified changed", buffer.get_modified());
       if (buffer.get_modified()) {
         save_note(this.note!)
           .then(() => {
