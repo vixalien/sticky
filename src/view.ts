@@ -26,6 +26,9 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Pango from "gi://Pango";
+import GLib from "gi://GLib";
+
+import { save_note } from "./store.js";
 
 import { ITag, Note } from "./util.js";
 
@@ -311,6 +314,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
   }
 
   updating = false;
+  source: number | null = null;
 
   get note() {
     return super.note;
@@ -319,6 +323,23 @@ export class WriteableStickyNote extends AbstractStickyNote {
   set note(note: Note | undefined) {
     this.updating = true;
     super.note = note;
+    if (note?.uuid !== this.note?.uuid) {
+      this.add_modified_listener();
+    }
+  }
+
+  add_modified_listener() {
+    if (!this.note) return;
+    if (this.source) GLib.source_remove(this.source);
+    this.source = this.buffer.connect("modified-changed", (buffer) => {
+      console.log("modified changed", buffer.get_modified());
+      if (buffer.get_modified()) {
+        save_note(this.note!)
+          .then(() => {
+            this.buffer.set_modified(false);
+          });
+      }
+    });
   }
 
   change<T extends keyof Note>(key: T, value: Note[T]) {
@@ -338,6 +359,10 @@ export class WriteableStickyNote extends AbstractStickyNote {
       if (this.buffer.text == this.note!.content) return;
       this.change("content", this.buffer.text);
     });
+
+    if (note) {
+      this.add_modified_listener();
+    }
   }
 
   clear_tags() {
