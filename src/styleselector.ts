@@ -71,15 +71,18 @@ class StyleButton extends Gtk.CheckButton {
   }
 }
 
+const props = {
+  orientation: Gtk.Orientation.HORIZONTAL,
+  spacing: 12,
+  hexpand: true,
+};
+
 export class StyleSelector extends Gtk.Box {
-  box = new Gtk.FlowBox({
-    orientation: Gtk.Orientation.HORIZONTAL,
-    max_children_per_line: 4,
-    min_children_per_line: 4,
-    row_spacing: 12,
-    column_spacing: 12,
-    selection_mode: Gtk.SelectionMode.NONE,
-    hexpand: true,
+  box1 = new Gtk.Box(props);
+  box2 = new Gtk.Box(props);
+  box = new Gtk.Box({
+    orientation: Gtk.Orientation.VERTICAL,
+    spacing: 12,
   });
 
   private _style: Style;
@@ -101,7 +104,22 @@ export class StyleSelector extends Gtk.Box {
   constructor(params: { style?: Style } = {}) {
     super();
 
+    this.box.append(this.box1);
+    this.box.append(this.box2);
+
+    // this.box.connect("selected-children-changed", () => {
+    //   const button = this.box.get_selected_children()[0]?.get_child() as
+    //     | StyleButton
+    //     | undefined;
+    //   if (button) {
+    //     button.active = true;
+    //     // this is so that both the button and the flowbox get focused,
+    //     // resulting in double-tabbing
+    //     button.grab_focus();
+    //   }
+    // });
     this.append(this.box);
+
     this._style = this.style = params.style ?? Style.yellow;
     this.build_styles();
     this.hexpand = true;
@@ -122,7 +140,7 @@ export class StyleSelector extends Gtk.Box {
   build_styles() {
     let group: Gtk.CheckButton | undefined = undefined;
 
-    styles.forEach((style) => {
+    styles.forEach((style, i) => {
       const button = new StyleButton(style, group);
       button.active = style === this.style;
       button.connect("toggled", () => {
@@ -133,7 +151,8 @@ export class StyleSelector extends Gtk.Box {
       if (!group) {
         group = button;
       }
-      this.box.append(button);
+
+      (i < 4 ? this.box1 : this.box2).append(button);
     });
   }
 

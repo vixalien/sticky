@@ -1,6 +1,10 @@
 @import 'util.styl';
 @import 'colors.styl';
 
+.style-selector-box > * {
+  border-radius: 99px;
+}
+
 styleselector {
   margin: 9px;
 
@@ -15,6 +19,11 @@ styleselector {
 
     &:checked {
       box-shadow: inset 0 0 0 2px at(accent_bg_color);
+    }
+
+    &:focus-within {
+      box-shadow: inset 0 0 0 2px at(accent_bg_color), 0 0 0 2px at(borders);
+      outline-color: transparent;
     }
 
     for name, info in colors {
