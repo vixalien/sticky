@@ -3,9 +3,11 @@ gnome = import('gnome')
 sources = [
   'application.ts',
   'card.ts',
+  'errors.ts',
   'main.ts',
   'notes.ts',
   'styleselector.ts',
+  'store.ts',
   'themeselector.ts',
   'view.ts',
   'window.ts',

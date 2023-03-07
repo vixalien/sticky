@@ -33,3 +33,12 @@ declare class TextDecoder {
   constructor(encoding?: string, options?: TextDecoderOptions);
   decode(input?: ArrayBufferView, options?: TextDecodeOptions): string;
 }
+
+interface TextEncodeOptions {
+  stream?: boolean;
+}
+
+declare class TextEncoder {
+  constructor();
+  encode(input?: string, options?: TextEncodeOptions): Uint8Array;
+}

@@ -30,7 +30,8 @@ import GLib from "gi://GLib";
 import Gtk from "gi://Gtk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
-import { load_notes, Note, save_notes, settings } from "./util.js";
+import { Note, settings } from "./util.js";
+import { load_notes, save_notes } from "./store.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
@@ -62,13 +63,14 @@ export class Application extends Adw.Application {
 
     this.init_actions();
 
-    const data = load_notes() || [];
+    load_notes()
+      .then((data) => {
+        this.show_all_notes = data.state.all_notes;
 
-    this.show_all_notes = data.state.all_notes;
+        data.notes.forEach((note) => this.notes_list.append(note));
 
-    data.notes.forEach((note) => this.notes_list.append(note));
-
-    this.sort_notes();
+        this.sort_notes();
+      });
   }
 
   save() {
@@ -78,7 +80,7 @@ export class Application extends Adw.Application {
       array.push(note);
     });
 
-    save_notes(array, {
+    return save_notes(array, {
       all_notes: this.show_all_notes,
     });
   }
