@@ -35,7 +35,12 @@ export class StickyNoteCard extends Gtk.Box {
     GObject.registerClass({
       GTypeName: "StickyNoteCard",
       Template: "resource:///com/vixalien/sticky/ui/card.ui",
-      InternalChildren: ["modified_label", "view_image", "delete_button"],
+      InternalChildren: [
+        "modified_label",
+        "view_image",
+        "delete_button",
+        "scrolled",
+      ],
       Properties: {
         uuid: GObject.ParamSpec.string(
           "uuid",
@@ -51,6 +56,7 @@ export class StickyNoteCard extends Gtk.Box {
     }, this);
   }
 
+  _scrolled!: Gtk.ScrolledWindow;
   _modified_label!: Gtk.Label;
   _view_image!: Gtk.Image;
   _delete_button!: Gtk.Button;
@@ -69,8 +75,7 @@ export class StickyNoteCard extends Gtk.Box {
     this.view.set_css_classes([...this.view.css_classes, "card-text-view"]);
     this.view.wrap_mode = Gtk.WrapMode.WORD_CHAR;
 
-    this.append(this.view);
-
+    this._scrolled.set_child(this.view);
     this._delete_button.connect("clicked", this.delete.bind(this));
 
     if (note) this._note = this.note = note;
