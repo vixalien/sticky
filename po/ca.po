@@ -1,0 +1,212 @@
+# Catalan translation of evince.
+# Copyright © 2023 Free Software Foundation, Inc.
+# This file is distributed under the same license as the evince package.
+# Gil Forcada <gil.gnome@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-05 18:27+0100\n"
+"PO-Revision-Date: 2023-03-05 18:27+0100\n"
+"Last-Translator: Gil Forcada Codinachs <gil.gnome@gmail.com>\n"
+"Language-Team: Catalan <tradgnome@softcatala.org>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
+msgid "A simple sticky notes app for GNOME"
+msgstr "Una senzilla aplicació per prendre notes pel GNOME"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:61
+#: src/application.ts:256 data/notes.ui:33
+msgid "Sticky Notes"
+msgstr "Notes enganxoses"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "Enganxoses;Notes;Escriure;"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+"El Notes enganxoes és una aplicació senzilla per prendre notes pel GNOME."
+"Us permet create notes i formatar-les."
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "Característiques actuals:"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr "formatació bàsica (negreta, cursiva, subratllat i ratllat)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr "es tornen a obrir les notes si estavan obertes quan es va tancar l'aplicació"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "canviar el color de les notes"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "suport pel tema fosc"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:32
+msgid "Angelo Verlain"
+msgstr "Angelo Verlain"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:51
+msgid "First beta release!"
+msgstr "Primera publicació beta!"
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "Alçada predeterminada d'una finestra de nota"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "L'alçada predeterminada d'una nota enganxosa nova"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "Mida predeterminada d'una finestra de nota"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "La mida predeterminada d'una nota enganxosa nova"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "Estil predterminat de les notes"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "L'estil predeterminal que s'assigna a una nota nova"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "Confirma la supressió de la nota"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "Si s'ha de confirmar la supressió d'una nota"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:47
+#, c-format
+msgid "Switch to %s style"
+msgstr "Canvia a l'estil %s"
+
+#: src/util.ts:62
+msgid "Yellow"
+msgstr "Groc"
+
+#: src/util.ts:63
+msgid "Pink"
+msgstr "Rosa"
+
+#: src/util.ts:64
+msgid "Green"
+msgstr "Verd"
+
+#: src/util.ts:65
+msgid "Purple"
+msgstr "Lila"
+
+#: src/util.ts:66
+msgid "Blue"
+msgstr "Blau"
+
+#: src/util.ts:67
+msgid "Gray"
+msgstr "Gris"
+
+#: src/util.ts:68
+msgid "Charcoal"
+msgstr "Carbó"
+
+#: src/util.ts:69
+msgid "Window"
+msgstr "Finestra"
+
+#: src/view.ts:251
+msgid "Empty Note"
+msgstr "Nota buida"
+
+#: data/card.ui:13
+msgid "Note is open"
+msgstr "La nota està oberta"
+
+#: data/card.ui:39
+msgid "Delete note"
+msgstr "Suprimeix la nota"
+
+#: data/notes.ui:21 data/notes.ui:76 data/window.ui:21
+msgid "Create a new note"
+msgstr "Crea una nota nova"
+
+#: data/notes.ui:60
+msgid "Search..."
+msgstr "Cerca..."
+
+#: data/notes.ui:71
+msgid "No notes"
+msgstr "No hi ha cap nota"
+
+#: data/notes.ui:72
+msgid "After you create notes, they will appear here"
+msgstr "Les notes que creeu, aparaixeran aquí"
+
+#: data/notes.ui:91
+msgid "No Results"
+msgstr "No s'ha trobat cap resultat"
+
+#: data/notes.ui:92
+msgid "Try a different search"
+msgstr "Proveu una cerca diferent"
+
+#: data/notes.ui:116
+msgid "Keyboard shortcuts"
+msgstr "Dreceres de teclat"
+
+#: data/notes.ui:120
+msgid "About Sticky Notes"
+msgstr "Quan al Notes Enganxoses"
+
+#: data/notes.ui:126
+msgid "Quit"
+msgstr "Surt"
+
+#: data/window.ui:77
+msgid "Bold"
+msgstr "Negreta"
+
+#: data/window.ui:85
+msgid "Italic"
+msgstr "Cursiva"
+
+#: data/window.ui:93
+msgid "Underline"
+msgstr "Subratllat"
+
+#: data/window.ui:101
+msgid "Strikethrough"
+msgstr "Ratllat"
+
+#: data/window.ui:119
+msgid "All Notes"
+msgstr "Totes les notes"
+
+#: data/window.ui:123
+msgid "Delete Note"
+msgstr "Suprimeix la nota"
