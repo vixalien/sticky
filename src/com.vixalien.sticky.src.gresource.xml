@@ -6,6 +6,7 @@
     <file>main.js</file>
     <file>notes.js</file>
     <file>styleselector.js</file>
+    <file>themeselector.js</file>
     <file>view.js</file>
     <file>window.js</file>
     <file>util.js</file>

@@ -2,6 +2,7 @@ stylus_sources = [
   'style.styl',
   'style-selector.styl',
   'style-dark.styl',
+  'theme-selector.styl',
 ]
 
 stylus_outputs = []

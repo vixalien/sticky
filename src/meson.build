@@ -6,6 +6,7 @@ sources = [
   'main.ts',
   'notes.ts',
   'styleselector.ts',
+  'themeselector.ts',
   'view.ts',
   'window.ts',
   'util.ts'
