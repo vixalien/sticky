@@ -39,7 +39,7 @@ msgid ""
 "notes and format them."
 msgstr ""
 "El Notes enganxoes és una aplicació senzilla per prendre notes pel GNOME."
-"Us permet create notes i formatar-les."
+"Us permet crear notes i formatar-les."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:13
 msgid "Current features:"
