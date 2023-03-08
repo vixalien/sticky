@@ -48,6 +48,17 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
+		<release version="0.1.3" date="2023-03-08">
+			<description>
+				<p>mostly a bug fix and tune-up release</p>
+				<ul>
+					<li>make style (color) selector easier to change using the keyboard</li>
+					<li>added more translations (tamil, hungary, catalan) and update russian translations</li>
+					<li>you can now choose to use dark or light mode manually instead of always using the
+						system theme in the all notes window</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.1.2" date="2023-03-02">
 			<description>
 				<p>this is unexpectedly a large release</p>
