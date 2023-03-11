@@ -67,12 +67,13 @@
                     <property name="vexpand">true</property>
                     <property name="visible">false</property>
                     <property name="icon-name">document-edit-symbolic</property>
-                    <property name="title" translatable="true">No notes</property>
+                    <property name="title" translatable="true">No Notes</property>
                     <property name="description" translatable="true">After you create notes, they will appear here</property>
                     <child>
                       <object class="GtkButton">
                         <property name="halign">center</property>
-                        <property name="label" translatable="true">Create a new note</property>
+                        <property name="label" translatable="true">_New Note</property>
+                        <property name="use-underline">true</property>
                         <property name="action-name">app.new-note</property>
                         <style>
                           <class name="pill"/>
