@@ -65,7 +65,7 @@ export class Application extends Adw.Application {
         notes.forEach((note) => this.notes_list.append(note));
 
         this.sort_notes();
-      });
+      }).catch(logError);
   }
 
   save() {
