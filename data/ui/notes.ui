@@ -121,7 +121,7 @@
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="true">Keyboard shortcuts</attribute>
+        <attribute name="label" translatable="true">Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
