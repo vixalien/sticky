@@ -56,7 +56,7 @@
                     </style>
                     <child>
                       <object class="GtkSearchEntry" id="search_entry">
-                        <property name="placeholder-text" translatable="true">Search...</property>
+                        <property name="placeholder-text" translatable="true">Search notes…</property>
                         <property name="hexpand">true</property>
                       </object>
                     </child>
