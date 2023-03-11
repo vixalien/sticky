@@ -98,7 +98,7 @@ export const save_file = (file: Gio.File, data: any) => {
   return file.replace_contents_async(
     encoder.encode(string),
     null,
-    false,
+    true,
     Gio.FileCreateFlags.NONE,
     null,
   ).catch(
