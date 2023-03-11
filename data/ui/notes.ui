@@ -18,7 +18,7 @@
                 <property name="receives-default">false</property>
                 <property name="icon-name">list-add-symbolic</property>
                 <property name="action-name">app.new-note</property>
-                <property name="tooltip-text" translatable="true">Create a new note</property>
+                <property name="tooltip-text" translatable="true">New Note</property>
               </object>
             </child>
             <child type="end">

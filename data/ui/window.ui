@@ -18,7 +18,7 @@
               <object class="GtkButton">
                 <property name="icon-name">list-add-symbolic</property>
                 <property name="action-name">app.new-note</property>
-                <property name="tooltip-text" translatable="yes">Create a new note</property>
+                <property name="tooltip-text" translatable="yes">New Note</property>
               </object>
             </child>
             <child type="end">
