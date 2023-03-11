@@ -38,5 +38,10 @@
 				The selected color scheme. 0 = follow system style, 1 = light, 2 = dark
 			</description>
 		</key>
+		<key name="show-all-notes" type="b">
+			<default>true</default>
+			<summary>Show all notes</summary>
+			<description>Whether to show the all notes window or note</description>
+		</key>
 	</schema>
 </schemalist>

@@ -29,6 +29,18 @@ import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 
+Gio._promisify(
+  Gio.File.prototype,
+  "load_contents_async",
+  "load_contents_finish",
+);
+
+Gio._promisify(
+  Gio.File.prototype,
+  "replace_contents_async",
+  "replace_contents_finish",
+);
+
 export interface ITag {
   name: string;
   start: number;
@@ -298,98 +310,4 @@ export const confirm_delete = (window: Gtk.Window, cb: () => void) => {
   } else {
     cb();
   }
-};
-
-export const NotesDir = Gio.file_new_for_path(
-  GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name, "notes.json"]),
-);
-
-const decoder = new TextDecoder();
-
-interface SavedNoteData {
-  v: 1;
-  notes: INote[];
-  state: State;
-}
-
-interface LoadNotesReturn {
-  notes: Note[];
-  state: State;
-}
-
-export const load_notes: () => LoadNotesReturn = () => {
-  const bogus_data: LoadNotesReturn = { state: { all_notes: true }, notes: [] };
-
-  try {
-    NotesDir.get_parent()!.make_directory_with_parents(null);
-  } catch (e: unknown) {
-    if (e instanceof GLib.Error) {
-      if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
-        console.error(`Failed to create directory ${e}`);
-      }
-    }
-  }
-
-  const file = NotesDir;
-  try {
-    const [success, contents] = file.load_contents(null);
-    if (success) {
-      const data = JSON.parse(decoder.decode(contents)) as SavedNoteData;
-      if (data.v !== 1) {
-        console.error(`Invalid notes version ${data.v}`);
-        return bogus_data;
-      }
-      return {
-        notes: data.notes.map((note) => new Note(note)),
-        state: data.state,
-      };
-    } else {
-      return bogus_data;
-    }
-  } catch (e: unknown) {
-    if (e instanceof GLib.Error) {
-      if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
-        return bogus_data;
-      } else {
-        console.error(`Failed to load notes ${e}`);
-        return bogus_data;
-      }
-    }
-  }
-
-  return bogus_data;
-};
-
-interface State {
-  all_notes: boolean;
-}
-
-export const save_notes = (notes: Note[], state: State) => {
-  try {
-    NotesDir.get_parent()!.make_directory_with_parents(null);
-  } catch (e: unknown) {
-    if (e instanceof GLib.Error) {
-      if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
-        console.error(`Failed to create directory ${e}`);
-      }
-    }
-  }
-
-  const file = NotesDir;
-  const contents = JSON.stringify(
-    {
-      v: 1,
-      notes: notes.map((note) => note.toJSON()),
-      state: state,
-    } as SavedNoteData,
-    null,
-    2,
-  );
-  file.replace_contents(
-    contents,
-    null,
-    false,
-    Gio.FileCreateFlags.REPLACE_DESTINATION,
-    null,
-  );
 };
