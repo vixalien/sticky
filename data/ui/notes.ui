@@ -26,6 +26,8 @@
                 <property name="receives-default">false</property>
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primaryMenu</property>
+                <property name="tooltip-text" translatable="yes">Main Menu</property>
+                <property name="primary">true</property>
               </object>
             </child>
             <property name="title-widget">
