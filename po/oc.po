@@ -1,5 +1,5 @@
-# Occitan translation file
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Occitan translation for Sticky Notes
+# Copyright © 2023 Sticky Notes contributors
 # This file is distributed under the same license as the sticky-notes package.
 # Quentin PAGÈS, 2023.
 #

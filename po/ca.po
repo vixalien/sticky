@@ -1,6 +1,6 @@
-# Catalan translation of evince.
-# Copyright © 2023 Free Software Foundation, Inc.
-# This file is distributed under the same license as the evince package.
+# Catalan translations for Sticky Notes
+# Copyright © 2023 Sticky Notes contributors, Free Software Foundation, Inc.
+# This file is distributed under the same license as the sticky-notes package.
 # Gil Forcada <gil.gnome@gmail.com>, 2023.
 #
 msgid ""

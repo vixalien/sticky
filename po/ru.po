@@ -1,5 +1,5 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Translations for Sticky Notes
+# Copyright © 2023 Sticky Notes contributors
 # This file is distributed under the same license as the sticky-notes package.
 # David Lapshin <ddaudix@gmail.com>, 2023.
 #

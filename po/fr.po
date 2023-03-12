@@ -1,5 +1,5 @@
-# French translations for sticky-notes package.
-# Copyright (C) 2023 THE sticky-notes'S COPYRIGHT HOLDER
+# French translations for Sticky Notes
+# Copyright © 2023 Sticky Notes contributors
 # This file is distributed under the same license as the sticky-notes package.
 # Automatically generated, 2023.
 #
