@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-02 21:47+0200\n"
+"POT-Creation-Date: 2023-03-12 22:51+0200\n"
 "PO-Revision-Date: 2023-03-05 11:17+0530\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
 "Language-Team: \n"
@@ -19,13 +19,13 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #: data/com.vixalien.sticky.desktop.in.in:3
-#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
+#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:263
 msgid "A simple sticky notes app for GNOME"
 msgstr "க்னோமிற்கான எளிய ஒட்டும் குறிப்புகள் பயன்பாடு"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:61
-#: src/application.ts:256 data/notes.ui:33
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:35
+#: src/application.ts:59 src/application.ts:253
 msgid "Sticky Notes"
 msgstr "ஒட்டும் குறிப்புகள்"
 
@@ -62,11 +62,70 @@ msgstr "குறிப்புகளின் நிறத்தை மாற�
 msgid "dark theme support"
 msgstr "இருண்ட தீம் ஆதரவு"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:32
+#: data/com.vixalien.sticky.appdata.xml.in.in:34
 msgid "Angelo Verlain"
 msgstr "ஏஞ்சலோ வெர்லைன்"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:51
+#: data/com.vixalien.sticky.appdata.xml.in.in:53
+msgid "mostly a bug fix and tune-up release"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:55
+msgid "make style (color) selector easier to change using the keyboard"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:56
+msgid ""
+"added more translations (tamil, hungary, catalan) and update russian "
+"translations"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:57
+msgid ""
+"you can now choose to use dark or light mode manually instead of always "
+"using the system theme in the all notes window"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:64
+msgid "this is unexpectedly a large release"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:66
+msgid "new icon"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:67
+msgid "added translations (french, russian, italian, dutch, ocitan)"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:68
+msgid "bug fixes"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:74
+msgid "this is mostly a cleanup release"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:76
+msgid "added translation support (starting with french)"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:77
+msgid ""
+"apply tag to location under the cursor when nothing is selected. this means "
+"that for example if you click Ctrl+B while there's nothing selected, the new "
+"content you'll write will come out as bold"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:80
+msgid "fixed builds"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:81
+msgid "restructured/cleaned source"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:87
 msgid "First beta release!"
 msgstr "முதல் பீட்டா வெளியீடு!"
 
@@ -102,112 +161,243 @@ msgstr "குறிப்பு நீக்குதலை உறுதிப�
 msgid "Whether to confirm note deletion"
 msgstr "குறிப்பு நீக்குதலை உறுதிப்படுத்தவும்"
 
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+#, fuzzy
+msgid "Show all notes"
+msgstr "குறிப்புகள் இல்லை"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr ""
+
+#: data/ui/card.ui:13
+#, fuzzy
+msgid "Note is Open"
+msgstr "குறிப்பு திறக்கப்பட்டுள்ளது"
+
+#: data/ui/card.ui:39 data/ui/window.ui:125
+msgid "Delete Note"
+msgstr "குறிப்பை நீக்கு"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/ui/help-overlay.ui:14
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "விசைப்பலகை குறுக்குவழிகள்"
+
+#: data/ui/help-overlay.ui:20
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "வெளியேறு"
+
+#: data/ui/help-overlay.ui:28
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "குறிப்புகள் இல்லை"
+
+#: data/ui/help-overlay.ui:31
+#, fuzzy
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "குறிப்பை நீக்கு"
+
+#: data/ui/help-overlay.ui:37
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Delete note"
+msgstr "குறிப்பை நீக்கு"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr ""
+
+#: data/ui/help-overlay.ui:48
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "குறிப்புகள் இல்லை"
+
+#: data/ui/help-overlay.ui:54
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "குறிப்பை நீக்கு"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr ""
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr ""
+
+#: data/ui/help-overlay.ui:71
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "தடித்த"
+
+#: data/ui/help-overlay.ui:77
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "சாய்வு"
+
+#: data/ui/help-overlay.ui:83
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "அடிக்கோடு"
+
+#: data/ui/help-overlay.ui:89
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "கோடு வழியாக"
+
+#: data/ui/notes.ui:21 data/ui/window.ui:21
+#, fuzzy
+msgid "New Note"
+msgstr "குறிப்பை நீக்கு"
+
+#: data/ui/notes.ui:29 data/ui/window.ui:28
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/notes.ui:59
+msgid "Search notes…"
+msgstr ""
+
+#: data/ui/notes.ui:70
+#, fuzzy
+msgid "No Notes"
+msgstr "குறிப்புகள் இல்லை"
+
+#: data/ui/notes.ui:71
+msgid "After you create notes, they will appear here"
+msgstr "நீங்கள் குறிப்புகளை உருவாக்கிய பிறகு, அவை இங்கே தோன்றும்"
+
+#: data/ui/notes.ui:75
+#, fuzzy
+msgid "_New Note"
+msgstr "குறிப்பை நீக்கு"
+
+#: data/ui/notes.ui:91
+msgid "No Results"
+msgstr "முடிவுகள் இல்லை"
+
+#: data/ui/notes.ui:92
+msgid "Try a different search"
+msgstr "வேறு தேடலை முயற்சிக்கவும்"
+
+#: data/ui/notes.ui:124
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "விசைப்பலகை குறுக்குவழிகள்"
+
+#: data/ui/notes.ui:128
+msgid "About Sticky Notes"
+msgstr "ஒட்டும் குறிப்புகள் பற்றி"
+
+#: data/ui/notes.ui:134
+msgid "Quit"
+msgstr "வெளியேறு"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr ""
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+#, fuzzy
+msgid "Light style"
+msgstr "%s நடைக்கு மாறவும்"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr ""
+
+#: data/ui/window.ui:79
+msgid "Bold"
+msgstr "தடித்த"
+
+#: data/ui/window.ui:87
+msgid "Italic"
+msgstr "சாய்வு"
+
+#: data/ui/window.ui:95
+msgid "Underline"
+msgstr "அடிக்கோடு"
+
+#: data/ui/window.ui:103
+msgid "Strikethrough"
+msgstr "கோடு வழியாக"
+
+#: data/ui/window.ui:121
+msgid "All Notes"
+msgstr "அனைத்து குறிப்புகள்"
+
 #. focus_on_click: false,
 #: src/styleselector.ts:47
 #, c-format
 msgid "Switch to %s style"
 msgstr "%s நடைக்கு மாறவும்"
 
-#: src/util.ts:62
+#: src/util.ts:74
 msgid "Yellow"
 msgstr "மஞ்சள்"
 
-#: src/util.ts:63
+#: src/util.ts:75
 msgid "Pink"
 msgstr "இளஞ்சிவப்பு"
 
-#: src/util.ts:64
+#: src/util.ts:76
 msgid "Green"
 msgstr "பச்சை"
 
-#: src/util.ts:65
+#: src/util.ts:77
 msgid "Purple"
 msgstr "ஊதா"
 
-#: src/util.ts:66
+#: src/util.ts:78
 msgid "Blue"
 msgstr "நீலம்"
 
-#: src/util.ts:67
+#: src/util.ts:79
 msgid "Gray"
 msgstr "சாம்பல்"
 
-#: src/util.ts:68
+#: src/util.ts:80
 msgid "Charcoal"
 msgstr "கரி"
 
-#: src/util.ts:69
+#: src/util.ts:81
 msgid "Window"
 msgstr "சாளரம்"
 
-#: src/view.ts:251
+#: src/view.ts:272
 msgid "Empty Note"
 msgstr "காலியான குறிப்பு"
 
-#: data/card.ui:13
-msgid "Note is open"
-msgstr "குறிப்பு திறக்கப்பட்டுள்ளது"
+#~ msgid "Create a new note"
+#~ msgstr "புதிய குறிப்பை உருவாக்கவும்"
 
-#: data/card.ui:39
-msgid "Delete note"
-msgstr "குறிப்பை நீக்கு"
-
-#: data/notes.ui:21 data/notes.ui:76 data/window.ui:21
-msgid "Create a new note"
-msgstr "புதிய குறிப்பை உருவாக்கவும்"
-
-#: data/notes.ui:60
-msgid "Search..."
-msgstr "தேடு..."
-
-#: data/notes.ui:71
-msgid "No notes"
-msgstr "குறிப்புகள் இல்லை"
-
-#: data/notes.ui:72
-msgid "After you create notes, they will appear here"
-msgstr "நீங்கள் குறிப்புகளை உருவாக்கிய பிறகு, அவை இங்கே தோன்றும்"
-
-#: data/notes.ui:91
-msgid "No Results"
-msgstr "முடிவுகள் இல்லை"
-
-#: data/notes.ui:92
-msgid "Try a different search"
-msgstr "வேறு தேடலை முயற்சிக்கவும்"
-
-#: data/notes.ui:116
-msgid "Keyboard shortcuts"
-msgstr "விசைப்பலகை குறுக்குவழிகள்"
-
-#: data/notes.ui:120
-msgid "About Sticky Notes"
-msgstr "ஒட்டும் குறிப்புகள் பற்றி"
-
-#: data/notes.ui:126
-msgid "Quit"
-msgstr "வெளியேறு"
-
-#: data/window.ui:77
-msgid "Bold"
-msgstr "தடித்த"
-
-#: data/window.ui:85
-msgid "Italic"
-msgstr "சாய்வு"
-
-#: data/window.ui:93
-msgid "Underline"
-msgstr "அடிக்கோடு"
-
-#: data/window.ui:101
-msgid "Strikethrough"
-msgstr "கோடு வழியாக"
-
-#: data/window.ui:119
-msgid "All Notes"
-msgstr "அனைத்து குறிப்புகள்"
-
-#: data/window.ui:123
-msgid "Delete Note"
-msgstr "குறிப்பை நீக்கு"
+#~ msgid "Search..."
+#~ msgstr "தேடு..."
