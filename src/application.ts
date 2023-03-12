@@ -258,6 +258,9 @@ export class Application extends Adw.Application {
         "Angelo Verlain <hey@vixalien.com>",
         "Christopher Davis <christopherdavis@gnome.org>",
       ],
+      designers: [
+        "David Lapshin",
+      ],
       copyright: "© 2023 Angelo Verlain, Christopher Davis",
       license_type: Gtk.License.MIT_X11,
       comments: _("A simple sticky notes app for GNOME"),
