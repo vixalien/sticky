@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-12 22:51+0200\n"
+"POT-Creation-Date: 2023-03-12 23:13+0200\n"
 "PO-Revision-Date: 2023-03-05 11:17+0530\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
 "Language-Team: \n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #: data/com.vixalien.sticky.desktop.in.in:3
-#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:263
+#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
 msgid "A simple sticky notes app for GNOME"
 msgstr "க்னோமிற்கான எளிய ஒட்டும் குறிப்புகள் பயன்பாடு"
 
