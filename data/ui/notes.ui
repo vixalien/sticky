@@ -18,7 +18,7 @@
                 <property name="receives-default">false</property>
                 <property name="icon-name">list-add-symbolic</property>
                 <property name="action-name">app.new-note</property>
-                <property name="tooltip-text" translatable="true">Create a new note</property>
+                <property name="tooltip-text" translatable="true">New Note</property>
               </object>
             </child>
             <child type="end">
@@ -26,6 +26,8 @@
                 <property name="receives-default">false</property>
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primaryMenu</property>
+                <property name="tooltip-text" translatable="yes">Main Menu</property>
+                <property name="primary">true</property>
               </object>
             </child>
             <property name="title-widget">
@@ -54,7 +56,7 @@
                     </style>
                     <child>
                       <object class="GtkSearchEntry" id="search_entry">
-                        <property name="placeholder-text" translatable="true">Search...</property>
+                        <property name="placeholder-text" translatable="true">Search notes…</property>
                         <property name="hexpand">true</property>
                       </object>
                     </child>
@@ -65,12 +67,13 @@
                     <property name="vexpand">true</property>
                     <property name="visible">false</property>
                     <property name="icon-name">document-edit-symbolic</property>
-                    <property name="title" translatable="true">No notes</property>
+                    <property name="title" translatable="true">No Notes</property>
                     <property name="description" translatable="true">After you create notes, they will appear here</property>
                     <child>
                       <object class="GtkButton">
                         <property name="halign">center</property>
-                        <property name="label" translatable="true">Create a new note</property>
+                        <property name="label" translatable="true">_New Note</property>
+                        <property name="use-underline">true</property>
                         <property name="action-name">app.new-note</property>
                         <style>
                           <class name="pill"/>
@@ -118,7 +121,7 @@
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="true">Keyboard shortcuts</attribute>
+        <attribute name="label" translatable="true">Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
