@@ -3,6 +3,11 @@
 data/com.vixalien.sticky.desktop.in.in
 data/com.vixalien.sticky.appdata.xml.in.in
 data/com.vixalien.sticky.gschema.xml.in
+data/ui/card.ui
+data/ui/help-overlay.ui
+data/ui/notes.ui
+data/ui/theme-selector.ui
+data/ui/window.ui
 src/application.ts
 src/card.ts
 src/main.ts
@@ -11,6 +16,3 @@ src/styleselector.ts
 src/util.ts
 src/view.ts
 src/window.ts
-data/card.ui
-data/notes.ui
-data/window.ui

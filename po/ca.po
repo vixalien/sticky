@@ -1,13 +1,13 @@
-# Catalan translation of evince.
-# Copyright © 2023 Free Software Foundation, Inc.
-# This file is distributed under the same license as the evince package.
+# Catalan translations for Sticky Notes
+# Copyright © 2023 Sticky Notes contributors, Free Software Foundation, Inc.
+# This file is distributed under the same license as the sticky-notes package.
 # Gil Forcada <gil.gnome@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-05 18:27+0100\n"
+"POT-Creation-Date: 2023-03-12 23:13+0200\n"
 "PO-Revision-Date: 2023-03-05 18:27+0100\n"
 "Last-Translator: Gil Forcada Codinachs <gil.gnome@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -23,8 +23,8 @@ msgid "A simple sticky notes app for GNOME"
 msgstr "Una senzilla aplicació per prendre notes pel GNOME"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:61
-#: src/application.ts:256 data/notes.ui:33
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:35
+#: src/application.ts:59 src/application.ts:253
 msgid "Sticky Notes"
 msgstr "Notes enganxoses"
 
@@ -38,8 +38,8 @@ msgid ""
 "Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
 "notes and format them."
 msgstr ""
-"El Notes enganxoes és una aplicació senzilla per prendre notes pel GNOME."
-"Us permet crear notes i formatar-les."
+"El Notes enganxoes és una aplicació senzilla per prendre notes pel GNOME.Us "
+"permet crear notes i formatar-les."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:13
 msgid "Current features:"
@@ -51,7 +51,8 @@ msgstr "formatació bàsica (negreta, cursiva, subratllat i ratllat)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:16
 msgid "notes are restored if they were open when the application was closed"
-msgstr "es tornen a obrir les notes si estavan obertes quan es va tancar l'aplicació"
+msgstr ""
+"es tornen a obrir les notes si estavan obertes quan es va tancar l'aplicació"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:17
 msgid "changing color of notes"
@@ -61,11 +62,70 @@ msgstr "canviar el color de les notes"
 msgid "dark theme support"
 msgstr "suport pel tema fosc"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:32
+#: data/com.vixalien.sticky.appdata.xml.in.in:34
 msgid "Angelo Verlain"
 msgstr "Angelo Verlain"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:51
+#: data/com.vixalien.sticky.appdata.xml.in.in:53
+msgid "mostly a bug fix and tune-up release"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:55
+msgid "make style (color) selector easier to change using the keyboard"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:56
+msgid ""
+"added more translations (tamil, hungary, catalan) and update russian "
+"translations"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:57
+msgid ""
+"you can now choose to use dark or light mode manually instead of always "
+"using the system theme in the all notes window"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:64
+msgid "this is unexpectedly a large release"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:66
+msgid "new icon"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:67
+msgid "added translations (french, russian, italian, dutch, ocitan)"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:68
+msgid "bug fixes"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:74
+msgid "this is mostly a cleanup release"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:76
+msgid "added translation support (starting with french)"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:77
+msgid ""
+"apply tag to location under the cursor when nothing is selected. this means "
+"that for example if you click Ctrl+B while there's nothing selected, the new "
+"content you'll write will come out as bold"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:80
+msgid "fixed builds"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:81
+msgid "restructured/cleaned source"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:87
 msgid "First beta release!"
 msgstr "Primera publicació beta!"
 
@@ -101,112 +161,243 @@ msgstr "Confirma la supressió de la nota"
 msgid "Whether to confirm note deletion"
 msgstr "Si s'ha de confirmar la supressió d'una nota"
 
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+#, fuzzy
+msgid "Show all notes"
+msgstr "No hi ha cap nota"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr ""
+
+#: data/ui/card.ui:13
+#, fuzzy
+msgid "Note is Open"
+msgstr "La nota està oberta"
+
+#: data/ui/card.ui:39 data/ui/window.ui:125
+msgid "Delete Note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/ui/help-overlay.ui:14
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Dreceres de teclat"
+
+#: data/ui/help-overlay.ui:20
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Surt"
+
+#: data/ui/help-overlay.ui:28
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "No hi ha cap nota"
+
+#: data/ui/help-overlay.ui:31
+#, fuzzy
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/help-overlay.ui:37
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Delete note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr ""
+
+#: data/ui/help-overlay.ui:48
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "No hi ha cap nota"
+
+#: data/ui/help-overlay.ui:54
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "Suprimeix la nota"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr ""
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr ""
+
+#: data/ui/help-overlay.ui:71
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "Negreta"
+
+#: data/ui/help-overlay.ui:77
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "Cursiva"
+
+#: data/ui/help-overlay.ui:83
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "Subratllat"
+
+#: data/ui/help-overlay.ui:89
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "Ratllat"
+
+#: data/ui/notes.ui:21 data/ui/window.ui:21
+#, fuzzy
+msgid "New Note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/notes.ui:29 data/ui/window.ui:28
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/notes.ui:59
+msgid "Search notes…"
+msgstr ""
+
+#: data/ui/notes.ui:70
+#, fuzzy
+msgid "No Notes"
+msgstr "No hi ha cap nota"
+
+#: data/ui/notes.ui:71
+msgid "After you create notes, they will appear here"
+msgstr "Les notes que creeu, aparaixeran aquí"
+
+#: data/ui/notes.ui:75
+#, fuzzy
+msgid "_New Note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/notes.ui:91
+msgid "No Results"
+msgstr "No s'ha trobat cap resultat"
+
+#: data/ui/notes.ui:92
+msgid "Try a different search"
+msgstr "Proveu una cerca diferent"
+
+#: data/ui/notes.ui:124
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "Dreceres de teclat"
+
+#: data/ui/notes.ui:128
+msgid "About Sticky Notes"
+msgstr "Quan al Notes Enganxoses"
+
+#: data/ui/notes.ui:134
+msgid "Quit"
+msgstr "Surt"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr ""
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+#, fuzzy
+msgid "Light style"
+msgstr "Canvia a l'estil %s"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr ""
+
+#: data/ui/window.ui:79
+msgid "Bold"
+msgstr "Negreta"
+
+#: data/ui/window.ui:87
+msgid "Italic"
+msgstr "Cursiva"
+
+#: data/ui/window.ui:95
+msgid "Underline"
+msgstr "Subratllat"
+
+#: data/ui/window.ui:103
+msgid "Strikethrough"
+msgstr "Ratllat"
+
+#: data/ui/window.ui:121
+msgid "All Notes"
+msgstr "Totes les notes"
+
 #. focus_on_click: false,
 #: src/styleselector.ts:47
 #, c-format
 msgid "Switch to %s style"
 msgstr "Canvia a l'estil %s"
 
-#: src/util.ts:62
+#: src/util.ts:74
 msgid "Yellow"
 msgstr "Groc"
 
-#: src/util.ts:63
+#: src/util.ts:75
 msgid "Pink"
 msgstr "Rosa"
 
-#: src/util.ts:64
+#: src/util.ts:76
 msgid "Green"
 msgstr "Verd"
 
-#: src/util.ts:65
+#: src/util.ts:77
 msgid "Purple"
 msgstr "Lila"
 
-#: src/util.ts:66
+#: src/util.ts:78
 msgid "Blue"
 msgstr "Blau"
 
-#: src/util.ts:67
+#: src/util.ts:79
 msgid "Gray"
 msgstr "Gris"
 
-#: src/util.ts:68
+#: src/util.ts:80
 msgid "Charcoal"
 msgstr "Carbó"
 
-#: src/util.ts:69
+#: src/util.ts:81
 msgid "Window"
 msgstr "Finestra"
 
-#: src/view.ts:251
+#: src/view.ts:272
 msgid "Empty Note"
 msgstr "Nota buida"
 
-#: data/card.ui:13
-msgid "Note is open"
-msgstr "La nota està oberta"
+#~ msgid "Create a new note"
+#~ msgstr "Crea una nota nova"
 
-#: data/card.ui:39
-msgid "Delete note"
-msgstr "Suprimeix la nota"
-
-#: data/notes.ui:21 data/notes.ui:76 data/window.ui:21
-msgid "Create a new note"
-msgstr "Crea una nota nova"
-
-#: data/notes.ui:60
-msgid "Search..."
-msgstr "Cerca..."
-
-#: data/notes.ui:71
-msgid "No notes"
-msgstr "No hi ha cap nota"
-
-#: data/notes.ui:72
-msgid "After you create notes, they will appear here"
-msgstr "Les notes que creeu, aparaixeran aquí"
-
-#: data/notes.ui:91
-msgid "No Results"
-msgstr "No s'ha trobat cap resultat"
-
-#: data/notes.ui:92
-msgid "Try a different search"
-msgstr "Proveu una cerca diferent"
-
-#: data/notes.ui:116
-msgid "Keyboard shortcuts"
-msgstr "Dreceres de teclat"
-
-#: data/notes.ui:120
-msgid "About Sticky Notes"
-msgstr "Quan al Notes Enganxoses"
-
-#: data/notes.ui:126
-msgid "Quit"
-msgstr "Surt"
-
-#: data/window.ui:77
-msgid "Bold"
-msgstr "Negreta"
-
-#: data/window.ui:85
-msgid "Italic"
-msgstr "Cursiva"
-
-#: data/window.ui:93
-msgid "Underline"
-msgstr "Subratllat"
-
-#: data/window.ui:101
-msgid "Strikethrough"
-msgstr "Ratllat"
-
-#: data/window.ui:119
-msgid "All Notes"
-msgstr "Totes les notes"
-
-#: data/window.ui:123
-msgid "Delete Note"
-msgstr "Suprimeix la nota"
+#~ msgid "Search..."
+#~ msgstr "Cerca..."
