@@ -1,7 +1,7 @@
 # Czech translation```
 # Copyright (C) 2023 The Sticky Notes contributors
 # This file is distributed under the same license as the sticky-notes package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Amerey.eu <info@amerey.eu>, 2023.
 #
 msgid ""
 msgstr ""
