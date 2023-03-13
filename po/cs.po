@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-12 19:43+0100\n"
-"PO-Revision-Date: 2023-03-12 20:07+0100\n"
+"POT-Creation-Date: 2023-03-12 23:13+0200\n"
+"PO-Revision-Date: 2023-03-13 12:59+0100\n"
 "Last-Translator: Amerey.eu <info@amerey.eu>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -24,8 +24,8 @@ msgid "A simple sticky notes app for GNOME"
 msgstr "Jednoduchá aplikace pro rychlé poznámky pro GNOME"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:61
-#: src/application.ts:256 data/notes.ui:33
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:35
+#: src/application.ts:59 src/application.ts:253
 msgid "Sticky Notes"
 msgstr "Rychlé Poznámky"
 
@@ -62,11 +62,79 @@ msgstr "změna barvy poznámek"
 msgid "dark theme support"
 msgstr "podpora tmavého motivu"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:32
+#: data/com.vixalien.sticky.appdata.xml.in.in:34
 msgid "Angelo Verlain"
 msgstr "Angelo Verlain"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:51
+#: data/com.vixalien.sticky.appdata.xml.in.in:53
+msgid "mostly a bug fix and tune-up release"
+msgstr "verze s opravou chyb a ladění"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:55
+msgid "make style (color) selector easier to change using the keyboard"
+msgstr "usnadnění změny výběru stylu (barvy) pomocí klávesnice"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:56
+msgid ""
+"added more translations (tamil, hungary, catalan) and update russian "
+"translations"
+msgstr ""
+"přidány další překlady (tamilština, maďarština, katalánština) a aktualizace "
+"ruského překladu"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:57
+msgid ""
+"you can now choose to use dark or light mode manually instead of always "
+"using the system theme in the all notes window"
+msgstr ""
+"nyní můžete zvolit tmavý nebo světlý motiv ručně místo systémového motivu v "
+"okně všech poznámek"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:64
+msgid "this is unexpectedly a large release"
+msgstr "toto je nečekaně velká verze"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:66
+msgid "new icon"
+msgstr "nová ikona"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:67
+msgid "added translations (french, russian, italian, dutch, ocitan)"
+msgstr ""
+"přidány překlady (francouzština, ruština, italština, holandština, "
+"ocitánština)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:68
+msgid "bug fixes"
+msgstr "opravy chyb"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:74
+msgid "this is mostly a cleanup release"
+msgstr "jedná se o verzi převážně s opravami chyb"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:76
+msgid "added translation support (starting with french)"
+msgstr "přidána podpora překladu (počínaje francouzštinou)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:77
+msgid ""
+"apply tag to location under the cursor when nothing is selected. this means "
+"that for example if you click Ctrl+B while there's nothing selected, the new "
+"content you'll write will come out as bold"
+msgstr ""
+"použítí stylu na místě s kurzorem, když není nic vybráno. to znamená, že "
+"pokud například kliknete na Ctrl+B, zatímco není nic vybráno, nový obsah, "
+"který napíšete, se zobrazí tučně"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:80
+msgid "fixed builds"
+msgstr "opravené chyby"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:81
+msgid "restructured/cleaned source"
+msgstr "restrukturalizovaný/vyčištěný zdroj"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:87
 msgid "First beta release!"
 msgstr "První beta verze!"
 
@@ -102,112 +170,225 @@ msgstr "Potvrďte smazání poznámky"
 msgid "Whether to confirm note deletion"
 msgstr "Zda se má potvrdit odstranění poznámky"
 
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr "Vybrané barevné schéma"
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr "Vybrané barevné schéma. 0 = systémový styl, 1 = světlý, 2 = tmavý"
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+msgid "Show all notes"
+msgstr "Zobrazit všechny poznámky"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr "Zda se má zobrazit okno se všemi poznámkami nebo poznámka"
+
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "Poznámka je otevřená"
+
+#: data/ui/card.ui:39 data/ui/window.ui:125
+msgid "Delete Note"
+msgstr "Smazat poznámku"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Obecné"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Zobrazit zkratky"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ukončit"
+
+#: data/ui/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "Poznámky"
+
+#: data/ui/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "Nová poznámka"
+
+#: data/ui/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Delete note"
+msgstr "Smazat poznámku"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Navigace"
+
+#: data/ui/help-overlay.ui:48
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "Zobrazit všechny poznámky"
+
+#: data/ui/help-overlay.ui:54
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "Cyklovat mezi poznámkami"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr "Cyklovat mezi poznámkami v opačném pořadí"
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Editace"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "Tučně"
+
+#: data/ui/help-overlay.ui:77
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "Kurzíva"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "Podtržení"
+
+#: data/ui/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "Přeškrtnutí"
+
+#: data/ui/notes.ui:21 data/ui/window.ui:21
+msgid "New Note"
+msgstr "Nová poznámka"
+
+#: data/ui/notes.ui:29 data/ui/window.ui:28
+msgid "Main Menu"
+msgstr "Hlavní menu"
+
+#: data/ui/notes.ui:59
+msgid "Search notes…"
+msgstr "Prohledat poznámky…"
+
+#: data/ui/notes.ui:70
+msgid "No Notes"
+msgstr "Žádné poznámky"
+
+#: data/ui/notes.ui:71
+msgid "After you create notes, they will appear here"
+msgstr "Jakmile vytvoříte poznámky, zobrazí se zde"
+
+#: data/ui/notes.ui:75
+msgid "_New Note"
+msgstr "_Nová poznámka"
+
+#: data/ui/notes.ui:91
+msgid "No Results"
+msgstr "Žádné výsledky"
+
+#: data/ui/notes.ui:92
+msgid "Try a different search"
+msgstr "Zkuste jiné hledání"
+
+#: data/ui/notes.ui:124
+msgid "Keyboard Shortcuts"
+msgstr "Klávesové zkratky"
+
+#: data/ui/notes.ui:128
+msgid "About Sticky Notes"
+msgstr "O aplikaci Rychlé Poznámky"
+
+#: data/ui/notes.ui:134
+msgid "Quit"
+msgstr "Ukončit"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr "Systémový styl"
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "Světlý styl"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "Tmavý styl"
+
+#: data/ui/window.ui:79
+msgid "Bold"
+msgstr "Tučně"
+
+#: data/ui/window.ui:87
+msgid "Italic"
+msgstr "Kurzíva"
+
+#: data/ui/window.ui:95
+msgid "Underline"
+msgstr "Podtržení"
+
+#: data/ui/window.ui:103
+msgid "Strikethrough"
+msgstr "Přeškrtnutí"
+
+#: data/ui/window.ui:121
+msgid "All Notes"
+msgstr "Všechny poznámky"
+
 #. focus_on_click: false,
 #: src/styleselector.ts:47
 #, c-format
 msgid "Switch to %s style"
 msgstr "Přepnout styl na: %s"
 
-#: src/util.ts:62
+#: src/util.ts:74
 msgid "Yellow"
 msgstr "Žlutá"
 
-#: src/util.ts:63
+#: src/util.ts:75
 msgid "Pink"
 msgstr "Růžová"
 
-#: src/util.ts:64
+#: src/util.ts:76
 msgid "Green"
 msgstr "Zelená"
 
-#: src/util.ts:65
+#: src/util.ts:77
 msgid "Purple"
 msgstr "Purple"
 
-#: src/util.ts:66
+#: src/util.ts:78
 msgid "Blue"
 msgstr "Modrá"
 
-#: src/util.ts:67
+#: src/util.ts:79
 msgid "Gray"
 msgstr "Šedá"
 
-#: src/util.ts:68
+#: src/util.ts:80
 msgid "Charcoal"
 msgstr "Uhel"
 
-#: src/util.ts:69
+#: src/util.ts:81
 msgid "Window"
 msgstr "Okno"
 
-#: src/view.ts:251
+#: src/view.ts:272
 msgid "Empty Note"
 msgstr "Prázdná poznámka"
 
-#: data/card.ui:13
-msgid "Note is open"
-msgstr "Poznámka je otevřená"
+#~ msgid "Create a new note"
+#~ msgstr "Vytvořte novou poznámku"
 
-#: data/card.ui:39
-msgid "Delete note"
-msgstr "Smazat poznámku"
-
-#: data/notes.ui:21 data/notes.ui:76 data/window.ui:21
-msgid "Create a new note"
-msgstr "Vytvořte novou poznámku"
-
-#: data/notes.ui:60
-msgid "Search..."
-msgstr "Hledat..."
-
-#: data/notes.ui:71
-msgid "No notes"
-msgstr "Žádné poznámky"
-
-#: data/notes.ui:72
-msgid "After you create notes, they will appear here"
-msgstr "Jakmile vytvoříte poznámky, zobrazí se zde"
-
-#: data/notes.ui:91
-msgid "No Results"
-msgstr "Žádné výsledky"
-
-#: data/notes.ui:92
-msgid "Try a different search"
-msgstr "Zkuste jiné hledání"
-
-#: data/notes.ui:116
-msgid "Keyboard shortcuts"
-msgstr "Klávesové zkratky"
-
-#: data/notes.ui:120
-msgid "About Sticky Notes"
-msgstr "O aplikaci Rychlé Poznámky"
-
-#: data/notes.ui:126
-msgid "Quit"
-msgstr "Ukončit"
-
-#: data/window.ui:77
-msgid "Bold"
-msgstr "Tučně"
-
-#: data/window.ui:85
-msgid "Italic"
-msgstr "Kurzíva"
-
-#: data/window.ui:93
-msgid "Underline"
-msgstr "Podtržení"
-
-#: data/window.ui:101
-msgid "Strikethrough"
-msgstr "Přeškrtnutí"
-
-#: data/window.ui:119
-msgid "All Notes"
-msgstr "Všechny poznámky"
-
-#: data/window.ui:123
-msgid "Delete Note"
-msgstr "Smazat poznámku"
+#~ msgid "Search..."
+#~ msgstr "Hledat..."
