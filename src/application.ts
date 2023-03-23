@@ -60,27 +60,26 @@ export class Application extends Adw.Application {
 
     this.init_actions();
 
-    load_notes()
-      .then((notes) => {
-        notes.forEach((note) => {
-          note.connect("notify::modified", (_, x) => {
-            save_note(note);
-          });
+    try {
+      const notes = load_notes();
 
-          // changing open doesn't change modified
-          note.connect("notify::open", () => {
-            save_note(note);
-          });
-
-          this.notes_list.append(note);
-
-          if (note.open) {
-            this.show_note(note.uuid);
-          }
+      notes.forEach((note) => {
+        note.connect("notify::modified", (_, x) => {
+          save_note(note);
         });
 
-        this.sort_notes();
-      }).catch(console.log);
+        // changing open doesn't change modified
+        note.connect("notify::open", () => {
+          save_note(note);
+        });
+
+        this.notes_list.append(note);
+      });
+
+      this.sort_notes();
+    } catch (error) {
+      console.error(error as any);
+    }
   }
 
   save() {
@@ -108,14 +107,21 @@ export class Application extends Adw.Application {
 
     this.foreach_note((note) => {
       if (note.open) {
-        has_one_open = true;
+        if (has_one_open == false) has_one_open = true;
         this.show_note(note.uuid);
       }
     });
 
     if (!has_one_open) {
-      settings.set_boolean("show-all-notes", true);
-      this.all_notes();
+      const last_open_note = this.notes_array()
+        .sort((a, b) => b.modified.compare(a.modified))[0];
+
+      if (has_one_open) {
+        this.show_note(last_open_note.uuid);
+      } else {
+        settings.set_boolean("show-all-notes", true);
+        this.all_notes();
+      }
     }
   }
 
