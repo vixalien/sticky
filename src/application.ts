@@ -31,7 +31,7 @@ import Gtk from "gi://Gtk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
 import { Note, settings } from "./util.js";
-import { delete_note, load_notes, save_notes } from "./store.js";
+import { delete_note, load_notes, save_note, save_notes } from "./store.js";
 import { Window } from "./window.js";
 
 export class Application extends Adw.Application {
@@ -62,7 +62,13 @@ export class Application extends Adw.Application {
 
     load_notes()
       .then((notes) => {
-        notes.forEach((note) => this.notes_list.append(note));
+        notes.forEach((note) => {
+          note.connect("notify::modified", () => {
+            save_note(note);
+          });
+
+          this.notes_list.append(note);
+        });
 
         this.sort_notes();
       }).catch(console.log);
@@ -361,6 +367,10 @@ export class Application extends Adw.Application {
 
   new_note() {
     const note = Note.generate();
+
+    note.connect("notify::modified", (_, pspec) => {
+      save_note(note);
+    });
 
     this.notes_list.append(note);
 

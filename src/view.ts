@@ -323,22 +323,6 @@ export class WriteableStickyNote extends AbstractStickyNote {
   set note(note: Note | undefined) {
     this.updating = true;
     super.note = note;
-    if (note?.uuid !== this.note?.uuid) {
-      this.add_modified_listener();
-    }
-  }
-
-  add_modified_listener() {
-    if (!this.note) return;
-    if (this.source) GLib.source_remove(this.source);
-    this.source = this.buffer.connect("modified-changed", (buffer) => {
-      if (buffer.get_modified()) {
-        save_note(this.note!)
-          .then(() => {
-            this.buffer.set_modified(false);
-          }).catch(console.log);
-      }
-    });
   }
 
   change<T extends keyof Note>(key: T, value: Note[T]) {
@@ -358,10 +342,6 @@ export class WriteableStickyNote extends AbstractStickyNote {
       if (this.buffer.text == this.note!.content) return;
       this.change("content", this.buffer.text);
     });
-
-    if (note) {
-      this.add_modified_listener();
-    }
   }
 
   clear_tags() {
