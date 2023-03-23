@@ -103,7 +103,7 @@ export class Window extends Adw.ApplicationWindow {
       }
     });
 
-    this.set_style(note.style);
+    this.set_style(note.style, true);
 
     this.view = new WriteableStickyNote(note);
     this.view.connect("selection-changed", this.check_tags.bind(this));
@@ -155,7 +155,7 @@ export class Window extends Adw.ApplicationWindow {
     }
   }
 
-  set_style(style: Style) {
+  set_style(style: Style, is_init = false) {
     for (const s of this._container.get_css_classes()) {
       if (s.startsWith("style-") && s !== `style-specifity`) {
         this._container.remove_css_class(s);
@@ -164,7 +164,7 @@ export class Window extends Adw.ApplicationWindow {
 
     this._container.add_css_class(`style-${Style[style]}`);
 
-    this.note.modified_date = new Date();
+    if (!is_init) this.note.modified_date = new Date();
   }
 
   delete() {

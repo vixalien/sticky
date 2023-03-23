@@ -63,11 +63,20 @@ export class Application extends Adw.Application {
     load_notes()
       .then((notes) => {
         notes.forEach((note) => {
-          note.connect("notify::modified", () => {
+          note.connect("notify::modified", (_, x) => {
+            save_note(note);
+          });
+
+          // changing open doesn't change modified
+          note.connect("notify::open", () => {
             save_note(note);
           });
 
           this.notes_list.append(note);
+
+          if (note.open) {
+            this.show_note(note.uuid);
+          }
         });
 
         this.sort_notes();
@@ -368,7 +377,12 @@ export class Application extends Adw.Application {
   new_note() {
     const note = Note.generate();
 
-    note.connect("notify::modified", (_, pspec) => {
+    note.connect("notify::modified", () => {
+      save_note(note);
+    });
+
+    // changing open doesn't change modified
+    note.connect("notify::open", () => {
       save_note(note);
     });
 
@@ -411,7 +425,7 @@ export class Application extends Adw.Application {
       this.delete_note(uuid);
     });
 
-    note.open = true;
+    if (note.open === false) note.open = true;
 
     window.present();
   }
