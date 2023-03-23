@@ -48,7 +48,7 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
-		<release version="0.1.6" release="2023-03-23">
+		<release version="0.1.6" date="2023-03-23">
 			<description>
 				<p>this release enhances usability and reliability</p>
 				<ul>
