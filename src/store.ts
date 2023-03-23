@@ -60,31 +60,32 @@ export const load_file = (file: Gio.File) => {
     }
   }
 
-  return file.load_contents_async(null)
-    .then(([contents]) => {
-      try {
-        return JSON.parse(decoder.decode(contents));
-      } catch (e: unknown) {
+  try {
+    const [_, contents] = file.load_contents(null);
+
+    try {
+      return JSON.parse(decoder.decode(contents));
+    } catch (e: unknown) {
+      throw new StickyError(
+        StickyErrorType.FILE_CORRUPTED,
+        "Failed to parse notes",
+      );
+    }
+  } catch (e) {
+    if (e instanceof GLib.Error) {
+      if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
         throw new StickyError(
-          StickyErrorType.FILE_CORRUPTED,
-          "Failed to parse notes",
+          StickyErrorType.FILE_NOT_FOUND,
+          "Failed to load notes",
+        );
+      } else {
+        throw new StickyError(
+          StickyErrorType.UNKNOWN,
+          "Failed to load notes",
         );
       }
-    }).catch((e: unknown) => {
-      if (e instanceof GLib.Error) {
-        if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND)) {
-          throw new StickyError(
-            StickyErrorType.FILE_NOT_FOUND,
-            "Failed to load notes",
-          );
-        } else {
-          throw new StickyError(
-            StickyErrorType.UNKNOWN,
-            "Failed to load notes",
-          );
-        }
-      }
-    });
+    }
+  }
 };
 
 export const save_file = (file: Gio.File, data: any) => {
@@ -95,29 +96,29 @@ export const save_file = (file: Gio.File, data: any) => {
   //   string.length,
   // );
 
-  return file.replace_contents_async(
-    encoder.encode(string),
-    null,
-    true,
-    Gio.FileCreateFlags.NONE,
-    null,
-  ).catch(
-    (e: unknown) => {
-      if (e instanceof GLib.Error) {
-        if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.PERMISSION_DENIED)) {
-          throw new StickyError(
-            StickyErrorType.NO_PERMISSION,
-            "Failed to save notes",
-          );
-        } else {
-          throw new StickyError(
-            StickyErrorType.UNKNOWN,
-            "Failed to save notes",
-          );
-        }
+  try {
+    return file.replace_contents(
+      encoder.encode(string),
+      null,
+      true,
+      Gio.FileCreateFlags.NONE,
+      null,
+    );
+  } catch (e) {
+    if (e instanceof GLib.Error) {
+      if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.PERMISSION_DENIED)) {
+        throw new StickyError(
+          StickyErrorType.NO_PERMISSION,
+          "Failed to save notes",
+        );
+      } else {
+        throw new StickyError(
+          StickyErrorType.UNKNOWN,
+          "Failed to save notes",
+        );
       }
-    },
-  );
+    }
+  }
 };
 
 export const ensure_dir = (dir: Gio.File) => {
@@ -148,20 +149,23 @@ const load_notes_v1 = (notes: any) => {
   } as LoadNotesReturn;
 };
 
-export async function load_notes() {
-  const index = await load_file(Notes)
-    .catch((e: unknown) => {
-      if (e instanceof StickyError) {
-        if (
-          e.type == StickyErrorType.FILE_NOT_FOUND ||
-          e.type == StickyErrorType.FILE_CORRUPTED
-        ) {
-          return null;
-        } else {
-          throw e;
-        }
+export function load_notes() {
+  let index = null;
+
+  try {
+    index = load_file(Notes) ?? null;
+  } catch (e) {
+    if (e instanceof StickyError) {
+      if (
+        e.type == StickyErrorType.FILE_NOT_FOUND ||
+        e.type == StickyErrorType.FILE_CORRUPTED
+      ) {
+        // ignore
+      } else {
+        throw e;
       }
-    });
+    }
+  }
 
   if (index !== null) {
     // if the index exists, load the notes from the index
@@ -175,14 +179,10 @@ export async function load_notes() {
 
   const files = list_files(NewNotesDir);
 
-  return Promise.all(
-    files
-      .filter((file) => file.get_basename()!.endsWith(".json"))
-      .map((file) =>
-        load_file(file)
-          .then((note) => new Note(note))
-      ),
-  );
+  return files
+    .filter((file) => file.get_basename()!.endsWith(".json"))
+    .map((file) => load_file(file))
+    .map((note) => new Note(note));
 }
 
 export const list_files = (dir: Gio.File) => {
@@ -204,7 +204,7 @@ export const list_files = (dir: Gio.File) => {
   return files;
 };
 
-export async function save_notes(notes: Note[]) {
+export function save_notes(notes: Note[]) {
   ensure_dir(NewNotesDir);
 
   const files = list_files(NewNotesDir);
@@ -230,7 +230,7 @@ export async function save_notes(notes: Note[]) {
         deletes.push(file);
       }
     } else {
-      deletes.push(file);
+      // deletes.push(file);
     }
   }
 
@@ -245,13 +245,7 @@ export async function save_notes(notes: Note[]) {
     file.delete(null);
   }
 
-  return Promise.all(
-    writes.map(([note, file]) =>
-      save_file(file, note).catch((e) => {
-        throw e;
-      })
-    ),
-  );
+  return writes.map(([note, file]) => save_file(file, note));
 }
 
 export function save_note(note: Note) {
