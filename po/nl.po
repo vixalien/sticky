@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-12 23:13+0200\n"
-"PO-Revision-Date: 2023-03-03 13:48+0100\n"
+"PO-Revision-Date: 2023-03-23 11:54+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/com.vixalien.sticky.desktop.in.in:3
 #: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
@@ -72,47 +72,51 @@ msgstr "Angelo Verlain"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:53
 msgid "mostly a bug fix and tune-up release"
-msgstr ""
+msgstr "Fouten opgelost en prestatieverbeteringen"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:55
 msgid "make style (color) selector easier to change using the keyboard"
 msgstr ""
+"Stijlkeuze (kleur) met behulp van het toetsenbord is voortaan eenvoudiger"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:56
 msgid ""
 "added more translations (tamil, hungary, catalan) and update russian "
 "translations"
 msgstr ""
+"Nieuw: meer vertalingen (Tamil, Hongaars en Catalaans) en bijgewerkte "
+"Russische vertaling"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:57
 msgid ""
 "you can now choose to use dark or light mode manually instead of always "
 "using the system theme in the all notes window"
-msgstr ""
+msgstr "U kunt voortaan zelf kiezen voor het lichte of donkere thema"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:64
 msgid "this is unexpectedly a large release"
-msgstr ""
+msgstr "Dit is een onverwachts grote uitgave"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:66
 msgid "new icon"
-msgstr ""
+msgstr "Nieuw pictogram"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:67
 msgid "added translations (french, russian, italian, dutch, ocitan)"
 msgstr ""
+"Nieuw: Franse, Russische, Italiaanse, Nederlandse en Occitaanse vertalingen"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:68
 msgid "bug fixes"
-msgstr ""
+msgstr "Fouten opgelost"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:74
 msgid "this is mostly a cleanup release"
-msgstr ""
+msgstr "Alles is opgepoetst"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:76
 msgid "added translation support (starting with french)"
-msgstr ""
+msgstr "Nieuw: vertaalondersteuning (te beginnen met Frans)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:77
 msgid ""
@@ -120,14 +124,17 @@ msgid ""
 "that for example if you click Ctrl+B while there's nothing selected, the new "
 "content you'll write will come out as bold"
 msgstr ""
+"Labels worden voortaan onder de cursorlocatie geplaatst als er niets is "
+"geselecteerd. En u kunt bijvoorbeeld met behulp van Ctrl+B nieuwe notitie-"
+"inhoud vetgedrukt maken."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:80
 msgid "fixed builds"
-msgstr ""
+msgstr "Bouwsels verbeterd"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:81
 msgid "restructured/cleaned source"
-msgstr ""
+msgstr "Broncode heringedeeld/opgeruimd"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:87
 msgid "First beta release!"
@@ -167,23 +174,21 @@ msgstr "Of er om bevestiging dient te worden gevraagd bij verwijderen"
 
 #: data/com.vixalien.sticky.gschema.xml.in:36
 msgid "The selected color scheme"
-msgstr ""
+msgstr "Gekozen thema"
 
 #: data/com.vixalien.sticky.gschema.xml.in:37
 msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
-msgstr ""
+msgstr "Het gekozen thema. 0 = systeemthema; 1 = licht; 2 = donker"
 
 #: data/com.vixalien.sticky.gschema.xml.in:43
-#, fuzzy
 msgid "Show all notes"
-msgstr "Er zijn geen notities"
+msgstr "Alle notities tonen"
 
 #: data/com.vixalien.sticky.gschema.xml.in:44
 msgid "Whether to show the all notes window or note"
-msgstr ""
+msgstr "Of alle notities of een enkele notitie dienen te worden getoond"
 
 #: data/ui/card.ui:13
-#, fuzzy
 msgid "Note is Open"
 msgstr "Deze notitie is geopend"
 
@@ -194,34 +199,29 @@ msgstr "Notitie verwijderen"
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: data/ui/help-overlay.ui:14
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Sneltoetsen"
+msgstr "Sneltoetsen tonen"
 
 #: data/ui/help-overlay.ui:20
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Afsluiten"
 
 #: data/ui/help-overlay.ui:28
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Notes"
-msgstr "Er zijn geen notities"
+msgstr "Notities"
 
 #: data/ui/help-overlay.ui:31
-#, fuzzy
 msgctxt "shortcut window"
 msgid "New Note"
-msgstr "Notitie verwijderen"
+msgstr "Nieuwe notitie"
 
 #: data/ui/help-overlay.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Delete note"
 msgstr "Notitie verwijderen"
@@ -229,69 +229,61 @@ msgstr "Notitie verwijderen"
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Navigation"
-msgstr ""
+msgstr "Navigatie"
 
 #: data/ui/help-overlay.ui:48
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show all notes"
-msgstr "Er zijn geen notities"
+msgstr "Alle notities tonen"
 
 #: data/ui/help-overlay.ui:54
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Cycle between notes"
-msgstr "Notitie verwijderen"
+msgstr "Van notitie wisselen"
 
 #: data/ui/help-overlay.ui:60
 msgctxt "shortcut window"
 msgid "Cycle between notes in reverse order"
-msgstr ""
+msgstr "Van notitie wisselen (omgekeerde volgorde)"
 
 #: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Editing"
-msgstr ""
+msgstr "Bewerken"
 
 #: data/ui/help-overlay.ui:71
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Bold"
 msgstr "Vetgedrukt"
 
 #: data/ui/help-overlay.ui:77
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Italic"
 msgstr "Cursief"
 
 #: data/ui/help-overlay.ui:83
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Underline"
 msgstr "Onderstrepen"
 
 #: data/ui/help-overlay.ui:89
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Doorhalen"
 
 #: data/ui/notes.ui:21 data/ui/window.ui:21
-#, fuzzy
 msgid "New Note"
-msgstr "Notitie verwijderen"
+msgstr "Nieuwe notitie"
 
 #: data/ui/notes.ui:29 data/ui/window.ui:28
 msgid "Main Menu"
-msgstr ""
+msgstr "Hoofdmenu"
 
 #: data/ui/notes.ui:59
 msgid "Search notes…"
-msgstr ""
+msgstr "Notities doorzoeken…"
 
 #: data/ui/notes.ui:70
-#, fuzzy
 msgid "No Notes"
 msgstr "Er zijn geen notities"
 
@@ -300,9 +292,8 @@ msgid "After you create notes, they will appear here"
 msgstr "Nieuwe notities worden hier getoond"
 
 #: data/ui/notes.ui:75
-#, fuzzy
 msgid "_New Note"
-msgstr "Notitie verwijderen"
+msgstr "_Nieuwe notitie"
 
 #: data/ui/notes.ui:91
 msgid "No Results"
@@ -313,7 +304,6 @@ msgid "Try a different search"
 msgstr "Probeer een andere zoekopdracht"
 
 #: data/ui/notes.ui:124
-#, fuzzy
 msgid "Keyboard Shortcuts"
 msgstr "Sneltoetsen"
 
@@ -327,16 +317,15 @@ msgstr "Afsluiten"
 
 #: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
 msgid "Follow system style"
-msgstr ""
+msgstr "Systeemthema"
 
 #: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
-#, fuzzy
 msgid "Light style"
-msgstr "%s notitiekleur"
+msgstr "Licht thema"
 
 #: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
 msgid "Dark style"
-msgstr ""
+msgstr "Donker thema"
 
 #: data/ui/window.ui:79
 msgid "Bold"
