@@ -286,6 +286,16 @@ export class Application extends Adw.Application {
     aboutWindow.present();
   }
 
+  notes_array() {
+    const notes: Note[] = [];
+
+    this.foreach_note((note) => {
+      notes.push(note);
+    });
+
+    return notes;
+  }
+
   foreach_note(cb: (note: Note, id?: number) => void) {
     let id = 0;
 
@@ -296,26 +306,11 @@ export class Application extends Adw.Application {
   }
 
   find_note_id(uuid: string) {
-    let id = 0;
-
-    while (id < this.notes_list.n_items) {
-      if (this.notes_list.get_item(id)!.uuid === uuid) {
-        return id;
-      }
-      id++;
-    }
+    return this.notes_array().findIndex((note) => note.uuid === uuid);
   }
 
   find_note(uuid: string) {
-    let id = 0;
-
-    while (id < this.notes_list.n_items) {
-      const note = this.notes_list.get_item(id)!;
-      if (note.uuid === uuid) {
-        return note;
-      }
-      id++;
-    }
+    return this.notes_array().find((note) => note.uuid === uuid);
   }
 
   find_open_window(uuid: string) {
