@@ -416,7 +416,13 @@ export class Application extends Adw.Application {
     window.add_controller(this.new_controller());
 
     window.connect("close-request", () => {
-      note.open = false;
+      // if this is the last window, it means that the app will be closed
+      // immediately after, so keep this as "open" when the all notes window
+      // is open (so that it's restored when the app is opened again)
+      if (!(this.note_windows.length === 1 && !this.window)) {
+        note.open = false;
+      }
+
       this.note_windows = this.note_windows.filter((win) => win !== window);
       this.window?.set_note_visible(note!.uuid, false);
       return false;
