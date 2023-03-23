@@ -336,7 +336,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
         save_note(this.note!)
           .then(() => {
             this.buffer.set_modified(false);
-          }).catch(logError);
+          }).catch(console.log);
       }
     });
   }
