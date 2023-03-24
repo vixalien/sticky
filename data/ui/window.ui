@@ -45,6 +45,10 @@
               <object class="GtkTextView" id="text">
                 <property name="editable">true</property>
                 <property name="wrap-mode">word-char</property>
+                <property name="top-margin">12</property>
+                <property name="bottom-margin">12</property>
+                <property name="left-margin">12</property>
+                <property name="right-margin">12</property>
                 <style>
                   <class name="text-view"/>
                 </style>
