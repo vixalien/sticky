@@ -1,14 +1,14 @@
 # Translations for Sticky Notes
 # Copyright © 2023 Sticky Notes contributors
 # This file is distributed under the same license as the sticky-notes package.
-# Sticky Notes contributors, 2023.
+# Angelo Verlain <geoangercola@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-12 23:13+0200\n"
-"PO-Revision-Date: 2023-03-05 14:51+0100\n"
+"PO-Revision-Date: 2023-03-24 16:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -69,47 +69,50 @@ msgstr "Angelo Verlain"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:53
 msgid "mostly a bug fix and tune-up release"
-msgstr ""
+msgstr "bug-fix és javítások"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:55
 msgid "make style (color) selector easier to change using the keyboard"
-msgstr ""
+msgstr "Egyszerűen változtathat stílust (színt) a billentyűzet segítségével"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:56
 msgid ""
 "added more translations (tamil, hungary, catalan) and update russian "
 "translations"
 msgstr ""
+"további nyelvek hozzáadása (tamil, magyar, catalan) és orosz nyelv update"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:57
 msgid ""
 "you can now choose to use dark or light mode manually instead of always "
 "using the system theme in the all notes window"
 msgstr ""
+"Kiválaszthatja a sötét vagy a világos módot vagy használhatja a rendszer "
+"beállításokat az összes jegyzet ablakban"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:64
 msgid "this is unexpectedly a large release"
-msgstr ""
+msgstr "Ez egy váratlanul nagy kiadás"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:66
 msgid "new icon"
-msgstr ""
+msgstr "új ikon"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:67
 msgid "added translations (french, russian, italian, dutch, ocitan)"
-msgstr ""
+msgstr "további nyelvek hozzáadása (francia, orosz, olasz, német, ocitan)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:68
 msgid "bug fixes"
-msgstr ""
+msgstr "bug fix"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:74
 msgid "this is mostly a cleanup release"
-msgstr ""
+msgstr "Egy tisztított kiadás"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:76
 msgid "added translation support (starting with french)"
-msgstr ""
+msgstr "további nyelvek hozzáadása (francia elkezdve)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:77
 msgid ""
@@ -117,14 +120,17 @@ msgid ""
 "that for example if you click Ctrl+B while there's nothing selected, the new "
 "content you'll write will come out as bold"
 msgstr ""
+"Alkalmazza a címkét a kurzor alatti helyre, ha nincs kiválasztva. Ez azt "
+"jelenti, hogy ha a Ctrl+B billentyűt lenyomja, miközben nincs kiválasztva "
+"semmi, akkor az új tartalom félkövér lesz"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:80
 msgid "fixed builds"
-msgstr ""
+msgstr "fixed kiadás"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:81
 msgid "restructured/cleaned source"
-msgstr ""
+msgstr "átstrukturált/tisztított kiadás "
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:87
 msgid "First beta release!"
@@ -164,23 +170,21 @@ msgstr "Valóban törölni kívánja a jegyzetet?"
 
 #: data/com.vixalien.sticky.gschema.xml.in:36
 msgid "The selected color scheme"
-msgstr ""
+msgstr "a jegyzet színének változtatása"
 
 #: data/com.vixalien.sticky.gschema.xml.in:37
 msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
-msgstr ""
+msgstr "A kiválasztott színséma. 0 = rendszerstílus, 1 = világos, 2 = sötét "
 
 #: data/com.vixalien.sticky.gschema.xml.in:43
-#, fuzzy
 msgid "Show all notes"
-msgstr "Nincs jegyzet"
+msgstr "Összes jegyzet"
 
 #: data/com.vixalien.sticky.gschema.xml.in:44
 msgid "Whether to show the all notes window or note"
-msgstr ""
+msgstr "Az összes jegyzet vagy jegyzetablak megjelenítése"
 
 #: data/ui/card.ui:13
-#, fuzzy
 msgid "Note is Open"
 msgstr "Jegyzet nyitva"
 
@@ -191,34 +195,29 @@ msgstr "Jegyzet törlése"
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Általános"
 
 #: data/ui/help-overlay.ui:14
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Gyorsbillentyűk"
 
 #: data/ui/help-overlay.ui:20
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Bezárás"
 
 #: data/ui/help-overlay.ui:28
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Notes"
-msgstr "Nincs jegyzet"
+msgstr "Notes"
 
 #: data/ui/help-overlay.ui:31
-#, fuzzy
 msgctxt "shortcut window"
 msgid "New Note"
-msgstr "Jegyzet törlése"
+msgstr "Új jegyzet"
 
 #: data/ui/help-overlay.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Delete note"
 msgstr "Jegyzet törlése"
@@ -226,69 +225,61 @@ msgstr "Jegyzet törlése"
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Navigation"
-msgstr ""
+msgstr "Navigáció"
 
 #: data/ui/help-overlay.ui:48
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show all notes"
-msgstr "Nincs jegyzet"
+msgstr "Összes jegyzet megtekintése"
 
 #: data/ui/help-overlay.ui:54
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Cycle between notes"
-msgstr "Jegyzet törlése"
+msgstr "Körbelépés a noteszek között"
 
 #: data/ui/help-overlay.ui:60
 msgctxt "shortcut window"
 msgid "Cycle between notes in reverse order"
-msgstr ""
+msgstr "Körbelépés a noteszek között visszafelé"
 
 #: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Editing"
-msgstr ""
+msgstr "Szerkesztés"
 
 #: data/ui/help-overlay.ui:71
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Bold"
 msgstr "Kövér"
 
 #: data/ui/help-overlay.ui:77
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Italic"
 msgstr "Dőlt"
 
 #: data/ui/help-overlay.ui:83
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Underline"
 msgstr "Aláhúzott"
 
 #: data/ui/help-overlay.ui:89
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Áthúzott"
 
 #: data/ui/notes.ui:21 data/ui/window.ui:21
-#, fuzzy
 msgid "New Note"
-msgstr "Jegyzet törlése"
+msgstr "Új jegyzet"
 
 #: data/ui/notes.ui:29 data/ui/window.ui:28
 msgid "Main Menu"
-msgstr ""
+msgstr "Főmenü"
 
 #: data/ui/notes.ui:59
 msgid "Search notes…"
-msgstr ""
+msgstr "Keresés..."
 
 #: data/ui/notes.ui:70
-#, fuzzy
 msgid "No Notes"
 msgstr "Nincs jegyzet"
 
@@ -297,9 +288,8 @@ msgid "After you create notes, they will appear here"
 msgstr "A jegyzet létrehozása után itt fognak megjelenni"
 
 #: data/ui/notes.ui:75
-#, fuzzy
 msgid "_New Note"
-msgstr "Jegyzet törlése"
+msgstr "_Új jegyzet"
 
 #: data/ui/notes.ui:91
 msgid "No Results"
@@ -310,7 +300,6 @@ msgid "Try a different search"
 msgstr "Próbálkozzon másik kereséssel"
 
 #: data/ui/notes.ui:124
-#, fuzzy
 msgid "Keyboard Shortcuts"
 msgstr "Gyorsbillentyűk"
 
@@ -324,16 +313,15 @@ msgstr "Bezárás"
 
 #: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
 msgid "Follow system style"
-msgstr ""
+msgstr "Rendszertéma használata"
 
 #: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
-#, fuzzy
 msgid "Light style"
-msgstr "Váltás a %s stílusra"
+msgstr "Világos téma "
 
 #: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
 msgid "Dark style"
-msgstr ""
+msgstr "Sötét téma"
 
 #: data/ui/window.ui:79
 msgid "Bold"
@@ -396,9 +384,3 @@ msgstr "Ablak"
 #: src/view.ts:272
 msgid "Empty Note"
 msgstr "Üres jegyzet"
-
-#~ msgid "Create a new note"
-#~ msgstr "Új jegyzet létrehozása"
-
-#~ msgid "Search..."
-#~ msgstr "Keresés..."
