@@ -1,7 +1,7 @@
 # Translations for Sticky Notes
 # Copyright © 2023 Sticky Notes contributors
 # This file is distributed under the same license as the sticky-notes package.
-# Andras Pelach <pelach.andras@gmail.com>, 2023.
+# Sticky Notes contributors, 2023.
 #
 msgid ""
 msgstr ""
