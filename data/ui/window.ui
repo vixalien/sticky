@@ -38,7 +38,6 @@
                   <object class="GtkBox"></object>
                 </property>
                 <style>
-                  <class name="flat"/>
                   <class name="header-bar"/>
                 </style>
               </object>
@@ -82,7 +81,6 @@
                     <property name="valign">end</property>
                     <style>
                       <class name="toolbar"/>
-                      <class name="flat"/>
                     </style>
                     <child>
                       <object class="GtkToggleButton" id="bold_button">
