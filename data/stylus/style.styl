@@ -1,5 +1,6 @@
 @import 'colors.styl';
 @import 'notes.styl';
+@import 'util.styl';
 
 .container {
   transition: 0.35s background-color ease-out, 0.35s color ease-out;
@@ -14,25 +15,34 @@
   color: inherit;
 }
 
-.header-bar, .toolbar, .separator {
+.header-bar, .toolbar-container {
   transition: none;
 }
 
 .container:not(:focus-within) {
-  .header-bar, .toolbar, .separator {
+  .header-bar, .toolbar-container {
     transition: 0.25s opacity ease-out;
     opacity: 0;
+
+    &:hover {
+      opacity: 1;
+      transition: 0;
+    }
+  }
+
+  .header-bar:backdrop > * {
+    opacity: 1;
   }
 }
 
 for name, info in colors {
   .container.style-{name} {
-    &, & popover > arrow, & popover > contents, ~/ {
+    &, & popover > arrow, & popover > contents, .toolbar-container, ~/ {
       background-color: info.bg;
       color: info.fg;
     }
   }
-  
+
   .container.style-{name} .header-bar {
     background-color: info.header;
   }

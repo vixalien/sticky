@@ -12,99 +12,110 @@
           <class name="style-specifity"/>
         </style>
         <child>
-          <object class="AdwHeaderBar">
+          <object class="GtkOverlay">
             <property name="hexpand">true</property>
-            <child type="start">
-              <object class="GtkButton">
-                <property name="icon-name">list-add-symbolic</property>
-                <property name="action-name">app.new-note</property>
-                <property name="tooltip-text" translatable="yes">New Note</property>
-              </object>
-            </child>
-            <child type="end">
-              <object class="GtkMenuButton" id="menu_button">
-                <property name="icon-name">open-menu-symbolic</property>
-                <property name="menu-model">app_menu</property>
-                <property name="tooltip-text" translatable="yes">Main Menu</property>
-                <property name="primary">true</property>
-              </object>
-            </child>
-            <property name="title-widget">
-              <object class="GtkBox"></object>
-            </property>
-            <style>
-              <class name="flat"/>
-              <class name="header-bar"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow">
             <property name="vexpand">true</property>
-            <child>
-              <object class="GtkTextView" id="text">
-                <property name="editable">true</property>
-                <property name="wrap-mode">word-char</property>
-                <property name="top-margin">12</property>
-                <property name="bottom-margin">12</property>
-                <property name="left-margin">12</property>
-                <property name="right-margin">12</property>
+            <child type="overlay">
+              <object class="AdwHeaderBar" id="headerbar">
+                <property name="hexpand">true</property>
+                <property name="valign">start</property>
+                <child type="start">
+                  <object class="GtkButton">
+                    <property name="icon-name">list-add-symbolic</property>
+                    <property name="action-name">app.new-note</property>
+                    <property name="tooltip-text" translatable="true">New Note</property>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkMenuButton" id="menu_button">
+                    <property name="icon-name">open-menu-symbolic</property>
+                    <property name="menu-model">app_menu</property>
+                    <property name="tooltip-text" translatable="true">Main Menu</property>
+                    <property name="primary">true</property>
+                  </object>
+                </child>
+                <property name="title-widget">
+                  <object class="GtkBox"></object>
+                </property>
                 <style>
-                  <class name="text-view"/>
-                </style>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <property name="valign">end</property>
-            <child>
-              <object class="GtkSeparator">
-                <property name="valign">end</property>
-                <style>
-                  <class name="separator"/>
-                </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="valign">end</property>
-                <style>
-                  <class name="toolbar"/>
                   <class name="flat"/>
+                  <class name="header-bar"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolled">
+                <property name="vexpand">true</property>
+                <property name="hexpand">true</property>
+                <child>
+                  <object class="GtkTextView" id="text">
+                    <property name="editable">true</property>
+                    <property name="wrap-mode">word-char</property>
+                    <property name="top-margin">60</property>
+                    <property name="bottom-margin">60</property>
+                    <property name="left-margin">12</property>
+                    <property name="right-margin">12</property>
+                    <style>
+                      <class name="text-view"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="overlay">
+              <object class="GtkBox" id="toolbar">
+                <property name="orientation">vertical</property>
+                <property name="valign">end</property>
+                <style>
+                  <class name="toolbar-container"/>
                 </style>
                 <child>
-                  <object class="GtkToggleButton" id="bold_button">
-                    <property name="icon-name">format-text-bold-symbolic</property>
-                    <property name="action-name">win.bold</property>
-                    <property name="focus-on-click">false</property>
-                    <property name="tooltip-text" translatable="yes">Bold</property>
+                  <object class="GtkSeparator">
+                    <property name="valign">end</property>
+                    <style>
+                      <class name="separator"/>
+                    </style>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkToggleButton" id="italic_button">
-                    <property name="icon-name">format-text-italic-symbolic</property>
-                    <property name="action-name">win.italic</property>
-                    <property name="focus-on-click">false</property>
-                    <property name="tooltip-text" translatable="yes">Italic</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkToggleButton" id="underline_button">
-                    <property name="icon-name">format-text-underline-symbolic</property>
-                    <property name="action-name">win.underline</property>
-                    <property name="focus-on-click">false</property>
-                    <property name="tooltip-text" translatable="yes">Underline</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkToggleButton" id="strikethrough_button">
-                    <property name="icon-name">format-text-strikethrough-symbolic</property>
-                    <property name="action-name">win.strikethrough</property>
-                    <property name="focus-on-click">false</property>
-                    <property name="tooltip-text" translatable="yes">Strikethrough</property>
+                  <object class="GtkBox">
+                    <property name="valign">end</property>
+                    <style>
+                      <class name="toolbar"/>
+                      <class name="flat"/>
+                    </style>
+                    <child>
+                      <object class="GtkToggleButton" id="bold_button">
+                        <property name="icon-name">format-text-bold-symbolic</property>
+                        <property name="action-name">win.bold</property>
+                        <property name="focus-on-click">false</property>
+                        <property name="tooltip-text" translatable="true">Bold</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkToggleButton" id="italic_button">
+                        <property name="icon-name">format-text-italic-symbolic</property>
+                        <property name="action-name">win.italic</property>
+                        <property name="focus-on-click">false</property>
+                        <property name="tooltip-text" translatable="true">Italic</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkToggleButton" id="underline_button">
+                        <property name="icon-name">format-text-underline-symbolic</property>
+                        <property name="action-name">win.underline</property>
+                        <property name="focus-on-click">false</property>
+                        <property name="tooltip-text" translatable="true">Underline</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkToggleButton" id="strikethrough_button">
+                        <property name="icon-name">format-text-strikethrough-symbolic</property>
+                        <property name="action-name">win.strikethrough</property>
+                        <property name="focus-on-click">false</property>
+                        <property name="tooltip-text" translatable="true">Strikethrough</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -122,11 +133,11 @@
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">All Notes</attribute>
+        <attribute name="label" translatable="true">All Notes</attribute>
         <attribute name="action">app.all-notes</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">Delete Note</attribute>
+        <attribute name="label" translatable="true">Delete Note</attribute>
         <attribute name="action">win.delete</attribute>
       </item>
     </section>
