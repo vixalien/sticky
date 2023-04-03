@@ -11,7 +11,8 @@ sources = [
   'themeselector.ts',
   'view.ts',
   'window.ts',
-  'util.ts'
+  'util.ts',
+  'url.ts'
 ]
 
 outputs = []
@@ -24,7 +25,7 @@ typescript = custom_target(
   build_by_default: true,
   input: files(sources),
   command: [
-    package_manager, package_manager_args, 'run', 'build', '--out', meson.project_build_root() / '@OUTDIR@', '--cwd', meson.project_build_root(), '@INPUT@',
+    package_manager, package_manager_args, 'run', 'build', '--out', meson.project_build_root() / '@OUTDIR@', '--cwd', meson.project_build_root(), '@INPUT@', '--src', meson.project_source_root()
   ],
   depends: package_manager_deps,
   output: outputs,

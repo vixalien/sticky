@@ -12,5 +12,6 @@
     <file>view.js</file>
     <file>window.js</file>
     <file>util.js</file>
+    <file>url.js</file>
   </gresource>
 </gresources>

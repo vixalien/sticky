@@ -8,6 +8,8 @@
   "author": "Angelo Verlain <hey@vixalien.com>",
   "license": "MIT",
   "dependencies": {
+    "ip-regex": "^5.0.0",
+    "tlds": "^1.238.0",
     "typescript": "^4.7.4"
   },
   "type": "module",

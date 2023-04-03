@@ -31,6 +31,7 @@ import GLib from "gi://GLib";
 import { save_note } from "./store.js";
 
 import { ITag, Note } from "./util.js";
+import urlRegex from "./url.js";
 
 class AbstractStickyNote extends Gtk.TextView {
   static {
@@ -52,6 +53,7 @@ class AbstractStickyNote extends Gtk.TextView {
   underline_tag = Gtk.TextTag.new("underline");
   italic_tag = Gtk.TextTag.new("italic");
   strikethrough_tag = Gtk.TextTag.new("strikethrough");
+  link_tag = Gtk.TextTag.new("link");
 
   actions = [
     ["bold", this.bold_tag],
@@ -104,10 +106,14 @@ class AbstractStickyNote extends Gtk.TextView {
     this.italic_tag.style = Pango.Style.ITALIC;
     this.strikethrough_tag.strikethrough = true;
 
+    this.link_tag.foreground = "blue";
+    this.link_tag.underline = Pango.Underline.SINGLE;
+
     this.buffer.tag_table.add(this.bold_tag);
     this.buffer.tag_table.add(this.underline_tag);
     this.buffer.tag_table.add(this.italic_tag);
     this.buffer.tag_table.add(this.strikethrough_tag);
+    this.buffer.tag_table.add(this.link_tag);
   }
 
   init_tags(tags: Note["tags"]) {
@@ -186,6 +192,8 @@ class AbstractStickyNote extends Gtk.TextView {
     const tags: Note["tags"] = [];
 
     this.buffer.get_tag_table().foreach((tag) => {
+      if (tag === this.link_tag) return;
+      
       const start = this.buffer.get_start_iter();
 
       while (start.forward_to_tag_toggle(tag)) {
@@ -329,9 +337,41 @@ export class WriteableStickyNote extends AbstractStickyNote {
         this.updating = false;
         return;
       }
+      this.update_links();
       if (this.buffer.text == this.note!.content) return;
       this.change("content", this.buffer.text);
     });
+  }
+
+  clear_links() {
+    this.buffer.remove_tag(
+      this.link_tag,
+      this.buffer.get_start_iter(),
+      this.buffer.get_end_iter(),
+    );
+    this.emit("tag-toggle", "link", false);
+  }
+
+  update_links() {
+    const text = this.buffer.text;
+    const regex = urlRegex({
+      // necessary for email addresses
+      auth: true,
+    }) as RegExp;
+
+    this.clear_links();
+
+    let match;
+
+    while ((match = regex.exec(text)) !== null) {
+      // console.log(`Matched text: ${match[0]}, index: ${match.index}`);
+      const start = this.buffer.get_iter_at_offset(match.index);
+      const end = this.buffer.get_iter_at_offset(match.index + match[0].length);
+
+      this.buffer.apply_tag(this.link_tag, start, end);
+    }
+
+    this.emit("tag-toggle", "link", true);
   }
 
   clear_tags() {
