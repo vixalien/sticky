@@ -41,6 +41,10 @@ class AbstractStickyNote extends Gtk.TextView {
             param_types: [GObject.TYPE_STRING, GObject.TYPE_BOOLEAN],
           },
           "selection-changed": {},
+          "link-selected": {
+            param_types: [GObject.TYPE_STRING],
+          },
+          "link-unselected": {},
         },
       },
       this,
@@ -86,16 +90,57 @@ class AbstractStickyNote extends Gtk.TextView {
     if (note) this._note = this.note = note;
 
     this.buffer.connect("mark-set", (buffer, _loc, mark) => {
-      if (mark.name === "insert" || mark.name === "selection_bound") {
+      if (!this.note) return;
+
+      if (
+        mark.name === "insert" || mark.name === "selection_bound" ||
+        this.buffer.get_iter_at_mark(mark).equal(
+          this.buffer.get_iter_at_mark(this.buffer.get_insert()),
+        )
+      ) {
         this.emit("selection-changed");
+
+        this.check_link_selected();
       }
 
-      if (!this.note) return;
       const tags = this.get_tags();
-      if (!compare_tags(tags, this.note.tags)) {
-        this.note.tags = tags;
-      }
+      if (compare_tags(tags, this.note.tags)) return;
+      this.note.tags = tags;
     });
+  }
+
+  last_link: number | false = false;
+  last_link_end: number = 0;
+
+  check_link_selected() {
+    const has_link = this.has_tag(this.link_tag);
+
+    if (has_link) {
+      const start = this.buffer.get_iter_at_offset(has_link);
+
+      if (!start.starts_tag(this.link_tag)) {
+        start.backward_to_tag_toggle(this.link_tag);
+      }
+
+      const end = start.copy();
+      end.forward_to_tag_toggle(this.link_tag);
+
+      if (
+        start.get_offset() !== this.last_link ||
+        end.get_offset() !== this.last_link_end
+      ) {
+        const text = this.buffer.get_text(start, end, false)
+          .replace(/\u200B/g, "");
+
+        this.emit("link-selected", text);
+
+        this.last_link = start.get_offset();
+        this.last_link_end = end.get_offset();
+      }
+    } else if (has_link !== this.last_link) {
+      this.emit("link-unselected");
+      this.last_link = false;
+    }
   }
 
   private register_tags() {
@@ -133,8 +178,8 @@ class AbstractStickyNote extends Gtk.TextView {
     }
 
     do {
-      if (start.has_tag(tag)) {
-        return true;
+      if (start.has_tag(tag) !== false) {
+        return start.get_offset();
       }
       start.forward_char();
     } while (start.compare(end) < 0);
@@ -162,7 +207,7 @@ class AbstractStickyNote extends Gtk.TextView {
 
     const has_tag = this.has_tag(tag);
 
-    if (this.has_tag(tag)) {
+    if (this.has_tag(tag) !== false) {
       this.buffer.remove_tag(tag, start, end);
     } else {
       this.buffer.apply_tag(tag, start, end);
@@ -346,7 +391,9 @@ export class WriteableStickyNote extends AbstractStickyNote {
   }
 
   update_links() {
-    const text = this.buffer.text;
+    const text = this.buffer.text
+
+    console.log("text", text.indexOf("\u200B"));
 
     this.clear_links();
 
