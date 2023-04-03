@@ -26,9 +26,6 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Pango from "gi://Pango";
-import GLib from "gi://GLib";
-
-import { save_note } from "./store.js";
 
 import { ITag, Note } from "./util.js";
 import urlRegex from "./url.js";
@@ -152,11 +149,6 @@ class AbstractStickyNote extends Gtk.TextView {
        * If the user has not selected anything, we insert zero-width spaces
        * around the cursor and mark them as the start and end of the selection.
        */
-      const get_cursor = () =>
-        this.buffer.get_iter_at_mark(
-          this.buffer.get_insert(),
-        );
-
       const get_cursor_position = () => this.buffer.cursor_position;
 
       this.buffer.insert_at_cursor("\u200B\u200B\u200B", 9);
