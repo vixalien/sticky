@@ -189,11 +189,8 @@ class AbstractStickyNote extends Gtk.TextView {
 
   apply_tag(tag: Gtk.TextTag) {
     let [selection, start, end] = this.buffer.get_selection_bounds();
-
-    const has_tag = this.has_tag(tag);
-
     // if no selection, apply to the current word
-    if (!selection && !has_tag) {
+    if (!selection) {
       /**
        * If the user has not selected anything, we insert zero-width spaces
        * around the cursor and mark them as the start and end of the selection.
@@ -206,10 +203,9 @@ class AbstractStickyNote extends Gtk.TextView {
       const selec = this.buffer.get_iter_at_offset(get_cursor_position());
       selec.backward_chars(2);
       this.buffer.place_cursor(selec);
-    } else {
-      start = this.buffer.get_iter_at_offset(has_tag as number);
-      end = this.buffer.get_iter_at_offset(has_tag as number + 1);
     }
+
+    const has_tag = this.has_tag(tag);
 
     if (this.has_tag(tag) !== false) {
       this.buffer.remove_tag(tag, start, end);
@@ -395,7 +391,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
   }
 
   update_links() {
-    const text = this.buffer.text;
+    const text = this.buffer.text
 
     console.log("text", text.indexOf("\u200B"));
 
