@@ -183,32 +183,22 @@ class AbstractStickyNote extends Gtk.TextView {
   }
 
   get_tags() {
-    const start = this.buffer.get_start_iter();
-    const end = this.buffer.get_end_iter();
-
     const tags: Note["tags"] = [];
 
-    const init_tags: Gtk.TextTag[] = [];
+    this.buffer.get_tag_table().foreach((tag) => {
+      const start = this.buffer.get_start_iter();
 
-    this.buffer.get_tag_table().foreach((tag) => init_tags.push(tag));
+      while (start.forward_to_tag_toggle(tag)) {
+        const begin = start.copy();
+        start.forward_to_tag_toggle(tag);
 
-    do {
-      const current = start.copy();
-
-      for (const tag of init_tags) {
-        if (current.starts_tag(tag)) {
-          const tag_end = current.copy();
-          tag_end.forward_to_tag_toggle(tag);
-          tags.push({
-            name: tag.name,
-            start: current.get_offset(),
-            end: tag_end.get_offset(),
-          });
-        }
+        tags.push({
+          name: tag.name,
+          start: begin.get_offset(),
+          end: start.get_offset(),
+        });
       }
-
-      start.forward_char();
-    } while (start.compare(end) < 0);
+    });
 
     return tags;
   }
