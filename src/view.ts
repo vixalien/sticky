@@ -27,8 +27,9 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Pango from "gi://Pango";
 
+import { find } from "linkifyjs";
+
 import { ITag, Note } from "./util.js";
-import urlRegex from "./url.js";
 
 class AbstractStickyNote extends Gtk.TextView {
   static {
@@ -185,7 +186,7 @@ class AbstractStickyNote extends Gtk.TextView {
 
     this.buffer.get_tag_table().foreach((tag) => {
       if (tag === this.link_tag) return;
-      
+
       const start = this.buffer.get_start_iter();
 
       while (start.forward_to_tag_toggle(tag)) {
@@ -346,22 +347,17 @@ export class WriteableStickyNote extends AbstractStickyNote {
 
   update_links() {
     const text = this.buffer.text;
-    const regex = urlRegex({
-      // necessary for email addresses
-      auth: true,
-    }) as RegExp;
 
     this.clear_links();
 
-    let match;
+    find(text)
+      .forEach((match) => {
+        // console.log(`Matched text: ${match[0]}, index: ${match.index}`);
+        const start = this.buffer.get_iter_at_offset(match.start);
+        const end = this.buffer.get_iter_at_offset(match.end);
 
-    while ((match = regex.exec(text)) !== null) {
-      // console.log(`Matched text: ${match[0]}, index: ${match.index}`);
-      const start = this.buffer.get_iter_at_offset(match.index);
-      const end = this.buffer.get_iter_at_offset(match.index + match[0].length);
-
-      this.buffer.apply_tag(this.link_tag, start, end);
-    }
+        this.buffer.apply_tag(this.link_tag, start, end);
+      });
 
     this.emit("tag-toggle", "link", true);
   }
