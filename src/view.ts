@@ -391,9 +391,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
   }
 
   update_links() {
-    const text = this.buffer.text
-
-    console.log("text", text.indexOf("\u200B"));
+    const text = this.buffer.text;
 
     this.clear_links();
 
