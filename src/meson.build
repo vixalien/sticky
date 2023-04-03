@@ -11,8 +11,7 @@ sources = [
   'themeselector.ts',
   'view.ts',
   'window.ts',
-  'util.ts',
-  'url.ts'
+  'util.ts'
 ]
 
 outputs = []
