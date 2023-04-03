@@ -189,7 +189,9 @@ class AbstractStickyNote extends Gtk.TextView {
 
       const start = this.buffer.get_start_iter();
 
-      while (start.forward_to_tag_toggle(tag)) {
+      do {
+        if (!start.starts_tag(tag)) continue;
+
         const begin = start.copy();
         start.forward_to_tag_toggle(tag);
 
@@ -198,7 +200,7 @@ class AbstractStickyNote extends Gtk.TextView {
           start: begin.get_offset(),
           end: start.get_offset(),
         });
-      }
+      } while (start.forward_to_tag_toggle(tag));
     });
 
     return tags;
