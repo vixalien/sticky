@@ -90,17 +90,12 @@ export const load_file = (file: Gio.File) => {
 
 export const save_file = (file: Gio.File, data: any) => {
   const string = JSON.stringify(data, null, 2);
-  // const etag = GLib.compute_checksum_for_string(
-  //   GLib.ChecksumType.MD5,
-  //   string,
-  //   string.length,
-  // );
 
   try {
     return file.replace_contents(
       encoder.encode(string),
       null,
-      true,
+      false,
       Gio.FileCreateFlags.NONE,
       null,
     );
