@@ -185,8 +185,6 @@ class AbstractStickyNote extends Gtk.TextView {
     const tags: Note["tags"] = [];
 
     this.buffer.get_tag_table().foreach((tag) => {
-      if (tag === this.link_tag) return;
-
       const start = this.buffer.get_start_iter();
 
       do {
