@@ -352,7 +352,6 @@ export class WriteableStickyNote extends AbstractStickyNote {
 
     find(text)
       .forEach((match) => {
-        // console.log(`Matched text: ${match[0]}, index: ${match.index}`);
         const start = this.buffer.get_iter_at_offset(match.start);
         const end = this.buffer.get_iter_at_offset(match.end);
 
