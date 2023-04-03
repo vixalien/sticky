@@ -28,6 +28,7 @@ import Gio from "gi://Gio";
 import Adw from "gi://Adw";
 import GLib from "gi://GLib";
 import Gtk from "gi://Gtk?version=4.0";
+import Gdk from "gi://Gdk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
 import { Note, settings } from "./util.js";
@@ -181,6 +182,23 @@ export class Application extends Adw.Application {
       });
     });
     this.add_action(all_notes);
+
+    const open_link = new Gio.SimpleAction({
+      name: "open-link",
+      parameter_type: GLib.VariantType.new("s"),
+    });
+    open_link.connect("activate", (_, parameter) => {
+      if (!parameter) return;
+      const [uri] = parameter.get_string();
+
+      if (uri === "null") return;
+      Gtk.show_uri(
+        this.get_active_window(),
+        uri,
+        Gdk.CURRENT_TIME,
+      );
+    });
+    this.add_action(open_link);
 
     const cycle_linear = new Gio.SimpleAction({ name: "cycle" });
     cycle_linear.connect("activate", () => this.cycle_linear());

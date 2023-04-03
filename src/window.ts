@@ -27,10 +27,12 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
 import Gio from "gi://Gio";
+import GLib from "gi://GLib";
 
 import { StyleSelector } from "./styleselector.js";
 import { confirm_delete, Note, Style } from "./util.js";
 import { WriteableStickyNote } from "./view.js";
+import { find } from "linkifyjs";
 
 export class Window extends Adw.ApplicationWindow {
   _container!: Gtk.Box;
@@ -41,6 +43,8 @@ export class Window extends Adw.ApplicationWindow {
   _underline_button!: Gtk.ToggleButton;
   _italic_button!: Gtk.ToggleButton;
   _strikethrough_button!: Gtk.ToggleButton;
+  _action_button!: Gtk.ToggleButton;
+  _action_revealer!: Gtk.Revealer;
 
   // buffer = new Gtk.TextBuffer();
 
@@ -64,6 +68,8 @@ export class Window extends Adw.ApplicationWindow {
           "italic_button",
           "strikethrough_button",
           "menu_button",
+          "action_revealer",
+          "action_button",
         ],
         Signals: {
           deleted: {
@@ -116,6 +122,12 @@ export class Window extends Adw.ApplicationWindow {
         button.active = active;
       },
     );
+    this.view.connect("link-selected", (_, text) => {
+      this.update_link(true, text);
+    });
+    this.view.connect("link-unselected", () => {
+      this.update_link(false, "");
+    });
 
     this._text.buffer = this.view.buffer;
 
@@ -131,11 +143,25 @@ export class Window extends Adw.ApplicationWindow {
     popover.add_child(this.selector, "notestyleswitcher");
   }
 
+  last_revealer = false;
+
+  update_link(selected: boolean, text: string) {
+    if (selected) {
+      const href = find(text)[0].href;
+      this._action_button.action_target = GLib.Variant.new_string(href);
+    }
+
+    if (this.last_revealer === selected) return;
+
+    this.last_revealer = selected;
+    this._action_revealer.reveal_child = selected;
+  }
+
   check_tags() {
     for (const [name, tag] of this.view.actions) {
       const button =
         this[`_${name}_button` as keyof typeof this] as Gtk.ToggleButton;
-      const active = this.view.has_tag(tag);
+      const active = this.view.has_tag(tag) !== false;
       if (active === button.active) {
         continue;
       }
