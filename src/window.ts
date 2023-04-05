@@ -155,6 +155,31 @@ export class Window extends Adw.ApplicationWindow {
 
     this.last_revealer = selected;
     this._action_revealer.reveal_child = selected;
+
+    // add timeout for the transition to finish
+    GLib.timeout_add(
+      GLib.PRIORITY_DEFAULT,
+      this._action_revealer.transition_duration,
+      () => {
+        const target = Adw.PropertyAnimationTarget.new(
+          this._text,
+          "bottom_margin",
+        );
+
+        const animation = Adw.TimedAnimation.new(
+          this._text,
+          this._text.bottom_margin,
+          60 +
+            ((selected) ? this._action_revealer.get_allocated_height() : 0),
+          this._action_revealer.transition_duration,
+          target,
+        );
+
+        animation.play();
+
+        return GLib.SOURCE_REMOVE;
+      },
+    );
   }
 
   check_tags() {
