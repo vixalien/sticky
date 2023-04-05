@@ -48,7 +48,7 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
-		<release version="0.1.9" date="2023-04-05">
+		<release version="0.1.10" date="2023-04-05">
 			<description>
 				<ul>
 					<li>quickly open links in your notes</li>
