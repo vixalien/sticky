@@ -3,7 +3,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
 import Gdk from "gi://Gdk?version=4.0";
 
-const style_manager = Adw.StyleManager.get_default();
+export const style_manager = Adw.StyleManager.get_default();
 let provider: Gtk.CssProvider | null;
 
 export class ThemeSelector extends Gtk.Widget {
