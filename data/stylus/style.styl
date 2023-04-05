@@ -47,3 +47,16 @@ for name, info in colors {
     background-color: info.header;
   }
 }
+
+// most hacky thing ever
+// basically this defines link_color_yellow, link_color_pink, etc
+for color, variables in colors {
+  c = unquote(d + 'hello' (variables.link));
+  d = join('_', 'link_color', color);
+  e = join(
+    ' ',
+    d,
+    variables.link
+  );
+  @define-color {e};
+}

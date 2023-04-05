@@ -30,6 +30,8 @@ import Pango from "gi://Pango";
 import { find } from "linkifyjs";
 
 import { ITag, Note } from "./util.js";
+import { style_manager } from "./themeselector.js";
+import { Style } from "./util.js";
 
 class AbstractStickyNote extends Gtk.TextView {
   static {
@@ -77,7 +79,23 @@ class AbstractStickyNote extends Gtk.TextView {
     this.clear_tags();
     this.buffer.text = note.content;
     this.init_tags(note.tags);
+
+    this.update_link_tag_color();
+    this.remove_listeners();
+    this.init_listeners();
   }
+
+  listeners = new Set<number>();
+
+  init_listeners() {
+    if (!this.note) return;
+
+    this.listeners.add(this.note.connect("notify::style", () => {
+      this.update_link_tag_color();
+    }));
+  }
+
+  remove_listeners() {}
 
   constructor(
     note?: Note,
@@ -143,14 +161,47 @@ class AbstractStickyNote extends Gtk.TextView {
     }
   }
 
+  update_link_tag_color() {
+    if (!this.note) return;
+    let color;
+
+    if (style_manager.dark) {
+      const accent_color = this.get_style_context().lookup_color(
+        "accent_fg_color",
+      );
+      if (accent_color[0]) {
+        color = accent_color[1].to_string();
+      } else {
+        color = "#0000ff";
+      }
+    } else {
+      const accent_color = this.get_style_context().lookup_color(
+        `link_color_${Style[this.note.style]}`,
+      );
+      if (accent_color[0]) {
+        color = accent_color[1].to_string();
+      } else {
+        color = "#0000ff";
+      }
+    }
+
+    this.link_tag.foreground = color;
+  }
+
   private register_tags() {
     this.bold_tag.weight = Pango.Weight.BOLD;
     this.underline_tag.underline = Pango.Underline.SINGLE;
     this.italic_tag.style = Pango.Style.ITALIC;
     this.strikethrough_tag.strikethrough = true;
 
-    this.link_tag.foreground = "blue";
     this.link_tag.underline = Pango.Underline.SINGLE;
+
+    if (style_manager.system_supports_color_schemes) {
+      style_manager.connect(
+        "notify::dark",
+        this.update_link_tag_color.bind(this),
+      );
+    }
 
     this.buffer.tag_table.add(this.bold_tag);
     this.buffer.tag_table.add(this.underline_tag);
@@ -260,8 +311,6 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
     );
   }
 
-  listeners = new Set<number>();
-
   constructor(note?: Note) {
     super(note);
 
@@ -274,8 +323,6 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
   set note(note: Note | undefined) {
     this._note = super.note = note;
 
-    this.remove_listeners();
-    this.init_listeners();
     this.show_content();
   }
 
@@ -316,6 +363,8 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
   }
 
   init_listeners() {
+    super.init_listeners();
+
     if (!this.note) return;
 
     this.listeners.add(this.note.connect("notify::content", () => {
@@ -329,6 +378,8 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
   }
 
   remove_listeners() {
+    super.remove_listeners();
+
     if (!this.note) return;
 
     for (const listener of this.listeners) {
