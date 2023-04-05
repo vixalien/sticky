@@ -117,9 +117,9 @@ class AbstractStickyNote extends Gtk.TextView {
         )
       ) {
         this.emit("selection-changed");
-
-        this.check_link_selected();
       }
+
+      this.check_link_selected();
 
       const tags = this.get_tags();
       if (compare_tags(tags, this.note.tags)) return;
