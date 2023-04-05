@@ -3,8 +3,10 @@
 @import 'notes-dark.styl';
 
 .container.style-specifity {
-  background-color: at(window_bg_color);
-  color: at(window_fg_color);
+  &, .toolbar-container {
+    background-color: at(window_bg_color);
+    color: at(window_fg_color);
+  }
 
   .header-bar {
     opacity: 1;

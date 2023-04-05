@@ -37,7 +37,7 @@
 
 for name, info in colors {
   .container.style-{name} {
-    &, & popover > arrow, & popover > contents, ~/ {
+    &, & popover > arrow, & popover > contents, .toolbar-container, ~/ {
       background-color: info.bg;
       color: info.fg;
     }
