@@ -199,14 +199,4 @@ export class Window extends Adw.ApplicationWindow {
       this.emit("deleted", this.note.uuid);
     });
   }
-
-  // save() {
-  //   const note = this.view.save();
-
-  //   note.style = this.get_style();
-  //   note.width = this.get_allocated_width();
-  //   note.height = this.get_allocated_height();
-
-  //   return note;
-  // }
 }

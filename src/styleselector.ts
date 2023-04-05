@@ -33,8 +33,6 @@ import { Style, StyleNames, styles } from "./util.js";
 
 let provider: Gtk.CssProvider | null = null;
 
-const capitalize = (str: string) => str[0].toUpperCase() + str.slice(1);
-
 class StyleButton extends Gtk.CheckButton {
   style: Style;
 
@@ -65,9 +63,7 @@ class StyleButton extends Gtk.CheckButton {
   }
 
   static {
-    GObject.registerClass({
-      // CssName: "stylebutton",
-    }, this);
+    GObject.registerClass({}, this);
   }
 }
 
@@ -107,17 +103,6 @@ export class StyleSelector extends Gtk.Box {
     this.box.append(this.box1);
     this.box.append(this.box2);
 
-    // this.box.connect("selected-children-changed", () => {
-    //   const button = this.box.get_selected_children()[0]?.get_child() as
-    //     | StyleButton
-    //     | undefined;
-    //   if (button) {
-    //     button.active = true;
-    //     // this is so that both the button and the flowbox get focused,
-    //     // resulting in double-tabbing
-    //     button.grab_focus();
-    //   }
-    // });
     this.append(this.box);
 
     this._style = this.style = params.style ?? Style.yellow;
@@ -157,8 +142,6 @@ export class StyleSelector extends Gtk.Box {
   }
 
   static {
-    // StyleSelector.set_layout_manager_type(Gtk.BinLayout.$gtype);
-
     GObject.registerClass({
       CssName: "styleselector",
       Properties: {
