@@ -48,6 +48,14 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
+		<release version="0.1.11" date="2023-04-20">
+			<description>
+				<ul>
+					<li>print where notes are logged when the app starts up (for syncing)</li>
+					<li>add a flag `--new-note` to quicky jote down a note</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.1.10" date="2023-04-05">
 			<description>
 				<ul>
