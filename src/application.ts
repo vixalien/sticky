@@ -51,6 +51,8 @@ export class Application extends Adw.Application {
 
   notes_list = Gio.ListStore.new(Note.$gtype) as Gio.ListStore<Note>;
 
+  open_new_note = false;
+
   sort_notes() {
     this.notes_list.sort((note1: Note, note2: Note) => {
       return note1.modified.compare(note2.modified);
@@ -89,6 +91,37 @@ export class Application extends Adw.Application {
     } catch (error) {
       console.error(error as any);
     }
+
+    this.add_main_option(
+      "version",
+      "v".charCodeAt(0),
+      GLib.OptionFlags.NONE,
+      GLib.OptionArg.NONE,
+      "Print version information and exit",
+      null,
+    );
+
+    this.add_main_option(
+      "new-note",
+      "n".charCodeAt(0),
+      GLib.OptionFlags.NONE,
+      GLib.OptionArg.NONE,
+      "Open a new note",
+      null,
+    );
+
+    this.connect("handle-local-options", (_app, options: GLib.VariantDict) => {
+      if (options.contains("version")) {
+        print(pkg.version);
+        /* quit the invoked process after printing the version number
+         * leaving the running instance unaffected
+         */
+        return 0;
+      } else if (options.contains("new-note")) {
+        this.open_new_note = true;
+      }
+      return -1;
+    });
   }
 
   save() {
@@ -112,24 +145,28 @@ export class Application extends Adw.Application {
     // we show the all_notes
     let has_one_open = false;
 
-    if (settings.get_boolean("show-all-notes")) this.all_notes();
+    if (this.open_new_note) {
+      this.new_note();
+    } else {
+      if (settings.get_boolean("show-all-notes")) this.all_notes();
 
-    this.foreach_note((note) => {
-      if (note.open) {
-        if (has_one_open == false) has_one_open = true;
-        this.show_note(note.uuid);
-      }
-    });
+      this.foreach_note((note) => {
+        if (note.open) {
+          if (has_one_open == false) has_one_open = true;
+          this.show_note(note.uuid);
+        }
+      });
 
-    if (!has_one_open) {
-      const last_open_note = this.notes_array()
-        .sort((a, b) => b.modified.compare(a.modified))[0];
+      if (!has_one_open) {
+        const last_open_note = this.notes_array()
+          .sort((a, b) => b.modified.compare(a.modified))[0];
 
-      if (has_one_open) {
-        this.show_note(last_open_note.uuid);
-      } else {
-        settings.set_boolean("show-all-notes", true);
-        this.all_notes();
+        if (has_one_open) {
+          this.show_note(last_open_note.uuid);
+        } else {
+          settings.set_boolean("show-all-notes", true);
+          this.all_notes();
+        }
       }
     }
   }
