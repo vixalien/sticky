@@ -347,8 +347,8 @@ export class Application extends Adw.Application {
       ],
       copyright: "© 2023 Angelo Verlain, Christopher Davis",
       license_type: Gtk.License.MIT_X11,
-      comments: _("Pin notes to your desktop"),
       website: "https://github.com/vixalien/sticky",
+      issue_url: "https://github.com/vixalien/sticky/issues",
     };
 
     const aboutWindow = new Adw.AboutWindow(aboutParams);
