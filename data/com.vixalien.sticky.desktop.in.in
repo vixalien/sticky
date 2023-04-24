@@ -1,5 +1,5 @@
 [Desktop Entry]
-Comment=A simple sticky notes app for GNOME
+Comment=Pin notes to your desktop
 Name=Sticky Notes
 Exec=@app-id@
 Icon=@app-id@

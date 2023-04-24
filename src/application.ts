@@ -347,7 +347,7 @@ export class Application extends Adw.Application {
       ],
       copyright: "© 2023 Angelo Verlain, Christopher Davis",
       license_type: Gtk.License.MIT_X11,
-      comments: _("A simple sticky notes app for GNOME"),
+      comments: _("Pin notes to your desktop"),
       website: "https://github.com/vixalien/sticky",
     };
 
