@@ -72,7 +72,7 @@ export class StickyNoteCard extends Gtk.Box {
     super();
 
     this.view = new ReadonlyStickyNote(note);
-    this.view.set_css_classes([...this.view.css_classes, "card-text-view"]);
+    this.view.add_css_class("card-text-view");
     this.view.wrap_mode = Gtk.WrapMode.WORD_CHAR;
 
     this._scrolled.set_child(this.view);
