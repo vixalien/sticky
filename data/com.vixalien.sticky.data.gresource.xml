@@ -11,4 +11,7 @@
     <file>style-selector.css</file>
     <file>theme-selector.css</file>
   </gresource>
+  <gresource prefix="/com/vixalien/sticky/icons/symbolic/actions/">
+    <file preprocess="xml-stripblanks" alias="com.vixalien.sticky-symbolic.svg">icons/hicolor/symbolic/apps/com.vixalien.sticky-symbolic.svg</file>
+  </gresource>
 </gresources>

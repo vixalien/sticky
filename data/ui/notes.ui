@@ -66,7 +66,7 @@
                   <object class="AdwStatusPage" id="no_notes">
                     <property name="vexpand">true</property>
                     <property name="visible">false</property>
-                    <property name="icon-name">document-edit-symbolic</property>
+                    <property name="icon-name">com.vixalien.sticky-symbolic</property>
                     <property name="title" translatable="true">No Notes</property>
                     <property name="description" translatable="true">After you create notes, they will appear here</property>
                     <child>
