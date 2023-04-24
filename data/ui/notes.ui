@@ -98,7 +98,7 @@
                     <child>
                       <object class="GtkListView" id="notes_box">
                         <property name="show-separators">false</property>
-                        <property name="single-click-activate">false</property>
+                        <property name="single-click-activate">true</property>
                         <style>
                           <class name="background"/>
                         </style>
