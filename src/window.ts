@@ -98,6 +98,12 @@ export class Window extends Adw.ApplicationWindow {
     this.default_height = note.height;
     this.connect("close-request", () => {
       if (this.deleted) return;
+
+      if (this.view.note && this.view.note.content.trim().length === 0) {
+        this.delete(false);
+        return;
+      }
+
       const width = this.get_allocated_width();
       const height = this.get_allocated_height();
 
@@ -218,10 +224,15 @@ export class Window extends Adw.ApplicationWindow {
     if (!is_init) this.note.modified_date = new Date();
   }
 
-  delete() {
-    confirm_delete(this, () => {
+  delete(confirm = true) {
+    const cb = () => {
       this.deleted = true;
       this.emit("deleted", this.note.uuid);
-    });
+    };
+    if (confirm) {
+      confirm_delete(this, cb.bind(this));
+    } else {
+      cb();
+    }
   }
 }
