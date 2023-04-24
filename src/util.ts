@@ -290,7 +290,7 @@ export const confirm_delete = (window: Gtk.Window, cb: () => void) => {
   if (SETTINGS.CONFIRM_DELETE) {
     const dialog = Adw.MessageDialog.new(
       window,
-      "Are you sure you want to delete this note?",
+      "Delete Note?",
       "This action cannot be undone. If you want to hide the note, you can close it instead.",
     );
     dialog.add_response("cancel", "Cancel");
