@@ -33,6 +33,7 @@ import { StyleSelector } from "./styleselector.js";
 import { confirm_delete, Note, Style } from "./util.js";
 import { WriteableStickyNote } from "./view.js";
 import { find } from "linkifyjs";
+import { Application } from "./application.js";
 
 export class Window extends Adw.ApplicationWindow {
   _container!: Gtk.Box;
@@ -100,7 +101,7 @@ export class Window extends Adw.ApplicationWindow {
       if (this.deleted) return;
 
       if (this.view.note && this.view.note.content.trim().length === 0) {
-        this.delete(false);
+        (this.application as Application).delete_note(this.note.uuid);
         return;
       }
 
@@ -224,15 +225,11 @@ export class Window extends Adw.ApplicationWindow {
     if (!is_init) this.note.modified_date = new Date();
   }
 
-  delete(confirm = true) {
-    const cb = () => {
+  delete() {
+    confirm_delete(this, () => {
       this.deleted = true;
       this.emit("deleted", this.note.uuid);
-    };
-    if (confirm) {
-      confirm_delete(this, cb.bind(this));
-    } else {
-      cb();
-    }
+      console.log("emitted deleted");
+    });
   }
 }
