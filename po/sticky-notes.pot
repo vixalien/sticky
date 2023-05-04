@@ -374,3 +374,19 @@ msgstr ""
 #: src/view.ts:272
 msgid "Empty Note"
 msgstr ""
+
+#: src/view.ts:293
+msgid "Delete Note?"
+msgstr ""
+
+#: src/view.ts:294
+msgid "This action cannot be undone. If you want to hide the note, you can close it instead."
+msgstr ""
+
+#: src/view.ts:296
+msgid "Cancel"
+msgstr ""
+
+#: src/view.ts:297
+msgid "Delete"
+msgstr ""
