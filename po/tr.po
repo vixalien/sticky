@@ -1,0 +1,402 @@
+# Turkish translation for com.vixalien.sticky.
+# Copyright (C) 2023 com.vixalien.sticky's COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.vixalien.sticky package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.vixalien.sticky\n"
+"Report-Msgid-Bugs-To: https://github.com/vixalien/sticky\n"
+"POT-Creation-Date: 2023-03-12 23:13+0200\n"
+"PO-Revision-Date: 2023-05-04 08:01+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Türkçe <takim@gnome.org.tr>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
+msgid "A simple sticky notes app for GNOME"
+msgstr "GNOME için basit bir yapışkan notlar uygulaması"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:35
+#: src/application.ts:59 src/application.ts:253
+msgid "Sticky Notes"
+msgstr "Yapışkan Notlar"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "Yapışkan;notlar;sticky;yaz;"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+"Yapışkan Notlar, GNOME için basit bir yapışkan not uygulamasıdır. Notlar "
+"oluşturmanıza ve bunları biçimlendirmenizi sağlar."
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "Geçerli özellikleri:"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr "basit biçimlendirme (kalın, eğik, altı çizili, üstü çizili)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr "notlar, uygulama kapatıldığında açıksa geri yüklenir"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "not rengi değişimi"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "koyu tema desteği"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:34
+msgid "Angelo Verlain"
+msgstr "Angelo Verlain"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:53
+msgid "mostly a bug fix and tune-up release"
+msgstr "çoğunlukla hata düzeltme ve ince ayar sürümü"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:55
+msgid "make style (color) selector easier to change using the keyboard"
+msgstr "klavyeyi kullanarak biçem (renk) seçiciyi değiştirme iyileştirildi"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:56
+msgid ""
+"added more translations (tamil, hungary, catalan) and update russian "
+"translations"
+msgstr ""
+"daha fazla çeviri eklendi (tamilce, macarca, katalanca) ve rusça çevirisi "
+"güncelledi"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:57
+msgid ""
+"you can now choose to use dark or light mode manually instead of always "
+"using the system theme in the all notes window"
+msgstr ""
+"artık tüm notlar penceresinde, her zaman sistem temasını kullanmak yerine "
+"koyu ya da açık kipi elle kullanmayı seçebilirsiniz"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:64
+msgid "this is unexpectedly a large release"
+msgstr "bu beklenmedik şekilde büyük bir sürüm"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:66
+msgid "new icon"
+msgstr "yeni simge"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:67
+msgid "added translations (french, russian, italian, dutch, ocitan)"
+msgstr "eklenen çeviriler (fransızca, rusça, italyanca, flemenkçe, ocitan)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:68
+msgid "bug fixes"
+msgstr "hata düzeltmeler"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:74
+msgid "this is mostly a cleanup release"
+msgstr "bu çoğunlukla bir temizlik sürümüdür"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:76
+msgid "added translation support (starting with french)"
+msgstr "çeviri desteği eklendi (fransızca eklenen ilk dil oldu)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:77
+msgid ""
+"apply tag to location under the cursor when nothing is selected. this means "
+"that for example if you click Ctrl+B while there's nothing selected, the new "
+"content you'll write will come out as bold"
+msgstr ""
+"hiçbir şey seçilmediğinde etiketi imlecin altındaki konuma uygulayın. bu, "
+"örneğin seçili hiçbir şey yokken Ctrl+B'ye tıklarsanız, yazacağınız yeni "
+"içeriğin kalın olarak çıkacağı anlamına gelir"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:80
+msgid "fixed builds"
+msgstr "inşalar düzeltildi"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:81
+msgid "restructured/cleaned source"
+msgstr "kaynak kodu yeniden yapılandırıldı/temizlendi"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:87
+msgid "First beta release!"
+msgstr "İlk beta sürüm!"
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "Not penceresinin öntanımlı yüksekliği"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "Yeni yapışkan notun öntanımlı yüksekliği"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "Not penceresinin öntanımlı genişliği"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "Yeni yapışkan notun öntanımlı genişliği"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "Öntanımlı not biçemi"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "Yeni nota atanan öntanımlı biçem"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "Not silmeyi onayla"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "Notları silerken onay sorulup sorulmaması"
+
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr "Seçilen renk şeması"
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr "Seçilen renk şeması. 0 = sistem biçemini izle, 1 = açık, 2 = koyu"
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+msgid "Show all notes"
+msgstr "Tüm notları göster"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr "Tüm notlar penceresinin mi yoksa notun mu gösterileceği"
+
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "Not Açık"
+
+#: data/ui/card.ui:39 data/ui/window.ui:125
+msgid "Delete Note"
+msgstr "Notu Sil"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Genel"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Kısayolları göster"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çık"
+
+#: data/ui/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "Notlar"
+
+#: data/ui/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "Yeni not"
+
+#: data/ui/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Delete note"
+msgstr "Notu sil"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Gezinti"
+
+#: data/ui/help-overlay.ui:48
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "Tüm notları göster"
+
+#: data/ui/help-overlay.ui:54
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "Notlar arasında gezin"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr "Notlar arasında ters gezin"
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Düzenleme"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "Kalın"
+
+#: data/ui/help-overlay.ui:77
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "Eğik"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "Altı çizili"
+
+#: data/ui/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "Üstü çizili"
+
+#: data/ui/notes.ui:21 data/ui/window.ui:21
+msgid "New Note"
+msgstr "Yeni Not"
+
+#: data/ui/notes.ui:29 data/ui/window.ui:28
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: data/ui/notes.ui:59
+msgid "Search notes…"
+msgstr "Notları ara…"
+
+#: data/ui/notes.ui:70
+msgid "No Notes"
+msgstr "Not Yok"
+
+#: data/ui/notes.ui:71
+msgid "After you create notes, they will appear here"
+msgstr "Notlarınız, oluşturulduktan sonra burada görünecek"
+
+#: data/ui/notes.ui:75
+msgid "_New Note"
+msgstr "_Yeni Not"
+
+#: data/ui/notes.ui:91
+msgid "No Results"
+msgstr "Sonuç Yok"
+
+#: data/ui/notes.ui:92
+msgid "Try a different search"
+msgstr "Başka arama dene"
+
+#: data/ui/notes.ui:124
+msgid "Keyboard Shortcuts"
+msgstr "Klavye Kısayolları"
+
+#: data/ui/notes.ui:128
+msgid "About Sticky Notes"
+msgstr "Yapışkan Notlar Hakkında"
+
+#: data/ui/notes.ui:134
+msgid "Quit"
+msgstr "Çık"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr "Sistem biçemini izle"
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "Açık biçem"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "Koyu biçem"
+
+#: data/ui/window.ui:79
+msgid "Bold"
+msgstr "Kalın"
+
+#: data/ui/window.ui:87
+msgid "Italic"
+msgstr "Eğik"
+
+#: data/ui/window.ui:95
+msgid "Underline"
+msgstr "Altı çizili"
+
+#: data/ui/window.ui:103
+msgid "Strikethrough"
+msgstr "Üstü çizili"
+
+#: data/ui/window.ui:121
+msgid "All Notes"
+msgstr "Tüm Notlar"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:47
+#, c-format
+msgid "Switch to %s style"
+msgstr "%s biçemine geç"
+
+#: src/util.ts:74
+msgid "Yellow"
+msgstr "Sarı"
+
+#: src/util.ts:75
+msgid "Pink"
+msgstr "Pembe"
+
+#: src/util.ts:76
+msgid "Green"
+msgstr "Yeşil"
+
+#: src/util.ts:77
+msgid "Purple"
+msgstr "Mor"
+
+#: src/util.ts:78
+msgid "Blue"
+msgstr "Mavi"
+
+#: src/util.ts:79
+msgid "Gray"
+msgstr "Gri"
+
+#: src/util.ts:80
+msgid "Charcoal"
+msgstr "Kara kalem"
+
+#: src/util.ts:81
+msgid "Window"
+msgstr "Pencere"
+
+#: src/view.ts:272
+msgid "Empty Note"
+msgstr "Boş Not"
+
+msgid "Delete Note?"
+msgstr "Not Silinsin Mi?"
+
+msgid "This action cannot be undone. If you want to hide the note, you can close it instead."
+msgstr "Bu işlem geri alınamaz. Notu gizlemek istiyorsanız, onu kapatmanız yeterlidir."
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Delete"
+msgstr "Sil"
+
+msgid "translator-credits"
+msgstr "Sabri Ünal <libreajans@gmail.com>"
