@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-12 23:13+0200\n"
+"POT-Creation-Date: 2023-05-04 17:21+0200\n"
 "PO-Revision-Date: 2023-03-13 00:37+0300\n"
 "Last-Translator: David Lapshin\n"
 "Language-Team: \n"
@@ -15,18 +15,18 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.1.1\n"
 
 #: data/com.vixalien.sticky.desktop.in.in:3
-#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
-msgid "A simple sticky notes app for GNOME"
-msgstr "Простое приложение заметок для GNOME"
+#: data/com.vixalien.sticky.appdata.xml.in.in:7
+msgid "Pin notes to your desktop"
+msgstr ""
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:35
-#: src/application.ts:59 src/application.ts:253
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
+#: src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Заметки"
 
@@ -68,16 +68,80 @@ msgstr "поддержка темной темы"
 msgid "Angelo Verlain"
 msgstr "Анджело Верлен"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:53
+#: data/com.vixalien.sticky.appdata.xml.in.in:54
+msgid "print where notes are logged when the app starts up (for syncing)"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:55
+msgid "add a flag `--new-note` to quicky jote down a note"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:62
+msgid "quickly open links in your notes"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:69
+msgid "changed GNOME Runtime version to 44"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:70
+msgid "updated dutch translation"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:76
+msgid "fix packaging issues"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:81
+msgid "this release enhances usability and reliability"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:83
+msgid "updated the icon to make it more distinguished"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:84
+#, fuzzy
+msgid "updated translations (french, russian) and added a czech translation"
+msgstr ""
+"добавлены переводы (французский, русский, итальянский, голландский, "
+"окситанский)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:85
+msgid "make text throughout the UI more standard and easy to understand"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:86
+msgid "notes are now more reliably saved so that you don't lose your changes"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:87
+msgid ""
+"notes are now restored (mostly) as they were last time you closed the app"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:88
+msgid ""
+"the most recently closed note is now shown when you reopen the app, instead "
+"of showing the all notes window"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:91
+msgid ""
+"I'd like to take a moment to thank everyone that contributed to sticky notes "
+"this far. I am very grateful for your help and support."
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:97
 msgid "mostly a bug fix and tune-up release"
 msgstr "в основном выпуск исправления ошибок и доработок"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:55
+#: data/com.vixalien.sticky.appdata.xml.in.in:99
 msgid "make style (color) selector easier to change using the keyboard"
 msgstr ""
 "селектор стиля (цвета) тепе более простым для изменения с помощью клавиатуры"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:56
+#: data/com.vixalien.sticky.appdata.xml.in.in:100
 msgid ""
 "added more translations (tamil, hungary, catalan) and update russian "
 "translations"
@@ -85,7 +149,7 @@ msgstr ""
 "добавлено больше переводов (тамильский, венгерский, каталонский) и обновлены "
 "русские переводы"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:57
+#: data/com.vixalien.sticky.appdata.xml.in.in:101
 msgid ""
 "you can now choose to use dark or light mode manually instead of always "
 "using the system theme in the all notes window"
@@ -93,33 +157,33 @@ msgstr ""
 "теперь вы можете выбрать темный или светлый режим вручную вместо того, чтобы "
 "всегда использовать системную тему в окне всех заметок"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:64
+#: data/com.vixalien.sticky.appdata.xml.in.in:108
 msgid "this is unexpectedly a large release"
 msgstr "это неожиданно большой выпуск"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:66
+#: data/com.vixalien.sticky.appdata.xml.in.in:110
 msgid "new icon"
 msgstr "новая иконка"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:67
+#: data/com.vixalien.sticky.appdata.xml.in.in:111
 msgid "added translations (french, russian, italian, dutch, ocitan)"
 msgstr ""
 "добавлены переводы (французский, русский, итальянский, голландский, "
 "окситанский)"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:68
+#: data/com.vixalien.sticky.appdata.xml.in.in:112
 msgid "bug fixes"
 msgstr "исправления ошибок"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:74
+#: data/com.vixalien.sticky.appdata.xml.in.in:118
 msgid "this is mostly a cleanup release"
 msgstr "это в основном очищающий релиз"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:76
+#: data/com.vixalien.sticky.appdata.xml.in.in:120
 msgid "added translation support (starting with french)"
 msgstr "добавлена поддержка перевода (начиная с французского)"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:77
+#: data/com.vixalien.sticky.appdata.xml.in.in:121
 msgid ""
 "apply tag to location under the cursor when nothing is selected. this means "
 "that for example if you click Ctrl+B while there's nothing selected, the new "
@@ -129,15 +193,15 @@ msgstr ""
 "что, например, если вы нажмете Ctrl+B когда ничего не выделено, новое "
 "содержимое которое вы напишете будет выделено жирным шрифтом"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:80
+#: data/com.vixalien.sticky.appdata.xml.in.in:124
 msgid "fixed builds"
 msgstr "исправлены сборки"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:81
+#: data/com.vixalien.sticky.appdata.xml.in.in:125
 msgid "restructured/cleaned source"
 msgstr "реструктурированы/очищены исходники"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:87
+#: data/com.vixalien.sticky.appdata.xml.in.in:131
 msgid "First beta release!"
 msgstr "Первый бета выпуск!"
 
@@ -190,14 +254,6 @@ msgstr "Показать все заметки"
 #: data/com.vixalien.sticky.gschema.xml.in:44
 msgid "Whether to show the all notes window or note"
 msgstr "Показывать ли окно всех заметок или заметку"
-
-#: data/ui/card.ui:13
-msgid "Note is Open"
-msgstr "Заметка открыта"
-
-#: data/ui/card.ui:39 data/ui/window.ui:125
-msgid "Delete Note"
-msgstr "Удалить заметку"
 
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -274,84 +330,12 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Зачеркнутый"
 
-#: data/ui/notes.ui:21 data/ui/window.ui:21
-msgid "New Note"
-msgstr "Новая заметка"
-
-#: data/ui/notes.ui:29 data/ui/window.ui:28
+#: data/ui/notes.ui:29
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/ui/notes.ui:59
-msgid "Search notes…"
-msgstr "Поиск заметок…"
-
-#: data/ui/notes.ui:70
-msgid "No Notes"
-msgstr "Нет заметок"
-
-#: data/ui/notes.ui:71
-msgid "After you create notes, they will appear here"
-msgstr "После создания заметок, они будут отображаться здесь"
-
-#: data/ui/notes.ui:75
-msgid "_New Note"
-msgstr "_Новая заметка"
-
-#: data/ui/notes.ui:91
-msgid "No Results"
-msgstr "Нет результатов"
-
-#: data/ui/notes.ui:92
-msgid "Try a different search"
-msgstr "Попробуйте другой поиск"
-
-#: data/ui/notes.ui:124
-msgid "Keyboard Shortcuts"
-msgstr "Комбинации клавиш"
-
-#: data/ui/notes.ui:128
-msgid "About Sticky Notes"
-msgstr "О Заметках"
-
-#: data/ui/notes.ui:134
-msgid "Quit"
-msgstr "Выйти"
-
-#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
-msgid "Follow system style"
-msgstr "Следовать системному стилю"
-
-#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
-msgid "Light style"
-msgstr "Светлый стиль"
-
-#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
-msgid "Dark style"
-msgstr "Темный стиль"
-
-#: data/ui/window.ui:79
-msgid "Bold"
-msgstr "Жирный"
-
-#: data/ui/window.ui:87
-msgid "Italic"
-msgstr "Курсив"
-
-#: data/ui/window.ui:95
-msgid "Underline"
-msgstr "Подчеркнутый"
-
-#: data/ui/window.ui:103
-msgid "Strikethrough"
-msgstr "Зачеркнутый"
-
-#: data/ui/window.ui:121
-msgid "All Notes"
-msgstr "Все заметки"
-
 #. focus_on_click: false,
-#: src/styleselector.ts:47
+#: src/styleselector.ts:45
 #, c-format
 msgid "Switch to %s style"
 msgstr "Переключить на %s стиль"
@@ -388,6 +372,86 @@ msgstr "Угольный"
 msgid "Window"
 msgstr "Окно"
 
-#: src/view.ts:272
+#: src/util.ts:293
+#, fuzzy
+msgid "Delete Note?"
+msgstr "Удалить заметку"
+
+#: src/util.ts:294
+msgid ""
+"This action cannot be undone. If you want to hide the note, you can close it "
+"instead."
+msgstr ""
+
+#: src/util.ts:296
+msgid "Cancel"
+msgstr ""
+
+#: src/util.ts:297
+#, fuzzy
+msgid "Delete"
+msgstr "Удалить заметку"
+
+#: src/view.ts:355
 msgid "Empty Note"
 msgstr "Пустая заметка"
+
+#~ msgid "A simple sticky notes app for GNOME"
+#~ msgstr "Простое приложение заметок для GNOME"
+
+#~ msgid "Note is Open"
+#~ msgstr "Заметка открыта"
+
+#~ msgid "New Note"
+#~ msgstr "Новая заметка"
+
+#~ msgid "Search notes…"
+#~ msgstr "Поиск заметок…"
+
+#~ msgid "No Notes"
+#~ msgstr "Нет заметок"
+
+#~ msgid "After you create notes, they will appear here"
+#~ msgstr "После создания заметок, они будут отображаться здесь"
+
+#~ msgid "_New Note"
+#~ msgstr "_Новая заметка"
+
+#~ msgid "No Results"
+#~ msgstr "Нет результатов"
+
+#~ msgid "Try a different search"
+#~ msgstr "Попробуйте другой поиск"
+
+#~ msgid "Keyboard Shortcuts"
+#~ msgstr "Комбинации клавиш"
+
+#~ msgid "About Sticky Notes"
+#~ msgstr "О Заметках"
+
+#~ msgid "Quit"
+#~ msgstr "Выйти"
+
+#~ msgid "Follow system style"
+#~ msgstr "Следовать системному стилю"
+
+#~ msgid "Light style"
+#~ msgstr "Светлый стиль"
+
+#~ msgid "Dark style"
+#~ msgstr "Темный стиль"
+
+#~ msgid "Bold"
+#~ msgstr "Жирный"
+
+#~ msgid "Italic"
+#~ msgstr "Курсив"
+
+#~ msgid "Underline"
+#~ msgstr "Подчеркнутый"
+
+#~ msgid "Strikethrough"
+#~ msgstr "Зачеркнутый"
+
+#~ msgid "All Notes"
+#~ msgstr "Все заметки"
