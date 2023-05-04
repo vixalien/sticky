@@ -3,6 +3,8 @@
 
 # Sticky Notes
 
+[![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app) 
+
 Sticky Notes is a simple note taking application for the GNOME desktop. It is
 written in GJS and uses GTK4.
 
