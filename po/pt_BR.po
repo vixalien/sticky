@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.vixalien.sticky\n"
 "Report-Msgid-Bugs-To: https://github.com/vixalien/sticky\n"
 "POT-Creation-Date: 2023-05-04 17:21+0200\n"
-"PO-Revision-Date: 2023-05-17 09:07-0300\n"
+"PO-Revision-Date: 2023-05-17 11:43-0300\n"
 "Last-Translator: Fúlvio Leo <fulviokaldas@outlook.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
@@ -104,12 +104,12 @@ msgstr "atualizado o ícone para torná-lo mais distinto"
 #: data/com.vixalien.sticky.appdata.xml.in.in:84
 msgid "updated translations (french, russian) and added a czech translation"
 msgstr ""
-"traduções atualizadas (francês, russa) e adicionado uma tradução em tcheco"
+"traduções atualizadas (francês, russo) e adicionado uma tradução tcheca"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:85
 msgid "make text throughout the UI more standard and easy to understand"
 msgstr ""
-"torne o texto em toda a interface do usuário mais padrão e fácil de entender"
+"torna o texto em toda a interface do usuário mais padrão e fácil de entender"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:86
 msgid "notes are now more reliably saved so that you don't lose your changes"
@@ -146,7 +146,7 @@ msgstr "principalmente uma correção de bug e ajuste para lançamento"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:99
 msgid "make style (color) selector easier to change using the keyboard"
-msgstr "torne o seletor de estilo (cor) mais fácil de alterar usando o teclado"
+msgstr "torna o seletor de estilo (cor) mais fácil de alterar usando o teclado"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:100
 msgid ""
@@ -174,7 +174,7 @@ msgstr "novo ícone"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:111
 msgid "added translations (french, russian, italian, dutch, ocitan)"
-msgstr "traduções adicionadas (francês, russa, italiana, holandesa, occitano)"
+msgstr "traduções adicionadas (francês, russo, italiano, holandês, occitano)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:112
 msgid "bug fixes"
@@ -195,16 +195,16 @@ msgid ""
 "content you'll write will come out as bold"
 msgstr ""
 "aplique tag ao local sob o cursor quando nada estiver selecionado. Isso "
-"dignifica que, por exemplo, se você pressionar Ctrl+B quando não houver nada "
+"significa que, por exemplo, se você pressionar Ctrl+B quando não houver nada "
 "selecionado, o novo conteúdo que escrever irá aparecer em negrito"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:124
 msgid "fixed builds"
-msgstr "builds ajustadas"
+msgstr "compilações corrigidas"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:125
 msgid "restructured/cleaned source"
-msgstr "source reestruturada/limpa"
+msgstr "código fonte reestruturado/limpo"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:131
 msgid "First beta release!"
