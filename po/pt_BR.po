@@ -1,7 +1,6 @@
 # Brazilian Portuguese translation for com.vixalien.sticky.
 # Copyright (C) 2023 com.vixalien.sticky
 # This file is distributed under the same license as the sticky-notes package.
-#
 # Fúlvio Leo <fulviokaldas@outlook.com>, 2023.
 #
 msgid ""
@@ -9,9 +8,9 @@ msgstr ""
 "Project-Id-Version: com.vixalien.sticky\n"
 "Report-Msgid-Bugs-To: https://github.com/vixalien/sticky\n"
 "POT-Creation-Date: 2023-05-04 17:21+0200\n"
-"PO-Revision-Date: 2023-05-16 00:01-0300\n"
+"PO-Revision-Date: 2023-05-17 09:07-0300\n"
 "Last-Translator: Fúlvio Leo <fulviokaldas@outlook.com>\n"
-"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao >\n"
+"Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +21,7 @@ msgstr ""
 #: data/com.vixalien.sticky.desktop.in.in:3
 #: data/com.vixalien.sticky.appdata.xml.in.in:7
 msgid "Pin notes to your desktop"
-msgstr "Fixar notas para o seu ambiente de trabalho"
+msgstr "Fixe notas para o seu ambiente de trabalho"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
 #: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
@@ -49,19 +48,20 @@ msgstr "Funcionalidades atuais:"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:15
 msgid "simple formatting (bold, italic, underline and strikethrough)"
-msgstr ""
+msgstr "formatação simples (negrito, itálico, sublinhado e tachado)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:16
 msgid "notes are restored if they were open when the application was closed"
 msgstr ""
+"as notas são restauradas se estiverem abertas quando o aplicativo foi fechado"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:17
 msgid "changing color of notes"
-msgstr ""
+msgstr "mudança de cor das notas"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:18
 msgid "dark theme support"
-msgstr ""
+msgstr "suporte para tema escuro"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:34
 msgid "Angelo Verlain"
@@ -70,107 +70,123 @@ msgstr "Angelo Verlain"
 #: data/com.vixalien.sticky.appdata.xml.in.in:54
 msgid "print where notes are logged when the app starts up (for syncing)"
 msgstr ""
+"imprime onde as notas são registradas quando o aplicativo é iniciado (para "
+"sincronização)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:55
 msgid "add a flag `--new-note` to quicky jote down a note"
-msgstr ""
+msgstr "adicione um sinalizador '--new-note' para anotar rapidamente uma nota"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:62
 msgid "quickly open links in your notes"
-msgstr ""
+msgstr "abra links rapidamente nas suas notas"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:69
 msgid "changed GNOME Runtime version to 44"
-msgstr ""
+msgstr "alterado a versão do GNOME Runtime para 44"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:70
 msgid "updated dutch translation"
-msgstr ""
+msgstr "tradução holandesa atualizada"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:76
 msgid "fix packaging issues"
-msgstr ""
+msgstr "corrige problemas de empacotamento"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:81
 msgid "this release enhances usability and reliability"
-msgstr ""
+msgstr "esta versão melhora a usabilidade e confiabilidade"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:83
 msgid "updated the icon to make it more distinguished"
-msgstr ""
+msgstr "atualizado o ícone para torná-lo mais distinto"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:84
 msgid "updated translations (french, russian) and added a czech translation"
 msgstr ""
+"traduções atualizadas (francês, russa) e adicionado uma tradução em tcheco"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:85
 msgid "make text throughout the UI more standard and easy to understand"
 msgstr ""
+"torne o texto em toda a interface do usuário mais padrão e fácil de entender"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:86
 msgid "notes are now more reliably saved so that you don't lose your changes"
 msgstr ""
+"as notas agora são salvas de forma mais confiável para que você não perca "
+"suas alterações"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:87
 msgid ""
 "notes are now restored (mostly) as they were last time you closed the app"
 msgstr ""
+"as notas agora são restauradas (na sua maior parte) como estavam na última "
+"vez que você fechou o app"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:88
 msgid ""
 "the most recently closed note is now shown when you reopen the app, instead "
 "of showing the all notes window"
 msgstr ""
+"a nota fechada mais recentemente agora é mostrada quando você reabre o app, "
+"em vez de mostrar a janela com todas as notas"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:91
 msgid ""
 "I'd like to take a moment to thank everyone that contributed to sticky notes "
 "this far. I am very grateful for your help and support."
 msgstr ""
+"Gostaria de dedicar um momento para agradecer a todos que contribuíram para "
+"o Sticky Notes até aqui. Estou muito grato por sua ajuda e apoio."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:97
 msgid "mostly a bug fix and tune-up release"
-msgstr ""
+msgstr "principalmente uma correção de bug e ajuste para lançamento"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:99
 msgid "make style (color) selector easier to change using the keyboard"
-msgstr ""
+msgstr "torne o seletor de estilo (cor) mais fácil de alterar usando o teclado"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:100
 msgid ""
 "added more translations (tamil, hungary, catalan) and update russian "
 "translations"
 msgstr ""
+"mais traduções adicionadas (tâmil, húngaro, catalão) e tradução russa "
+"atualizada"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:101
 msgid ""
 "you can now choose to use dark or light mode manually instead of always "
 "using the system theme in the all notes window"
 msgstr ""
+"você agora pode escolher usar o modo escuro ou claro manualmente, em vez de "
+"sempre usar o tema do sistema na janela com todas as notas"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:108
 msgid "this is unexpectedly a large release"
-msgstr ""
+msgstr "este é um lançamento inesperadamente grande"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:110
 msgid "new icon"
-msgstr ""
+msgstr "novo ícone"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:111
 msgid "added translations (french, russian, italian, dutch, ocitan)"
-msgstr ""
+msgstr "traduções adicionadas (francês, russa, italiana, holandesa, occitano)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:112
 msgid "bug fixes"
-msgstr ""
+msgstr "correções de bugs"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:118
 msgid "this is mostly a cleanup release"
-msgstr ""
+msgstr "está é majoritariamente uma versão de limpeza"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:120
 msgid "added translation support (starting with french)"
-msgstr ""
+msgstr "suporte de tradução adicionado (começando com francês)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:121
 msgid ""
@@ -178,81 +194,86 @@ msgid ""
 "that for example if you click Ctrl+B while there's nothing selected, the new "
 "content you'll write will come out as bold"
 msgstr ""
+"aplique tag ao local sob o cursor quando nada estiver selecionado. Isso "
+"dignifica que, por exemplo, se você pressionar Ctrl+B quando não houver nada "
+"selecionado, o novo conteúdo que escrever irá aparecer em negrito"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:124
 msgid "fixed builds"
-msgstr ""
+msgstr "builds ajustadas"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:125
 msgid "restructured/cleaned source"
-msgstr ""
+msgstr "source reestruturada/limpa"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:131
 msgid "First beta release!"
-msgstr ""
+msgstr "Primeiro lançamento beta!"
 
 #: data/com.vixalien.sticky.gschema.xml.in:16
 msgid "Note window default height"
-msgstr ""
+msgstr "Altura padrão da janela da nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:17
 msgid "The default height of a new sticky note"
-msgstr ""
+msgstr "A altura padrão de uma nova nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:21
 msgid "Note window default width"
-msgstr ""
+msgstr "Largura padrão da janela da nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:22
 msgid "The default width of a new sticky note"
-msgstr ""
+msgstr "A largura padrão de uma nova nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:26
 msgid "Default note style"
-msgstr ""
+msgstr "Estilo padrão da nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:27
 msgid "The default style assigned to a new note"
-msgstr ""
+msgstr "O estilo padrão atribuído a uma nova nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:31
 msgid "Confirm note deletion"
-msgstr ""
+msgstr "Confirme exclusão de nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:32
 msgid "Whether to confirm note deletion"
-msgstr ""
+msgstr "Se deve confirmar a exclusão da nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:36
 msgid "The selected color scheme"
-msgstr ""
+msgstr "O esquema de cores selecionado"
 
 #: data/com.vixalien.sticky.gschema.xml.in:37
 msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
 msgstr ""
+"O esquema de cores selecionado. 0 = segue o estilo do sistema, 1 = claro, 2 "
+"= escuro"
 
 #: data/com.vixalien.sticky.gschema.xml.in:43
 msgid "Show all notes"
-msgstr ""
+msgstr "Mostre todas as notas"
 
 #: data/com.vixalien.sticky.gschema.xml.in:44
 msgid "Whether to show the all notes window or note"
-msgstr ""
+msgstr "Se deve mostrar a janela com todas as notas ou nota"
 
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: data/ui/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Atalhos de teclado"
+msgstr "Mostra os atalhos"
 
 #: data/ui/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Sair"
+msgstr "Sai"
 
 #: data/ui/help-overlay.ui:28
 msgctxt "shortcut window"
@@ -262,12 +283,12 @@ msgstr "Notas"
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
 msgid "New Note"
-msgstr "Adicionar nota"
+msgstr "Nova Nota"
 
 #: data/ui/help-overlay.ui:37
 msgctxt "shortcut window"
 msgid "Delete note"
-msgstr "Deletar nota"
+msgstr "Deleta nota"
 
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
@@ -277,22 +298,22 @@ msgstr "Navegação"
 #: data/ui/help-overlay.ui:48
 msgctxt "shortcut window"
 msgid "Show all notes"
-msgstr "Mostrar todas as notas"
+msgstr "Mostra todas as notas"
 
 #: data/ui/help-overlay.ui:54
 msgctxt "shortcut window"
 msgid "Cycle between notes"
-msgstr "Navegar pelas notas"
+msgstr "Navega pelas notas"
 
 #: data/ui/help-overlay.ui:60
 msgctxt "shortcut window"
 msgid "Cycle between notes in reverse order"
-msgstr "Navegar pela notas em ordem reversa"
+msgstr "Navega pela notas em ordem reversa"
 
 #: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Editing"
-msgstr "Editando"
+msgstr "Edição"
 
 #: data/ui/help-overlay.ui:71
 msgctxt "shortcut window"
@@ -322,7 +343,7 @@ msgstr "Menu Principal"
 #: src/styleselector.ts:45
 #, c-format
 msgid "Switch to %s style"
-msgstr ""
+msgstr "Muda para o estilo %s"
 
 #: src/util.ts:74
 msgid "Yellow"
