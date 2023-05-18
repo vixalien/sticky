@@ -61,7 +61,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : ".",
+                    "url" : "https://github.com/vixalien/sticky",
                     "branch": "main"
                 }
             ]
