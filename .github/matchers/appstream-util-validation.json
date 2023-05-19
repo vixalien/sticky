@@ -1,0 +1,19 @@
+{
+    "problemMatcher": [
+        {
+            "owner": "appstream-validation",
+            "pattern": [
+                {
+                    "regexp": "^(.*\\.(appdata|metainfo)\\.(x|y)ml): FAILED:$",
+                    "file": 1
+                },
+                {
+                    "regexp": "^.\\s+(\\w+-invalid|\\w+-missing|tag-duplicated|translations-required|duplicate-data|url-not-found)\\s+:\\s+(.*)$",
+                    "code": 1,
+                    "message": 2,
+                    "loop": true
+                }
+            ]
+        }
+    ]
+}
