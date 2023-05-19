@@ -26,5 +26,6 @@ jobs:
         bundle: sticky.flatpak
         manifest-path: com.vixalien.sticky.json
         cache-key: flatpak-builder-${{ github.sha }}
+        run-tests: true
         cache: true
         restore-cache: true
