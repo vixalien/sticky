@@ -65,42 +65,45 @@
                       </object>
                     </child>
                     <child>
-                      <object class="AdwStatusPage" id="no_notes">
-                        <property name="vexpand">true</property>
-                        <property name="visible">false</property>
-                        <property name="icon-name">com.vixalien.sticky-symbolic</property>
-                        <property name="title" translatable="true">No Notes</property>
-                        <property name="description" translatable="true">After you create notes, they will appear here</property>
+                      <object class="GtkStack" id="stack">
+                        <property name="transition-type">1</property>
                         <child>
-                          <object class="GtkButton">
-                            <property name="halign">3</property>
-                            <property name="label" translatable="true">_New Note</property>
-                            <property name="use-underline">true</property>
-                            <property name="action-name">app.new-note</property>
+                          <object class="AdwStatusPage" id="no_notes">
+                            <property name="vexpand">true</property>
+                            <property name="icon-name">com.vixalien.sticky-symbolic</property>
+                            <property name="title" translatable="true">No Notes</property>
+                            <property name="description" translatable="true">After you create notes, they will appear here</property>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="halign">3</property>
+                                <property name="label" translatable="true">_New Note</property>
+                                <property name="use-underline">true</property>
+                                <property name="action-name">app.new-note</property>
+                                <style>
+                                  <class name="pill"/>
+                                  <class name="suggested-action"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwStatusPage" id="no_results">
+                            <property name="vexpand">true</property>
+                            <property name="icon-name">system-search-symbolic</property>
+                            <property name="title" translatable="true">No Results</property>
+                            <property name="description" translatable="true">Try a different search</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkListView" id="notes_box">
+                            <property name="show-separators">false</property>
+                            <property name="single-click-activate">true</property>
                             <style>
-                              <class name="pill"/>
-                              <class name="suggested-action"/>
+                              <class name="background"/>
                             </style>
                           </object>
                         </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="AdwStatusPage" id="no_results">
-                        <property name="vexpand">true</property>
-                        <property name="visible">false</property>
-                        <property name="icon-name">system-search-symbolic</property>
-                        <property name="title" translatable="true">No Results</property>
-                        <property name="description" translatable="true">Try a different search</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkListView" id="notes_box">
-                        <property name="show-separators">false</property>
-                        <property name="single-click-activate">true</property>
-                        <style>
-                          <class name="background"/>
-                        </style>
                       </object>
                     </child>
                   </object>
