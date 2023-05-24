@@ -8,9 +8,8 @@
       <class name="notes-window"/>
     </style>
     <child>
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <child>
+      <object class="AdwToolbarView">
+        <child type="top">
           <object class="AdwHeaderBar">
             <property name="hexpand">true</property>
             <child type="start">
@@ -26,7 +25,7 @@
                 <property name="receives-default">false</property>
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primaryMenu</property>
-                <property name="tooltip-text" translatable="yes">Main Menu</property>
+                <property name="tooltip-text" translatable="true">Main Menu</property>
                 <property name="primary">true</property>
               </object>
             </child>
@@ -41,60 +40,60 @@
             </style>
           </object>
         </child>
-        <child>
+        <property name="content">
           <object class="AdwClamp">
             <child>
-              <object class="GtkBox" id="notes">
-                <property name="orientation">vertical</property>
-                <style>
-                  <class name="notes"/>
-                </style>
+              <object class="GtkScrolledWindow" id="scrolled">
+                <property name="vexpand">true</property>
                 <child>
-                  <object class="GtkBox" id="search">
+                  <object class="GtkBox" id="notes">
+                    <property name="orientation">1</property>
                     <style>
-                      <class name="search-bar"/>
+                      <class name="notes"/>
                     </style>
                     <child>
-                      <object class="GtkSearchEntry" id="search_entry">
-                        <property name="placeholder-text" translatable="true">Search notes…</property>
-                        <property name="hexpand">true</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwStatusPage" id="no_notes">
-                    <property name="vexpand">true</property>
-                    <property name="visible">false</property>
-                    <property name="icon-name">com.vixalien.sticky-symbolic</property>
-                    <property name="title" translatable="true">No Notes</property>
-                    <property name="description" translatable="true">After you create notes, they will appear here</property>
-                    <child>
-                      <object class="GtkButton">
-                        <property name="halign">center</property>
-                        <property name="label" translatable="true">_New Note</property>
-                        <property name="use-underline">true</property>
-                        <property name="action-name">app.new-note</property>
+                      <object class="GtkBox" id="search">
                         <style>
-                          <class name="pill"/>
-                          <class name="suggested-action"/>
+                          <class name="search-bar"/>
                         </style>
+                        <child>
+                          <object class="GtkSearchEntry" id="search_entry">
+                            <property name="placeholder-text" translatable="true">Search notes…</property>
+                            <property name="hexpand">true</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwStatusPage" id="no_results">
-                    <property name="vexpand">true</property>
-                    <property name="visible">false</property>
-                    <property name="icon-name">system-search-symbolic</property>
-                    <property name="title" translatable="true">No Results</property>
-                    <property name="description" translatable="true">Try a different search</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow" id="scrolled">
-                    <property name="vexpand">true</property>
+                    <child>
+                      <object class="AdwStatusPage" id="no_notes">
+                        <property name="vexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="icon-name">com.vixalien.sticky-symbolic</property>
+                        <property name="title" translatable="true">No Notes</property>
+                        <property name="description" translatable="true">After you create notes, they will appear here</property>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="halign">3</property>
+                            <property name="label" translatable="true">_New Note</property>
+                            <property name="use-underline">true</property>
+                            <property name="action-name">app.new-note</property>
+                            <style>
+                              <class name="pill"/>
+                              <class name="suggested-action"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwStatusPage" id="no_results">
+                        <property name="vexpand">true</property>
+                        <property name="visible">false</property>
+                        <property name="icon-name">system-search-symbolic</property>
+                        <property name="title" translatable="true">No Results</property>
+                        <property name="description" translatable="true">Try a different search</property>
+                      </object>
+                    </child>
                     <child>
                       <object class="GtkListView" id="notes_box">
                         <property name="show-separators">false</property>
@@ -109,7 +108,7 @@
               </object>
             </child>
           </object>
-        </child>
+        </property>
       </object>
     </child>
   </template>
