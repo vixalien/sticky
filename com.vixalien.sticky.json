@@ -1,5 +1,5 @@
 {
-    "app-id" : "com.vixalien.sticky",
+    "id" : "com.vixalien.sticky",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "44",
     "sdk" : "org.gnome.Sdk",
