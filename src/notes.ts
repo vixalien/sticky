@@ -47,6 +47,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
           "search_entry",
           "scrolled",
           "menu_button",
+          "stack",
         ],
         Signals: {
           "note-activated": {
@@ -68,6 +69,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   _no_results!: Adw.StatusPage;
   _scrolled!: Gtk.ScrolledWindow;
   _menu_button!: Gtk.MenuButton;
+  _stack!: Gtk.Stack;
 
   cards: StickyNoteCard[] = [];
 
@@ -188,12 +190,12 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
   set_status() {
     if (this.last_model.get_n_items() > 0) {
-      this.set_visible_child("notes_box");
+      this.set_visible_child(this._notes_box);
     } else {
       if (this.query) {
-        this.set_visible_child("no_results");
+        this.set_visible_child(this._no_results);
       } else {
-        this.set_visible_child("no_notes");
+        this.set_visible_child(this._no_notes);
       }
     }
   }
@@ -206,10 +208,10 @@ export class StickyNotes extends Adw.ApplicationWindow {
     card.show_visible_image = visible;
   }
 
-  set_visible_child(child: "no_notes" | "no_results" | "notes_box") {
-    this._no_notes.visible = child === "no_notes";
-    this._no_results.visible = child === "no_results";
-    this._scrolled.visible = child === "notes_box";
-    this._search.visible = child === "notes_box" || child === "no_results";
+  set_visible_child(child: Gtk.Widget) {
+    this._search.visible = child === this._notes_box ||
+      child === this._no_results;
+
+    this._stack.set_visible_child(child);
   }
 }
