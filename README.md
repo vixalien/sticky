@@ -37,15 +37,7 @@ to clone the repository by being careful to also pull in the submodules:
 git clone https://github.com/vixalien/sticky.git --recurse-submodules
 ```
 
-Then, you can build and install the application with `meson`:
+Open the project in GNOME Builder and click "Run Project".
 
-```sh
-meson setup build
-ninja -C build
-sudo ninja -C build install
-```
-
-Tips:
-
-- If you want to run the application without installing it, you can run
-  `ninja -C build devel` instead of `sudo ninja -C build install`.
+> Note: Other non-Flatpak environments are no longer supported. This is because
+Sticky Notes uses an upcoming version of libadwaita.
