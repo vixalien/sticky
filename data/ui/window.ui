@@ -6,6 +6,8 @@
     <property name="default-height">300</property>
     <child>
       <object class="AdwToolbarView" id="container">
+        <property name="extend-content-to-top-edge">true</property>
+        <property name="extend-content-to-bottom-edge">true</property>
         <style>
           <class name="container" />
           <class name="style-specifity" />
