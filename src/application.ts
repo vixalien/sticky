@@ -345,6 +345,8 @@ export class Application extends Adw.Application {
       designers: [
         "David Lapshin",
       ],
+      // TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
+      translator_credits: _("translator-credits"),
       copyright: "© 2023 Angelo Verlain, Christopher Davis",
       license_type: Gtk.License.MIT_X11,
       website: "https://github.com/vixalien/sticky",
