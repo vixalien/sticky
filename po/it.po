@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-25 09:41+0200\n"
-"PO-Revision-Date: 2023-03-23 22:50+0100\n"
+"POT-Creation-Date: 2023-05-04 17:21+0200\n"
+"PO-Revision-Date: 2023-05-24 17:34+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Zorin Os\n"
 "Language: it_IT\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/com.vixalien.sticky.desktop.in.in:3
 #: data/com.vixalien.sticky.appdata.xml.in.in:7
 msgid "Pin notes to your desktop"
-msgstr ""
+msgstr "Appunta le note sul desktop"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
 #: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
@@ -83,65 +83,70 @@ msgstr ""
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:63
 msgid "print where notes are logged when the app starts up (for syncing)"
-msgstr ""
+msgstr "stampa dove vengono registrate le note all'avvio dell'app (per la sincronizzazione)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:64
 msgid "add a flag `--new-note` to quicky jote down a note"
-msgstr ""
+msgstr "aggiungi un flag `--nuova-nota` per annotare rapidamente una nota"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:71
 msgid "quickly open links in your notes"
-msgstr ""
+msgstr "aprire rapidamente i collegamenti nelle note"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:78
 msgid "changed GNOME Runtime version to 44"
-msgstr ""
+msgstr "modificata la versione di GNOME Runtime in 44"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:79
 msgid "updated dutch translation"
-msgstr ""
+msgstr "Aggiornata traduzione olandese"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:85
 msgid "fix packaging issues"
-msgstr ""
+msgstr "risolti i problemi di packaging"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:90
 msgid "this release enhances usability and reliability"
-msgstr ""
+msgstr "questa versione migliora l'usabilità e l'affidabilità"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:92
 msgid "updated the icon to make it more distinguished"
-msgstr ""
+msgstr "aggiornata l'icona per renderla più distinta"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:93
 #, fuzzy
 msgid "updated translations (french, russian) and added a czech translation"
-msgstr "aggiunte traduzioni (francese, russo, italiano, olandese, ocitano)"
+msgstr "traduzioni aggiornate (francese, russo) e aggiunta la traduzione ceca"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:94
 msgid "make text throughout the UI more standard and easy to understand"
-msgstr ""
+msgstr "reso il testo in tutta l'interfaccia utente più standard e facile da capire"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:95
 msgid "notes are now more reliably saved so that you don't lose your changes"
-msgstr ""
+msgstr "le note sono ora salvate in modo più affidabile in modo da non perdere le modifiche"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:96
 msgid ""
 "notes are now restored (mostly) as they were last time you closed the app"
 msgstr ""
+"le note ora vengono ripristinate (principalmente) come lo erano l'ultima volta che hai chiuso l'app"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:97
 msgid ""
 "the most recently closed note is now shown when you reopen the app, instead "
 "of showing the all notes window"
 msgstr ""
+"la nota chiusa più di recente ora viene mostrata quando riapri l'app, invece "
+"di mostrare la finestra di tutte le note"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:100
 msgid ""
 "I'd like to take a moment to thank everyone that contributed to sticky notes "
 "this far. I am very grateful for your help and support."
 msgstr ""
+"Vorrei prendermi un momento per ringraziare tutti coloro che hanno contribuito a Note adesive "
+"finora. Sono molto grato per il vostro aiuto e supporto."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:106
 msgid "mostly a bug fix and tune-up release"
@@ -206,7 +211,7 @@ msgstr ""
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:133
 msgid "fixed builds"
-msgstr ""
+msgstr "Sistemato le builds"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:134
 msgid "restructured/cleaned source"
@@ -385,24 +390,24 @@ msgid "Window"
 msgstr "Finestra"
 
 #: src/util.ts:293
-#, fuzzy
 msgid "Delete Note?"
-msgstr "Elimina nota"
+msgstr "Eliminare la nota?"
 
 #: src/util.ts:294
 msgid ""
 "This action cannot be undone. If you want to hide the note, you can close it "
 "instead."
 msgstr ""
+"Questa azione non può essere annullata. Se vuoi nascondere la nota, puoi chiuderla "
+"invece."
 
 #: src/util.ts:296
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"
 
 #: src/util.ts:297
-#, fuzzy
 msgid "Delete"
-msgstr "Elimina nota"
+msgstr "Elimina"
 
 #: src/view.ts:355
 msgid "Empty Note"
