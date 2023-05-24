@@ -101,6 +101,7 @@
                             <property name="single-click-activate">true</property>
                             <style>
                               <class name="background"/>
+                              <class name="notes-box"/>
                             </style>
                           </object>
                         </child>
