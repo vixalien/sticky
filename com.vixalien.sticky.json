@@ -1,70 +1,189 @@
 {
-    "id" : "com.vixalien.sticky",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "44",
-    "sdk" : "org.gnome.Sdk",
-    "sdk-extensions" : [
-        "org.freedesktop.Sdk.Extension.node18"
-    ],
-    "tags" : [
-        "nightly"
-    ],
-    "build-options" : {
-        "append-path" : "/usr/lib/sdk/node18/bin"
-    },
-    "command" : "com.vixalien.sticky",
-    "finish-args" : [
-        "--share=ipc",
-        "--device=dri",
-        "--socket=wayland",
-        "--socket=fallback-x11",
-        "--env=GJS_DISABLE_JIT=1"
-    ],
-    "cleanup" : [
-        "/include",
-        "/lib/pkgconfig",
-        "/man",
-        "/share/doc",
-        "/share/gtk-doc",
-        "/share/man",
-        "/share/pkgconfig",
-        "*.la",
-        "*.a",
-        "/yarn-mirror"
-    ],
-    "modules" : [
+  "id": "com.vixalien.sticky",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "44",
+  "sdk": "org.gnome.Sdk",
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.node18"
+  ],
+  "tags": [
+    "nightly"
+  ],
+  "build-options": {
+    "append-path": "/usr/lib/sdk/node18/bin"
+  },
+  "command": "com.vixalien.sticky",
+  "finish-args": [
+    "--share=ipc",
+    "--device=dri",
+    "--socket=wayland",
+    "--socket=fallback-x11",
+    "--env=GJS_DISABLE_JIT=1"
+  ],
+  "cleanup": [
+    "/include",
+    "/lib/pkgconfig",
+    "/man",
+    "/share/doc",
+    "/share/gtk-doc",
+    "/share/man",
+    "/share/pkgconfig",
+    "*.la",
+    "*.a",
+    "/yarn-mirror"
+  ],
+  "modules": [
+    {
+      "name": "libadwaita",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Dintrospection=disabled",
+        "-Dvapi=false",
+        "-Dtests=false",
+        "-Dexamples=false"
+      ],
+      "sources": [
         {
-            "name" : "yarn-deps",
-            "buildsystem" : "simple",
-            "build-commands" : [
-                "/usr/lib/sdk/node18/enable.sh",
-                "mkdir -p /app",
-                "cp -r $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror/ /app"
-            ],
-            "sources" : [
-                "generated-sources.json"
-            ]
-        },
-        {
-            "name": "write-yarnrc",
-            "buildsystem": "simple",
-            "build-commands": [
-                "echo yarn-offline-mirror \"/app/yarn-mirror\" > /app/.yarnrc"
-            ]
-        },
-        {
-            "name" : "sticky-notes",
-            "buildsystem" : "meson",
-            "config-opts" : [
-                "-Dyarnrc=/app/.yarnrc"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://github.com/vixalien/sticky",
-                    "branch": "main"
-                }
-            ]
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+          "commit": "a97fa1541229271610ce47a4a1dcea4c0340b84c"
         }
-    ]
+      ],
+      "modules": [
+        {
+          "name": "appstream",
+          "buildsystem": "meson",
+          "config-opts": [
+            "-Dstemming=false",
+            "-Dgir=false",
+            "-Ddocs=false"
+          ],
+          "cleanup": [
+            "/bin/*",
+            "/etc/*",
+            "/share/metainfo"
+          ],
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://github.com/ximion/appstream.git",
+              "commit": "e4a7daefca9dcd600eea895332b8ba598cacd694"
+            }
+          ],
+          "modules": [
+            {
+              "name": "libyaml",
+              "sources": [
+                {
+                  "type": "git",
+                  "url": "https://github.com/yaml/libyaml.git",
+                  "commit": "2c891fc7a770e8ba2fec34fc6b545c672beb37e6"
+                }
+              ]
+            },
+            {
+              "name": "libxmlb",
+              "buildsystem": "meson",
+              "config-opts": [
+                "-Dintrospection=false",
+                "-Dgtkdoc=false",
+                "-Dstemmer=false",
+                "-Dcli=false",
+                "-Dtests=false"
+              ],
+              "sources": [
+                {
+                  "type": "git",
+                  "url": "https://github.com/hughsie/libxmlb.git",
+                  "commit": "a6cac6a715d57c393bbddee4d0381ad943341af9"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "libsass",
+          "buildsystem": "meson",
+          "cleanup": [
+            "*"
+          ],
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://github.com/lazka/libsass.git",
+              "commit": "302397c0c8ae2d7ab02f45ea461c2c3d768f248e"
+            }
+          ]
+        },
+        {
+          "name": "sassc",
+          "buildsystem": "meson",
+          "cleanup": [
+            "*"
+          ],
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://github.com/lazka/sassc.git",
+              "commit": "82803377c33247265d779af034eceb5949e78354"
+            }
+          ]
+        },
+        {
+          "name": "gtk",
+          "buildsystem": "meson",
+          "config-opts": [
+            "-Dintrospection=disabled",
+            "-Ddemos=false",
+            "-Dbuild-testsuite=false",
+            "-Dbuild-examples=false",
+            "-Dbuild-tests=false"
+          ],
+          "cleanup": [
+            "/bin/*"
+          ],
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://gitlab.gnome.org/GNOME/gtk.git",
+              "commit": "4695f583c1cfbb100a0c19c591b859ae04436c8b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "yarn-deps",
+      "buildsystem": "simple",
+      "build-commands": [
+        "/usr/lib/sdk/node18/enable.sh",
+        "mkdir -p /app",
+        "cp -r $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror/ /app"
+      ],
+      "sources": [
+        "generated-sources.json"
+      ]
+    },
+    {
+      "name": "write-yarnrc",
+      "buildsystem": "simple",
+      "build-commands": [
+        "echo yarn-offline-mirror \"/app/yarn-mirror\" > /app/.yarnrc"
+      ]
+    },
+    {
+      "name": "sticky-notes",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Dyarnrc=/app/.yarnrc"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/vixalien/sticky",
+          "branch": "main"
+        }
+      ]
+    }
+  ]
 }
