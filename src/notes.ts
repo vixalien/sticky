@@ -136,6 +136,9 @@ export class StickyNotes extends Adw.ApplicationWindow {
       settings.set_int("default-width", this.get_width());
     });
 
+    // make it transparent
+    this._notes_box.remove_css_class("view");
+
     const factory = new Gtk.SignalListItemFactory();
     factory.connect("setup", this.setup_cb.bind(this));
     factory.connect("bind", this.bind_cb.bind(this));
