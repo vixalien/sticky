@@ -150,6 +150,14 @@
                     <property name="tooltip-text" translatable="true">Strikethrough</property>
                   </object>
                 </child>
+                <child>
+                  <object class="GtkToggleButton" id="monospace_button">
+                    <property name="icon-name">code-symbolic</property>
+                    <property name="action-name">win.monospace</property>
+                    <property name="focus-on-click">false</property>
+                    <property name="tooltip-text" translatable="true">Monospace</property>
+                  </object>
+                </child>
               </object>
             </child>
           </object>

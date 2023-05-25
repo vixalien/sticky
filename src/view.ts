@@ -53,19 +53,6 @@ class AbstractStickyNote extends Gtk.TextView {
     );
   }
 
-  bold_tag = Gtk.TextTag.new("bold");
-  underline_tag = Gtk.TextTag.new("underline");
-  italic_tag = Gtk.TextTag.new("italic");
-  strikethrough_tag = Gtk.TextTag.new("strikethrough");
-  link_tag = Gtk.TextTag.new("link");
-
-  actions = [
-    ["bold", this.bold_tag],
-    ["underline", this.underline_tag],
-    ["italic", this.italic_tag],
-    ["strikethrough", this.strikethrough_tag],
-  ] as [string, Gtk.TextTag][];
-
   _note?: Note;
 
   get note() {
@@ -188,18 +175,37 @@ class AbstractStickyNote extends Gtk.TextView {
     this.link_tag.foreground = color;
   }
 
+  bold_tag = Gtk.TextTag.new("bold");
+  underline_tag = Gtk.TextTag.new("underline");
+  italic_tag = Gtk.TextTag.new("italic");
+  strikethrough_tag = Gtk.TextTag.new("strikethrough");
+  link_tag = Gtk.TextTag.new("link");
+  monospace_tag = Gtk.TextTag.new("monospace");
+
+  actions = [
+    ["bold", this.bold_tag],
+    ["underline", this.underline_tag],
+    ["italic", this.italic_tag],
+    ["strikethrough", this.strikethrough_tag],
+    ["monospace", this.monospace_tag],
+  ] as [string, Gtk.TextTag][];
+
   private register_tags() {
     this.bold_tag.weight = Pango.Weight.BOLD;
     this.underline_tag.underline = Pango.Underline.SINGLE;
     this.italic_tag.style = Pango.Style.ITALIC;
     this.strikethrough_tag.strikethrough = true;
 
+    this.monospace_tag.family = "monospace";
+
     this.link_tag.underline = Pango.Underline.SINGLE;
 
     if (style_manager.system_supports_color_schemes) {
       style_manager.connect(
         "notify::dark",
-        this.update_link_tag_color.bind(this),
+        () => {
+          this.update_link_tag_color();
+        },
       );
     }
 
@@ -208,6 +214,7 @@ class AbstractStickyNote extends Gtk.TextView {
     this.buffer.tag_table.add(this.italic_tag);
     this.buffer.tag_table.add(this.strikethrough_tag);
     this.buffer.tag_table.add(this.link_tag);
+    this.buffer.tag_table.add(this.monospace_tag);
   }
 
   init_tags(tags: Note["tags"]) {

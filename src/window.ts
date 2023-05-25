@@ -44,6 +44,7 @@ export class Window extends Adw.ApplicationWindow {
   _underline_button!: Gtk.ToggleButton;
   _italic_button!: Gtk.ToggleButton;
   _strikethrough_button!: Gtk.ToggleButton;
+  _monospace_button!: Gtk.ToggleButton;
   _action_button!: Gtk.ToggleButton;
   _action_revealer!: Gtk.Revealer;
 
@@ -68,6 +69,7 @@ export class Window extends Adw.ApplicationWindow {
           "underline_button",
           "italic_button",
           "strikethrough_button",
+          "monospace_button",
           "menu_button",
           "action_revealer",
           "action_button",
