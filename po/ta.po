@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 17:21+0200\n"
+"POT-Creation-Date: 2023-05-25 09:41+0200\n"
 "PO-Revision-Date: 2023-03-05 11:17+0530\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
 "Language-Team: \n"
@@ -66,127 +66,139 @@ msgstr "இருண்ட தீம் ஆதரவு"
 msgid "Angelo Verlain"
 msgstr "ஏஞ்சலோ வெர்லைன்"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:54
-msgid "print where notes are logged when the app starts up (for syncing)"
+#: data/com.vixalien.sticky.appdata.xml.in.in:53
+msgid "this is a refinement release"
 msgstr ""
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:55
+msgid "show focus indicators correctly in all notes window"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:56
+msgid "use new flexible ToolbarView widget"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:63
+msgid "print where notes are logged when the app starts up (for syncing)"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:64
 msgid "add a flag `--new-note` to quicky jote down a note"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:62
+#: data/com.vixalien.sticky.appdata.xml.in.in:71
 msgid "quickly open links in your notes"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:69
+#: data/com.vixalien.sticky.appdata.xml.in.in:78
 msgid "changed GNOME Runtime version to 44"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:70
+#: data/com.vixalien.sticky.appdata.xml.in.in:79
 msgid "updated dutch translation"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:76
+#: data/com.vixalien.sticky.appdata.xml.in.in:85
 msgid "fix packaging issues"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:81
+#: data/com.vixalien.sticky.appdata.xml.in.in:90
 msgid "this release enhances usability and reliability"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:83
+#: data/com.vixalien.sticky.appdata.xml.in.in:92
 msgid "updated the icon to make it more distinguished"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:84
+#: data/com.vixalien.sticky.appdata.xml.in.in:93
 msgid "updated translations (french, russian) and added a czech translation"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:85
+#: data/com.vixalien.sticky.appdata.xml.in.in:94
 msgid "make text throughout the UI more standard and easy to understand"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:86
+#: data/com.vixalien.sticky.appdata.xml.in.in:95
 msgid "notes are now more reliably saved so that you don't lose your changes"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:87
+#: data/com.vixalien.sticky.appdata.xml.in.in:96
 msgid ""
 "notes are now restored (mostly) as they were last time you closed the app"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:88
+#: data/com.vixalien.sticky.appdata.xml.in.in:97
 msgid ""
 "the most recently closed note is now shown when you reopen the app, instead "
 "of showing the all notes window"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:91
+#: data/com.vixalien.sticky.appdata.xml.in.in:100
 msgid ""
 "I'd like to take a moment to thank everyone that contributed to sticky notes "
 "this far. I am very grateful for your help and support."
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:97
+#: data/com.vixalien.sticky.appdata.xml.in.in:106
 msgid "mostly a bug fix and tune-up release"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:99
+#: data/com.vixalien.sticky.appdata.xml.in.in:108
 msgid "make style (color) selector easier to change using the keyboard"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:100
+#: data/com.vixalien.sticky.appdata.xml.in.in:109
 msgid ""
 "added more translations (tamil, hungary, catalan) and update russian "
 "translations"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:101
+#: data/com.vixalien.sticky.appdata.xml.in.in:110
 msgid ""
 "you can now choose to use dark or light mode manually instead of always "
 "using the system theme in the all notes window"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:108
+#: data/com.vixalien.sticky.appdata.xml.in.in:117
 msgid "this is unexpectedly a large release"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:110
+#: data/com.vixalien.sticky.appdata.xml.in.in:119
 msgid "new icon"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:111
+#: data/com.vixalien.sticky.appdata.xml.in.in:120
 msgid "added translations (french, russian, italian, dutch, ocitan)"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:112
+#: data/com.vixalien.sticky.appdata.xml.in.in:121
 msgid "bug fixes"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:118
+#: data/com.vixalien.sticky.appdata.xml.in.in:127
 msgid "this is mostly a cleanup release"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:120
+#: data/com.vixalien.sticky.appdata.xml.in.in:129
 msgid "added translation support (starting with french)"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:121
+#: data/com.vixalien.sticky.appdata.xml.in.in:130
 msgid ""
 "apply tag to location under the cursor when nothing is selected. this means "
 "that for example if you click Ctrl+B while there's nothing selected, the new "
 "content you'll write will come out as bold"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:124
+#: data/com.vixalien.sticky.appdata.xml.in.in:133
 msgid "fixed builds"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:125
+#: data/com.vixalien.sticky.appdata.xml.in.in:134
 msgid "restructured/cleaned source"
 msgstr ""
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:131
+#: data/com.vixalien.sticky.appdata.xml.in.in:140
 msgid "First beta release!"
 msgstr "முதல் பீட்டா வெளியீடு!"
 
@@ -325,8 +337,9 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "கோடு வழியாக"
 
-#: data/ui/notes.ui:29
-msgid "Main Menu"
+#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
+#: src/application.ts:349
+msgid "translator-credits"
 msgstr ""
 
 #. focus_on_click: false,

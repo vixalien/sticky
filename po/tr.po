@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.vixalien.sticky\n"
-"Report-Msgid-Bugs-To: https://github.com/vixalien/sticky\n"
-"POT-Creation-Date: 2023-03-12 23:13+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-25 09:41+0200\n"
 "PO-Revision-Date: 2023-05-04 08:01+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
@@ -20,13 +20,13 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #: data/com.vixalien.sticky.desktop.in.in:3
-#: data/com.vixalien.sticky.appdata.xml.in.in:7 src/application.ts:266
-msgid "A simple sticky notes app for GNOME"
-msgstr "GNOME için basit bir yapışkan notlar uygulaması"
+#: data/com.vixalien.sticky.appdata.xml.in.in:7
+msgid "Pin notes to your desktop"
+msgstr ""
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:35
-#: src/application.ts:59 src/application.ts:253
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
+#: src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Yapışkan Notlar"
 
@@ -68,14 +68,89 @@ msgid "Angelo Verlain"
 msgstr "Angelo Verlain"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:53
+#, fuzzy
+msgid "this is a refinement release"
+msgstr "bu çoğunlukla bir temizlik sürümüdür"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:55
+msgid "show focus indicators correctly in all notes window"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:56
+msgid "use new flexible ToolbarView widget"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:63
+msgid "print where notes are logged when the app starts up (for syncing)"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:64
+msgid "add a flag `--new-note` to quicky jote down a note"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:71
+msgid "quickly open links in your notes"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:78
+msgid "changed GNOME Runtime version to 44"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:79
+msgid "updated dutch translation"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:85
+msgid "fix packaging issues"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:90
+msgid "this release enhances usability and reliability"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:92
+msgid "updated the icon to make it more distinguished"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:93
+#, fuzzy
+msgid "updated translations (french, russian) and added a czech translation"
+msgstr "eklenen çeviriler (fransızca, rusça, italyanca, flemenkçe, ocitan)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:94
+msgid "make text throughout the UI more standard and easy to understand"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:95
+msgid "notes are now more reliably saved so that you don't lose your changes"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:96
+msgid ""
+"notes are now restored (mostly) as they were last time you closed the app"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:97
+msgid ""
+"the most recently closed note is now shown when you reopen the app, instead "
+"of showing the all notes window"
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:100
+msgid ""
+"I'd like to take a moment to thank everyone that contributed to sticky notes "
+"this far. I am very grateful for your help and support."
+msgstr ""
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:106
 msgid "mostly a bug fix and tune-up release"
 msgstr "çoğunlukla hata düzeltme ve ince ayar sürümü"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:55
+#: data/com.vixalien.sticky.appdata.xml.in.in:108
 msgid "make style (color) selector easier to change using the keyboard"
 msgstr "klavyeyi kullanarak biçem (renk) seçiciyi değiştirme iyileştirildi"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:56
+#: data/com.vixalien.sticky.appdata.xml.in.in:109
 msgid ""
 "added more translations (tamil, hungary, catalan) and update russian "
 "translations"
@@ -83,7 +158,7 @@ msgstr ""
 "daha fazla çeviri eklendi (tamilce, macarca, katalanca) ve rusça çevirisi "
 "güncelledi"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:57
+#: data/com.vixalien.sticky.appdata.xml.in.in:110
 msgid ""
 "you can now choose to use dark or light mode manually instead of always "
 "using the system theme in the all notes window"
@@ -91,31 +166,31 @@ msgstr ""
 "artık tüm notlar penceresinde, her zaman sistem temasını kullanmak yerine "
 "koyu ya da açık kipi elle kullanmayı seçebilirsiniz"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:64
+#: data/com.vixalien.sticky.appdata.xml.in.in:117
 msgid "this is unexpectedly a large release"
 msgstr "bu beklenmedik şekilde büyük bir sürüm"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:66
+#: data/com.vixalien.sticky.appdata.xml.in.in:119
 msgid "new icon"
 msgstr "yeni simge"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:67
+#: data/com.vixalien.sticky.appdata.xml.in.in:120
 msgid "added translations (french, russian, italian, dutch, ocitan)"
 msgstr "eklenen çeviriler (fransızca, rusça, italyanca, flemenkçe, ocitan)"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:68
+#: data/com.vixalien.sticky.appdata.xml.in.in:121
 msgid "bug fixes"
 msgstr "hata düzeltmeler"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:74
+#: data/com.vixalien.sticky.appdata.xml.in.in:127
 msgid "this is mostly a cleanup release"
 msgstr "bu çoğunlukla bir temizlik sürümüdür"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:76
+#: data/com.vixalien.sticky.appdata.xml.in.in:129
 msgid "added translation support (starting with french)"
 msgstr "çeviri desteği eklendi (fransızca eklenen ilk dil oldu)"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:77
+#: data/com.vixalien.sticky.appdata.xml.in.in:130
 msgid ""
 "apply tag to location under the cursor when nothing is selected. this means "
 "that for example if you click Ctrl+B while there's nothing selected, the new "
@@ -125,15 +200,15 @@ msgstr ""
 "örneğin seçili hiçbir şey yokken Ctrl+B'ye tıklarsanız, yazacağınız yeni "
 "içeriğin kalın olarak çıkacağı anlamına gelir"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:80
+#: data/com.vixalien.sticky.appdata.xml.in.in:133
 msgid "fixed builds"
 msgstr "inşalar düzeltildi"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:81
+#: data/com.vixalien.sticky.appdata.xml.in.in:134
 msgid "restructured/cleaned source"
 msgstr "kaynak kodu yeniden yapılandırıldı/temizlendi"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:87
+#: data/com.vixalien.sticky.appdata.xml.in.in:140
 msgid "First beta release!"
 msgstr "İlk beta sürüm!"
 
@@ -184,14 +259,6 @@ msgstr "Tüm notları göster"
 #: data/com.vixalien.sticky.gschema.xml.in:44
 msgid "Whether to show the all notes window or note"
 msgstr "Tüm notlar penceresinin mi yoksa notun mu gösterileceği"
-
-#: data/ui/card.ui:13
-msgid "Note is Open"
-msgstr "Not Açık"
-
-#: data/ui/card.ui:39 data/ui/window.ui:125
-msgid "Delete Note"
-msgstr "Notu Sil"
 
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -268,92 +335,16 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Üstü çizili"
 
-#: data/ui/notes.ui:21 data/ui/window.ui:21
-msgid "New Note"
-msgstr "Yeni Not"
-
-#: data/ui/notes.ui:29 data/ui/window.ui:28
-msgid "Main Menu"
-msgstr "Ana Menü"
-
-#: data/ui/notes.ui:59
-msgid "Search notes…"
-msgstr "Notları ara…"
-
-#: data/ui/notes.ui:70
-msgid "No Notes"
-msgstr "Not Yok"
-
-#: data/ui/notes.ui:71
-msgid "After you create notes, they will appear here"
-msgstr "Notlarınız, oluşturulduktan sonra burada görünecek"
-
-#: data/ui/notes.ui:75
-msgid "_New Note"
-msgstr "_Yeni Not"
-
-#: data/ui/notes.ui:91
-msgid "No Results"
-msgstr "Sonuç Yok"
-
-#: data/ui/notes.ui:92
-msgid "Try a different search"
-msgstr "Başka arama dene"
-
-#: data/ui/notes.ui:124
-msgid "Keyboard Shortcuts"
-msgstr "Klavye Kısayolları"
-
-#: data/ui/notes.ui:128
-msgid "About Sticky Notes"
-msgstr "Yapışkan Notlar Hakkında"
-
-#: data/ui/notes.ui:134
-msgid "Quit"
-msgstr "Çık"
-
-#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
-msgid "Follow system style"
-msgstr "Sistem biçemini izle"
-
-#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
-msgid "Light style"
-msgstr "Açık biçem"
-
-#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
-msgid "Dark style"
-msgstr "Koyu biçem"
-
-#: data/ui/window.ui:79
-msgid "Bold"
-msgstr "Kalın"
-
-#: data/ui/window.ui:87
-msgid "Italic"
-msgstr "Eğik"
-
-#: data/ui/window.ui:95
-msgid "Underline"
-msgstr "Altı çizili"
-
-#: data/ui/window.ui:103
-msgid "Strikethrough"
-msgstr "Üstü çizili"
-
-#: data/ui/window.ui:121
-msgid "All Notes"
-msgstr "Tüm Notlar"
-
-#. focus_on_click: false,
-#: src/styleselector.ts:47
-#, c-format
-msgid "Switch to %s style"
-msgstr "%s biçemine geç"
-
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:349
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:45
+#, c-format
+msgid "Switch to %s style"
+msgstr "%s biçemine geç"
 
 #: src/util.ts:74
 msgid "Yellow"
@@ -387,18 +378,92 @@ msgstr "Kara kalem"
 msgid "Window"
 msgstr "Pencere"
 
-#: src/view.ts:272
-msgid "Empty Note"
-msgstr "Boş Not"
-
+#: src/util.ts:293
 msgid "Delete Note?"
 msgstr "Not Silinsin Mi?"
 
-msgid "This action cannot be undone. If you want to hide the note, you can close it instead."
-msgstr "Bu işlem geri alınamaz. Notu gizlemek istiyorsanız, onu kapatmanız yeterlidir."
+#: src/util.ts:294
+msgid ""
+"This action cannot be undone. If you want to hide the note, you can close it "
+"instead."
+msgstr ""
+"Bu işlem geri alınamaz. Notu gizlemek istiyorsanız, onu kapatmanız "
+"yeterlidir."
 
+#: src/util.ts:296
 msgid "Cancel"
 msgstr "İptal"
 
+#: src/util.ts:297
 msgid "Delete"
 msgstr "Sil"
+
+#: src/view.ts:355
+msgid "Empty Note"
+msgstr "Boş Not"
+
+#~ msgid "A simple sticky notes app for GNOME"
+#~ msgstr "GNOME için basit bir yapışkan notlar uygulaması"
+
+#~ msgid "Note is Open"
+#~ msgstr "Not Açık"
+
+#~ msgid "Delete Note"
+#~ msgstr "Notu Sil"
+
+#~ msgid "New Note"
+#~ msgstr "Yeni Not"
+
+#~ msgid "Main Menu"
+#~ msgstr "Ana Menü"
+
+#~ msgid "Search notes…"
+#~ msgstr "Notları ara…"
+
+#~ msgid "No Notes"
+#~ msgstr "Not Yok"
+
+#~ msgid "After you create notes, they will appear here"
+#~ msgstr "Notlarınız, oluşturulduktan sonra burada görünecek"
+
+#~ msgid "_New Note"
+#~ msgstr "_Yeni Not"
+
+#~ msgid "No Results"
+#~ msgstr "Sonuç Yok"
+
+#~ msgid "Try a different search"
+#~ msgstr "Başka arama dene"
+
+#~ msgid "Keyboard Shortcuts"
+#~ msgstr "Klavye Kısayolları"
+
+#~ msgid "About Sticky Notes"
+#~ msgstr "Yapışkan Notlar Hakkında"
+
+#~ msgid "Quit"
+#~ msgstr "Çık"
+
+#~ msgid "Follow system style"
+#~ msgstr "Sistem biçemini izle"
+
+#~ msgid "Light style"
+#~ msgstr "Açık biçem"
+
+#~ msgid "Dark style"
+#~ msgstr "Koyu biçem"
+
+#~ msgid "Bold"
+#~ msgstr "Kalın"
+
+#~ msgid "Italic"
+#~ msgstr "Eğik"
+
+#~ msgid "Underline"
+#~ msgstr "Altı çizili"
+
+#~ msgid "Strikethrough"
+#~ msgstr "Üstü çizili"
+
+#~ msgid "All Notes"
+#~ msgstr "Tüm Notlar"
