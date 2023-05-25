@@ -29,7 +29,7 @@ import Adw from "gi://Adw";
 
 import type { Application } from "./application.js";
 import { StickyNoteCard } from "./card.js";
-import { Note } from "./util.js";
+import { Note, settings } from "./util.js";
 
 import { ThemeSelector } from "./themeselector.js";
 
@@ -127,6 +127,14 @@ export class StickyNotes extends Adw.ApplicationWindow {
     params: Partial<Gtk.Window.ConstructorProperties>,
   ) {
     super(params);
+
+    this.default_height = settings.get_int("default-height");
+    this.default_width = settings.get_int("default-width");
+
+    this.connect("close-request", () => {
+      settings.set_int("default-height", this.get_height());
+      settings.set_int("default-width", this.get_width());
+    });
 
     const factory = new Gtk.SignalListItemFactory();
     factory.connect("setup", this.setup_cb.bind(this));
