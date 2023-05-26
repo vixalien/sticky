@@ -29,10 +29,10 @@ msgstr "Appunta le note sul desktop"
 msgid "Sticky Notes"
 msgstr "Note adesive"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/com.vixalien.sticky.desktop.in.in:12
-msgid "Sticky;Notes;Write;"
-msgstr "Scrivi;Note;Adesive;"
+#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example/'
+#: src/application.ts:349
+msgid "translator-credits"
+msgstr "Albano Battistella <albanobattistella@gmail.com>"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:9
 msgid ""
