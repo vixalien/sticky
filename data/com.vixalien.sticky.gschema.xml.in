@@ -12,7 +12,7 @@
 	</enum>
 	<schema id="@app-id@" path="/com/vixalien/sticky/" gettext-domain="@gettext-package@">
 		<key name="default-height" type="i">
-			<default>500</default>
+			<default>300</default>
 			<summary>Note window default height</summary>
 			<description>The default height of a new sticky note</description>
 		</key>
@@ -20,6 +20,16 @@
 			<default>300</default>
 			<summary>Note window default width</summary>
 			<description>The default width of a new sticky note</description>
+		</key>
+		<key name="all-notes-height" type="i">
+			<default>500</default>
+			<summary>All notes window height</summary>
+			<description>The height of the "All notes" window</description>
+		</key>
+		<key name="all-notes-width" type="i">
+			<default>300</default>
+			<summary>All notes window width</summary>
+			<description>The width of the "All notes" window</description>
 		</key>
 		<key name='default-style' enum='@app-id@.styles'>
 			<default>'yellow'</default>

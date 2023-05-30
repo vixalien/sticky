@@ -128,12 +128,12 @@ export class StickyNotes extends Adw.ApplicationWindow {
   ) {
     super(params);
 
-    this.default_height = settings.get_int("default-height");
-    this.default_width = settings.get_int("default-width");
+    this.default_height = settings.get_int("all-notes-height");
+    this.default_width = settings.get_int("all-notes-width");
 
     this.connect("close-request", () => {
-      settings.set_int("default-height", this.get_height());
-      settings.set_int("default-width", this.get_width());
+      settings.set_int("all-notes-height", this.get_height());
+      settings.set_int("all-notes-width", this.get_width());
     });
 
     // make it transparent
