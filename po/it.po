@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 17:21+0200\n"
+"POT-Creation-Date: 2023-05-30 11:46+0200\n"
 "PO-Revision-Date: 2023-05-27 08:34+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Zorin Os\n"
@@ -29,11 +29,11 @@ msgstr "Appunta le note sul desktop"
 msgid "Sticky Notes"
 msgstr "Note adesive"
 
-#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example/'
-#: src/application.ts:349
-msgid "translator-credits"
-msgstr ""
-"Albano Battistella <albanobattistella@gmail.com>"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+#, fuzzy
+msgid "Sticky;Notes;Write;"
+msgstr "Note adesive"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:9
 msgid ""
@@ -84,7 +84,9 @@ msgstr ""
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:63
 msgid "print where notes are logged when the app starts up (for syncing)"
-msgstr "stampa dove vengono registrate le note all'avvio dell'app (per la sincronizzazione)"
+msgstr ""
+"stampa dove vengono registrate le note all'avvio dell'app (per la "
+"sincronizzazione)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:64
 msgid "add a flag `--new-note` to quicky jote down a note"
@@ -121,17 +123,21 @@ msgstr "traduzioni aggiornate (francese, russo) e aggiunta la traduzione ceca"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:94
 msgid "make text throughout the UI more standard and easy to understand"
-msgstr "reso il testo in tutta l'interfaccia utente più standard e facile da capire"
+msgstr ""
+"reso il testo in tutta l'interfaccia utente più standard e facile da capire"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:95
 msgid "notes are now more reliably saved so that you don't lose your changes"
-msgstr "le note sono ora salvate in modo più affidabile in modo da non perdere le modifiche"
+msgstr ""
+"le note sono ora salvate in modo più affidabile in modo da non perdere le "
+"modifiche"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:96
 msgid ""
 "notes are now restored (mostly) as they were last time you closed the app"
 msgstr ""
-"le note ora vengono ripristinate (principalmente) come lo erano l'ultima volta che hai chiuso l'app"
+"le note ora vengono ripristinate (principalmente) come lo erano l'ultima "
+"volta che hai chiuso l'app"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:97
 msgid ""
@@ -146,8 +152,9 @@ msgid ""
 "I'd like to take a moment to thank everyone that contributed to sticky notes "
 "this far. I am very grateful for your help and support."
 msgstr ""
-"Vorrei prendermi un momento per ringraziare tutti coloro che hanno contribuito a Note adesive "
-"finora. Sono molto grato per il vostro aiuto e supporto."
+"Vorrei prendermi un momento per ringraziare tutti coloro che hanno "
+"contribuito a Note adesive finora. Sono molto grato per il vostro aiuto e "
+"supporto."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:106
 msgid "mostly a bug fix and tune-up release"
@@ -350,7 +357,7 @@ msgstr "Barrato"
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:349
 msgid "translator-credits"
-msgstr ""
+msgstr "Albano Battistella <albanobattistella@gmail.com>"
 
 #. focus_on_click: false,
 #: src/styleselector.ts:45
@@ -399,8 +406,8 @@ msgid ""
 "This action cannot be undone. If you want to hide the note, you can close it "
 "instead."
 msgstr ""
-"Questa azione non può essere annullata. Se vuoi nascondere la nota, puoi chiuderla "
-"invece."
+"Questa azione non può essere annullata. Se vuoi nascondere la nota, puoi "
+"chiuderla invece."
 
 #: src/util.ts:296
 msgid "Cancel"
