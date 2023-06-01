@@ -1,18 +1,47 @@
+@import 'util.styl';
 @import 'colors.styl';
 
-.note-card {
-  color: at(card_fg_color);
-  background-color: at(card_bg_color);
-  background-size: 100% 6px;
-  background-repeat: no-repeat;
+.notes-window {
+  .notes-box {
+    border-spacing: 6px;
+
+    row {
+      border-radius: 12px;
+    }
+  }
+
+  .notes {
+    padding: 0 6px 6px 6px;
+  }
+
+  .note-view {
+    padding: 12px;
+  }
+
+  .search-bar {
+    padding: 0 3px 12px;
+  }
+
+  listview > row {
+    background-color: inherit;
+  }
+
+  .card-text-view {
+    background-color: transparent;
+    color: inherit;
+  }
 }
 
 for name, info in colors {
   .note-card.style-{name} {
-    background-image: linear-gradient(
-      to bottom,
-      info.header,
-      info.header
-    );
+    background-color: info.bg_dark;
+    color: info.fg_dark;
+
+    selection:focus-within {
+      background-color: gtkalpha(
+        info.ink,
+        0.3
+      );
+    }
   }
 }
