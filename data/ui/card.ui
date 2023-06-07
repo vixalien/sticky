@@ -10,7 +10,7 @@
           <object class="GtkImage" id="view_image">
             <property name="visible">false</property>
             <property name="icon-name">view-reveal-symbolic</property>
-            <property name="tooltip-text" translatable="true">Note is Open</property>
+            <property name="tooltip-text" translatable="yes">Note is Open</property>
             <style>
               <class name="dim-label"/>
             </style>
@@ -36,7 +36,7 @@
         <child>
           <object class="GtkButton" id="delete_button">
             <property name="icon-name">user-trash-symbolic</property>
-            <property name="tooltip-text" translatable="true">Delete Note</property>
+            <property name="tooltip-text" translatable="yes">Delete Note</property>
             <style>
               <class name="flat"/>
             </style>
