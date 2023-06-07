@@ -221,8 +221,8 @@ export class Note extends GObject.Object {
       style: SETTINGS.DEFAULT_STYLE,
       tags: [],
       modified: new Date(),
-      width: SETTINGS.DEFAULT_WIDTH,
-      height: SETTINGS.DEFAULT_HEIGHT,
+      width: 300,
+      height: 300,
       open: false,
     });
   }
