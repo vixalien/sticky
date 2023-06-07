@@ -105,9 +105,9 @@ class AbstractStickyNote extends Gtk.TextView {
     this.buffer = new Gtk.TextBuffer();
 
     this.register_tags();
-    if (note) this._note = this.note = note;
+    if (note) this.note = note;
 
-    this.buffer.connect("mark-set", (buffer, _loc, mark) => {
+    this.buffer.connect("mark-set", (_buffer, _loc, mark) => {
       if (!this.note) return;
 
       if (
@@ -120,10 +120,6 @@ class AbstractStickyNote extends Gtk.TextView {
       }
 
       this.check_link_selected();
-
-      const tags = this.get_tags();
-      if (compare_tags(tags, this.note.tags)) return;
-      this.note.tags = tags;
     });
   }
 
@@ -321,7 +317,7 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
   }
 
   set note(note: Note | undefined) {
-    this._note = super.note = note;
+    this._note = super.note = Object.freeze(note);
 
     this.show_content();
   }
@@ -429,6 +425,14 @@ export class WriteableStickyNote extends AbstractStickyNote {
       this.update_links();
       if (this.buffer.text == this.note!.content) return;
       this.change("content", this.buffer.text);
+    });
+
+    this.buffer.connect("mark-set", () => {
+      if (!this.note) return;
+
+      const tags = this.get_tags();
+      if (compare_tags(tags, this.note.tags)) return;
+      this.note.tags = tags;
     });
   }
 
