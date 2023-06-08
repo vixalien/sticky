@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 11:46+0200\n"
+"POT-Creation-Date: 2023-06-08 09:49+0200\n"
 "PO-Revision-Date: 2023-03-05 11:17+0530\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
 "Language-Team: \n"
@@ -24,8 +24,8 @@ msgid "Pin notes to your desktop"
 msgstr ""
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "ஒட்டும் குறிப்புகள்"
 
@@ -251,6 +251,16 @@ msgstr "குறிப்புகள் இல்லை"
 msgid "Whether to show the all notes window or note"
 msgstr ""
 
+#: data/ui/card.ui:13
+#, fuzzy
+msgid "Note is Open"
+msgstr "குறிப்பு திறக்கப்பட்டுள்ளது"
+
+#: data/ui/card.ui:39 data/ui/window.ui:172
+#, fuzzy
+msgid "Delete Note"
+msgstr "குறிப்பை நீக்கு"
+
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
@@ -337,6 +347,87 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "கோடு வழியாக"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+#, fuzzy
+msgid "New Note"
+msgstr "குறிப்பை நீக்கு"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/notes.ui:59
+msgid "Search notes…"
+msgstr ""
+
+#: data/ui/notes.ui:72
+#, fuzzy
+msgid "No Notes"
+msgstr "குறிப்புகள் இல்லை"
+
+#: data/ui/notes.ui:73
+msgid "After you create notes, they will appear here"
+msgstr "நீங்கள் குறிப்புகளை உருவாக்கிய பிறகு, அவை இங்கே தோன்றும்"
+
+#: data/ui/notes.ui:77
+#, fuzzy
+msgid "_New Note"
+msgstr "குறிப்பை நீக்கு"
+
+#: data/ui/notes.ui:92
+msgid "No Results"
+msgstr "முடிவுகள் இல்லை"
+
+#: data/ui/notes.ui:93
+msgid "Try a different search"
+msgstr "வேறு தேடலை முயற்சிக்கவும்"
+
+#: data/ui/notes.ui:125
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "விசைப்பலகை குறுக்குவழிகள்"
+
+#: data/ui/notes.ui:129
+msgid "About Sticky Notes"
+msgstr "ஒட்டும் குறிப்புகள் பற்றி"
+
+#: data/ui/notes.ui:135
+msgid "Quit"
+msgstr "வெளியேறு"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr ""
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+#, fuzzy
+msgid "Light style"
+msgstr "%s நடைக்கு மாறவும்"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr ""
+
+#: data/ui/window.ui:126
+msgid "Bold"
+msgstr "தடித்த"
+
+#: data/ui/window.ui:134
+msgid "Italic"
+msgstr "சாய்வு"
+
+#: data/ui/window.ui:142
+msgid "Underline"
+msgstr "அடிக்கோடு"
+
+#: data/ui/window.ui:150
+msgid "Strikethrough"
+msgstr "கோடு வழியாக"
+
+#: data/ui/window.ui:168
+msgid "All Notes"
+msgstr "அனைத்து குறிப்புகள்"
+
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:349
 msgid "translator-credits"
@@ -400,66 +491,12 @@ msgstr ""
 msgid "Delete"
 msgstr "குறிப்பை நீக்கு"
 
-#: src/view.ts:355
+#: src/view.ts:351
 msgid "Empty Note"
 msgstr "காலியான குறிப்பு"
 
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "க்னோமிற்கான எளிய ஒட்டும் குறிப்புகள் பயன்பாடு"
-
-#, fuzzy
-#~ msgid "Note is Open"
-#~ msgstr "குறிப்பு திறக்கப்பட்டுள்ளது"
-
-#, fuzzy
-#~ msgid "New Note"
-#~ msgstr "குறிப்பை நீக்கு"
-
-#, fuzzy
-#~ msgid "No Notes"
-#~ msgstr "குறிப்புகள் இல்லை"
-
-#~ msgid "After you create notes, they will appear here"
-#~ msgstr "நீங்கள் குறிப்புகளை உருவாக்கிய பிறகு, அவை இங்கே தோன்றும்"
-
-#, fuzzy
-#~ msgid "_New Note"
-#~ msgstr "குறிப்பை நீக்கு"
-
-#~ msgid "No Results"
-#~ msgstr "முடிவுகள் இல்லை"
-
-#~ msgid "Try a different search"
-#~ msgstr "வேறு தேடலை முயற்சிக்கவும்"
-
-#, fuzzy
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "விசைப்பலகை குறுக்குவழிகள்"
-
-#~ msgid "About Sticky Notes"
-#~ msgstr "ஒட்டும் குறிப்புகள் பற்றி"
-
-#~ msgid "Quit"
-#~ msgstr "வெளியேறு"
-
-#, fuzzy
-#~ msgid "Light style"
-#~ msgstr "%s நடைக்கு மாறவும்"
-
-#~ msgid "Bold"
-#~ msgstr "தடித்த"
-
-#~ msgid "Italic"
-#~ msgstr "சாய்வு"
-
-#~ msgid "Underline"
-#~ msgstr "அடிக்கோடு"
-
-#~ msgid "Strikethrough"
-#~ msgstr "கோடு வழியாக"
-
-#~ msgid "All Notes"
-#~ msgstr "அனைத்து குறிப்புகள்"
 
 #~ msgid "Create a new note"
 #~ msgstr "புதிய குறிப்பை உருவாக்கவும்"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 11:46+0200\n"
+"POT-Creation-Date: 2023-06-08 09:49+0200\n"
 "PO-Revision-Date: 2023-05-27 08:34+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Zorin Os\n"
@@ -24,8 +24,8 @@ msgid "Pin notes to your desktop"
 msgstr "Appunta le note sul desktop"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Note adesive"
 
@@ -279,6 +279,15 @@ msgstr "Mostra tutte le note"
 msgid "Whether to show the all notes window or note"
 msgstr "Se mostrare la finestra di tutte le note o la nota"
 
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "La nota è aperta"
+
+#: data/ui/card.ui:39 data/ui/window.ui:172
+#, fuzzy
+msgid "Delete Note"
+msgstr "Eliminare la nota?"
+
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
@@ -354,6 +363,82 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Barrato"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "Nuova nota"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Menu principale"
+
+#: data/ui/notes.ui:59
+msgid "Search notes…"
+msgstr "Cerca note…"
+
+#: data/ui/notes.ui:72
+msgid "No Notes"
+msgstr "Nessuna nota"
+
+#: data/ui/notes.ui:73
+msgid "After you create notes, they will appear here"
+msgstr "Dopo aver creato le note, appariranno qui"
+
+#: data/ui/notes.ui:77
+msgid "_New Note"
+msgstr "_Nuova nota"
+
+#: data/ui/notes.ui:92
+msgid "No Results"
+msgstr "Nessun risultato"
+
+#: data/ui/notes.ui:93
+msgid "Try a different search"
+msgstr "Prova una ricerca diversa"
+
+#: data/ui/notes.ui:125
+msgid "Keyboard Shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+#: data/ui/notes.ui:129
+msgid "About Sticky Notes"
+msgstr "Informazioni su Sticky Notes"
+
+#: data/ui/notes.ui:135
+msgid "Quit"
+msgstr "Esci"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr "Segui lo stile del sistema"
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "Stile chiaro"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "Stile scuro"
+
+#: data/ui/window.ui:126
+msgid "Bold"
+msgstr "Grassetto"
+
+#: data/ui/window.ui:134
+msgid "Italic"
+msgstr "Corsivo"
+
+#: data/ui/window.ui:142
+msgid "Underline"
+msgstr "Sottolineato"
+
+#: data/ui/window.ui:150
+msgid "Strikethrough"
+msgstr "Barrato"
+
+#: data/ui/window.ui:168
+msgid "All Notes"
+msgstr "Tutte le note"
+
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:349
 msgid "translator-credits"
@@ -417,72 +502,12 @@ msgstr "Cancella"
 msgid "Delete"
 msgstr "Elimina"
 
-#: src/view.ts:355
+#: src/view.ts:351
 msgid "Empty Note"
 msgstr "Nota vuota"
 
-#~ msgid "Main Menu"
-#~ msgstr "Menu principale"
-
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "Una semplice app per note adesive per GNOME"
-
-#~ msgid "Note is Open"
-#~ msgstr "La nota è aperta"
-
-#~ msgid "New Note"
-#~ msgstr "Nuova nota"
-
-#~ msgid "Search notes…"
-#~ msgstr "Cerca note…"
-
-#~ msgid "No Notes"
-#~ msgstr "Nessuna nota"
-
-#~ msgid "After you create notes, they will appear here"
-#~ msgstr "Dopo aver creato le note, appariranno qui"
-
-#~ msgid "_New Note"
-#~ msgstr "_Nuova nota"
-
-#~ msgid "No Results"
-#~ msgstr "Nessun risultato"
-
-#~ msgid "Try a different search"
-#~ msgstr "Prova una ricerca diversa"
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Scorciatoie da tastiera"
-
-#~ msgid "About Sticky Notes"
-#~ msgstr "Informazioni su Sticky Notes"
-
-#~ msgid "Quit"
-#~ msgstr "Esci"
-
-#~ msgid "Follow system style"
-#~ msgstr "Segui lo stile del sistema"
-
-#~ msgid "Light style"
-#~ msgstr "Stile chiaro"
-
-#~ msgid "Dark style"
-#~ msgstr "Stile scuro"
-
-#~ msgid "Bold"
-#~ msgstr "Grassetto"
-
-#~ msgid "Italic"
-#~ msgstr "Corsivo"
-
-#~ msgid "Underline"
-#~ msgstr "Sottolineato"
-
-#~ msgid "Strikethrough"
-#~ msgstr "Barrato"
-
-#~ msgid "All Notes"
-#~ msgstr "Tutte le note"
 
 #~ msgid "Create a new note"
 #~ msgstr "Crea una nuova nota"

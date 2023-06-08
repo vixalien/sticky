@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.vixalien.sticky\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 11:46+0200\n"
+"POT-Creation-Date: 2023-06-08 09:49+0200\n"
 "PO-Revision-Date: 2023-05-17 11:43-0300\n"
 "Last-Translator: Fúlvio Leo <fulviokaldas@outlook.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -24,8 +24,8 @@ msgid "Pin notes to your desktop"
 msgstr "Fixe notas para o seu ambiente de trabalho"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Sticky Notes"
 
@@ -273,6 +273,15 @@ msgstr "Mostre todas as notas"
 msgid "Whether to show the all notes window or note"
 msgstr "Se deve mostrar a janela com todas as notas ou nota"
 
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr ""
+
+#: data/ui/card.ui:39 data/ui/window.ui:172
+#, fuzzy
+msgid "Delete Note"
+msgstr "Deletar nota?"
+
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
@@ -348,6 +357,94 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Tachado"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+#, fuzzy
+msgid "New Note"
+msgstr "Nova Nota"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Menu Principal"
+
+#: data/ui/notes.ui:59
+msgid "Search notes…"
+msgstr ""
+
+#: data/ui/notes.ui:72
+#, fuzzy
+msgid "No Notes"
+msgstr "Notas"
+
+#: data/ui/notes.ui:73
+msgid "After you create notes, they will appear here"
+msgstr ""
+
+#: data/ui/notes.ui:77
+#, fuzzy
+msgid "_New Note"
+msgstr "Nova Nota"
+
+#: data/ui/notes.ui:92
+msgid "No Results"
+msgstr ""
+
+#: data/ui/notes.ui:93
+msgid "Try a different search"
+msgstr ""
+
+#: data/ui/notes.ui:125
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "Mostra os atalhos"
+
+#: data/ui/notes.ui:129
+#, fuzzy
+msgid "About Sticky Notes"
+msgstr "Sticky Notes"
+
+#: data/ui/notes.ui:135
+#, fuzzy
+msgid "Quit"
+msgstr "Sai"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr ""
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+#, fuzzy
+msgid "Light style"
+msgstr "Muda para o estilo %s"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr ""
+
+#: data/ui/window.ui:126
+#, fuzzy
+msgid "Bold"
+msgstr "Negrito"
+
+#: data/ui/window.ui:134
+#, fuzzy
+msgid "Italic"
+msgstr "Itálico"
+
+#: data/ui/window.ui:142
+#, fuzzy
+msgid "Underline"
+msgstr "Sublinhado"
+
+#: data/ui/window.ui:150
+#, fuzzy
+msgid "Strikethrough"
+msgstr "Tachado"
+
+#: data/ui/window.ui:168
+#, fuzzy
+msgid "All Notes"
+msgstr "Notas"
+
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:349
 msgid "translator-credits"
@@ -411,9 +508,6 @@ msgstr "Cancelar"
 msgid "Delete"
 msgstr "Deletar"
 
-#: src/view.ts:355
+#: src/view.ts:351
 msgid "Empty Note"
 msgstr "Nota vazia"
-
-#~ msgid "Main Menu"
-#~ msgstr "Menu Principal"

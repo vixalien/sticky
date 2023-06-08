@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 11:46+0200\n"
+"POT-Creation-Date: 2023-06-08 09:49+0200\n"
 "PO-Revision-Date: 2023-03-05 18:27+0100\n"
 "Last-Translator: Gil Forcada Codinachs <gil.gnome@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -23,8 +23,8 @@ msgid "Pin notes to your desktop"
 msgstr ""
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Notes enganxoses"
 
@@ -251,6 +251,16 @@ msgstr "No hi ha cap nota"
 msgid "Whether to show the all notes window or note"
 msgstr ""
 
+#: data/ui/card.ui:13
+#, fuzzy
+msgid "Note is Open"
+msgstr "La nota està oberta"
+
+#: data/ui/card.ui:39 data/ui/window.ui:172
+#, fuzzy
+msgid "Delete Note"
+msgstr "Suprimeix la nota"
+
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
@@ -337,6 +347,87 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Ratllat"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+#, fuzzy
+msgid "New Note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/notes.ui:59
+msgid "Search notes…"
+msgstr ""
+
+#: data/ui/notes.ui:72
+#, fuzzy
+msgid "No Notes"
+msgstr "No hi ha cap nota"
+
+#: data/ui/notes.ui:73
+msgid "After you create notes, they will appear here"
+msgstr "Les notes que creeu, aparaixeran aquí"
+
+#: data/ui/notes.ui:77
+#, fuzzy
+msgid "_New Note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/notes.ui:92
+msgid "No Results"
+msgstr "No s'ha trobat cap resultat"
+
+#: data/ui/notes.ui:93
+msgid "Try a different search"
+msgstr "Proveu una cerca diferent"
+
+#: data/ui/notes.ui:125
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "Dreceres de teclat"
+
+#: data/ui/notes.ui:129
+msgid "About Sticky Notes"
+msgstr "Quan al Notes Enganxoses"
+
+#: data/ui/notes.ui:135
+msgid "Quit"
+msgstr "Surt"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr ""
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+#, fuzzy
+msgid "Light style"
+msgstr "Canvia a l'estil %s"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr ""
+
+#: data/ui/window.ui:126
+msgid "Bold"
+msgstr "Negreta"
+
+#: data/ui/window.ui:134
+msgid "Italic"
+msgstr "Cursiva"
+
+#: data/ui/window.ui:142
+msgid "Underline"
+msgstr "Subratllat"
+
+#: data/ui/window.ui:150
+msgid "Strikethrough"
+msgstr "Ratllat"
+
+#: data/ui/window.ui:168
+msgid "All Notes"
+msgstr "Totes les notes"
+
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:349
 msgid "translator-credits"
@@ -400,66 +491,12 @@ msgstr ""
 msgid "Delete"
 msgstr "Suprimeix la nota"
 
-#: src/view.ts:355
+#: src/view.ts:351
 msgid "Empty Note"
 msgstr "Nota buida"
 
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "Una senzilla aplicació per prendre notes pel GNOME"
-
-#, fuzzy
-#~ msgid "Note is Open"
-#~ msgstr "La nota està oberta"
-
-#, fuzzy
-#~ msgid "New Note"
-#~ msgstr "Suprimeix la nota"
-
-#, fuzzy
-#~ msgid "No Notes"
-#~ msgstr "No hi ha cap nota"
-
-#~ msgid "After you create notes, they will appear here"
-#~ msgstr "Les notes que creeu, aparaixeran aquí"
-
-#, fuzzy
-#~ msgid "_New Note"
-#~ msgstr "Suprimeix la nota"
-
-#~ msgid "No Results"
-#~ msgstr "No s'ha trobat cap resultat"
-
-#~ msgid "Try a different search"
-#~ msgstr "Proveu una cerca diferent"
-
-#, fuzzy
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Dreceres de teclat"
-
-#~ msgid "About Sticky Notes"
-#~ msgstr "Quan al Notes Enganxoses"
-
-#~ msgid "Quit"
-#~ msgstr "Surt"
-
-#, fuzzy
-#~ msgid "Light style"
-#~ msgstr "Canvia a l'estil %s"
-
-#~ msgid "Bold"
-#~ msgstr "Negreta"
-
-#~ msgid "Italic"
-#~ msgstr "Cursiva"
-
-#~ msgid "Underline"
-#~ msgstr "Subratllat"
-
-#~ msgid "Strikethrough"
-#~ msgstr "Ratllat"
-
-#~ msgid "All Notes"
-#~ msgstr "Totes les notes"
 
 #~ msgid "Create a new note"
 #~ msgstr "Crea una nota nova"
