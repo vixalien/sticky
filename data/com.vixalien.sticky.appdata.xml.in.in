@@ -48,13 +48,25 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
-	  <release version="0.2.0" date="2023-05-24">
+		<release version="0.2.1" date="2023-06-08">
+			<description>
+				<ul>
+					<li>correctly translate all strings</li>
+					<li>add translator credits support (in the about window)</li>
+					<li>refine the focus indicator on the all notes window</li>
+					<li>update translations</li>
+					<li>fix some tooltips being invisible</li>
+					<li>fix a bug where only the tags (bold, italic etc) of the first 5 lines would be saved</li>
+				</ul>
+			</description>
+		</release>
+		<release version="0.2.0" date="2023-05-24">
 			<description>
 				<p>this is a refinement release</p>
-			  <ul>
-			    <li>show focus indicators correctly in all notes window</li>
-			    <li>use new flexible ToolbarView widget</li>
-			  </ul>
+				<ul>
+					<li>show focus indicators correctly in all notes window</li>
+					<li>use new flexible ToolbarView widget</li>
+				</ul>
 			</description>
 		</release>
 		<release version="0.1.11" date="2023-04-20">
