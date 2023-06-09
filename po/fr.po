@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-08 09:49+0200\n"
-"PO-Revision-Date: 2023-05-25 22:22+0200\n"
+"PO-Revision-Date: 2023-06-09 15:46+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: data/com.vixalien.sticky.desktop.in.in:3
 #: data/com.vixalien.sticky.appdata.xml.in.in:7
@@ -27,7 +27,7 @@ msgstr "Épinglez des notes sur votre bureau"
 #: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
 #: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
-msgstr "Notes Autocollantes"
+msgstr "Pense-bêtes"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.vixalien.sticky.desktop.in.in:12
@@ -69,17 +69,18 @@ msgid "Angelo Verlain"
 msgstr "Angelo Verlain"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:53
-#, fuzzy
 msgid "this is a refinement release"
-msgstr "Ceci est principalement une version de nettoyage"
+msgstr "C’est une version de peaufinage"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:55
 msgid "show focus indicators correctly in all notes window"
 msgstr ""
+"Affiche correctement les indicateurs de focus dans la fenêtre de toutes les "
+"notes"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:56
 msgid "use new flexible ToolbarView widget"
-msgstr ""
+msgstr "Utilise le nouveau widget flexible ToolbarView"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:63
 msgid "print where notes are logged when the app starts up (for syncing)"
@@ -282,9 +283,8 @@ msgid "Note is Open"
 msgstr "La note est ouverte"
 
 #: data/ui/card.ui:39 data/ui/window.ui:172
-#, fuzzy
 msgid "Delete Note"
-msgstr "Supprimer la note ?"
+msgstr "Supprimer la note"
 
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
