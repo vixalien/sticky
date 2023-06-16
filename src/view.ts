@@ -317,7 +317,7 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
   }
 
   set note(note: Note | undefined) {
-    this._note = super.note = Object.freeze(note);
+    this._note = super.note = note;
 
     this.show_content();
   }
