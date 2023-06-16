@@ -48,6 +48,14 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
+		<release version="0.2.2" date="2023-06-16">
+			<description>
+				<ul>
+					<li>fixed a bug introduced by the previous release where new notes would not get saved</li>
+					<li>updated french &amp; czech translations</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.2.1" date="2023-06-08">
 			<description>
 				<ul>
