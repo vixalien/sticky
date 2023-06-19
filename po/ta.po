@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-08 09:49+0200\n"
-"PO-Revision-Date: 2023-03-05 11:17+0530\n"
+"PO-Revision-Date: 2023-06-19 21:42+0530\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
 "Language-Team: \n"
 "Language: ta\n"
@@ -16,16 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
-#: data/com.vixalien.sticky.desktop.in.in:3
-#: data/com.vixalien.sticky.appdata.xml.in.in:7
+#: data/com.vixalien.sticky.desktop.in.in:3 data/com.vixalien.sticky.appdata.xml.in.in:7
 msgid "Pin notes to your desktop"
-msgstr ""
+msgstr "குறிப்புகளை உங்கள் டெஸ்க்டாப்பில் பின் செய்யவும்"
 
-#: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
-#: src/application.ts:68 src/application.ts:337
+#: data/com.vixalien.sticky.desktop.in.in:4 data/com.vixalien.sticky.appdata.xml.in.in:6
+#: data/ui/notes.ui:32 src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "ஒட்டும் குறிப்புகள்"
 
@@ -35,12 +33,10 @@ msgid "Sticky;Notes;Write;"
 msgstr "ஒட்டும்;குறிப்புகள்;எழுது;"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:9
-msgid ""
-"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
-"notes and format them."
+msgid "Sticky Notes is a simple sticky notes app for GNOME. It allows you to create notes and format them."
 msgstr ""
-"ஒட்டும் குறிப்புகள் என்பது க்னோமிற்கான எளிய ஒட்டும் குறிப்பு பயன்பாடாகும். குறிப்புகளை "
-"உருவாக்கவும் அவற்றை வடிவமைக்கவும் இது உங்களை அனுமதிக்கிறது."
+"ஒட்டும் குறிப்புகள் என்பது க்னோமிற்கான எளிய ஒட்டும் குறிப்பு பயன்பாடாகும். குறிப்புகளை உருவாக்கவும் அவற்றை வடிவமைக்கவும் "
+"இது உங்களை அனுமதிக்கிறது."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:13
 msgid "Current features:"
@@ -68,135 +64,139 @@ msgstr "ஏஞ்சலோ வெர்லைன்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:53
 msgid "this is a refinement release"
-msgstr ""
+msgstr "இது ஒரு சுத்திகரிப்பு வெளியீடு"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:55
 msgid "show focus indicators correctly in all notes window"
-msgstr ""
+msgstr "அனைத்து குறிப்புகள் சாளரத்திலும் கவனம் குறிகாட்டிகளை சரியாகக் காட்டு"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:56
 msgid "use new flexible ToolbarView widget"
-msgstr ""
+msgstr "புதிய நெகிழ்வான ToolbarView விட்ஜெட்டைப் பயன்படுத்தவும்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:63
 msgid "print where notes are logged when the app starts up (for syncing)"
-msgstr ""
+msgstr "பயன்பாடு தொடங்கும் போது குறிப்புகள் உள்நுழைந்த இடத்தில் அச்சிடவும் (ஒத்திசைக்க)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:64
 msgid "add a flag `--new-note` to quicky jote down a note"
-msgstr ""
+msgstr "குறிப்பை விரைவாக எழுத `--new-note` என்ற கொடியைச் சேர்க்கவும்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:71
 msgid "quickly open links in your notes"
-msgstr ""
+msgstr "உங்கள் குறிப்புகளில் உள்ள இணைப்புகளை விரைவாக திறக்கவும்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:78
 msgid "changed GNOME Runtime version to 44"
-msgstr ""
+msgstr "க்னோம் இயக்க நேர பதிப்பை 44 ஆக மாற்றியது"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:79
 msgid "updated dutch translation"
-msgstr ""
+msgstr "புதுப்பிக்கப்பட்ட டச்சு மொழிபெயர்ப்பு"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:85
 msgid "fix packaging issues"
-msgstr ""
+msgstr "பொதியிடல் சிக்கல்கள் சரிசெய்யப்பட்டன"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:90
 msgid "this release enhances usability and reliability"
-msgstr ""
+msgstr "இந்த வெளியீடு பயன்பாட்டினை மற்றும் நம்பகத்தன்மையை அதிகரிக்கிறது"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:92
 msgid "updated the icon to make it more distinguished"
-msgstr ""
+msgstr "ஐகானை மேலும் தனித்துவமாக்க புதுப்பித்துள்ளது"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:93
 msgid "updated translations (french, russian) and added a czech translation"
-msgstr ""
+msgstr "புதுப்பிக்கப்பட்ட மொழிபெயர்ப்புகள் (பிரெஞ்சு, ரஷியன்) மற்றும் செக் மொழிபெயர்ப்பைச் சேர்க்கப்பட்டது"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:94
 msgid "make text throughout the UI more standard and easy to understand"
-msgstr ""
+msgstr "உரைகல் UI முழுவதிலும் மிகவும் தரமானதாகவும் புரிந்துகொள்ள எளிதாகவும் மாற்றப்பட்டுள்ளது"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:95
 msgid "notes are now more reliably saved so that you don't lose your changes"
-msgstr ""
+msgstr "குறிப்புகள் இப்போது மிகவும் நம்பகத்தன்மையுடன் சேமிக்கப்பட்டுள்ளன, இதனால் உங்கள் மாற்றங்களை நீங்கள் இழக்க மாட்டீர்கள்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:96
-msgid ""
-"notes are now restored (mostly) as they were last time you closed the app"
-msgstr ""
+msgid "notes are now restored (mostly) as they were last time you closed the app"
+msgstr "கடைசியாக நீங்கள் பயன்பாட்டை மூடியதைப் போலவே குறிப்புகள் இப்போது மீட்டமைக்கப்பட்டுள்ளன (பெரும்பாலும்)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:97
 msgid ""
-"the most recently closed note is now shown when you reopen the app, instead "
-"of showing the all notes window"
+"the most recently closed note is now shown when you reopen the app, instead of showing the all notes "
+"window"
 msgstr ""
+"அனைத்து குறிப்புகள் சாளரத்தையும் காண்பிப்பதற்குப் பதிலாக, நீங்கள் பயன்பாட்டை மீண்டும் திறக்கும் போது சமீபத்தில் மூடப்பட்ட "
+"குறிப்பு இப்போது காட்டப்படும்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:100
 msgid ""
-"I'd like to take a moment to thank everyone that contributed to sticky notes "
-"this far. I am very grateful for your help and support."
+"I'd like to take a moment to thank everyone that contributed to sticky notes this far. I am very "
+"grateful for your help and support."
 msgstr ""
+"இதுவரை ஒட்டும் குறிப்புகளுக்கு பங்களித்த அனைவருக்கும் நன்றி தெரிவிக்க விரும்புகிறேன். உங்கள் உதவி மற்றும் ஆதரவிற்கு நான் "
+"மிகவும் நன்றியுள்ளவனாக இருக்கிறேன்."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:106
 msgid "mostly a bug fix and tune-up release"
-msgstr ""
+msgstr "பெரும்பாலும் ஒரு பிழை திருத்தம் மற்றும் டியூன்-அப் வெளியீடு"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:108
 msgid "make style (color) selector easier to change using the keyboard"
-msgstr ""
+msgstr "விசைப்பலகையைப் பயன்படுத்தி மாற்றுவதற்கு பாணி (வண்ணம்) தேர்வியை எளிதாக்கியது"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:109
-msgid ""
-"added more translations (tamil, hungary, catalan) and update russian "
-"translations"
-msgstr ""
+msgid "added more translations (tamil, hungary, catalan) and update russian translations"
+msgstr "மேலும் மொழிபெயர்ப்புகளைச் சேர்த்தது (தமிழ், ஹங்கேரி, கதாலா) மற்றும் ரஷ்ய மொழிபெயர்ப்புகளைப் புதுப்பிக்கவும்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:110
 msgid ""
-"you can now choose to use dark or light mode manually instead of always "
-"using the system theme in the all notes window"
+"you can now choose to use dark or light mode manually instead of always using the system theme in the "
+"all notes window"
 msgstr ""
+"எல்லா குறிப்புகள் சாளரத்திலும் கணினி தீம் பயன்படுத்துவதற்குப் பதிலாக இருண்ட அல்லது ஒளி பயன்முறையை கைமுறையாகப் பயன்படுத்த "
+"நீங்கள் இப்போது தேர்வு செய்யலாம்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:117
 msgid "this is unexpectedly a large release"
-msgstr ""
+msgstr "இது எதிர்பாராத விதமாக பெரிய வெளியீடு"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:119
 msgid "new icon"
-msgstr ""
+msgstr "புதிய சின்னம்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:120
 msgid "added translations (french, russian, italian, dutch, ocitan)"
-msgstr ""
+msgstr "மொழிபெயர்ப்பு சேர்க்கப்பட்டது (பிரெஞ்சு, ரஷியன், இத்தாலியன், டச்சு, ஆக்ஸிடன்)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:121
 msgid "bug fixes"
-msgstr ""
+msgstr "பிழை திருத்தங்கள்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:127
 msgid "this is mostly a cleanup release"
-msgstr ""
+msgstr "இது பெரும்பாலும் ஒரு தூய்மைப்படுத்தல் வெளியீடு"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:129
 msgid "added translation support (starting with french)"
-msgstr ""
+msgstr "மொழிபெயர்ப்பு ஆதரவு சேர்க்கப்பட்டது (பிரெஞ்சில் தொடங்கி)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:130
 msgid ""
-"apply tag to location under the cursor when nothing is selected. this means "
-"that for example if you click Ctrl+B while there's nothing selected, the new "
-"content you'll write will come out as bold"
+"apply tag to location under the cursor when nothing is selected. this means that for example if you "
+"click Ctrl+B while there's nothing selected, the new content you'll write will come out as bold"
 msgstr ""
+"எதுவும் தேர்ந்தெடுக்கப்படாத போது சுட்டியின் கீழ் உள்ள இடத்திற்கு குறிச்சொல்லைப் பயன்படுத்தவும். அதாவது, எடுத்துக்காட்டாக, "
+"நீங்கள் Ctrl+B ஐக் கிளிக் செய்தால், எதுவும் தேர்ந்தெடுக்கப்படாத நிலையில், நீங்கள் எழுதும் புதிய உள்ளடக்கம் தடிமனாக வெளிவரும்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:133
 msgid "fixed builds"
-msgstr ""
+msgstr "நிலையான கட்டுமானங்கள்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:134
 msgid "restructured/cleaned source"
-msgstr ""
+msgstr "மறுசீரமைக்கப்பட்ட/சுத்தப்படுத்தப்பட்ட மூலம்"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:140
 msgid "First beta release!"
@@ -236,62 +236,54 @@ msgstr "குறிப்பு நீக்குதலை உறுதிப�
 
 #: data/com.vixalien.sticky.gschema.xml.in:36
 msgid "The selected color scheme"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட வண்ணத் திட்டம்"
 
 #: data/com.vixalien.sticky.gschema.xml.in:37
 msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட வண்ணத் திட்டம். 0 = அமைப்பு பாணியைப் பின்பற்றவும், 1 = ஒளி, 2 = இருண்டது"
 
 #: data/com.vixalien.sticky.gschema.xml.in:43
-#, fuzzy
 msgid "Show all notes"
-msgstr "குறிப்புகள் இல்லை"
+msgstr "எல்லா குறிப்புகளையும் காட்டு"
 
 #: data/com.vixalien.sticky.gschema.xml.in:44
 msgid "Whether to show the all notes window or note"
-msgstr ""
+msgstr "அனைத்து குறிப்புகள் சாளரத்தையும் அல்லது குறிப்பையும் காட்ட வேண்டுமா"
 
 #: data/ui/card.ui:13
-#, fuzzy
 msgid "Note is Open"
 msgstr "குறிப்பு திறக்கப்பட்டுள்ளது"
 
 #: data/ui/card.ui:39 data/ui/window.ui:172
-#, fuzzy
 msgid "Delete Note"
 msgstr "குறிப்பை நீக்கு"
 
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "பொது"
 
 #: data/ui/help-overlay.ui:14
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "விசைப்பலகை குறுக்குவழிகள்"
+msgstr "குறுக்குவழிகளைக் காட்டு"
 
 #: data/ui/help-overlay.ui:20
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "வெளியேறு"
 
 #: data/ui/help-overlay.ui:28
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Notes"
-msgstr "குறிப்புகள் இல்லை"
+msgstr "குறிப்புகள்"
 
 #: data/ui/help-overlay.ui:31
-#, fuzzy
 msgctxt "shortcut window"
 msgid "New Note"
-msgstr "குறிப்பை நீக்கு"
+msgstr "புதிய குறிப்பு"
 
 #: data/ui/help-overlay.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Delete note"
 msgstr "குறிப்பை நீக்கு"
@@ -299,69 +291,61 @@ msgstr "குறிப்பை நீக்கு"
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Navigation"
-msgstr ""
+msgstr "வழிசெலுத்தல்"
 
 #: data/ui/help-overlay.ui:48
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show all notes"
-msgstr "குறிப்புகள் இல்லை"
+msgstr "எல்லா குறிப்புகளையும் காட்டு"
 
 #: data/ui/help-overlay.ui:54
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Cycle between notes"
-msgstr "குறிப்பை நீக்கு"
+msgstr "குறிப்புகள் இடையே சுழற்சி"
 
 #: data/ui/help-overlay.ui:60
 msgctxt "shortcut window"
 msgid "Cycle between notes in reverse order"
-msgstr ""
+msgstr "தலைகீழ் வரிசையில் குறிப்புகளுக்கு இடையில் சுழற்சி"
 
 #: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Editing"
-msgstr ""
+msgstr "திருத்துதல்"
 
 #: data/ui/help-overlay.ui:71
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Bold"
 msgstr "தடித்த"
 
 #: data/ui/help-overlay.ui:77
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Italic"
 msgstr "சாய்வு"
 
 #: data/ui/help-overlay.ui:83
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Underline"
 msgstr "அடிக்கோடு"
 
 #: data/ui/help-overlay.ui:89
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "கோடு வழியாக"
 
 #: data/ui/notes.ui:18 data/ui/window.ui:23
-#, fuzzy
 msgid "New Note"
-msgstr "குறிப்பை நீக்கு"
+msgstr "புதிய குறிப்பு"
 
 #: data/ui/notes.ui:26 data/ui/window.ui:30
 msgid "Main Menu"
-msgstr ""
+msgstr "முதன்மை பட்டியல்"
 
 #: data/ui/notes.ui:59
 msgid "Search notes…"
-msgstr ""
+msgstr "குறிப்புகளைத் தேடு…"
 
 #: data/ui/notes.ui:72
-#, fuzzy
 msgid "No Notes"
 msgstr "குறிப்புகள் இல்லை"
 
@@ -370,9 +354,8 @@ msgid "After you create notes, they will appear here"
 msgstr "நீங்கள் குறிப்புகளை உருவாக்கிய பிறகு, அவை இங்கே தோன்றும்"
 
 #: data/ui/notes.ui:77
-#, fuzzy
 msgid "_New Note"
-msgstr "குறிப்பை நீக்கு"
+msgstr "_புதிய குறிப்பு"
 
 #: data/ui/notes.ui:92
 msgid "No Results"
@@ -383,7 +366,6 @@ msgid "Try a different search"
 msgstr "வேறு தேடலை முயற்சிக்கவும்"
 
 #: data/ui/notes.ui:125
-#, fuzzy
 msgid "Keyboard Shortcuts"
 msgstr "விசைப்பலகை குறுக்குவழிகள்"
 
@@ -397,16 +379,15 @@ msgstr "வெளியேறு"
 
 #: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
 msgid "Follow system style"
-msgstr ""
+msgstr "கணினி பாணியைப் பின்பற்றவும்"
 
 #: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
-#, fuzzy
 msgid "Light style"
-msgstr "%s நடைக்கு மாறவும்"
+msgstr "ஒளி பாணி"
 
 #: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
 msgid "Dark style"
-msgstr ""
+msgstr "இருண்ட பாணி"
 
 #: data/ui/window.ui:126
 msgid "Bold"
@@ -431,7 +412,7 @@ msgstr "அனைத்து குறிப்புகள்"
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:349
 msgid "translator-credits"
-msgstr ""
+msgstr "க.பா.தருண் கிருஷ்ணா <kbdharunkrishna@gmail.com>"
 
 #. focus_on_click: false,
 #: src/styleselector.ts:45
@@ -472,24 +453,20 @@ msgid "Window"
 msgstr "சாளரம்"
 
 #: src/util.ts:293
-#, fuzzy
 msgid "Delete Note?"
-msgstr "குறிப்பை நீக்கு"
+msgstr "குறிப்பை நீக்கவா?"
 
 #: src/util.ts:294
-msgid ""
-"This action cannot be undone. If you want to hide the note, you can close it "
-"instead."
-msgstr ""
+msgid "This action cannot be undone. If you want to hide the note, you can close it instead."
+msgstr "இந்தச் செயலைச் செயல்தவிர்க்க முடியாது. நீங்கள் குறிப்பை மறைக்க விரும்பினால், அதற்கு பதிலாக அதை மூடலாம்."
 
 #: src/util.ts:296
 msgid "Cancel"
-msgstr ""
+msgstr "ரத்துசெய்"
 
 #: src/util.ts:297
-#, fuzzy
 msgid "Delete"
-msgstr "குறிப்பை நீக்கு"
+msgstr "நீக்கு"
 
 #: src/view.ts:351
 msgid "Empty Note"
