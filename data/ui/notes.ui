@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk" version="4.0"/>
+  <requires lib="gtk" version="4.0" />
   <template class="StickyNotes" parent="AdwApplicationWindow">
     <style>
-      <class name="notes-window"/>
+      <class name="notes-window" />
     </style>
     <child>
       <object class="AdwToolbarView">
@@ -15,7 +15,7 @@
                 <property name="receives-default">false</property>
                 <property name="icon-name">list-add-symbolic</property>
                 <property name="action-name">app.new-note</property>
-                <property name="tooltip-text" translatable="yes">New Note</property>
+                <property name="tooltip-text" translatable="true">New Note</property>
               </object>
             </child>
             <child type="end">
@@ -23,40 +23,41 @@
                 <property name="receives-default">false</property>
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primaryMenu</property>
-                <property name="tooltip-text" translatable="yes">Main Menu</property>
+                <property name="tooltip-text" translatable="true">Main Menu</property>
                 <property name="primary">true</property>
               </object>
             </child>
             <property name="title-widget">
               <object class="AdwWindowTitle">
-                <property name="title" translatable="yes">Sticky Notes</property>
+                <property name="title" translatable="true">Sticky Notes</property>
               </object>
             </property>
             <style>
-              <class name="flat"/>
-              <class name="header-bar"/>
+              <class name="flat" />
+              <class name="header-bar" />
             </style>
           </object>
         </child>
         <property name="content">
-          <object class="AdwClamp">
+          <object class="GtkScrolledWindow" id="scrolled">
+            <property name="vexpand">true</property>
             <child>
-              <object class="GtkScrolledWindow" id="scrolled">
-                <property name="vexpand">true</property>
+              <object class="AdwClamp">
                 <child>
                   <object class="GtkBox" id="notes">
                     <property name="orientation">1</property>
                     <style>
-                      <class name="notes"/>
+                      <class name="notes" />
                     </style>
                     <child>
                       <object class="GtkBox" id="search">
+                        <property name="margin-top">6</property>
                         <style>
-                          <class name="search-bar"/>
+                          <class name="search-bar" />
                         </style>
                         <child>
                           <object class="GtkSearchEntry" id="search_entry">
-                            <property name="placeholder-text" translatable="yes">Search notes…</property>
+                            <property name="placeholder-text" translatable="true">Search notes…</property>
                             <property name="hexpand">true</property>
                           </object>
                         </child>
@@ -69,17 +70,18 @@
                           <object class="AdwStatusPage" id="no_notes">
                             <property name="vexpand">true</property>
                             <property name="icon-name">com.vixalien.sticky-symbolic</property>
-                            <property name="title" translatable="yes">No Notes</property>
-                            <property name="description" translatable="yes">After you create notes, they will appear here</property>
+                            <property name="title" translatable="true">No Notes</property>
+                            <property name="description" translatable="true">After you create notes,
+                              they will appear here</property>
                             <child>
                               <object class="GtkButton">
                                 <property name="halign">3</property>
-                                <property name="label" translatable="yes">_New Note</property>
+                                <property name="label" translatable="true">_New Note</property>
                                 <property name="use-underline">true</property>
                                 <property name="action-name">app.new-note</property>
                                 <style>
-                                  <class name="pill"/>
-                                  <class name="suggested-action"/>
+                                  <class name="pill" />
+                                  <class name="suggested-action" />
                                 </style>
                               </object>
                             </child>
@@ -89,8 +91,8 @@
                           <object class="AdwStatusPage" id="no_results">
                             <property name="vexpand">true</property>
                             <property name="icon-name">system-search-symbolic</property>
-                            <property name="title" translatable="yes">No Results</property>
-                            <property name="description" translatable="yes">Try a different search</property>
+                            <property name="title" translatable="true">No Results</property>
+                            <property name="description" translatable="true">Try a different search</property>
                           </object>
                         </child>
                         <child>
@@ -98,8 +100,8 @@
                             <property name="show-separators">false</property>
                             <property name="single-click-activate">true</property>
                             <style>
-                              <class name="background"/>
-                              <class name="notes-box"/>
+                              <class name="background" />
+                              <class name="notes-box" />
                             </style>
                           </object>
                         </child>
@@ -122,17 +124,17 @@
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+        <attribute name="label" translatable="true">Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">About Sticky Notes</attribute>
+        <attribute name="label" translatable="true">About Sticky Notes</attribute>
         <attribute name="action">app.about</attribute>
       </item>
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">Quit</attribute>
+        <attribute name="label" translatable="true">Quit</attribute>
         <attribute name="action">app.quit</attribute>
       </item>
     </section>
