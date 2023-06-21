@@ -14,4 +14,10 @@
   <gresource prefix="/com/vixalien/sticky/icons/symbolic/actions/">
     <file preprocess="xml-stripblanks" alias="com.vixalien.sticky-symbolic.svg">icons/hicolor/symbolic/apps/com.vixalien.sticky-symbolic.svg</file>
   </gresource>
+  <gresource prefix="/com/vixalien/sticky/icons/scalable/actions/">
+    <file preprocess="xml-stripblanks" alias="format-text-bold-symbolic.svg">icons/format-text-bold-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="format-text-italic-symbolic.svg">icons/format-text-italic-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="format-text-strikethrough-symbolic.svg">icons/format-text-strikethrough-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="format-text-underline-symbolic.svg">icons/format-text-underline-symbolic.svg</file>
+  </gresource>
 </gresources>
