@@ -2,40 +2,6 @@
 @import 'colors.styl';
 @import 'notes-dark.styl';
 
-.container.style-specifity {
-  &, .toolbar-container {
-    background-color: info.bg_dark;
-    color: info.fg_dark;
-  }
-
-  .header-bar {
-    opacity: 1;
-    color: transparent;
-    background-color: transparent;
-  }
-
-  & popover > arrow, & popover > contents {
-    background-color: at(popover_bg_color);
-    color: at(popover_fg_color);
-  }
-}
-
-.container:not(:focus-within) {
-  .header-bar, .toolbar-container {
-    transition: 0.24s opacity ease-out;
-    opacity: 0;
-
-    &:hover {
-      opacity: 1;
-      transition: 0;
-    }
-  }
-
-  .header-bar:backdrop > * {
-    opacity: 1;
-  }
-}
-
 for name, info in colors {
   .container.style-{name} {
     &, & popover > arrow, & popover > contents, .toolbar-container, ~/ {
@@ -44,11 +10,8 @@ for name, info in colors {
     }
   }
 
-  .container.style-{name} .header-bar:hover {
-    color: info.fg_dark;
-  }
-
   .container.style-{name} .header-bar {
+    color: info.fg_dark;
     background-color: info.header_dark;
   }
 }
