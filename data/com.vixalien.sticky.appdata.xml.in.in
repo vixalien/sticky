@@ -48,6 +48,17 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
+		<release version="0.2.3" date="2023-07-24">
+			<description>
+				<ul>
+					<li>better dark theme support</li>
+					<li>fixed a bug where sometimes icons for actions (bold, italic etc..) would not appear</li>
+					<li>fixed a bug where the scrollbar on the "all notes" window would appear in the wrong
+						place</li>
+					<li>updated tamil translation</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.2.2" date="2023-06-16">
 			<description>
 				<ul>
