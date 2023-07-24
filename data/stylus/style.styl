@@ -15,19 +15,21 @@
   transition: none;
 }
 
-.container:not(:focus-within) {
-  .header-bar, .toolbar-container {
+toolbarview.container:not(:focus-within) {
+  & > .top-bar, & > .bottom-bar {
     transition: 0.25s opacity ease-out;
     opacity: 0;
 
     &:hover {
       opacity: 1;
-      transition: 0;
+      transition: 0.25s opacity ease-in;
     }
   }
 
-  .header-bar:backdrop > * {
-    opacity: 1;
+  & > .top-bar, & > .bottom-bar {
+    &:backdrop > windowhandle {
+      filter: opacity(1);
+    }
   }
 }
 
