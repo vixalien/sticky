@@ -1,17 +1,19 @@
-@import 'util.styl';
 @import 'colors.styl';
 @import 'notes-dark.styl';
+@import 'util.styl';
 
-for name, info in colors {
-  .container.style-{name} {
-    &, & popover > arrow, & popover > contents, .toolbar-container, ~/ {
-      background-color: info.bg_dark;
-      color: info.fg_dark;
+toolbarview.note-window {
+  for name, info in colors {
+    &.style-{name} {
+      .text-view, .bottom-bar, popover > arrow, popover > contents {
+        color: info.fg_dark;
+        background-color: info.bg_dark;
+      }
+
+      .top-bar {
+        color: info.fg_dark;
+        background-color: info.header_dark;
+      }
     }
-  }
-
-  .container.style-{name} .header-bar {
-    color: info.fg_dark;
-    background-color: info.header_dark;
   }
 }

@@ -2,50 +2,6 @@
 @import 'notes.styl';
 @import 'util.styl';
 
-.container {
-  transition: 0.35s background-color ease-out, 0.35s color ease-out;
-}
-
-.text-view {
-  background-color: transparent;
-  color: inherit;
-}
-
-.header-bar, .toolbar-container {
-  transition: none;
-}
-
-toolbarview.container:not(:focus-within) {
-  & > .top-bar, & > .bottom-bar {
-    transition: 0.25s opacity ease-out;
-    opacity: 0;
-
-    &:hover {
-      opacity: 1;
-      transition: 0.25s opacity ease-in;
-    }
-  }
-
-  & > .top-bar, & > .bottom-bar {
-    &:backdrop > windowhandle {
-      filter: opacity(1);
-    }
-  }
-}
-
-for name, info in colors {
-  .container.style-{name} {
-    &, & popover > arrow, & popover > contents, .toolbar-container, ~/ {
-      background-color: info.bg;
-      color: info.fg;
-    }
-  }
-
-  .container.style-{name} .header-bar {
-    background-color: info.header;
-  }
-}
-
 // most hacky thing ever
 // basically this defines link_color_yellow, link_color_pink, etc
 for color, variables in colors {
@@ -57,4 +13,48 @@ for color, variables in colors {
     variables.link
   );
   @define-color {e};
+}
+
+.text-view {
+  background-color: transparent;
+  color: inherit;
+}
+
+toolbarview.note-window {
+  .text-view, .bottom-bar, popover > arrow, popover > contents, .top-bar {
+    transition: background-color 0.35s, unquote("color") 0.25s;
+  }
+
+  &:not(:focus-within) {
+    // hover styles
+    & > .top-bar, & > .bottom-bar {
+      transition: 0.25s opacity ease-out;
+      opacity: 0;
+
+      &:hover {
+        opacity: 1;
+        transition: 0.25s opacity ease-in;
+      }
+    }
+  }
+
+  & > .top-bar, & > .bottom-bar {
+    &:backdrop > windowhandle {
+      filter: opacity(1);
+    }
+  }
+
+  for name, info in colors {
+    &.style-{name} {
+      .text-view, .bottom-bar, popover > arrow, popover > contents {
+        color: info.fg;
+        background-color: info.bg;
+      }
+
+      .top-bar {
+        color: info.fg;
+        background-color: info.header;
+      }
+    }
+  }
 }
