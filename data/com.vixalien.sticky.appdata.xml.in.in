@@ -49,6 +49,21 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
+		<release version="0.2.4" date="2023-08-17">
+			<description>
+				<p>a minimal update in the middle of the summer</p>
+				<ul>
+					<li>added a command line flag `-i` to only open the app if there are
+						open notes. you can now add `com.vixalien.sticky -i` to your
+						autostart scrips or bash_profile to open your notes on boot/login
+					</li>
+					<li>now the shortcut Ctrl+I correctly closes a note's window</li>
+					<li>added a donation link. it should be visible on the flathub page.</li>
+					<li>correctly utilised the new Adwaita widgets</li>
+					<li>fixed some translation issues</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.2.3" date="2023-07-24">
 			<description>
 				<ul>
