@@ -268,7 +268,7 @@ export class Application extends Adw.Application {
 
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
     this.set_accels_for_action("win.show-help-overlay", ["<Primary>question"]);
-    this.set_accels_for_action("win.delete", ["<Primary>w"]);
+    this.set_accels_for_action("window.close", ["<Primary>w"]);
 
     this.set_accels_for_action("win.bold", ["<Primary>b"]);
     this.set_accels_for_action("win.italic", ["<Primary>i"]);

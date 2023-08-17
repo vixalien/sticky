@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 14:10+0200\n"
+"POT-Creation-Date: 2023-08-17 16:39+0200\n"
 "PO-Revision-Date: 2023-06-19 21:42+0530\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
 "Language-Team: \n"
@@ -335,7 +335,7 @@ msgstr "அனைத்து குறிப்புகள் சாளரத�
 msgid "Note is Open"
 msgstr "குறிப்பு திறக்கப்பட்டுள்ளது"
 
-#: data/ui/card.ui:39 data/ui/window.ui:172
+#: data/ui/card.ui:39 data/ui/window.ui:142
 msgid "Delete Note"
 msgstr "குறிப்பை நீக்கு"
 
@@ -365,8 +365,9 @@ msgid "New Note"
 msgstr "புதிய குறிப்பு"
 
 #: data/ui/help-overlay.ui:37
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Delete note"
+msgid "Close Note"
 msgstr "குறிப்பை நீக்கு"
 
 #: data/ui/help-overlay.ui:45
@@ -434,23 +435,23 @@ msgstr "புதிய குறிப்பு"
 msgid "Main Menu"
 msgstr "முதன்மை பட்டியல்"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:98
 msgid "Bold"
 msgstr "தடித்த"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:106
 msgid "Italic"
 msgstr "சாய்வு"
 
-#: data/ui/window.ui:142
+#: data/ui/window.ui:114
 msgid "Underline"
 msgstr "அடிக்கோடு"
 
-#: data/ui/window.ui:150
+#: data/ui/window.ui:122
 msgid "Strikethrough"
 msgstr "கோடு வழியாக"
 
-#: data/ui/window.ui:168
+#: data/ui/window.ui:138
 msgid "All Notes"
 msgstr "அனைத்து குறிப்புகள்"
 

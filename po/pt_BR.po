@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.vixalien.sticky\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 14:10+0200\n"
+"POT-Creation-Date: 2023-08-17 16:39+0200\n"
 "PO-Revision-Date: 2023-05-17 11:43-0300\n"
 "Last-Translator: Fúlvio Leo <fulviokaldas@outlook.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -339,7 +339,7 @@ msgstr "Se deve mostrar a janela com todas as notas ou nota"
 msgid "Note is Open"
 msgstr ""
 
-#: data/ui/card.ui:39 data/ui/window.ui:172
+#: data/ui/card.ui:39 data/ui/window.ui:142
 #, fuzzy
 msgid "Delete Note"
 msgstr "Deletar nota?"
@@ -370,8 +370,9 @@ msgid "New Note"
 msgstr "Nova Nota"
 
 #: data/ui/help-overlay.ui:37
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Delete note"
+msgid "Close Note"
 msgstr "Deleta nota"
 
 #: data/ui/help-overlay.ui:45
@@ -441,27 +442,27 @@ msgstr "Nova Nota"
 msgid "Main Menu"
 msgstr "Menu Principal"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:98
 #, fuzzy
 msgid "Bold"
 msgstr "Negrito"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:106
 #, fuzzy
 msgid "Italic"
 msgstr "Itálico"
 
-#: data/ui/window.ui:142
+#: data/ui/window.ui:114
 #, fuzzy
 msgid "Underline"
 msgstr "Sublinhado"
 
-#: data/ui/window.ui:150
+#: data/ui/window.ui:122
 #, fuzzy
 msgid "Strikethrough"
 msgstr "Tachado"
 
-#: data/ui/window.ui:168
+#: data/ui/window.ui:138
 #, fuzzy
 msgid "All Notes"
 msgstr "Notas"

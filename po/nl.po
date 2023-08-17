@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 14:10+0200\n"
+"POT-Creation-Date: 2023-08-17 16:39+0200\n"
 "PO-Revision-Date: 2023-03-23 11:54+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch\n"
@@ -329,7 +329,7 @@ msgstr "Of alle notities of een enkele notitie dienen te worden getoond"
 msgid "Note is Open"
 msgstr "Deze notitie is geopend"
 
-#: data/ui/card.ui:39 data/ui/window.ui:172
+#: data/ui/card.ui:39 data/ui/window.ui:142
 #, fuzzy
 msgid "Delete Note"
 msgstr "Notitie verwijderen"
@@ -360,8 +360,9 @@ msgid "New Note"
 msgstr "Nieuwe notitie"
 
 #: data/ui/help-overlay.ui:37
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Delete note"
+msgid "Close Note"
 msgstr "Notitie verwijderen"
 
 #: data/ui/help-overlay.ui:45
@@ -429,23 +430,23 @@ msgstr "Nieuwe notitie"
 msgid "Main Menu"
 msgstr "Hoofdmenu"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:98
 msgid "Bold"
 msgstr "Vetgedrukt"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:106
 msgid "Italic"
 msgstr "Cursief"
 
-#: data/ui/window.ui:142
+#: data/ui/window.ui:114
 msgid "Underline"
 msgstr "Onderstrepen"
 
-#: data/ui/window.ui:150
+#: data/ui/window.ui:122
 msgid "Strikethrough"
 msgstr "Doorhalen"
 
-#: data/ui/window.ui:168
+#: data/ui/window.ui:138
 msgid "All Notes"
 msgstr "Alle notities"
 

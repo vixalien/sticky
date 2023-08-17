@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 14:10+0200\n"
+"POT-Creation-Date: 2023-08-17 16:39+0200\n"
 "PO-Revision-Date: 2023-03-05 18:27+0100\n"
 "Last-Translator: Gil Forcada Codinachs <gil.gnome@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -313,7 +313,7 @@ msgstr ""
 msgid "Note is Open"
 msgstr "La nota està oberta"
 
-#: data/ui/card.ui:39 data/ui/window.ui:172
+#: data/ui/card.ui:39 data/ui/window.ui:142
 #, fuzzy
 msgid "Delete Note"
 msgstr "Suprimeix la nota"
@@ -350,7 +350,7 @@ msgstr "Suprimeix la nota"
 #: data/ui/help-overlay.ui:37
 #, fuzzy
 msgctxt "shortcut window"
-msgid "Delete note"
+msgid "Close Note"
 msgstr "Suprimeix la nota"
 
 #: data/ui/help-overlay.ui:45
@@ -426,23 +426,23 @@ msgstr "Suprimeix la nota"
 msgid "Main Menu"
 msgstr ""
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:98
 msgid "Bold"
 msgstr "Negreta"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:106
 msgid "Italic"
 msgstr "Cursiva"
 
-#: data/ui/window.ui:142
+#: data/ui/window.ui:114
 msgid "Underline"
 msgstr "Subratllat"
 
-#: data/ui/window.ui:150
+#: data/ui/window.ui:122
 msgid "Strikethrough"
 msgstr "Ratllat"
 
-#: data/ui/window.ui:168
+#: data/ui/window.ui:138
 msgid "All Notes"
 msgstr "Totes les notes"
 

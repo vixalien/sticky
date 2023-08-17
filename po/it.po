@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 14:10+0200\n"
+"POT-Creation-Date: 2023-08-17 16:39+0200\n"
 "PO-Revision-Date: 2023-05-27 08:34+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Zorin Os\n"
@@ -345,7 +345,7 @@ msgstr "Se mostrare la finestra di tutte le note o la nota"
 msgid "Note is Open"
 msgstr "La nota è aperta"
 
-#: data/ui/card.ui:39 data/ui/window.ui:172
+#: data/ui/card.ui:39 data/ui/window.ui:142
 #, fuzzy
 msgid "Delete Note"
 msgstr "Eliminare la nota?"
@@ -376,8 +376,9 @@ msgid "New Note"
 msgstr "Nuova nota"
 
 #: data/ui/help-overlay.ui:37
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Delete note"
+msgid "Close Note"
 msgstr "Elimina nota"
 
 #: data/ui/help-overlay.ui:45
@@ -445,23 +446,23 @@ msgstr "Nuova nota"
 msgid "Main Menu"
 msgstr "Menu principale"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:98
 msgid "Bold"
 msgstr "Grassetto"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:106
 msgid "Italic"
 msgstr "Corsivo"
 
-#: data/ui/window.ui:142
+#: data/ui/window.ui:114
 msgid "Underline"
 msgstr "Sottolineato"
 
-#: data/ui/window.ui:150
+#: data/ui/window.ui:122
 msgid "Strikethrough"
 msgstr "Barrato"
 
-#: data/ui/window.ui:168
+#: data/ui/window.ui:138
 msgid "All Notes"
 msgstr "Tutte le note"
 

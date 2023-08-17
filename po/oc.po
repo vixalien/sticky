@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 14:10+0200\n"
+"POT-Creation-Date: 2023-08-17 16:39+0200\n"
 "PO-Revision-Date: 2023-05-18 19:00+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
@@ -326,7 +326,7 @@ msgstr "Indica se cal mostrar totas las fenèstras de nòtas o las nòtas"
 msgid "Note is Open"
 msgstr "La nòta es dobèrta"
 
-#: data/ui/card.ui:39 data/ui/window.ui:172
+#: data/ui/card.ui:39 data/ui/window.ui:142
 #, fuzzy
 msgid "Delete Note"
 msgstr "Suprimir la nòta ?"
@@ -357,8 +357,9 @@ msgid "New Note"
 msgstr "Nòta novèla"
 
 #: data/ui/help-overlay.ui:37
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Delete note"
+msgid "Close Note"
 msgstr "Suprimir la nòta"
 
 #: data/ui/help-overlay.ui:45
@@ -426,23 +427,23 @@ msgstr "Nòta novèla"
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:98
 msgid "Bold"
 msgstr "Gras"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:106
 msgid "Italic"
 msgstr "Italica"
 
-#: data/ui/window.ui:142
+#: data/ui/window.ui:114
 msgid "Underline"
 msgstr "Soslinhat"
 
-#: data/ui/window.ui:150
+#: data/ui/window.ui:122
 msgid "Strikethrough"
 msgstr "Raiat"
 
-#: data/ui/window.ui:168
+#: data/ui/window.ui:138
 msgid "All Notes"
 msgstr "Totas las nòtas"
 

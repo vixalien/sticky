@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 14:10+0200\n"
+"POT-Creation-Date: 2023-08-17 16:39+0200\n"
 "PO-Revision-Date: 2023-03-25 15:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -323,7 +323,7 @@ msgstr "Az összes jegyzet vagy jegyzetablak megjelenítése"
 msgid "Note is Open"
 msgstr "Jegyzet nyitva"
 
-#: data/ui/card.ui:39 data/ui/window.ui:172
+#: data/ui/card.ui:39 data/ui/window.ui:142
 #, fuzzy
 msgid "Delete Note"
 msgstr "Jegyzet törlése"
@@ -354,8 +354,9 @@ msgid "New Note"
 msgstr "Új jegyzet"
 
 #: data/ui/help-overlay.ui:37
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Delete note"
+msgid "Close Note"
 msgstr "Jegyzet törlése"
 
 #: data/ui/help-overlay.ui:45
@@ -423,23 +424,23 @@ msgstr "Új jegyzet"
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:98
 msgid "Bold"
 msgstr "Kövér"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:106
 msgid "Italic"
 msgstr "Dőlt"
 
-#: data/ui/window.ui:142
+#: data/ui/window.ui:114
 msgid "Underline"
 msgstr "Aláhúzott"
 
-#: data/ui/window.ui:150
+#: data/ui/window.ui:122
 msgid "Strikethrough"
 msgstr "Áthúzott"
 
-#: data/ui/window.ui:168
+#: data/ui/window.ui:138
 msgid "All Notes"
 msgstr "Összes jegyzet"
 

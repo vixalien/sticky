@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-24 14:10+0200\n"
+"POT-Creation-Date: 2023-08-17 16:39+0200\n"
 "PO-Revision-Date: 2023-06-15 12:34+0200\n"
 "Last-Translator: Amerey.eu <info@amerey.eu>\n"
 "Language-Team: \n"
@@ -333,7 +333,7 @@ msgstr "Zda se má zobrazit okno se všemi poznámkami nebo poznámka"
 msgid "Note is Open"
 msgstr "Poznámka je otevřená"
 
-#: data/ui/card.ui:39 data/ui/window.ui:172
+#: data/ui/card.ui:39 data/ui/window.ui:142
 msgid "Delete Note"
 msgstr "Smazat poznámku"
 
@@ -363,8 +363,9 @@ msgid "New Note"
 msgstr "Nová poznámka"
 
 #: data/ui/help-overlay.ui:37
+#, fuzzy
 msgctxt "shortcut window"
-msgid "Delete note"
+msgid "Close Note"
 msgstr "Smazat poznámku"
 
 #: data/ui/help-overlay.ui:45
@@ -432,23 +433,23 @@ msgstr "Nová poznámka"
 msgid "Main Menu"
 msgstr "Hlavní menu"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:98
 msgid "Bold"
 msgstr "Tučně"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:106
 msgid "Italic"
 msgstr "Kurzíva"
 
-#: data/ui/window.ui:142
+#: data/ui/window.ui:114
 msgid "Underline"
 msgstr "Podtržení"
 
-#: data/ui/window.ui:150
+#: data/ui/window.ui:122
 msgid "Strikethrough"
 msgstr "Přeškrtnutí"
 
-#: data/ui/window.ui:168
+#: data/ui/window.ui:138
 msgid "All Notes"
 msgstr "Všechny poznámky"
 
