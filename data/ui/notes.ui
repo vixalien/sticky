@@ -71,8 +71,7 @@
                             <property name="vexpand">true</property>
                             <property name="icon-name">com.vixalien.sticky-symbolic</property>
                             <property name="title" translatable="yes">No Notes</property>
-                            <property name="description" translatable="yes">After you create notes,
-                              they will appear here</property>
+                            <property name="description" translatable="yes">After you create notes, they will appear here</property>
                             <child>
                               <object class="GtkButton">
                                 <property name="halign">3</property>

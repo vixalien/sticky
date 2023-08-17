@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:42+0200\n"
+"POT-Creation-Date: 2023-08-17 16:44+0200\n"
 "PO-Revision-Date: 2023-06-15 12:34+0200\n"
 "Last-Translator: Amerey.eu <info@amerey.eu>\n"
 "Language-Team: \n"
@@ -431,32 +431,30 @@ msgstr "Žádné poznámky"
 
 #: data/ui/notes.ui:74
 #, fuzzy
-msgid ""
-"After you create notes,\n"
-"                              they will appear here"
+msgid "After you create notes, they will appear here"
 msgstr "Jakmile vytvoříte poznámky, zobrazí se zde"
 
-#: data/ui/notes.ui:79
+#: data/ui/notes.ui:78
 msgid "_New Note"
 msgstr "_Nová poznámka"
 
-#: data/ui/notes.ui:94
+#: data/ui/notes.ui:93
 msgid "No Results"
 msgstr "Žádné výsledky"
 
-#: data/ui/notes.ui:95
+#: data/ui/notes.ui:94
 msgid "Try a different search"
 msgstr "Zkuste jiné hledání"
 
-#: data/ui/notes.ui:127
+#: data/ui/notes.ui:126
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: data/ui/notes.ui:131
+#: data/ui/notes.ui:130
 msgid "About Sticky Notes"
 msgstr "O aplikaci Rychlé Poznámky"
 
-#: data/ui/notes.ui:137
+#: data/ui/notes.ui:136
 msgid "Quit"
 msgstr "Ukončit"
 

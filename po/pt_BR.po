@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.vixalien.sticky\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:42+0200\n"
+"POT-Creation-Date: 2023-08-17 16:44+0200\n"
 "PO-Revision-Date: 2023-05-17 11:43-0300\n"
 "Last-Translator: Fúlvio Leo <fulviokaldas@outlook.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -439,35 +439,33 @@ msgid "No Notes"
 msgstr "Notas"
 
 #: data/ui/notes.ui:74
-msgid ""
-"After you create notes,\n"
-"                              they will appear here"
+msgid "After you create notes, they will appear here"
 msgstr ""
 
-#: data/ui/notes.ui:79
+#: data/ui/notes.ui:78
 #, fuzzy
 msgid "_New Note"
 msgstr "Nova Nota"
 
-#: data/ui/notes.ui:94
+#: data/ui/notes.ui:93
 msgid "No Results"
 msgstr ""
 
-#: data/ui/notes.ui:95
+#: data/ui/notes.ui:94
 msgid "Try a different search"
 msgstr ""
 
-#: data/ui/notes.ui:127
+#: data/ui/notes.ui:126
 #, fuzzy
 msgid "Keyboard Shortcuts"
 msgstr "Mostra os atalhos"
 
-#: data/ui/notes.ui:131
+#: data/ui/notes.ui:130
 #, fuzzy
 msgid "About Sticky Notes"
 msgstr "Sticky Notes"
 
-#: data/ui/notes.ui:137
+#: data/ui/notes.ui:136
 #, fuzzy
 msgid "Quit"
 msgstr "Sai"
