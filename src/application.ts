@@ -69,8 +69,6 @@ export class Application extends Adw.Application {
 
     this.init_actions();
 
-    console.log("Storing Notes at: " + NewNotesDir.get_path());
-
     try {
       const notes = load_notes();
 
@@ -110,6 +108,15 @@ export class Application extends Adw.Application {
       null,
     );
 
+    this.add_main_option(
+      "if-open-note",
+      "i".charCodeAt(0),
+      GLib.OptionFlags.NONE,
+      GLib.OptionArg.NONE,
+      "Only show the app if there is atleast one open note",
+      null,
+    );
+
     this.connect("handle-local-options", (_app, options: GLib.VariantDict) => {
       if (options.contains("version")) {
         print(pkg.version);
@@ -119,9 +126,24 @@ export class Application extends Adw.Application {
         return 0;
       } else if (options.contains("new-note")) {
         this.open_new_note = true;
+      } else if (options.contains("if-open-note")) {
+        let open = false;
+
+        this.foreach_note((note) => {
+          open = open || note.open;
+        });
+
+        if (open == false) {
+          console.log(
+            "Sticky Notes not opening because the `-i` flag was passed and there are no open notes",
+          );
+          this.quit();
+        }
       }
       return -1;
     });
+
+    console.log("Storing Notes at: " + NewNotesDir.get_path());
   }
 
   save() {
