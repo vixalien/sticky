@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.vixalien.sticky\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:39+0200\n"
+"POT-Creation-Date: 2023-08-17 16:42+0200\n"
 "PO-Revision-Date: 2023-05-17 11:43-0300\n"
 "Last-Translator: Fúlvio Leo <fulviokaldas@outlook.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -24,8 +24,8 @@ msgid "Pin notes to your desktop"
 msgstr "Fixe notas para o seu ambiente de trabalho"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Sticky Notes"
 
@@ -420,6 +420,58 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Tachado"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+#, fuzzy
+msgid "New Note"
+msgstr "Nova Nota"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Menu Principal"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr ""
+
+#: data/ui/notes.ui:73
+#, fuzzy
+msgid "No Notes"
+msgstr "Notas"
+
+#: data/ui/notes.ui:74
+msgid ""
+"After you create notes,\n"
+"                              they will appear here"
+msgstr ""
+
+#: data/ui/notes.ui:79
+#, fuzzy
+msgid "_New Note"
+msgstr "Nova Nota"
+
+#: data/ui/notes.ui:94
+msgid "No Results"
+msgstr ""
+
+#: data/ui/notes.ui:95
+msgid "Try a different search"
+msgstr ""
+
+#: data/ui/notes.ui:127
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "Mostra os atalhos"
+
+#: data/ui/notes.ui:131
+#, fuzzy
+msgid "About Sticky Notes"
+msgstr "Sticky Notes"
+
+#: data/ui/notes.ui:137
+#, fuzzy
+msgid "Quit"
+msgstr "Sai"
+
 #: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
 msgid "Follow system style"
 msgstr ""
@@ -432,15 +484,6 @@ msgstr "Muda para o estilo %s"
 #: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
 msgid "Dark style"
 msgstr ""
-
-#: data/ui/window.ui:23
-#, fuzzy
-msgid "New Note"
-msgstr "Nova Nota"
-
-#: data/ui/window.ui:30
-msgid "Main Menu"
-msgstr "Menu Principal"
 
 #: data/ui/window.ui:98
 #, fuzzy
@@ -533,23 +576,3 @@ msgstr "Deletar"
 #: src/view.ts:351
 msgid "Empty Note"
 msgstr "Nota vazia"
-
-#, fuzzy
-#~ msgid "No Notes"
-#~ msgstr "Notas"
-
-#, fuzzy
-#~ msgid "_New Note"
-#~ msgstr "Nova Nota"
-
-#, fuzzy
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Mostra os atalhos"
-
-#, fuzzy
-#~ msgid "About Sticky Notes"
-#~ msgstr "Sticky Notes"
-
-#, fuzzy
-#~ msgid "Quit"
-#~ msgstr "Sai"

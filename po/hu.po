@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:39+0200\n"
+"POT-Creation-Date: 2023-08-17 16:42+0200\n"
 "PO-Revision-Date: 2023-03-25 15:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,8 +24,8 @@ msgid "Pin notes to your desktop"
 msgstr ""
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Sticky Notes"
 
@@ -404,6 +404,53 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Áthúzott"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "Új jegyzet"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Főmenü"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "Keresés…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "Nincs jegyzet"
+
+#: data/ui/notes.ui:74
+#, fuzzy
+msgid ""
+"After you create notes,\n"
+"                              they will appear here"
+msgstr "A jegyzet létrehozása után itt fognak megjelenni"
+
+#: data/ui/notes.ui:79
+msgid "_New Note"
+msgstr "_Új jegyzet"
+
+#: data/ui/notes.ui:94
+msgid "No Results"
+msgstr "Nincs találat"
+
+#: data/ui/notes.ui:95
+msgid "Try a different search"
+msgstr "Próbálkozzon másik kereséssel"
+
+#: data/ui/notes.ui:127
+msgid "Keyboard Shortcuts"
+msgstr "Gyorsbillentyűk"
+
+#: data/ui/notes.ui:131
+msgid "About Sticky Notes"
+msgstr "A Sticky Notes névjegye"
+
+#: data/ui/notes.ui:137
+msgid "Quit"
+msgstr "Bezárás"
+
 #: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
 msgid "Follow system style"
 msgstr "Rendszertéma használata"
@@ -415,14 +462,6 @@ msgstr "Világos téma"
 #: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
 msgid "Dark style"
 msgstr "Sötét téma"
-
-#: data/ui/window.ui:23
-msgid "New Note"
-msgstr "Új jegyzet"
-
-#: data/ui/window.ui:30
-msgid "Main Menu"
-msgstr "Főmenü"
 
 #: data/ui/window.ui:98
 msgid "Bold"
@@ -510,33 +549,6 @@ msgstr "Jegyzet törlése"
 #: src/view.ts:351
 msgid "Empty Note"
 msgstr "Üres jegyzet"
-
-#~ msgid "Search notes…"
-#~ msgstr "Keresés…"
-
-#~ msgid "No Notes"
-#~ msgstr "Nincs jegyzet"
-
-#~ msgid "After you create notes, they will appear here"
-#~ msgstr "A jegyzet létrehozása után itt fognak megjelenni"
-
-#~ msgid "_New Note"
-#~ msgstr "_Új jegyzet"
-
-#~ msgid "No Results"
-#~ msgstr "Nincs találat"
-
-#~ msgid "Try a different search"
-#~ msgstr "Próbálkozzon másik kereséssel"
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Gyorsbillentyűk"
-
-#~ msgid "About Sticky Notes"
-#~ msgstr "A Sticky Notes névjegye"
-
-#~ msgid "Quit"
-#~ msgstr "Bezárás"
 
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "Egyszerű sticky notes app GNOME-ra"

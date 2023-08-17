@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:39+0200\n"
+"POT-Creation-Date: 2023-08-17 16:42+0200\n"
 "PO-Revision-Date: 2023-06-09 15:46+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: none\n"
@@ -24,8 +24,8 @@ msgid "Pin notes to your desktop"
 msgstr "Épinglez des notes sur votre bureau"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Pense-bêtes"
 
@@ -427,6 +427,53 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Barré"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "Nouvelle note"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "Rechercher des notes…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "Aucune note"
+
+#: data/ui/notes.ui:74
+#, fuzzy
+msgid ""
+"After you create notes,\n"
+"                              they will appear here"
+msgstr "Après avoir créé des notes, elles apparaîtront ici"
+
+#: data/ui/notes.ui:79
+msgid "_New Note"
+msgstr "_Nouvelle note"
+
+#: data/ui/notes.ui:94
+msgid "No Results"
+msgstr "Aucun résultat"
+
+#: data/ui/notes.ui:95
+msgid "Try a different search"
+msgstr "Essayez une autre recherche"
+
+#: data/ui/notes.ui:127
+msgid "Keyboard Shortcuts"
+msgstr "Raccourcis clavier"
+
+#: data/ui/notes.ui:131
+msgid "About Sticky Notes"
+msgstr "À propos des Notes Autocollantes"
+
+#: data/ui/notes.ui:137
+msgid "Quit"
+msgstr "Quitter"
+
 #: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
 msgid "Follow system style"
 msgstr "Suivre le thème système"
@@ -438,14 +485,6 @@ msgstr "Thème clair"
 #: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
 msgid "Dark style"
 msgstr "Thème sombre"
-
-#: data/ui/window.ui:23
-msgid "New Note"
-msgstr "Nouvelle note"
-
-#: data/ui/window.ui:30
-msgid "Main Menu"
-msgstr "Menu principal"
 
 #: data/ui/window.ui:98
 msgid "Bold"
@@ -533,33 +572,6 @@ msgstr "Supprimer"
 #: src/view.ts:351
 msgid "Empty Note"
 msgstr "Note vide"
-
-#~ msgid "Search notes…"
-#~ msgstr "Rechercher des notes…"
-
-#~ msgid "No Notes"
-#~ msgstr "Aucune note"
-
-#~ msgid "After you create notes, they will appear here"
-#~ msgstr "Après avoir créé des notes, elles apparaîtront ici"
-
-#~ msgid "_New Note"
-#~ msgstr "_Nouvelle note"
-
-#~ msgid "No Results"
-#~ msgstr "Aucun résultat"
-
-#~ msgid "Try a different search"
-#~ msgstr "Essayez une autre recherche"
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Raccourcis clavier"
-
-#~ msgid "About Sticky Notes"
-#~ msgstr "À propos des Notes Autocollantes"
-
-#~ msgid "Quit"
-#~ msgstr "Quitter"
 
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "Une simple application de notes autocollantes pour GNOME"

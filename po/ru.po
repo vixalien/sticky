@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:39+0200\n"
+"POT-Creation-Date: 2023-08-17 16:42+0200\n"
 "PO-Revision-Date: 2023-03-13 00:37+0300\n"
 "Last-Translator: David Lapshin\n"
 "Language-Team: \n"
@@ -25,8 +25,8 @@ msgid "Pin notes to your desktop"
 msgstr ""
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Заметки"
 
@@ -415,6 +415,53 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Зачеркнутый"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "Новая заметка"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Главное меню"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "Поиск заметок…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "Нет заметок"
+
+#: data/ui/notes.ui:74
+#, fuzzy
+msgid ""
+"After you create notes,\n"
+"                              they will appear here"
+msgstr "После создания заметок, они будут отображаться здесь"
+
+#: data/ui/notes.ui:79
+msgid "_New Note"
+msgstr "_Новая заметка"
+
+#: data/ui/notes.ui:94
+msgid "No Results"
+msgstr "Нет результатов"
+
+#: data/ui/notes.ui:95
+msgid "Try a different search"
+msgstr "Попробуйте другой поиск"
+
+#: data/ui/notes.ui:127
+msgid "Keyboard Shortcuts"
+msgstr "Комбинации клавиш"
+
+#: data/ui/notes.ui:131
+msgid "About Sticky Notes"
+msgstr "О Заметках"
+
+#: data/ui/notes.ui:137
+msgid "Quit"
+msgstr "Выйти"
+
 #: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
 msgid "Follow system style"
 msgstr "Следовать системному стилю"
@@ -426,14 +473,6 @@ msgstr "Светлый стиль"
 #: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
 msgid "Dark style"
 msgstr "Темный стиль"
-
-#: data/ui/window.ui:23
-msgid "New Note"
-msgstr "Новая заметка"
-
-#: data/ui/window.ui:30
-msgid "Main Menu"
-msgstr "Главное меню"
 
 #: data/ui/window.ui:98
 msgid "Bold"
@@ -521,33 +560,6 @@ msgstr "Удалить заметку"
 #: src/view.ts:351
 msgid "Empty Note"
 msgstr "Пустая заметка"
-
-#~ msgid "Search notes…"
-#~ msgstr "Поиск заметок…"
-
-#~ msgid "No Notes"
-#~ msgstr "Нет заметок"
-
-#~ msgid "After you create notes, they will appear here"
-#~ msgstr "После создания заметок, они будут отображаться здесь"
-
-#~ msgid "_New Note"
-#~ msgstr "_Новая заметка"
-
-#~ msgid "No Results"
-#~ msgstr "Нет результатов"
-
-#~ msgid "Try a different search"
-#~ msgstr "Попробуйте другой поиск"
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Комбинации клавиш"
-
-#~ msgid "About Sticky Notes"
-#~ msgstr "О Заметках"
-
-#~ msgid "Quit"
-#~ msgstr "Выйти"
 
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "Простое приложение заметок для GNOME"

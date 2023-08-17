@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:39+0200\n"
+"POT-Creation-Date: 2023-08-17 16:42+0200\n"
 "PO-Revision-Date: 2023-03-05 18:27+0100\n"
 "Last-Translator: Gil Forcada Codinachs <gil.gnome@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -23,8 +23,8 @@ msgid "Pin notes to your desktop"
 msgstr ""
 
 #: data/com.vixalien.sticky.desktop.in.in:4
-#: data/com.vixalien.sticky.appdata.xml.in.in:6 src/application.ts:68
-#: src/application.ts:337
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:337
 msgid "Sticky Notes"
 msgstr "Notes enganxoses"
 
@@ -404,6 +404,57 @@ msgctxt "shortcut window"
 msgid "Strikethrough"
 msgstr "Ratllat"
 
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+#, fuzzy
+msgid "New Note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr ""
+
+#: data/ui/notes.ui:73
+#, fuzzy
+msgid "No Notes"
+msgstr "No hi ha cap nota"
+
+#: data/ui/notes.ui:74
+#, fuzzy
+msgid ""
+"After you create notes,\n"
+"                              they will appear here"
+msgstr "Les notes que creeu, aparaixeran aquí"
+
+#: data/ui/notes.ui:79
+#, fuzzy
+msgid "_New Note"
+msgstr "Suprimeix la nota"
+
+#: data/ui/notes.ui:94
+msgid "No Results"
+msgstr "No s'ha trobat cap resultat"
+
+#: data/ui/notes.ui:95
+msgid "Try a different search"
+msgstr "Proveu una cerca diferent"
+
+#: data/ui/notes.ui:127
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "Dreceres de teclat"
+
+#: data/ui/notes.ui:131
+msgid "About Sticky Notes"
+msgstr "Quan al Notes Enganxoses"
+
+#: data/ui/notes.ui:137
+msgid "Quit"
+msgstr "Surt"
+
 #: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
 msgid "Follow system style"
 msgstr ""
@@ -415,15 +466,6 @@ msgstr "Canvia a l'estil %s"
 
 #: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
 msgid "Dark style"
-msgstr ""
-
-#: data/ui/window.ui:23
-#, fuzzy
-msgid "New Note"
-msgstr "Suprimeix la nota"
-
-#: data/ui/window.ui:30
-msgid "Main Menu"
 msgstr ""
 
 #: data/ui/window.ui:98
@@ -512,33 +554,6 @@ msgstr "Suprimeix la nota"
 #: src/view.ts:351
 msgid "Empty Note"
 msgstr "Nota buida"
-
-#, fuzzy
-#~ msgid "No Notes"
-#~ msgstr "No hi ha cap nota"
-
-#~ msgid "After you create notes, they will appear here"
-#~ msgstr "Les notes que creeu, aparaixeran aquí"
-
-#, fuzzy
-#~ msgid "_New Note"
-#~ msgstr "Suprimeix la nota"
-
-#~ msgid "No Results"
-#~ msgstr "No s'ha trobat cap resultat"
-
-#~ msgid "Try a different search"
-#~ msgstr "Proveu una cerca diferent"
-
-#, fuzzy
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Dreceres de teclat"
-
-#~ msgid "About Sticky Notes"
-#~ msgstr "Quan al Notes Enganxoses"
-
-#~ msgid "Quit"
-#~ msgstr "Surt"
 
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "Una senzilla aplicació per prendre notes pel GNOME"
