@@ -97,6 +97,7 @@ export class Window extends Adw.ApplicationWindow {
 
     this.default_width = note.width;
     this.default_height = note.height;
+
     this.connect("close-request", () => {
       if (this.deleted) return;
 
@@ -112,7 +113,7 @@ export class Window extends Adw.ApplicationWindow {
         this.note.width = width;
       }
       if (height !== note.height) {
-        this.note.width = width;
+        this.note.height = height;
       }
     });
 
