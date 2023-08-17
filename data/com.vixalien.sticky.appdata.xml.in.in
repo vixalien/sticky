@@ -31,6 +31,7 @@
 	<launchable type="desktop-id">@app-id@.desktop</launchable>
 	<url type="homepage">https://github.com/vixalien/sticky</url>
 	<url type="bugtracker">https://github.com/vixalien/sticky/issues</url>
+	<url type="donation">https://www.buymeacoffee.com/vixalien</url>
 	<developer_name>Angelo Verlain</developer_name>
 	<update_contact>hey_at_vixalien.com</update_contact>
 	<translation type="gettext">sticky</translation>
