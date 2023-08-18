@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-17 16:44+0200\n"
-"PO-Revision-Date: 2023-06-09 15:46+0200\n"
+"PO-Revision-Date: 2023-08-18 11:28+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/com.vixalien.sticky.desktop.in.in:3
 #: data/com.vixalien.sticky.appdata.xml.in.in:7
@@ -39,8 +39,8 @@ msgid ""
 "Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
 "notes and format them."
 msgstr ""
-"Notes Autocollantes est une simple application de notes pour GNOME. Elle "
-"vous permet de créer des notes et de les formater."
+"Pense-bêtes est une simple application de notes pour GNOME. Elle vous permet "
+"de créer des notes et de les formater."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:13
 msgid "Current features:"
@@ -69,69 +69,68 @@ msgid "Angelo Verlain"
 msgstr "Angelo Verlain"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:54
-#, fuzzy
 msgid "better dark theme support"
-msgstr "Prise en charge du thème sombre"
+msgstr "Meilleure prise en charge du thème sombre"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:55
 msgid ""
 "fixed a bug where sometimes icons for actions (bold, italic etc..) would not "
 "appear"
 msgstr ""
+"Correction d’un bogue où parfois les icônes d’actions (italique, gras etc…) "
+"n’apparaissaient pas"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:56
 msgid ""
 "fixed a bug where the scrollbar on the \"all notes\" window would appear in "
 "the wrong place"
 msgstr ""
+"Correction d’un bogue où la barre de défilement de la fenêtre « Toutes les "
+"notes » apparaissait au mauvais endroit"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:58
-#, fuzzy
 msgid "updated tamil translation"
-msgstr "Mise à jour de la traduction néerlandaise"
+msgstr "Mise à jour de la traduction tamoule"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:65
 msgid ""
 "fixed a bug introduced by the previous release where new notes would not get "
 "saved"
 msgstr ""
+"Correction d’un bogue introduit par la version précédente où les nouvelles "
+"notes n’étaient pas enregistrées"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:66
-#, fuzzy
 msgid "updated french &amp; czech translations"
-msgstr "Mise à jour de la traduction néerlandaise"
+msgstr "Mise à jour des traductions françaises et tchèque"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:73
 msgid "correctly translate all strings"
-msgstr ""
+msgstr "Traduction correcte de toutes les chaînes"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:74
-#, fuzzy
 msgid "add translator credits support (in the about window)"
-msgstr ""
-"ajout de la prise en charge des traductions (à commencer par le français)"
+msgstr "Ajout des crédits de traduction (dans la fenêtre À propos)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:75
-#, fuzzy
 msgid "refine the focus indicator on the all notes window"
-msgstr ""
-"Affiche correctement les indicateurs de focus dans la fenêtre de toutes les "
-"notes"
+msgstr "Affinage de l’indicateur de focus dans la fenêtre de toutes les notes"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:76
-#, fuzzy
 msgid "update translations"
-msgstr "Mise à jour de la traduction néerlandaise"
+msgstr "Mise à jour des traductions"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:77
 msgid "fix some tooltips being invisible"
-msgstr ""
+msgstr "Corrections de tooltips invisibles"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:78
 msgid ""
 "fix a bug where only the tags (bold, italic etc) of the first 5 lines would "
 "be saved"
 msgstr ""
+"Correction d’un bogue où seules les balises (gras, italique etc) des 5 "
+"premières lignes étaient enregistrées"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:84
 msgid "this is a refinement release"
@@ -217,9 +216,8 @@ msgid ""
 "I'd like to take a moment to thank everyone that contributed to sticky notes "
 "this far. I am very grateful for your help and support."
 msgstr ""
-"Je souhaiterais remercier tous ceux qui ont contribué à Notes Autocollantes "
-"jusqu’à présent. Je vous suis très reconnaissant pour votre aide et votre "
-"soutien."
+"Je souhaiterais remercier tous ceux qui ont contribué à Pense-bêtes jusqu’à "
+"présent. Je vous suis très reconnaissant pour votre aide et votre soutien."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:137
 msgid "mostly a bug fix and tune-up release"
@@ -377,10 +375,9 @@ msgid "New Note"
 msgstr "Nouvelle note"
 
 #: data/ui/help-overlay.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Close Note"
-msgstr "Supprimer la note"
+msgstr "Fermer la note"
 
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
@@ -425,7 +422,7 @@ msgstr "Souligner"
 #: data/ui/help-overlay.ui:89
 msgctxt "shortcut window"
 msgid "Strikethrough"
-msgstr "Barré"
+msgstr "Barrer"
 
 #: data/ui/notes.ui:18 data/ui/window.ui:23
 msgid "New Note"
@@ -444,7 +441,6 @@ msgid "No Notes"
 msgstr "Aucune note"
 
 #: data/ui/notes.ui:74
-#, fuzzy
 msgid "After you create notes, they will appear here"
 msgstr "Après avoir créé des notes, elles apparaîtront ici"
 
@@ -466,7 +462,7 @@ msgstr "Raccourcis clavier"
 
 #: data/ui/notes.ui:130
 msgid "About Sticky Notes"
-msgstr "À propos des Notes Autocollantes"
+msgstr "À propos de Pense-bêtes"
 
 #: data/ui/notes.ui:136
 msgid "Quit"
@@ -498,7 +494,7 @@ msgstr "Souligner"
 
 #: data/ui/window.ui:122
 msgid "Strikethrough"
-msgstr "Barré"
+msgstr "Barrer"
 
 #: data/ui/window.ui:138
 msgid "All Notes"
