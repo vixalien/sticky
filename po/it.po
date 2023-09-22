@@ -138,7 +138,7 @@ msgstr "questa è una versione di perfezionamento"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:86
 msgid "show focus indicators correctly in all notes window"
-msgstr "mostra correttamente gli indicatori di messa a fuoco in tutte le finestre delle note""
+msgstr "mostra correttamente gli indicatori di messa a fuoco in tutte le finestre delle note"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:87
 msgid "use new flexible ToolbarView widget"
