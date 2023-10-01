@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-17 16:44+0200\n"
-"PO-Revision-Date: 2023-09-22 08:34+0100\n"
+"PO-Revision-Date: 2023-10-01 16:34+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Zorin Os\n"
 "Language: it_IT\n"
@@ -53,7 +53,7 @@ msgstr "formattazione semplice (grassetto, corsivo, sottolineato e barrato)"
 #: data/com.vixalien.sticky.appdata.xml.in.in:16
 msgid "notes are restored if they were open when the application was closed"
 msgstr ""
-"le note vengono ripristinate se erano aperte quando l'applicazione è stata "
+"le note vengono ripristinate se erano aperte quando l'applicazione è stata"
 "chiusa"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:17
@@ -147,8 +147,7 @@ msgstr "usa il nuovo widget flessibile ToolbarView"
 #: data/com.vixalien.sticky.appdata.xml.in.in:94
 msgid "print where notes are logged when the app starts up (for syncing)"
 msgstr ""
-"stampa dove vengono registrate le note all'avvio dell'app (per la "
-"sincronizzazione)"
+"stampa dove vengono registrate le note all'avvio dell'app (per la sincronizzazione)"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:95
 msgid "add a flag `--new-note` to quicky jote down a note"
@@ -190,14 +189,13 @@ msgstr ""
 #: data/com.vixalien.sticky.appdata.xml.in.in:126
 msgid "notes are now more reliably saved so that you don't lose your changes"
 msgstr ""
-"le note sono ora salvate in modo più affidabile in modo da non perdere le "
-"modifiche"
+"le note sono ora salvate in modo più affidabile in modo da non perdere le modifiche"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:127
 msgid ""
 "notes are now restored (mostly) as they were last time you closed the app"
 msgstr ""
-"le note ora vengono ripristinate (principalmente) come lo erano l'ultima "
+"le note ora vengono ripristinate (principalmente) come lo erano l'ultima"
 "volta che hai chiuso l'app"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:128
@@ -224,8 +222,7 @@ msgstr "principalmente una correzione di bug e una versione di messa a punto"
 #: data/com.vixalien.sticky.appdata.xml.in.in:139
 msgid "make style (color) selector easier to change using the keyboard"
 msgstr ""
-"semplifica la modifica del selettore di stile (colore) utilizzando la "
-"tastiera"
+"semplifica la modifica del selettore di stile (colore) utilizzando la tastiera"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:140
 msgid ""
@@ -329,8 +326,7 @@ msgstr "La combinazione di colori selezionata"
 #: data/com.vixalien.sticky.gschema.xml.in:37
 msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
 msgstr ""
-"La combinazione di colori selezionata. 0 = segue lo stile del sistema, 1 = "
-"chiaro, 2 = scuro"
+"La combinazione di colori selezionata. 0 = segue lo stile del sistema, 1 = chiaro, 2 = scuro"
 
 #: data/com.vixalien.sticky.gschema.xml.in:43
 msgid "Show all notes"
