@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:44+0200\n"
+"POT-Creation-Date: 2023-10-08 11:43+0300\n"
 "PO-Revision-Date: 2023-06-15 12:34+0200\n"
 "Last-Translator: Amerey.eu <info@amerey.eu>\n"
 "Language-Team: \n"
@@ -25,7 +25,7 @@ msgstr "Připněte poznámky na plochu"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
 #: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
-#: src/application.ts:68 src/application.ts:337
+#: src/application.ts:68 src/application.ts:359
 msgid "Sticky Notes"
 msgstr "Rychlé Poznámky"
 
@@ -62,224 +62,9 @@ msgstr "změna barvy poznámek"
 msgid "dark theme support"
 msgstr "podpora tmavého motivu"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:34
+#: data/com.vixalien.sticky.appdata.xml.in.in:35
 msgid "Angelo Verlain"
 msgstr "Angelo Verlain"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:54
-#, fuzzy
-msgid "better dark theme support"
-msgstr "podpora tmavého motivu"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:55
-msgid ""
-"fixed a bug where sometimes icons for actions (bold, italic etc..) would not "
-"appear"
-msgstr ""
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:56
-msgid ""
-"fixed a bug where the scrollbar on the \"all notes\" window would appear in "
-"the wrong place"
-msgstr ""
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:58
-#, fuzzy
-msgid "updated tamil translation"
-msgstr "aktualizovaný holandský překlad"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:65
-msgid ""
-"fixed a bug introduced by the previous release where new notes would not get "
-"saved"
-msgstr ""
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:66
-#, fuzzy
-msgid "updated french &amp; czech translations"
-msgstr "aktualizovaný holandský překlad"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:73
-msgid "correctly translate all strings"
-msgstr ""
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:74
-#, fuzzy
-msgid "add translator credits support (in the about window)"
-msgstr "přidána podpora překladu (počínaje francouzštinou)"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:75
-#, fuzzy
-msgid "refine the focus indicator on the all notes window"
-msgstr "zobrazení indikátoru fokusu správně ve všech oknech poznámek"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:76
-#, fuzzy
-msgid "update translations"
-msgstr "aktualizovaný holandský překlad"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:77
-msgid "fix some tooltips being invisible"
-msgstr ""
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:78
-msgid ""
-"fix a bug where only the tags (bold, italic etc) of the first 5 lines would "
-"be saved"
-msgstr ""
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:84
-msgid "this is a refinement release"
-msgstr "jedná se o verzi převážně s opravami chyb"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:86
-msgid "show focus indicators correctly in all notes window"
-msgstr "zobrazení indikátoru fokusu správně ve všech oknech poznámek"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:87
-msgid "use new flexible ToolbarView widget"
-msgstr "nový flexibilní widget ToolbarView"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:94
-msgid "print where notes are logged when the app starts up (for syncing)"
-msgstr ""
-"zobrazení, kde jsou poznámky zaznamenány při spuštění aplikace (pro "
-"synchronizaci)"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:95
-msgid "add a flag `--new-note` to quicky jote down a note"
-msgstr "přidán příznak `--new-note` pro rychlé zapsání poznámky"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:102
-msgid "quickly open links in your notes"
-msgstr "rychlé otevírání odkazů v poznámkách"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:109
-msgid "changed GNOME Runtime version to 44"
-msgstr "změna verze GNOME Runtime na 44"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:110
-msgid "updated dutch translation"
-msgstr "aktualizovaný holandský překlad"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:116
-msgid "fix packaging issues"
-msgstr "oprava chyb při kompilaci"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:121
-msgid "this release enhances usability and reliability"
-msgstr "tato verze zlepšuje použitelnost a spolehlivost"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:123
-msgid "updated the icon to make it more distinguished"
-msgstr "aktualizovaná ikona, aby byla výraznější"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:124
-msgid "updated translations (french, russian) and added a czech translation"
-msgstr "aktualizovány překlady (francouzština, ruština) a přidána čeština"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:125
-msgid "make text throughout the UI more standard and easy to understand"
-msgstr "text v celém uživatelském rozhraní je standardnější a srozumitelnější"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:126
-msgid "notes are now more reliably saved so that you don't lose your changes"
-msgstr "poznámky se nyní ukládají spolehlivěji, abyste své změny neztratili"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:127
-msgid ""
-"notes are now restored (mostly) as they were last time you closed the app"
-msgstr ""
-"poznámky jsou nyní obnoveny (většinou) tak, jak byly při posledním zavření "
-"aplikace"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:128
-msgid ""
-"the most recently closed note is now shown when you reopen the app, instead "
-"of showing the all notes window"
-msgstr ""
-"při opětovném otevření aplikace se nyní zobrazí naposledy zavřená poznámka, "
-"namísto zobrazení okna všech poznámek"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:131
-msgid ""
-"I'd like to take a moment to thank everyone that contributed to sticky notes "
-"this far. I am very grateful for your help and support."
-msgstr ""
-"Rád bych poděkoval všem, kteří se podíleli na vývoji této aplikace. Jsem "
-"velmi vděčný za vaši pomoc a podporu."
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:137
-msgid "mostly a bug fix and tune-up release"
-msgstr "verze s opravou chyb a ladění"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:139
-msgid "make style (color) selector easier to change using the keyboard"
-msgstr "usnadnění změny výběru stylu (barvy) pomocí klávesnice"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:140
-msgid ""
-"added more translations (tamil, hungary, catalan) and update russian "
-"translations"
-msgstr ""
-"přidány další překlady (tamilština, maďarština, katalánština) a aktualizace "
-"ruského překladu"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:141
-msgid ""
-"you can now choose to use dark or light mode manually instead of always "
-"using the system theme in the all notes window"
-msgstr ""
-"nyní můžete zvolit tmavý nebo světlý motiv ručně místo systémového motivu v "
-"okně všech poznámek"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:148
-msgid "this is unexpectedly a large release"
-msgstr "toto je nečekaně velká verze"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:150
-msgid "new icon"
-msgstr "nová ikona"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:151
-msgid "added translations (french, russian, italian, dutch, ocitan)"
-msgstr ""
-"přidány překlady (francouzština, ruština, italština, holandština, "
-"ocitánština)"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:152
-msgid "bug fixes"
-msgstr "opravy chyb"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:158
-msgid "this is mostly a cleanup release"
-msgstr "jedná se o verzi převážně s opravami chyb"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:160
-msgid "added translation support (starting with french)"
-msgstr "přidána podpora překladu (počínaje francouzštinou)"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:161
-msgid ""
-"apply tag to location under the cursor when nothing is selected. this means "
-"that for example if you click Ctrl+B while there's nothing selected, the new "
-"content you'll write will come out as bold"
-msgstr ""
-"použítí stylu na místě s kurzorem, když není nic vybráno. to znamená, že "
-"pokud například kliknete na Ctrl+B, zatímco není nic vybráno, nový obsah, "
-"který napíšete, se zobrazí tučně"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:164
-msgid "fixed builds"
-msgstr "opravené chyby"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:165
-msgid "restructured/cleaned source"
-msgstr "restrukturalizovaný/vyčištěný zdroj"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:171
-msgid "First beta release!"
-msgstr "První beta verze!"
 
 #: data/com.vixalien.sticky.gschema.xml.in:16
 msgid "Note window default height"
@@ -491,7 +276,7 @@ msgid "All Notes"
 msgstr "Všechny poznámky"
 
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
-#: src/application.ts:349
+#: src/application.ts:371
 msgid "translator-credits"
 msgstr "Amerey.eu"
 
@@ -556,6 +341,154 @@ msgstr "Smazat"
 #: src/view.ts:351
 msgid "Empty Note"
 msgstr "Prázdná poznámka"
+
+#, fuzzy
+#~ msgid "better dark theme support"
+#~ msgstr "podpora tmavého motivu"
+
+#, fuzzy
+#~ msgid "updated tamil translation"
+#~ msgstr "aktualizovaný holandský překlad"
+
+#, fuzzy
+#~ msgid "updated french &amp; czech translations"
+#~ msgstr "aktualizovaný holandský překlad"
+
+#, fuzzy
+#~ msgid "add translator credits support (in the about window)"
+#~ msgstr "přidána podpora překladu (počínaje francouzštinou)"
+
+#, fuzzy
+#~ msgid "refine the focus indicator on the all notes window"
+#~ msgstr "zobrazení indikátoru fokusu správně ve všech oknech poznámek"
+
+#, fuzzy
+#~ msgid "update translations"
+#~ msgstr "aktualizovaný holandský překlad"
+
+#~ msgid "this is a refinement release"
+#~ msgstr "jedná se o verzi převážně s opravami chyb"
+
+#~ msgid "show focus indicators correctly in all notes window"
+#~ msgstr "zobrazení indikátoru fokusu správně ve všech oknech poznámek"
+
+#~ msgid "use new flexible ToolbarView widget"
+#~ msgstr "nový flexibilní widget ToolbarView"
+
+#~ msgid "print where notes are logged when the app starts up (for syncing)"
+#~ msgstr ""
+#~ "zobrazení, kde jsou poznámky zaznamenány při spuštění aplikace (pro "
+#~ "synchronizaci)"
+
+#~ msgid "add a flag `--new-note` to quicky jote down a note"
+#~ msgstr "přidán příznak `--new-note` pro rychlé zapsání poznámky"
+
+#~ msgid "quickly open links in your notes"
+#~ msgstr "rychlé otevírání odkazů v poznámkách"
+
+#~ msgid "changed GNOME Runtime version to 44"
+#~ msgstr "změna verze GNOME Runtime na 44"
+
+#~ msgid "updated dutch translation"
+#~ msgstr "aktualizovaný holandský překlad"
+
+#~ msgid "fix packaging issues"
+#~ msgstr "oprava chyb při kompilaci"
+
+#~ msgid "this release enhances usability and reliability"
+#~ msgstr "tato verze zlepšuje použitelnost a spolehlivost"
+
+#~ msgid "updated the icon to make it more distinguished"
+#~ msgstr "aktualizovaná ikona, aby byla výraznější"
+
+#~ msgid "updated translations (french, russian) and added a czech translation"
+#~ msgstr "aktualizovány překlady (francouzština, ruština) a přidána čeština"
+
+#~ msgid "make text throughout the UI more standard and easy to understand"
+#~ msgstr ""
+#~ "text v celém uživatelském rozhraní je standardnější a srozumitelnější"
+
+#~ msgid ""
+#~ "notes are now more reliably saved so that you don't lose your changes"
+#~ msgstr "poznámky se nyní ukládají spolehlivěji, abyste své změny neztratili"
+
+#~ msgid ""
+#~ "notes are now restored (mostly) as they were last time you closed the app"
+#~ msgstr ""
+#~ "poznámky jsou nyní obnoveny (většinou) tak, jak byly při posledním "
+#~ "zavření aplikace"
+
+#~ msgid ""
+#~ "the most recently closed note is now shown when you reopen the app, "
+#~ "instead of showing the all notes window"
+#~ msgstr ""
+#~ "při opětovném otevření aplikace se nyní zobrazí naposledy zavřená "
+#~ "poznámka, namísto zobrazení okna všech poznámek"
+
+#~ msgid ""
+#~ "I'd like to take a moment to thank everyone that contributed to sticky "
+#~ "notes this far. I am very grateful for your help and support."
+#~ msgstr ""
+#~ "Rád bych poděkoval všem, kteří se podíleli na vývoji této aplikace. Jsem "
+#~ "velmi vděčný za vaši pomoc a podporu."
+
+#~ msgid "mostly a bug fix and tune-up release"
+#~ msgstr "verze s opravou chyb a ladění"
+
+#~ msgid "make style (color) selector easier to change using the keyboard"
+#~ msgstr "usnadnění změny výběru stylu (barvy) pomocí klávesnice"
+
+#~ msgid ""
+#~ "added more translations (tamil, hungary, catalan) and update russian "
+#~ "translations"
+#~ msgstr ""
+#~ "přidány další překlady (tamilština, maďarština, katalánština) a "
+#~ "aktualizace ruského překladu"
+
+#~ msgid ""
+#~ "you can now choose to use dark or light mode manually instead of always "
+#~ "using the system theme in the all notes window"
+#~ msgstr ""
+#~ "nyní můžete zvolit tmavý nebo světlý motiv ručně místo systémového motivu "
+#~ "v okně všech poznámek"
+
+#~ msgid "this is unexpectedly a large release"
+#~ msgstr "toto je nečekaně velká verze"
+
+#~ msgid "new icon"
+#~ msgstr "nová ikona"
+
+#~ msgid "added translations (french, russian, italian, dutch, ocitan)"
+#~ msgstr ""
+#~ "přidány překlady (francouzština, ruština, italština, holandština, "
+#~ "ocitánština)"
+
+#~ msgid "bug fixes"
+#~ msgstr "opravy chyb"
+
+#~ msgid "this is mostly a cleanup release"
+#~ msgstr "jedná se o verzi převážně s opravami chyb"
+
+#~ msgid "added translation support (starting with french)"
+#~ msgstr "přidána podpora překladu (počínaje francouzštinou)"
+
+#~ msgid ""
+#~ "apply tag to location under the cursor when nothing is selected. this "
+#~ "means that for example if you click Ctrl+B while there's nothing "
+#~ "selected, the new content you'll write will come out as bold"
+#~ msgstr ""
+#~ "použítí stylu na místě s kurzorem, když není nic vybráno. to znamená, že "
+#~ "pokud například kliknete na Ctrl+B, zatímco není nic vybráno, nový obsah, "
+#~ "který napíšete, se zobrazí tučně"
+
+#~ msgid "fixed builds"
+#~ msgstr "opravené chyby"
+
+#~ msgid "restructured/cleaned source"
+#~ msgstr "restrukturalizovaný/vyčištěný zdroj"
+
+#~ msgid "First beta release!"
+#~ msgstr "První beta verze!"
 
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "Jednoduchá aplikace pro rychlé poznámky pro GNOME"
