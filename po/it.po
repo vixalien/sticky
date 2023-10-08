@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-17 16:44+0200\n"
+"POT-Creation-Date: 2023-10-08 11:43+0300\n"
 "PO-Revision-Date: 2023-10-01 16:34+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Zorin Os\n"
@@ -25,7 +25,7 @@ msgstr "Appunta le note sul desktop"
 
 #: data/com.vixalien.sticky.desktop.in.in:4
 #: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
-#: src/application.ts:68 src/application.ts:337
+#: src/application.ts:68 src/application.ts:359
 msgid "Sticky Notes"
 msgstr "Note adesive"
 
@@ -53,8 +53,8 @@ msgstr "formattazione semplice (grassetto, corsivo, sottolineato e barrato)"
 #: data/com.vixalien.sticky.appdata.xml.in.in:16
 msgid "notes are restored if they were open when the application was closed"
 msgstr ""
-"le note vengono ripristinate se erano aperte quando l'applicazione è stata"
-"chiusa"
+"le note vengono ripristinate se erano aperte quando l'applicazione è "
+"statachiusa"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:17
 msgid "changing color of notes"
@@ -64,228 +64,9 @@ msgstr "cambiare colore delle note"
 msgid "dark theme support"
 msgstr "supporto del tema scuro"
 
-#: data/com.vixalien.sticky.appdata.xml.in.in:34
+#: data/com.vixalien.sticky.appdata.xml.in.in:35
 msgid "Angelo Verlain"
 msgstr "Angelo Verlain"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:54
-msgid "better dark theme support"
-msgstr "migliore supporto per il tema scuro"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:55
-msgid ""
-"fixed a bug where sometimes icons for actions (bold, italic etc..) would not "
-"appear"
-msgstr ""
-"risolto un bug per cui a volte le icone delle azioni (grassetto, corsivo ecc.) non "
-"apparivano"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:56
-msgid ""
-"fixed a bug where the scrollbar on the \"all notes\" window would appear in "
-"the wrong place"
-msgstr ""
-"risolto un bug per il quale la barra di scorrimento nella finestra \"tutte le note\" appariva "
-"nel posto sbagliato"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:58
-msgid "updated tamil translation"
-msgstr "traduzione tamil aggiornata"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:65
-msgid ""
-"fixed a bug introduced by the previous release where new notes would not get "
-"saved"
-msgstr ""
-"risolto un bug introdotto dalla versione precedente per il quale le nuove note non venivano "
-"salvate"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:66
-msgid "updated french &amp; czech translations"
-msgstr "Aggiornate le traduzioni in francese &amp; e ceca"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:73
-msgid "correctly translate all strings"
-msgstr "Tradotte correttamente tutte le stringhe"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:74
-msgid "add translator credits support (in the about window)"
-msgstr "aggiunto il supporto per i credits del traduttore (nella finestra informazioni)"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:75
-msgid "refine the focus indicator on the all notes window"
-msgstr "perfezionato l'indicatore di messa a fuoco nella finestra di tutte le note"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:76
-msgid "update translations"
-msgstr "traduzioni aggiornate"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:77
-msgid "fix some tooltips being invisible"
-msgstr "corretti alcuni tooltip che risultano invisibili"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:78
-msgid ""
-"fix a bug where only the tags (bold, italic etc) of the first 5 lines would "
-"be saved"
-msgstr ""
-"corretto un bug per cui solo i tag (grassetto, corsivo ecc.) delle prime 5 righe "
-"erano salvate"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:84
-msgid "this is a refinement release"
-msgstr "questa è una versione di perfezionamento"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:86
-msgid "show focus indicators correctly in all notes window"
-msgstr "mostra correttamente gli indicatori di messa a fuoco in tutte le finestre delle note"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:87
-msgid "use new flexible ToolbarView widget"
-msgstr "usa il nuovo widget flessibile ToolbarView"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:94
-msgid "print where notes are logged when the app starts up (for syncing)"
-msgstr ""
-"stampa dove vengono registrate le note all'avvio dell'app (per la sincronizzazione)"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:95
-msgid "add a flag `--new-note` to quicky jote down a note"
-msgstr "aggiungi un flag `--nuova-nota` per annotare rapidamente una nota"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:102
-msgid "quickly open links in your notes"
-msgstr "aprire rapidamente i collegamenti nelle note"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:109
-msgid "changed GNOME Runtime version to 44"
-msgstr "modificata la versione di GNOME Runtime in 44"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:110
-msgid "updated dutch translation"
-msgstr "Aggiornata traduzione olandese"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:116
-msgid "fix packaging issues"
-msgstr "risolti i problemi di packaging"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:121
-msgid "this release enhances usability and reliability"
-msgstr "questa versione migliora l'usabilità e l'affidabilità"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:123
-msgid "updated the icon to make it more distinguished"
-msgstr "aggiornata l'icona per renderla più distinta"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:124
-msgid "updated translations (french, russian) and added a czech translation"
-msgstr "traduzioni aggiornate (francese, russo) e aggiunta una traduzione in ceco"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:125
-msgid "make text throughout the UI more standard and easy to understand"
-msgstr ""
-"reso il testo in tutta l'interfaccia utente più standard e facile da capire"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:126
-msgid "notes are now more reliably saved so that you don't lose your changes"
-msgstr ""
-"le note sono ora salvate in modo più affidabile in modo da non perdere le modifiche"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:127
-msgid ""
-"notes are now restored (mostly) as they were last time you closed the app"
-msgstr ""
-"le note ora vengono ripristinate (principalmente) come lo erano l'ultima"
-"volta che hai chiuso l'app"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:128
-msgid ""
-"the most recently closed note is now shown when you reopen the app, instead "
-"of showing the all notes window"
-msgstr ""
-"la nota chiusa più di recente ora viene mostrata quando riapri l'app, invece "
-"di mostrare la finestra di tutte le note"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:131
-msgid ""
-"I'd like to take a moment to thank everyone that contributed to sticky notes "
-"this far. I am very grateful for your help and support."
-msgstr ""
-"Vorrei prendermi un momento per ringraziare tutti coloro che hanno "
-"contribuito a Note adesive finora. Sono molto grato per il vostro aiuto e "
-"supporto."
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:137
-msgid "mostly a bug fix and tune-up release"
-msgstr "principalmente una correzione di bug e una versione di messa a punto"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:139
-msgid "make style (color) selector easier to change using the keyboard"
-msgstr ""
-"semplifica la modifica del selettore di stile (colore) utilizzando la tastiera"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:140
-msgid ""
-"added more translations (tamil, hungary, catalan) and update russian "
-"translations"
-msgstr ""
-"aggiunte altre traduzioni (tamil, ungherese, catalano) e aggiornato la "
-"traduzione in russo"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:141
-msgid ""
-"you can now choose to use dark or light mode manually instead of always "
-"using the system theme in the all notes window"
-msgstr ""
-"ora puoi scegliere di utilizzare la modalità scura o chiara manualmente "
-"anziché sempre usando il tema di sistema nella finestra di tutte le note"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:148
-msgid "this is unexpectedly a large release"
-msgstr "questa è inaspettatamente una grande versione"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:150
-msgid "new icon"
-msgstr "nuova icona"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:151
-msgid "added translations (french, russian, italian, dutch, ocitan)"
-msgstr "aggiunte traduzioni (francese, russo, italiano, olandese, ocitano)"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:152
-msgid "bug fixes"
-msgstr "correzioni di bug"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:158
-msgid "this is mostly a cleanup release"
-msgstr "questa è principalmente una versione di pulizia"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:160
-msgid "added translation support (starting with french)"
-msgstr "aggiunto supporto per la traduzione (a partire dal francese)"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:161
-msgid ""
-"apply tag to location under the cursor when nothing is selected. this means "
-"that for example if you click Ctrl+B while there's nothing selected, the new "
-"content you'll write will come out as bold"
-msgstr ""
-"applica tag alla posizione sotto il cursore quando non è selezionato nulla. "
-"questo significa che, ad esempio, se fai clic su Ctrl+B mentre non c'è "
-"niente di selezionato, il nuovo contenuto che scriverai risulterà in "
-"grassetto"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:164
-msgid "fixed builds"
-msgstr "Sistemato le builds"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:165
-msgid "restructured/cleaned source"
-msgstr "sorgente ristrutturata/pulita"
-
-#: data/com.vixalien.sticky.appdata.xml.in.in:171
-msgid "First beta release!"
-msgstr "Prima versione beta!"
 
 #: data/com.vixalien.sticky.gschema.xml.in:16
 msgid "Note window default height"
@@ -326,7 +107,8 @@ msgstr "La combinazione di colori selezionata"
 #: data/com.vixalien.sticky.gschema.xml.in:37
 msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
 msgstr ""
-"La combinazione di colori selezionata. 0 = segue lo stile del sistema, 1 = chiaro, 2 = scuro"
+"La combinazione di colori selezionata. 0 = segue lo stile del sistema, 1 = "
+"chiaro, 2 = scuro"
 
 #: data/com.vixalien.sticky.gschema.xml.in:43
 msgid "Show all notes"
@@ -496,7 +278,7 @@ msgid "All Notes"
 msgstr "Tutte le note"
 
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
-#: src/application.ts:349
+#: src/application.ts:371
 msgid "translator-credits"
 msgstr "Albano Battistella <albanobattistella@gmail.com>"
 
@@ -561,6 +343,194 @@ msgstr "Elimina"
 #: src/view.ts:351
 msgid "Empty Note"
 msgstr "Nota vuota"
+
+#~ msgid "better dark theme support"
+#~ msgstr "migliore supporto per il tema scuro"
+
+#~ msgid ""
+#~ "fixed a bug where sometimes icons for actions (bold, italic etc..) would "
+#~ "not appear"
+#~ msgstr ""
+#~ "risolto un bug per cui a volte le icone delle azioni (grassetto, corsivo "
+#~ "ecc.) non apparivano"
+
+#~ msgid ""
+#~ "fixed a bug where the scrollbar on the \"all notes\" window would appear "
+#~ "in the wrong place"
+#~ msgstr ""
+#~ "risolto un bug per il quale la barra di scorrimento nella finestra "
+#~ "\"tutte le note\" appariva nel posto sbagliato"
+
+#~ msgid "updated tamil translation"
+#~ msgstr "traduzione tamil aggiornata"
+
+#~ msgid ""
+#~ "fixed a bug introduced by the previous release where new notes would not "
+#~ "get saved"
+#~ msgstr ""
+#~ "risolto un bug introdotto dalla versione precedente per il quale le nuove "
+#~ "note non venivano salvate"
+
+#~ msgid "updated french &amp; czech translations"
+#~ msgstr "Aggiornate le traduzioni in francese &amp; e ceca"
+
+#~ msgid "correctly translate all strings"
+#~ msgstr "Tradotte correttamente tutte le stringhe"
+
+#~ msgid "add translator credits support (in the about window)"
+#~ msgstr ""
+#~ "aggiunto il supporto per i credits del traduttore (nella finestra "
+#~ "informazioni)"
+
+#~ msgid "refine the focus indicator on the all notes window"
+#~ msgstr ""
+#~ "perfezionato l'indicatore di messa a fuoco nella finestra di tutte le note"
+
+#~ msgid "update translations"
+#~ msgstr "traduzioni aggiornate"
+
+#~ msgid "fix some tooltips being invisible"
+#~ msgstr "corretti alcuni tooltip che risultano invisibili"
+
+#~ msgid ""
+#~ "fix a bug where only the tags (bold, italic etc) of the first 5 lines "
+#~ "would be saved"
+#~ msgstr ""
+#~ "corretto un bug per cui solo i tag (grassetto, corsivo ecc.) delle prime "
+#~ "5 righe erano salvate"
+
+#~ msgid "this is a refinement release"
+#~ msgstr "questa è una versione di perfezionamento"
+
+#~ msgid "show focus indicators correctly in all notes window"
+#~ msgstr ""
+#~ "mostra correttamente gli indicatori di messa a fuoco in tutte le finestre "
+#~ "delle note"
+
+#~ msgid "use new flexible ToolbarView widget"
+#~ msgstr "usa il nuovo widget flessibile ToolbarView"
+
+#~ msgid "print where notes are logged when the app starts up (for syncing)"
+#~ msgstr ""
+#~ "stampa dove vengono registrate le note all'avvio dell'app (per la "
+#~ "sincronizzazione)"
+
+#~ msgid "add a flag `--new-note` to quicky jote down a note"
+#~ msgstr "aggiungi un flag `--nuova-nota` per annotare rapidamente una nota"
+
+#~ msgid "quickly open links in your notes"
+#~ msgstr "aprire rapidamente i collegamenti nelle note"
+
+#~ msgid "changed GNOME Runtime version to 44"
+#~ msgstr "modificata la versione di GNOME Runtime in 44"
+
+#~ msgid "updated dutch translation"
+#~ msgstr "Aggiornata traduzione olandese"
+
+#~ msgid "fix packaging issues"
+#~ msgstr "risolti i problemi di packaging"
+
+#~ msgid "this release enhances usability and reliability"
+#~ msgstr "questa versione migliora l'usabilità e l'affidabilità"
+
+#~ msgid "updated the icon to make it more distinguished"
+#~ msgstr "aggiornata l'icona per renderla più distinta"
+
+#~ msgid "updated translations (french, russian) and added a czech translation"
+#~ msgstr ""
+#~ "traduzioni aggiornate (francese, russo) e aggiunta una traduzione in ceco"
+
+#~ msgid "make text throughout the UI more standard and easy to understand"
+#~ msgstr ""
+#~ "reso il testo in tutta l'interfaccia utente più standard e facile da "
+#~ "capire"
+
+#~ msgid ""
+#~ "notes are now more reliably saved so that you don't lose your changes"
+#~ msgstr ""
+#~ "le note sono ora salvate in modo più affidabile in modo da non perdere le "
+#~ "modifiche"
+
+#~ msgid ""
+#~ "notes are now restored (mostly) as they were last time you closed the app"
+#~ msgstr ""
+#~ "le note ora vengono ripristinate (principalmente) come lo erano "
+#~ "l'ultimavolta che hai chiuso l'app"
+
+#~ msgid ""
+#~ "the most recently closed note is now shown when you reopen the app, "
+#~ "instead of showing the all notes window"
+#~ msgstr ""
+#~ "la nota chiusa più di recente ora viene mostrata quando riapri l'app, "
+#~ "invece di mostrare la finestra di tutte le note"
+
+#~ msgid ""
+#~ "I'd like to take a moment to thank everyone that contributed to sticky "
+#~ "notes this far. I am very grateful for your help and support."
+#~ msgstr ""
+#~ "Vorrei prendermi un momento per ringraziare tutti coloro che hanno "
+#~ "contribuito a Note adesive finora. Sono molto grato per il vostro aiuto e "
+#~ "supporto."
+
+#~ msgid "mostly a bug fix and tune-up release"
+#~ msgstr ""
+#~ "principalmente una correzione di bug e una versione di messa a punto"
+
+#~ msgid "make style (color) selector easier to change using the keyboard"
+#~ msgstr ""
+#~ "semplifica la modifica del selettore di stile (colore) utilizzando la "
+#~ "tastiera"
+
+#~ msgid ""
+#~ "added more translations (tamil, hungary, catalan) and update russian "
+#~ "translations"
+#~ msgstr ""
+#~ "aggiunte altre traduzioni (tamil, ungherese, catalano) e aggiornato la "
+#~ "traduzione in russo"
+
+#~ msgid ""
+#~ "you can now choose to use dark or light mode manually instead of always "
+#~ "using the system theme in the all notes window"
+#~ msgstr ""
+#~ "ora puoi scegliere di utilizzare la modalità scura o chiara manualmente "
+#~ "anziché sempre usando il tema di sistema nella finestra di tutte le note"
+
+#~ msgid "this is unexpectedly a large release"
+#~ msgstr "questa è inaspettatamente una grande versione"
+
+#~ msgid "new icon"
+#~ msgstr "nuova icona"
+
+#~ msgid "added translations (french, russian, italian, dutch, ocitan)"
+#~ msgstr "aggiunte traduzioni (francese, russo, italiano, olandese, ocitano)"
+
+#~ msgid "bug fixes"
+#~ msgstr "correzioni di bug"
+
+#~ msgid "this is mostly a cleanup release"
+#~ msgstr "questa è principalmente una versione di pulizia"
+
+#~ msgid "added translation support (starting with french)"
+#~ msgstr "aggiunto supporto per la traduzione (a partire dal francese)"
+
+#~ msgid ""
+#~ "apply tag to location under the cursor when nothing is selected. this "
+#~ "means that for example if you click Ctrl+B while there's nothing "
+#~ "selected, the new content you'll write will come out as bold"
+#~ msgstr ""
+#~ "applica tag alla posizione sotto il cursore quando non è selezionato "
+#~ "nulla. questo significa che, ad esempio, se fai clic su Ctrl+B mentre non "
+#~ "c'è niente di selezionato, il nuovo contenuto che scriverai risulterà in "
+#~ "grassetto"
+
+#~ msgid "fixed builds"
+#~ msgstr "Sistemato le builds"
+
+#~ msgid "restructured/cleaned source"
+#~ msgstr "sorgente ristrutturata/pulita"
+
+#~ msgid "First beta release!"
+#~ msgstr "Prima versione beta!"
 
 #~ msgid "A simple sticky notes app for GNOME"
 #~ msgstr "Una semplice app per note adesive per GNOME"
