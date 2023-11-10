@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-08 11:43+0300\n"
-"PO-Revision-Date: 2023-10-01 16:34+0100\n"
-"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2023-11-05 21:37+0100\n"
+"Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
 "Language-Team: Zorin Os\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
@@ -39,12 +39,12 @@ msgid ""
 "Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
 "notes and format them."
 msgstr ""
-"Sticky Notes è una semplice app per note adesive per GNOME. Ti permette di "
+"Note adesive è una semplice applicazione di GNOME per le note adesive. Permette di "
 "creare note e formattarle."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:13
 msgid "Current features:"
-msgstr "Caratteristiche attuali:"
+msgstr "Funzionalità attuali:"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:15
 msgid "simple formatting (bold, italic, underline and strikethrough)"
@@ -54,7 +54,7 @@ msgstr "formattazione semplice (grassetto, corsivo, sottolineato e barrato)"
 msgid "notes are restored if they were open when the application was closed"
 msgstr ""
 "le note vengono ripristinate se erano aperte quando l'applicazione è "
-"statachiusa"
+"stata chiusa"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:17
 msgid "changing color of notes"
@@ -62,7 +62,7 @@ msgstr "cambiare colore delle note"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:18
 msgid "dark theme support"
-msgstr "supporto del tema scuro"
+msgstr "supporto per il tema scuro"
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:35
 msgid "Angelo Verlain"
@@ -102,12 +102,12 @@ msgstr "Se confermare l'eliminazione della nota"
 
 #: data/com.vixalien.sticky.gschema.xml.in:36
 msgid "The selected color scheme"
-msgstr "La combinazione di colori selezionata"
+msgstr "Lo schema di colori selezionato"
 
 #: data/com.vixalien.sticky.gschema.xml.in:37
 msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
 msgstr ""
-"La combinazione di colori selezionata. 0 = segue lo stile del sistema, 1 = "
+"Lo schema di colori selezionato. 0 = segue lo stile del sistema, 1 = "
 "chiaro, 2 = scuro"
 
 #: data/com.vixalien.sticky.gschema.xml.in:43
@@ -124,12 +124,12 @@ msgstr "La nota è aperta"
 
 #: data/ui/card.ui:39 data/ui/window.ui:142
 msgid "Delete Note"
-msgstr "Eliminare nota"
+msgstr "Elimina nota"
 
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Generale"
+msgstr "Generali"
 
 #: data/ui/help-overlay.ui:14
 msgctxt "shortcut window"
@@ -139,7 +139,7 @@ msgstr "Mostra scorciatoie"
 #: data/ui/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Esci"
+msgstr "Esce"
 
 #: data/ui/help-overlay.ui:28
 msgctxt "shortcut window"
@@ -154,7 +154,7 @@ msgstr "Nuova nota"
 #: data/ui/help-overlay.ui:37
 msgctxt "shortcut window"
 msgid "Close Note"
-msgstr "Chiudi nota"
+msgstr "Chiude la nota"
 
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
@@ -207,7 +207,7 @@ msgstr "Nuova nota"
 
 #: data/ui/notes.ui:26 data/ui/window.ui:30
 msgid "Main Menu"
-msgstr "Menu principale"
+msgstr "Menù principale"
 
 #: data/ui/notes.ui:60
 msgid "Search notes…"
@@ -231,7 +231,7 @@ msgstr "Nessun risultato"
 
 #: data/ui/notes.ui:94
 msgid "Try a different search"
-msgstr "Prova una ricerca diversa"
+msgstr "Provare una ricerca diversa"
 
 #: data/ui/notes.ui:126
 msgid "Keyboard Shortcuts"
@@ -239,7 +239,7 @@ msgstr "Scorciatoie da tastiera"
 
 #: data/ui/notes.ui:130
 msgid "About Sticky Notes"
-msgstr "Informazioni su Sticky Notes"
+msgstr "Informazioni su Note adesive"
 
 #: data/ui/notes.ui:136
 msgid "Quit"
@@ -280,13 +280,15 @@ msgstr "Tutte le note"
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:371
 msgid "translator-credits"
-msgstr "Albano Battistella <albanobattistella@gmail.com>"
+msgstr ""
+"Albano Battistella <albanobattistella@gmail.com>\n"
+"Davide Ferracin <davide.ferracin@protonmail.com>"
 
 #. focus_on_click: false,
 #: src/styleselector.ts:45
 #, c-format
 msgid "Switch to %s style"
-msgstr "Cambia %s stile"
+msgstr "Passa allo stile %s"
 
 #: src/util.ts:74
 msgid "Yellow"
@@ -329,12 +331,12 @@ msgid ""
 "This action cannot be undone. If you want to hide the note, you can close it "
 "instead."
 msgstr ""
-"Questa azione non può essere annullata. Se vuoi nascondere la nota, puoi "
-"chiuderla invece."
+"Questa azione non può essere annullata. Se si vuole nascondere la nota, invece, la "
+"si può chiudere."
 
 #: src/util.ts:296
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #: src/util.ts:297
 msgid "Delete"
