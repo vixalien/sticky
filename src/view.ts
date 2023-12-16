@@ -417,6 +417,10 @@ export class WriteableStickyNote extends AbstractStickyNote {
   constructor(note?: Note) {
     super(note);
 
+    this.buffer.connect('insert-text', (buffer, loc, text, length) => {
+      this.on_text_inserted(buffer, loc, text, length);
+    });
+
     this.buffer.connect("changed", () => {
       if (this.updating) {
         this.updating = false;
@@ -471,6 +475,25 @@ export class WriteableStickyNote extends AbstractStickyNote {
     const tags = this.get_tags();
     if (compare_tags(tags, this.note!.tags)) return;
     this.change("tags", tags);
+  }
+
+  on_text_inserted(buffer: Gtk.TextBuffer, loc: Gtk.TextIter, text: string, length: number) {
+    if (text === '\n') {
+      const startIter = loc.copy();
+      startIter.set_line_offset(0);
+      const endIter = startIter.copy();
+      endIter.forward_char();
+      const char = buffer.get_text(startIter, endIter, false);
+      if (char == '-') {
+        startIter.forward_char();
+        endIter.forward_char();
+        const char = buffer.get_text(startIter, endIter, false);
+        if (char == ' ') {
+          buffer.insert(loc, `- `, -1);
+          loc.backward_chars(2);
+        }
+      }
+    }
   }
 }
 
