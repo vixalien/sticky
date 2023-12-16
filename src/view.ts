@@ -492,13 +492,33 @@ export class WriteableStickyNote extends AbstractStickyNote {
         const bullet = chars[0];
         const lineEnd = loc.copy();
         lineEnd.backward_char();
-
         if (lineEnd.get_line_offset() === 2) {
           startIter.set_line_offset(0);
           buffer.delete(startIter, loc);
         } else {
           buffer.insert(loc, bullet + ' ', -1);
-          loc.backward_chars(2);
+        }
+      } else{
+        const searchEnd = startIter.copy();
+        searchEnd.forward_chars(10); // Maximum number of character to search, with 10 the max order is 99999999. (Excessive? Maybe)
+        const [ok, matchStart, matchEnd] = startIter.forward_search(' ', 1, searchEnd);
+        if (!ok) return;
+        const chars = buffer.get_text(startIter, matchEnd, false);
+
+        const regexPattern = /^\d+\.\s$/;
+        if (regexPattern.test(chars)) {
+          const currentOrder = parseInt(chars.slice(0, -2));
+          const newOrder = currentOrder + 1;
+          const newOrderBullet = `${newOrder}. `;
+          const lineEnd = loc.copy();
+          lineEnd.backward_char();
+
+          if (lineEnd.get_line_offset() === currentOrder.toString().length + 2) {
+            startIter.set_line_offset(0);
+            buffer.delete(startIter, loc);
+          } else {
+            buffer.insert(loc, newOrderBullet, -1);
+          }
         }
       }
     }
