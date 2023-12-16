@@ -417,7 +417,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
   constructor(note?: Note) {
     super(note);
 
-    this.buffer.connect('insert-text', (buffer, loc, text, length) => {
+    this.buffer.connect_after('insert-text', (buffer, loc, text, length) => {
       this.on_text_inserted(buffer, loc, text, length);
     });
 
@@ -480,16 +480,24 @@ export class WriteableStickyNote extends AbstractStickyNote {
   on_text_inserted(buffer: Gtk.TextBuffer, loc: Gtk.TextIter, text: string, length: number) {
     if (text === '\n') {
       const startIter = loc.copy();
+      startIter.backward_char();
       startIter.set_line_offset(0);
+
       const endIter = startIter.copy();
-      endIter.forward_char();
-      const char = buffer.get_text(startIter, endIter, false);
-      if (char == '-') {
-        startIter.forward_char();
-        endIter.forward_char();
-        const char = buffer.get_text(startIter, endIter, false);
-        if (char == ' ') {
-          buffer.insert(loc, `- `, -1);
+      endIter.forward_chars(2);
+
+      const chars = buffer.get_text(startIter, endIter, false);
+
+      if (chars === '- ' || chars === '+ ' || chars === '* ') {
+        const bullet = chars[0];
+        const lineEnd = loc.copy();
+        lineEnd.backward_char();
+
+        if (lineEnd.get_line_offset() === 2) {
+          startIter.set_line_offset(0);
+          buffer.delete(startIter, loc);
+        } else {
+          buffer.insert(loc, bullet + ' ', -1);
           loc.backward_chars(2);
         }
       }
