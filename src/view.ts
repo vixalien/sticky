@@ -479,45 +479,47 @@ export class WriteableStickyNote extends AbstractStickyNote {
 
   on_text_inserted(buffer: Gtk.TextBuffer, loc: Gtk.TextIter, text: string, length: number) {
     if (text === '\n') {
-      const startIter = loc.copy();
-      startIter.backward_char();
-      startIter.set_line_offset(0);
+      const start_iter = loc.copy();
+      start_iter.backward_char();
+      start_iter.set_line_offset(0);
 
-      const endIter = startIter.copy();
-      endIter.forward_chars(2);
+      const end_iter = start_iter.copy();
+      end_iter.forward_chars(2);
+      const chars = buffer.get_text(start_iter, end_iter, false);
 
-      const chars = buffer.get_text(startIter, endIter, false);
-
-      if (chars === '- ' || chars === '+ ' || chars === '* ') {
+      const simple_regex_pattern = /[-+*]\s$/;
+      if (simple_regex_pattern.test(chars)) {
         const bullet = chars[0];
-        const lineEnd = loc.copy();
-        lineEnd.backward_char();
-        if (lineEnd.get_line_offset() === 2) {
-          startIter.set_line_offset(0);
-          buffer.delete(startIter, loc);
+        const line_end = loc.copy();
+        line_end.backward_char();
+        if (line_end.get_line_offset() === 2) {
+          start_iter.set_line_offset(0);
+          buffer.delete(start_iter, loc);
         } else {
           buffer.insert(loc, bullet + ' ', -1);
         }
       } else{
-        const searchEnd = startIter.copy();
-        searchEnd.forward_chars(10); // Maximum number of character to search, with 10 the max order is 99999999. (Excessive? Maybe)
-        const [ok, matchStart, matchEnd] = startIter.forward_search(' ', 1, searchEnd);
-        if (!ok) return;
-        const chars = buffer.get_text(startIter, matchEnd, false);
+        const search_limit = start_iter.copy();
+        const search_end = start_iter.copy();
+        search_limit.forward_chars(10);
 
-        const regexPattern = /^\d+\.\s$/;
-        if (regexPattern.test(chars)) {
-          const currentOrder = parseInt(chars.slice(0, -2));
-          const newOrder = currentOrder + 1;
-          const newOrderBullet = `${newOrder}. `;
-          const lineEnd = loc.copy();
-          lineEnd.backward_char();
+        search_end.forward_find_char((ch) => {return ch === ' '}, search_limit);
+        search_end.forward_char()
+        const chars = buffer.get_text(start_iter, search_end, false);
 
-          if (lineEnd.get_line_offset() === currentOrder.toString().length + 2) {
-            startIter.set_line_offset(0);
-            buffer.delete(startIter, loc);
+        const ordered_regex_pattern = /^\d+\.\s$/;
+        if (ordered_regex_pattern.test(chars)) {
+          const current_order = parseInt(chars.slice(0, -2));
+          const new_order = current_order + 1;
+          const new_order_bullet = `${new_order}. `;
+          const line_end = loc.copy();
+          line_end.backward_char();
+
+          if (line_end.get_line_offset() === current_order.toString().length + 2) {
+            start_iter.set_line_offset(0);
+            buffer.delete(start_iter, loc);
           } else {
-            buffer.insert(loc, newOrderBullet, -1);
+            buffer.insert(loc, new_order_bullet, -1);
           }
         }
       }
