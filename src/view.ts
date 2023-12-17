@@ -487,7 +487,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
       end_iter.forward_chars(2);
       const chars = buffer.get_text(start_iter, end_iter, false);
 
-      const simple_regex_pattern = /[-+*]\s$/;
+      const simple_regex_pattern = /^[-+*]\s$/;
       if (simple_regex_pattern.test(chars)) {
         const bullet = chars[0];
         const line_end = loc.copy();
