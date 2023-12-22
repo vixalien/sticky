@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-08 11:43+0300\n"
-"PO-Revision-Date: 2023-05-18 19:00+0200\n"
+"PO-Revision-Date: 2023-12-22 17:28+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: data/com.vixalien.sticky.desktop.in.in:3
 #: data/com.vixalien.sticky.appdata.xml.in.in:7
@@ -121,9 +121,8 @@ msgid "Note is Open"
 msgstr "La nòta es dobèrta"
 
 #: data/ui/card.ui:39 data/ui/window.ui:142
-#, fuzzy
 msgid "Delete Note"
-msgstr "Suprimir la nòta ?"
+msgstr "Suprimir la nòta"
 
 #: data/ui/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -151,10 +150,9 @@ msgid "New Note"
 msgstr "Nòta novèla"
 
 #: data/ui/help-overlay.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Close Note"
-msgstr "Suprimir la nòta"
+msgstr "Tampar la nòta"
 
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
@@ -218,7 +216,6 @@ msgid "No Notes"
 msgstr "Cap de nòta"
 
 #: data/ui/notes.ui:74
-#, fuzzy
 msgid "After you create notes, they will appear here"
 msgstr "Aprèp aver creat de nòtas, apreissaràn aicí"
 
@@ -281,7 +278,7 @@ msgstr "Totas las nòtas"
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:371
 msgid "translator-credits"
-msgstr ""
+msgstr "Quentin PAGÈS"
 
 #. focus_on_click: false,
 #: src/styleselector.ts:45
