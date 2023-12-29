@@ -417,6 +417,10 @@ export class WriteableStickyNote extends AbstractStickyNote {
   constructor(note?: Note) {
     super(note);
 
+    this.buffer.connect_after('insert-text', (buffer, loc, text, length) => {
+      this.on_text_inserted(buffer, loc, text, length);
+    });
+
     this.buffer.connect("changed", () => {
       if (this.updating) {
         this.updating = false;
@@ -471,6 +475,55 @@ export class WriteableStickyNote extends AbstractStickyNote {
     const tags = this.get_tags();
     if (compare_tags(tags, this.note!.tags)) return;
     this.change("tags", tags);
+  }
+
+  on_text_inserted(buffer: Gtk.TextBuffer, loc: Gtk.TextIter, text: string, length: number) {
+    if (text === '\n') {
+      const start_iter = loc.copy();
+      start_iter.backward_char();
+      start_iter.set_line_offset(0);
+
+      const end_iter = start_iter.copy();
+      end_iter.forward_chars(2);
+      const chars = buffer.get_text(start_iter, end_iter, false);
+
+      const simple_regex_pattern = /^[-+*] $/;
+      if (simple_regex_pattern.test(chars)) {
+        const bullet = chars[0];
+        const line_end = loc.copy();
+        line_end.backward_char();
+        if (line_end.get_line_offset() === 2) {
+          start_iter.set_line_offset(0);
+          buffer.delete(start_iter, loc);
+        } else {
+          buffer.insert(loc, bullet + ' ', -1);
+        }
+      } else{
+        const search_limit = start_iter.copy();
+        const search_end = start_iter.copy();
+        search_limit.forward_chars(10);
+
+        search_end.forward_find_char((ch) => {return ch === ' '}, search_limit);
+        search_end.forward_char()
+        const chars = buffer.get_text(start_iter, search_end, false);
+
+        const ordered_regex_pattern = /^\d+\. $/;
+        if (ordered_regex_pattern.test(chars)) {
+          const current_order = parseInt(chars.slice(0, -2));
+          const new_order = current_order + 1;
+          const new_order_bullet = `${new_order}. `;
+          const line_end = loc.copy();
+          line_end.backward_char();
+
+          if (line_end.get_line_offset() === current_order.toString().length + 2) {
+            start_iter.set_line_offset(0);
+            buffer.delete(start_iter, loc);
+          } else {
+            buffer.insert(loc, new_order_bullet, -1);
+          }
+        }
+      }
+    }
   }
 }
 
