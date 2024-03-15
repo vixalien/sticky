@@ -278,7 +278,7 @@ msgstr "Todas las notas"
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:371
 msgid "translator-credits"
-msgstr "créditos-traductor"
+msgstr "haggen88"
 
 #. focus_on_click: false,
 #: src/styleselector.ts:45
