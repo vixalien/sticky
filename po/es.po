@@ -1,0 +1,343 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sticky-notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-08 11:43+0300\n"
+"PO-Revision-Date: 2024-03-15 16:27-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7
+msgid "Pin notes to your desktop"
+msgstr "Fija notas al escritorio"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:359
+msgid "Sticky Notes"
+msgstr "Notas adhesivas"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "Sticky;Notas;Escribir;"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+"Sticky Notes es una sencilla aplicación de notas adhesivas para GNOME. "
+"Permite crear notas y darles formato."
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "Características actuales:"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr "formato sencillo (negrita, cursiva, subrayado y tachado)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr ""
+"las notas se restauran si estaban abiertas cuando se cerró la aplicación"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "cambiar el color de las notas"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "compatibilidad con temas oscuros"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:35
+msgid "Angelo Verlain"
+msgstr "Angelo Verlain"
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "Altura por defecto de la ventana de notas"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "La altura por defecto de una nueva nota adhesiva"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "Anchura por defecto de la ventana de notas"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "La anchura por defecto de una nueva nota adhesiva"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "Estilo de nota por defecto"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "El estilo por defecto asignado a una nueva nota"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "Confirmar borrado de nota"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "Confirmar o no el borrado de la nota"
+
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr "La combinación de colores seleccionada"
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr ""
+"El esquema de color seleccionado. 0 = sigue el estilo del sistema, 1 = "
+"claro, 2 = oscuro"
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+msgid "Show all notes"
+msgstr "Mostrar todas las notas"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr "Mostrar o no la ventana de todas las notas"
+
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "La nota está abierta"
+
+#: data/ui/card.ui:39 data/ui/window.ui:142
+msgid "Delete Note"
+msgstr "Borrar nota"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostrar accesos directos"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Salir"
+
+#: data/ui/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "Notas"
+
+#: data/ui/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "Nueva Nota"
+
+#: data/ui/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Close Note"
+msgstr "Cerrar Nota"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Navegación"
+
+#: data/ui/help-overlay.ui:48
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "Mostrar todas las notas"
+
+#: data/ui/help-overlay.ui:54
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "Ciclo entre notas"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr "Ciclo entre notas en orden inverso"
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Edición"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "Negrita"
+
+#: data/ui/help-overlay.ui:77
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "Itálica"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "Subrayar"
+
+#: data/ui/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "Tachado"
+
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "Nueva nota"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "Buscar notas…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "Sin notas"
+
+#: data/ui/notes.ui:74
+msgid "After you create notes, they will appear here"
+msgstr "Una vez creadas las notas, aparecerán aquí"
+
+#: data/ui/notes.ui:78
+msgid "_New Note"
+msgstr "_Nueva Nota"
+
+#: data/ui/notes.ui:93
+msgid "No Results"
+msgstr "Sin resultados"
+
+#: data/ui/notes.ui:94
+msgid "Try a different search"
+msgstr "Intente otra búsqueda"
+
+#: data/ui/notes.ui:126
+msgid "Keyboard Shortcuts"
+msgstr "Atajos de teclado"
+
+#: data/ui/notes.ui:130
+msgid "About Sticky Notes"
+msgstr "Acerca de Notas adhesivas"
+
+#: data/ui/notes.ui:136
+msgid "Quit"
+msgstr "Salir"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr "Seguir el estilo del sistema"
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "Estilo claro"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "Estilo oscuro"
+
+#: data/ui/window.ui:98
+msgid "Bold"
+msgstr "Negrita"
+
+#: data/ui/window.ui:106
+msgid "Italic"
+msgstr "Itálica"
+
+#: data/ui/window.ui:114
+msgid "Underline"
+msgstr "Subrayar"
+
+#: data/ui/window.ui:122
+msgid "Strikethrough"
+msgstr "Tachado"
+
+#: data/ui/window.ui:138
+msgid "All Notes"
+msgstr "Todas las notas"
+
+#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
+#: src/application.ts:371
+msgid "translator-credits"
+msgstr "créditos-traductor"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:45
+#, c-format
+msgid "Switch to %s style"
+msgstr "Cambiar al estilo %s"
+
+#: src/util.ts:74
+msgid "Yellow"
+msgstr "Amarillo"
+
+#: src/util.ts:75
+msgid "Pink"
+msgstr "Rosado"
+
+#: src/util.ts:76
+msgid "Green"
+msgstr "Verde"
+
+#: src/util.ts:77
+msgid "Purple"
+msgstr "Morado"
+
+#: src/util.ts:78
+msgid "Blue"
+msgstr "Azul"
+
+#: src/util.ts:79
+msgid "Gray"
+msgstr "Gris"
+
+#: src/util.ts:80
+msgid "Charcoal"
+msgstr "Carbón"
+
+#: src/util.ts:81
+msgid "Window"
+msgstr "Ventana"
+
+#: src/util.ts:293
+msgid "Delete Note?"
+msgstr "¿Eliminar la nota?"
+
+#: src/util.ts:294
+msgid ""
+"This action cannot be undone. If you want to hide the note, you can close it "
+"instead."
+msgstr ""
+"Esta acción no se puede deshacer. Si desea ocultar la nota, puede cerrarla."
+
+#: src/util.ts:296
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/util.ts:297
+msgid "Delete"
+msgstr "Eliminar"
+
+#: src/view.ts:351
+msgid "Empty Note"
+msgstr "Nota vacía"
