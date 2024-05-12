@@ -1,0 +1,340 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sticky-notes package.
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-08 11:43+0300\n"
+"PO-Revision-Date: 2024-05-12 17:23+0300\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
+"Language-Team: \n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7
+msgid "Pin notes to your desktop"
+msgstr "הצמדת פתקים לשולחן העבודה"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:359
+msgid "Sticky Notes"
+msgstr "פתקים נדבקים"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "Sticky;Notes;Write;פתקים;נדבקים;הערות;"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+"‚פתקים נדבקים’ הוא יישום פשוט של פתקים נדבקים ל־GNOME. הוא מאפשר לך ליצור "
+"פתקים ולעצב אותם."
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "היכולות שיש עד כה:"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr "מצבי טקסט בסיסיים (טקסט מודגש, טקסט נטוי, קו תחתון וקו חוצה)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr "הפתקים שהיו פתוחים בעת סגירת היישום ייפתחו מחדש"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "שינוי הצבע של הפתקים"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "תמיכה בערכת נושא כהה"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:35
+msgid "Angelo Verlain"
+msgstr "Angelo Verlain"
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "גובה ברירת המחדל לחלונית של פתק"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "גובה ברירת המחדל לפתק נדבק חדש"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "רוחב ברירת מחדל לחלונית של פתק"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "רוחב ברירת המחדל לפתק נדבק חדש"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "צבע ברירת מחדל לפתקים"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "סגנון ברירת המחדל המיועד לפתקים חדשים"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "אישור מחיקת הפתק"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "האם לבקש אישור למחיקת פתקים"
+
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr "ערכת הצבעים שנבחרה"
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr "ערכת הצבעים שנבחרה. 0 = בהתאם לסגנון המערכת, 1= בהירה, 2 = כהה"
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+msgid "Show all notes"
+msgstr "הצגת כל הפתקים"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr "האם להציג את החלון של כל הפתקים או רק פתק"
+
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "הפתח נפתח"
+
+#: data/ui/card.ui:39 data/ui/window.ui:142
+msgid "Delete Note"
+msgstr "מחיקת פתק"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "כללי"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "הצגת קיצורי מקשים"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "יציאה"
+
+#: data/ui/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "פתקים"
+
+#: data/ui/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "פתק חדש"
+
+#: data/ui/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Close Note"
+msgstr "סגירת פתק"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "ניווט"
+
+#: data/ui/help-overlay.ui:48
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "הצגת כל הפתקים"
+
+#: data/ui/help-overlay.ui:54
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "מעבר בין פתקים"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr "מעבר בין שני פתקים בסדר הפוך"
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "עריכה"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "טקסט מודגש"
+
+#: data/ui/help-overlay.ui:77
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "טקסט נטוי"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "קו תחתון"
+
+#: data/ui/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "קו חוצה"
+
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "פתק חדש"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "התפריט הראשי"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "חיפוש פתקים…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "אין פתקים"
+
+#: data/ui/notes.ui:74
+msgid "After you create notes, they will appear here"
+msgstr "הפתקים יופיעו כאן לאחר יצירתם"
+
+#: data/ui/notes.ui:78
+msgid "_New Note"
+msgstr "פתק _חדש"
+
+#: data/ui/notes.ui:93
+msgid "No Results"
+msgstr "אין תוצאות"
+
+#: data/ui/notes.ui:94
+msgid "Try a different search"
+msgstr ""
+
+#: data/ui/notes.ui:126
+msgid "Keyboard Shortcuts"
+msgstr "קיצורי מקשים"
+
+#: data/ui/notes.ui:130
+msgid "About Sticky Notes"
+msgstr "על פתקים נדבקים"
+
+#: data/ui/notes.ui:136
+msgid "Quit"
+msgstr "יציאה"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr ""
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "סגנון כהה"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "סגנון בהיר"
+
+#: data/ui/window.ui:98
+msgid "Bold"
+msgstr "מודגש"
+
+#: data/ui/window.ui:106
+msgid "Italic"
+msgstr "נטוי"
+
+#: data/ui/window.ui:114
+msgid "Underline"
+msgstr "קו תחתון"
+
+#: data/ui/window.ui:122
+msgid "Strikethrough"
+msgstr "קו חוצה"
+
+#: data/ui/window.ui:138
+msgid "All Notes"
+msgstr "כל הפתקים"
+
+#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
+#: src/application.ts:371
+msgid "translator-credits"
+msgstr "עומר א״ש <omeritzicschwartz@gmail.com>"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:45
+#, c-format
+msgid "Switch to %s style"
+msgstr "שינוי לצבע %s"
+
+#: src/util.ts:74
+msgid "Yellow"
+msgstr "צהוב"
+
+#: src/util.ts:75
+msgid "Pink"
+msgstr "ורוד"
+
+#: src/util.ts:76
+msgid "Green"
+msgstr "ירוק"
+
+#: src/util.ts:77
+msgid "Purple"
+msgstr "סגול"
+
+#: src/util.ts:78
+msgid "Blue"
+msgstr "כחול"
+
+#: src/util.ts:79
+msgid "Gray"
+msgstr "אפור"
+
+#: src/util.ts:80
+msgid "Charcoal"
+msgstr "שחור"
+
+#: src/util.ts:81
+msgid "Window"
+msgstr "חלון"
+
+#: src/util.ts:293
+msgid "Delete Note?"
+msgstr "למחוק את הפתק?"
+
+#: src/util.ts:294
+msgid ""
+"This action cannot be undone. If you want to hide the note, you can close it "
+"instead."
+msgstr ""
+"לא ניתן לבטל פעולה זו. אם ברצונך להסתיר את הפתק, אפשר לסגור אותו במקום."
+
+#: src/util.ts:296
+msgid "Cancel"
+msgstr "ביטול"
+
+#: src/util.ts:297
+msgid "Delete"
+msgstr "מחיקה"
+
+#: src/view.ts:351
+msgid "Empty Note"
+msgstr "פתק ריק"
