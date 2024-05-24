@@ -109,8 +109,6 @@ settings.connect("changed", () => {
 });
 
 export class Tag extends GObject.Object {
-  static $gtype: GObject.GType<Tag>;
-
   name: string;
   start: number;
   end: number;
@@ -138,16 +136,6 @@ export class Tag extends GObject.Object {
 }
 
 export class Note extends GObject.Object {
-  private static tag_list_pspec = GObject.ParamSpec.object(
-    "tag_list",
-    "Tags",
-    "Tags of the note",
-    GObject.ParamFlags.READWRITE,
-    Gio.ListStore,
-  );
-
-  static $gtype: GObject.GType<Note>;
-
   v: 1;
   uuid: string;
   content: string;
@@ -181,7 +169,7 @@ export class Note extends GObject.Object {
       this.tag_list.append(tag_object);
     }
 
-    this.emit("notify::tag_list", Note.tag_list_pspec);
+    this.notify("tag-list");
   }
 
   get modified_date() {
@@ -272,7 +260,7 @@ export class Note extends GObject.Object {
         // deno-fmt-ignore
         style: GObject.ParamSpec.int("style", "Style", "Style of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
         // deno-fmt-ignore
-        tag_list: this.tag_list_pspec,
+        "tag-list": GObject.ParamSpec.object("tag-list", "Tags", "Tags of the note", GObject.ParamFlags.READWRITE, Gio.ListStore),
         // // deno-fmt-ignore
         modified: GObject.ParamSpec.boxed("modified", "Modified", "Date the note was modified", GObject.ParamFlags.READWRITE, GLib.DateTime),
         // deno-fmt-ignore

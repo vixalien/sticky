@@ -2,7 +2,7 @@ import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 
 import { StickyError, StickyErrorType } from "./errors.js";
-import { INote, Note } from "./util.js";
+import { INote, Note } from "./util/index.js";
 
 Gio._promisify(
   Gio.File.prototype,

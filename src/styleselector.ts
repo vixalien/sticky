@@ -29,7 +29,7 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
 
-import { Style, StyleNames, styles } from "./util.js";
+import { Style, StyleNames, styles } from "./util/index.js";
 
 let provider: Gtk.CssProvider | null = null;
 
