@@ -1,33 +1,17 @@
-gnome = import('gnome')
+yarnrc = get_option('yarnrc')
 
-sources = [
-  'application.ts',
-  'card.ts',
-  'errors.ts',
-  'main.ts',
-  'notes.ts',
-  'styleselector.ts',
-  'store.ts',
-  'themeselector.ts',
-  'view.ts',
-  'window.ts',
-  'util.ts'
-]
-
-outputs = []
-foreach source : sources
-	outputs += source.replace('.ts', '.js')
-endforeach
+if yarnrc != ''
+  yarn_args += ['--offline', '--use-yarnrc', yarnrc]
+endif
 
 typescript = custom_target(
   'typescript-compile',
+  input: ['main.ts'],
   build_by_default: true,
-  input: files(sources),
-  command: [
-    package_manager, package_manager_args, 'run', 'build', '--out', meson.project_build_root() / '@OUTDIR@', '--cwd', meson.project_build_root(), '@INPUT@', '--src', meson.project_source_root()
-  ],
-  depends: package_manager_deps,
-  output: outputs,
+  build_always_stale: true,
+  command: [ yarn, yarn_args, 'run', 'build', '--out', meson.project_build_root() / '@OUTDIR@', '--cwd', meson.project_build_root(), '@INPUT@' ],
+  depends: yarn_deps,
+  output: ['main.js'],
 )
 
 src_res = gnome.compile_resources(

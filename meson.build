@@ -12,47 +12,14 @@ gnome = import('gnome')
 
 gjs_dep = dependency('gjs-1.0', version: '>= 1.54.0')
 gjs_console = gjs_dep.get_variable(pkgconfig: 'gjs_console')
+yarn = find_program('yarn', required: true)
 
-pm_name = 'yarn'
+yarn_args = ['--cwd', meson.project_source_root()]
 
-package_manager = find_program(pm_name, '/usr/local/bin/yarn', required: true)
-
-package_manager_args = ['--cwd', meson.project_source_root()]
-
-yarnrc = get_option('yarnrc')
-
-if pm_name == 'yarn' and yarnrc != ''
-  # configure_file(input: 'empty_file',
-  #   output: meson.current_source_dir() / '.yarnrc',
-  #   capture: true,
-  #   command: [
-  #     '/bin/echo',
-  #     'yarn-offline-mirror ' + offline_mirror
-  #   ])
-
-  # run_command(
-  #   package_manager,
-  #   'config',
-  #   '--offline',
-  #   'set',
-  #   'yarn-offline-mirror',
-  #   offline_mirror,
-  #   env: { 'HOME': meson.current_source_dir() },
-  #   check: true
-  # )
-
-  package_manager_args += [
-    # note that this does not affect network requests, as it's getting them from
-    # the offline mirror
-    '--offline',
-    '--use-yarnrc', yarnrc
-  ]
-endif
-
-package_manager_deps = custom_target(
-  'node-package-manager-deps',
-  command: [ package_manager, 'install', package_manager_args ],
-  output: ['node-package-manager-out']
+yarn_deps = custom_target(
+  'yarn-deps',
+  command: [ yarn, yarn_args, 'install' ],
+  output: ['node_modules']
 )
 
 subdir('data')
