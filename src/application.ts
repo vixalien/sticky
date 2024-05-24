@@ -90,6 +90,12 @@ export class Application extends Adw.Application {
       console.error(error as any);
     }
 
+    this.add_cli_options();
+
+    console.log("Storing Notes at: " + NewNotesDir.get_path());
+  }
+
+  private add_cli_options() {
     this.add_main_option(
       "version",
       "v".charCodeAt(0),
@@ -116,8 +122,6 @@ export class Application extends Adw.Application {
       "Only show the app if there is atleast one open note",
       null,
     );
-
-    console.log("Storing Notes at: " + NewNotesDir.get_path());
   }
 
   save() {
