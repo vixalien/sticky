@@ -27,7 +27,7 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import GLib from "gi://GLib";
 
-import { confirm_delete, Note, Style } from "./util.js";
+import { confirm_delete, Note, Style } from "./util/index.js";
 import { ReadonlyStickyNote } from "./view.js";
 
 export class StickyNoteCard extends Gtk.Box {

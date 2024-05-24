@@ -29,7 +29,7 @@ import Adw from "gi://Adw";
 
 import type { Application } from "./application.js";
 import { StickyNoteCard } from "./card.js";
-import { Note, settings } from "./util.js";
+import { Note, settings } from "./util/index.js";
 
 import { ThemeSelector } from "./themeselector.js";
 
@@ -62,14 +62,14 @@ export class StickyNotes extends Adw.ApplicationWindow {
     );
   }
 
-  _search!: Gtk.Box;
-  _search_entry!: Gtk.SearchEntry;
-  _notes_box!: Gtk.ListView;
-  _no_notes!: Adw.StatusPage;
-  _no_results!: Adw.StatusPage;
-  _scrolled!: Gtk.ScrolledWindow;
-  _menu_button!: Gtk.MenuButton;
-  _stack!: Gtk.Stack;
+  private _search!: Gtk.Box;
+  private _search_entry!: Gtk.SearchEntry;
+  private _notes_box!: Gtk.ListView;
+  private _no_notes!: Adw.StatusPage;
+  private _no_results!: Adw.StatusPage;
+  private _scrolled!: Gtk.ScrolledWindow;
+  private _menu_button!: Gtk.MenuButton;
+  private _stack!: Gtk.Stack;
 
   cards: StickyNoteCard[] = [];
 

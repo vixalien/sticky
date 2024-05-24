@@ -30,22 +30,22 @@ import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 
 import { StyleSelector } from "./styleselector.js";
-import { confirm_delete, Note, Style } from "./util.js";
+import { confirm_delete, Note, Style } from "./util/index.js";
 import { WriteableStickyNote } from "./view.js";
 import { find } from "linkifyjs";
 import { Application } from "./application.js";
 
 export class Window extends Adw.ApplicationWindow {
-  _container!: Gtk.Box;
-  _text!: Gtk.TextView;
-  _menu_button!: Gtk.MenuButton;
+  private _container!: Gtk.Box;
+  private _text!: Gtk.TextView;
+  private _menu_button!: Gtk.MenuButton;
 
-  _bold_button!: Gtk.ToggleButton;
-  _underline_button!: Gtk.ToggleButton;
-  _italic_button!: Gtk.ToggleButton;
-  _strikethrough_button!: Gtk.ToggleButton;
-  _action_button!: Gtk.ToggleButton;
-  _action_revealer!: Gtk.Revealer;
+  // private _bold_button!: Gtk.ToggleButton;
+  // private _underline_button!: Gtk.ToggleButton;
+  // private _italic_button!: Gtk.ToggleButton;
+  // private _strikethrough_button!: Gtk.ToggleButton;
+  private _action_button!: Gtk.ToggleButton;
+  private _action_revealer!: Gtk.Revealer;
 
   // buffer = new Gtk.TextBuffer();
 
