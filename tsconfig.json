@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ES2021",
     "module": "ESNext",
-    "lib": ["ES2023"],
+    "lib": ["ESNext"],
     "allowJs": true,
     "checkJs": true,
     "outDir": "_build",

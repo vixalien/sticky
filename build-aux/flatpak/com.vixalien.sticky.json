@@ -33,31 +33,14 @@
     "/yarn-mirror"
   ],
   "modules": [
-    {
-      "name": "yarn-deps",
-      "buildsystem": "simple",
-      "build-commands": [
-        "/usr/lib/sdk/node20/enable.sh",
-        "mkdir -p /app",
-        "cp -r $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror/ /app"
-      ],
-      "sources": [
-        "generated-sources.json"
-      ]
-    },
-    {
-      "name": "write-yarnrc",
-      "buildsystem": "simple",
-      "build-commands": [
-        "echo yarn-offline-mirror \"/app/yarn-mirror\" > /app/.yarnrc"
-      ]
-    },
+    "modules/yarn-deps.json",
     {
       "name": "sticky-notes",
       "buildsystem": "meson",
       "config-opts": [
         "-Dyarnrc=/app/.yarnrc"
       ],
+      "run-tests": true,
       "sources": [
         {
           "type": "git",

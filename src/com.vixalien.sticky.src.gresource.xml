@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/com/vixalien/sticky/js">
-    <file>application.js</file>
-    <file>card.js</file>
-    <file>errors.js</file>
     <file>main.js</file>
-    <file>notes.js</file>
-    <file>styleselector.js</file>
-    <file>store.js</file>
-    <file>themeselector.js</file>
-    <file>view.js</file>
-    <file>window.js</file>
-    <file>util.js</file>
   </gresource>
 </gresources>

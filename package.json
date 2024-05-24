@@ -8,8 +8,7 @@
   "author": "Angelo Verlain <hey@vixalien.com>",
   "license": "MIT",
   "dependencies": {
-    "linkifyjs": "^4.1.1",
-    "typescript": "^4.7.4"
+    "linkifyjs": "^4.1.1"
   },
   "type": "module",
   "devDependencies": {
@@ -21,11 +20,13 @@
     "eslint": "^8.21.0",
     "minimist": "^1.2.8",
     "mkdirp": "^2.1.3",
-    "stylus": "^0.59.0"
+    "stylus": "^0.59.0",
+    "typescript": "^4.7.4"
   },
   "scripts": {
     "build": "node lib/build.js",
     "css": "node lib/stylus.js",
-    "typecheck": "tsc --strict --noEmit"
+    "typecheck": "tsc --strict --noEmit",
+    "generate-sources": "flatpak-node-generator yarn yarn.lock -o build-aux/flatpak/modules/yarn-deps-sources.json"
   }
 }
