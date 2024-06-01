@@ -33,7 +33,7 @@
 	<url type="translate">https://github.com/vixalien/sticky/tree/main/po</url>
 	<url type="donation">https://www.buymeacoffee.com/vixalien</url>
 	<!-- developer_name tag deprecated with Appstream 1.0 -->
-	<developer_name translatable="no">Angelo Verlain</developer_name>
+	<developer_name translate="no">Angelo Verlain</developer_name>
   <developer id="com.vixalien">
     <name>Angelo Verlain</name>
   </developer>
@@ -50,7 +50,7 @@
 	</recommends>
 	<releases>
 		<release version="0.2.5" date="2024-03-20">
-			<description translatable="no">
+			<description translate="no">
 				<p>a maintenace update for GNOME 46</p>
 				<ul>
 					<li>Writing more list items will be automatic if you start list items with the "-". "*" or "+" symbols for unordered lists, and numbers for ordered lists.</li>
@@ -59,7 +59,7 @@
 			</description>
 		</release>
 		<release version="0.2.4" date="2023-08-17">
-			<description translatable="no">
+			<description translate="no">
 				<p>a minimal update in the middle of the summer</p>
 				<ul>
 					<li>added a command line flag `-i` to only open the app if there are
@@ -74,7 +74,7 @@
 			</description>
 		</release>
 		<release version="0.2.3" date="2023-07-24">
-			<description translatable="no">
+			<description translate="no">
 				<ul>
 					<li>better dark theme support</li>
 					<li>fixed a bug where sometimes icons for actions (bold, italic etc..) would not appear</li>
@@ -85,7 +85,7 @@
 			</description>
 		</release>
 		<release version="0.2.2" date="2023-06-16">
-			<description translatable="no">
+			<description translate="no">
 				<ul>
 					<li>fixed a bug introduced by the previous release where new notes would not get saved</li>
 					<li>updated french &amp; czech translations</li>
@@ -93,7 +93,7 @@
 			</description>
 		</release>
 		<release version="0.2.1" date="2023-06-08">
-			<description translatable="no">
+			<description translate="no">
 				<ul>
 					<li>correctly translate all strings</li>
 					<li>add translator credits support (in the about window)</li>
@@ -105,7 +105,7 @@
 			</description>
 		</release>
 		<release version="0.2.0" date="2023-05-24">
-			<description translatable="no">
+			<description translate="no">
 				<p>this is a refinement release</p>
 				<ul>
 					<li>show focus indicators correctly in all notes window</li>
@@ -114,7 +114,7 @@
 			</description>
 		</release>
 		<release version="0.1.11" date="2023-04-20">
-			<description translatable="no">
+			<description translate="no">
 				<ul>
 					<li>print where notes are logged when the app starts up (for syncing)</li>
 					<li>add a flag `--new-note` to quicky jote down a note</li>
@@ -122,14 +122,14 @@
 			</description>
 		</release>
 		<release version="0.1.10" date="2023-04-05">
-			<description translatable="no">
+			<description translate="no">
 				<ul>
 					<li>quickly open links in your notes</li>
 				</ul>
 			</description>
 		</release>
 		<release version="0.1.8" date="2023-03-23">
-			<description translatable="no">
+			<description translate="no">
 				<ul>
 					<li>changed GNOME Runtime version to 44</li>
 					<li>updated dutch translation</li>
@@ -137,12 +137,12 @@
 			</description>
 		</release>
 		<release version="0.1.7" date="2023-03-23">
-			<description translatable="no">
+			<description translate="no">
 				<p>fix packaging issues</p>
 			</description>
 		</release>
 		<release version="0.1.6" date="2023-03-23">
-			<description translatable="no">
+			<description translate="no">
 				<p>this release enhances usability and reliability</p>
 				<ul>
 					<li>updated the icon to make it more distinguished</li>
@@ -158,7 +158,7 @@
 			</description>
 		</release>
 		<release version="0.1.4" date="2023-03-08">
-			<description translatable="no">
+			<description translate="no">
 				<p>mostly a bug fix and tune-up release</p>
 				<ul>
 					<li>make style (color) selector easier to change using the keyboard</li>
@@ -169,7 +169,7 @@
 			</description>
 		</release>
 		<release version="0.1.2" date="2023-03-02">
-			<description translatable="no">
+			<description translate="no">
 				<p>this is unexpectedly a large release</p>
 				<ul>
 					<li>new icon</li>
@@ -179,7 +179,7 @@
 			</description>
 		</release>
 		<release version="0.1.1" date="2023-03-01">
-			<description translatable="no">
+			<description translate="no">
 				<p>this is mostly a cleanup release</p>
 				<ul>
 					<li>added translation support (starting with french)</li>
@@ -192,7 +192,7 @@
 			</description>
 		</release>
 		<release version="0.1.0" date="2023-03-01">
-			<description translatable="no">
+			<description translate="no">
 				<p>First beta release!</p>
 			</description>
 		</release>

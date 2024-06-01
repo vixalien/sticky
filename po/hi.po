@@ -1,0 +1,342 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sticky-notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-08 11:43+0300\n"
+"PO-Revision-Date: 2024-05-13 11:37+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7
+msgid "Pin notes to your desktop"
+msgstr "अपने डेस्कटॉप पर नोटों को पिन करें"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:359
+msgid "Sticky Notes"
+msgstr "Sticky Notes"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "स्टिकी;नोट्स;लिखें;"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+"Sticky Notes GNOME के लिए एक सरल स्टिकी नोट ऐप है। यह आपको नोटों को बनाने और उन्हें "
+"प्रारूपित करने की अनुमति देता है।"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "वर्तमान विशेषताएं:"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr "सरल प्रारूपण (बोल्ड, इटैलिक, रेखांकन और स्ट्राइकथ्रू)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr "यदि अनुप्रयोग बंद होने के समय नोट खुले थे तो उन्हें पुनर्स्थापित किया जाता है"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "नोटों का रंग बदलना"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "गहरी थीम का समर्थन"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:35
+msgid "Angelo Verlain"
+msgstr "एंजेलो वर्लेन"
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "नोट खिड़की की तयशुदा ऊंचाई"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "नये स्टिकी नोट की तयशुदा ऊंचाई"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "नोट खिड़की की तयशुदा चौड़ाई"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "नये स्टिकी नोट की तयशुदा चौड़ाई"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "तयशुदा नोट शैली"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "नए नोट को निर्दिष्ट की गई तयशुदा शैली"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "नोट मिटाने की पुष्टि करें"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "क्या नोट मिटाए जाने की पुष्टि करनी है"
+
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr "चयनित रंग योजना"
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr "चयनित रंग योजना। 0 = सिस्टम शैली का पालन, 1 = हल्की, 2 = गहरी"
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+msgid "Show all notes"
+msgstr "सभी नोटों को दिखाएं"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr "क्या सभी नोटों की खिड़की या नोट दिखाना है"
+
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "नोट खुला है"
+
+#: data/ui/card.ui:39 data/ui/window.ui:142
+msgid "Delete Note"
+msgstr "नोट मिटाएं"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "सामान्य"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "शॉर्टकट दिखाएं"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "छोड़ें"
+
+#: data/ui/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "नोट"
+
+#: data/ui/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "नया नोट"
+
+#: data/ui/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Close Note"
+msgstr "नोट बंद करें"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "पथ-प्रदर्शन"
+
+#: data/ui/help-overlay.ui:48
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "सभी नोटों को दिखाएं"
+
+#: data/ui/help-overlay.ui:54
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "नोटों के बीच चक्र लगाएं"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr "नोटों के बीच उल्टे क्रम में चक्र लगाएं"
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "संपादन"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "बोल्ड"
+
+#: data/ui/help-overlay.ui:77
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "इटैलिक"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "रेखांकन"
+
+#: data/ui/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "स्ट्राइकथ्रू"
+
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "नया नोट"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "मुख्य मेनू"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "नोटों को खोजें…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "कोई नोट नहीं"
+
+#: data/ui/notes.ui:74
+msgid "After you create notes, they will appear here"
+msgstr "आपके द्वारा नोटों को बनाने के बाद, वे यहां दिखाई देंगे"
+
+#: data/ui/notes.ui:78
+msgid "_New Note"
+msgstr "नया नोट (_N)"
+
+#: data/ui/notes.ui:93
+msgid "No Results"
+msgstr "कोई परिणाम नहीं"
+
+#: data/ui/notes.ui:94
+msgid "Try a different search"
+msgstr "भिन्न खोज का प्रयास करें"
+
+#: data/ui/notes.ui:126
+msgid "Keyboard Shortcuts"
+msgstr "कीबोर्ड शॉर्टकट"
+
+#: data/ui/notes.ui:130
+msgid "About Sticky Notes"
+msgstr "Sticky Notes के बारे में"
+
+#: data/ui/notes.ui:136
+msgid "Quit"
+msgstr "छोड़ें"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr "सिस्टम शैली का पालन"
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "हल्की शैली"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "गहरी शैली"
+
+#: data/ui/window.ui:98
+msgid "Bold"
+msgstr "बोल्ड"
+
+#: data/ui/window.ui:106
+msgid "Italic"
+msgstr "इटैलिक"
+
+#: data/ui/window.ui:114
+msgid "Underline"
+msgstr "रेखांकन"
+
+#: data/ui/window.ui:122
+msgid "Strikethrough"
+msgstr "स्ट्राइकथ्रू"
+
+#: data/ui/window.ui:138
+msgid "All Notes"
+msgstr "सभी नोट"
+
+#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
+#: src/application.ts:371
+msgid "translator-credits"
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:45
+#, c-format
+msgid "Switch to %s style"
+msgstr "%s शैली पर जाएं"
+
+#: src/util.ts:74
+msgid "Yellow"
+msgstr "पीला"
+
+#: src/util.ts:75
+msgid "Pink"
+msgstr "गुलाबी"
+
+#: src/util.ts:76
+msgid "Green"
+msgstr "हरा"
+
+#: src/util.ts:77
+msgid "Purple"
+msgstr "बैंगनी"
+
+#: src/util.ts:78
+msgid "Blue"
+msgstr "नीला"
+
+#: src/util.ts:79
+msgid "Gray"
+msgstr "स्लेटी"
+
+#: src/util.ts:80
+msgid "Charcoal"
+msgstr "कोयला"
+
+#: src/util.ts:81
+msgid "Window"
+msgstr "खिड़की"
+
+#: src/util.ts:293
+msgid "Delete Note?"
+msgstr "नोट मिटाएं?"
+
+#: src/util.ts:294
+msgid ""
+"This action cannot be undone. If you want to hide the note, you can close it "
+"instead."
+msgstr ""
+"यह कार्रवाई पूर्ववत नहीं की जा सकती। यदि आप नोट को छिपाना चाहते हैं, तो आप इसे बंद कर "
+"सकते हैं।"
+
+#: src/util.ts:296
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: src/util.ts:297
+msgid "Delete"
+msgstr "मिटाएं"
+
+#: src/view.ts:351
+msgid "Empty Note"
+msgstr "खाली नोट"
