@@ -27,8 +27,11 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import GLib from "gi://GLib";
 
-import { confirm_delete, Note, Style } from "./util/index.js";
+import { Note, Style } from "./util/index.js";
 import { ReadonlyStickyNote } from "./view.js";
+import { SignalListeners } from "./util/listeners.js";
+
+GObject.type_ensure(ReadonlyStickyNote.$gtype);
 
 export class StickyNoteCard extends Gtk.Box {
   static {
@@ -40,88 +43,99 @@ export class StickyNoteCard extends Gtk.Box {
         "view_image",
         "delete_button",
         "scrolled",
+        "view",
       ],
       Properties: {
-        uuid: GObject.ParamSpec.string(
-          "uuid",
-          "UUID",
-          "The UUID of the note",
-          GObject.ParamFlags.READABLE,
-          "",
+        style: GObject.param_spec_int(
+          "style",
+          "style",
+          "The style of this card",
+          -1,
+          Style.window,
+          -1,
+          GObject.ParamFlags.READWRITE,
         ),
-      },
-      Signals: {
-        deleted: {},
       },
     }, this);
   }
 
-  _scrolled!: Gtk.ScrolledWindow;
-  _modified_label!: Gtk.Label;
-  _view_image!: Gtk.Image;
-  _delete_button!: Gtk.Button;
+  private _modified_label!: Gtk.Label;
+  private _view_image!: Gtk.Image;
+  private _delete_button!: Gtk.Button;
+  private _view!: ReadonlyStickyNote;
 
-  private _note?: Note;
-  view: ReadonlyStickyNote;
-
-  set show_visible_image(visible: boolean) {
-    this._view_image.visible = visible;
-  }
-
-  constructor(public window: Gtk.Window, note?: Note) {
+  constructor(public window: Gtk.Window) {
     super();
-
-    this.view = new ReadonlyStickyNote(note);
-    this.view.add_css_class("card-text-view");
-    this.view.wrap_mode = Gtk.WrapMode.WORD_CHAR;
-
-    this._scrolled.set_child(this.view);
-    this._delete_button.connect("clicked", this.delete.bind(this));
-
-    if (note) this._note = this.note = note;
   }
 
-  set note(note: Note) {
-    if (note?.style !== this._note?.style) this.set_style(note.style);
+  private listeners = new SignalListeners();
 
-    this._note = this.view.note = note;
+  show_note(note: Note) {
+    if (this._view.note === note) return;
 
-    this.update_modified_label();
+    this.clear();
+
+    this._delete_button.action_target = GLib.Variant.new_string(note.uuid);
+
+    this.listeners.add_bindings(
+      note.bind_property(
+        "open",
+        this._view_image,
+        "visible",
+        GObject.BindingFlags.SYNC_CREATE,
+      ),
+      // @ts-expect-error incorrect types
+      note.bind_property_full(
+        "modified",
+        this._modified_label,
+        "label",
+        GObject.BindingFlags.SYNC_CREATE,
+        (_, value: GLib.DateTime) => {
+          const modified = value.to_local();
+
+          if (!modified) return [false, null];
+
+          // if date is today, show time
+          // otherwise, show date
+          const format_string =
+            GLib.DateTime.new_now_local().format("%F") === modified.format("%F")
+              ? "%R"
+              : "%F";
+
+          return [true, modified.format(format_string)];
+        },
+        null,
+      ),
+      note.bind_property(
+        "style",
+        this,
+        "style",
+        GObject.BindingFlags.SYNC_CREATE,
+      ),
+    );
+
+    this._view.note = note;
   }
 
-  get uuid() {
-    return this._note?.uuid;
+  clear() {
+    this.listeners.clear();
   }
 
-  update_modified_label() {
-    const modified = this._note?.modified?.to_local();
-
-    if (!modified) return;
-
-    // if date is today, show time
-    // otherwise, show date
-    const format =
-      GLib.DateTime.new_now_local().format("%F") === modified.format("%F")
-        ? "%R"
-        : "%F";
-
-    this._modified_label.label = modified.format(format)!;
-  }
-
-  set_style(style: Style) {
-    for (const s of this.get_css_classes()) {
-      if (s.startsWith("style-") && s !== `style-specifity`) {
-        this.remove_css_class(s);
+  get style() {
+    for (const className of this.css_classes) {
+      if (className.startsWith("style-") && className !== "style-specifity") {
+        const style = Style[className.slice(6) as any] as unknown as Style;
+        if (style) return style;
       }
     }
 
-    this.add_css_class(`style-${Style[style]}`);
+    return -1;
   }
 
-  delete() {
-    if (!this._note) return;
-    confirm_delete(this.window, () => {
-      this.emit("deleted");
-    });
+  set style(style: Style | -1) {
+    if (style === -1 || !Style[style] || this.style === style) return;
+
+    this.remove_css_class(`style-${Style[this.style]}`);
+    this.add_css_class(`style-${Style[style]}`);
   }
 }

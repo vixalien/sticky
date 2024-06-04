@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0" />
-  <template class="StickyNotes" parent="AdwApplicationWindow">
+  <template class="StickyAllNotesWindow" parent="AdwApplicationWindow">
     <style>
-      <class name="notes-window" />
+      <class name="all-notes" />
     </style>
     <child>
       <object class="AdwToolbarView">
@@ -59,6 +59,7 @@
                           <object class="GtkSearchEntry" id="search_entry">
                             <property name="placeholder-text" translatable="yes">Search notes…</property>
                             <property name="hexpand">true</property>
+                            <signal name="search-changed" handler="search_changed_cb" />
                           </object>
                         </child>
                       </object>
@@ -98,6 +99,7 @@
                           <object class="GtkListView" id="notes_box">
                             <property name="show-separators">false</property>
                             <property name="single-click-activate">true</property>
+                            <signal name="activate" handler="activate_cb" />
                             <style>
                               <class name="background" />
                               <class name="notes-box" />

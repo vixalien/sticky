@@ -26,35 +26,25 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
-import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 
 import { StyleSelector } from "./styleselector.js";
-import { confirm_delete, Note, Style } from "./util/index.js";
+import { Note, Style } from "./util/index.js";
 import { WriteableStickyNote } from "./view.js";
 import { find } from "linkifyjs";
-import { Application } from "./application.js";
+import { AddActionEntries } from "types/extra.js";
 
 export class Window extends Adw.ApplicationWindow {
   private _container!: Gtk.Box;
   private _text!: Gtk.TextView;
   private _menu_button!: Gtk.MenuButton;
-
-  // private _bold_button!: Gtk.ToggleButton;
-  // private _underline_button!: Gtk.ToggleButton;
-  // private _italic_button!: Gtk.ToggleButton;
-  // private _strikethrough_button!: Gtk.ToggleButton;
   private _action_button!: Gtk.ToggleButton;
   private _action_revealer!: Gtk.Revealer;
 
-  // buffer = new Gtk.TextBuffer();
-
-  view: WriteableStickyNote;
-
-  selector: StyleSelector;
+  private view: WriteableStickyNote;
+  private selector: StyleSelector;
 
   note: Note;
-  deleted = false;
 
   static {
     GObject.registerClass(
@@ -72,11 +62,6 @@ export class Window extends Adw.ApplicationWindow {
           "action_revealer",
           "action_button",
         ],
-        Signals: {
-          deleted: {
-            param_types: [GObject.TYPE_STRING],
-          },
-        },
       },
       this,
     );
@@ -95,27 +80,29 @@ export class Window extends Adw.ApplicationWindow {
 
     this.note = note;
 
-    this.default_width = note.width;
-    this.default_height = note.height;
+    // setup this note
 
-    this.connect("close-request", () => {
-      if (this.deleted) return;
+    note.bind_property(
+      "width",
+      this,
+      "default-width",
+      GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL,
+    );
 
-      if (this.view.note && this.view.note.content.trim().length === 0) {
-        (this.application as Application).delete_note(this.note.uuid);
-        return;
-      }
+    note.bind_property(
+      "height",
+      this,
+      "default-height",
+      GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL,
+    );
 
-      const width = this.get_allocated_width();
-      const height = this.get_allocated_height();
-
-      if (width !== note.width) {
-        this.note.width = width;
-      }
-      if (height !== note.height) {
-        this.note.height = height;
-      }
-    });
+    // TODO: also present self if this window gets (re-)opened
+    note.bind_property(
+      "open",
+      this,
+      "visible",
+      GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL,
+    );
 
     this.set_style(note.style, true);
 
@@ -178,7 +165,7 @@ export class Window extends Adw.ApplicationWindow {
           this._text,
           this._text.bottom_margin,
           60 +
-            ((selected) ? this._action_revealer.get_allocated_height() : 0),
+            (selected ? this._action_revealer.get_allocated_height() : 0),
           this._action_revealer.transition_duration,
           target,
         );
@@ -203,15 +190,25 @@ export class Window extends Adw.ApplicationWindow {
   }
 
   add_actions() {
-    const delete_ = Gio.SimpleAction.new("delete", null);
-    delete_.connect("activate", () => this.delete());
-    this.add_action(delete_);
-
-    for (const [name, tag] of this.view.actions) {
-      const action = Gio.SimpleAction.new(name, null);
-      action.connect("activate", () => this.view.apply_tag(tag));
-      this.add_action(action);
-    }
+    (this.add_action_entries as AddActionEntries)([
+      {
+        name: "delete",
+        activate: () => {
+          this.application.activate_action(
+            "delete-note",
+            GLib.Variant.new_string(this.note.uuid),
+          );
+        },
+      },
+      ...this.view.actions.map(([name, tag]) => {
+        return {
+          name: name,
+          activate: () => {
+            this.view.apply_tag(tag);
+          },
+        };
+      }),
+    ]);
   }
 
   set_style(style: Style, is_init = false) {
@@ -226,11 +223,9 @@ export class Window extends Adw.ApplicationWindow {
     if (!is_init) this.note.modified_date = new Date();
   }
 
-  delete() {
-    confirm_delete(this, () => {
-      this.deleted = true;
-      this.emit("deleted", this.note.uuid);
-      console.log("emitted deleted");
-    });
+  vfunc_close_request(): boolean {
+    this.note.open = false;
+
+    return super.vfunc_close_request();
   }
 }

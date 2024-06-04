@@ -28,6 +28,7 @@ import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
+import { save_note } from "src/store";
 
 Gio._promisify(
   Gio.File.prototype,
@@ -201,7 +202,7 @@ export class Note extends GObject.Object {
     this.open = note.open ?? false;
   }
 
-  static generate() {
+  static new(open = false) {
     return new this({
       v: 1,
       uuid: GLib.uuid_string_random(),
@@ -211,8 +212,21 @@ export class Note extends GObject.Object {
       modified: new Date(),
       width: 300,
       height: 300,
-      open: false,
+      open,
     });
+  }
+
+  setup_autosave() {
+    this.connect("notify", () => {
+      this.save();
+    });
+  }
+
+  static new_with_autosave(open = false) {
+    const note = this.new(open);
+    note.setup_autosave();
+
+    return note;
   }
 
   copy() {
@@ -271,6 +285,10 @@ export class Note extends GObject.Object {
         open: GObject.ParamSpec.boolean("open", "Open", "Whether the note was open when the application was closed", GObject.ParamFlags.READWRITE, false),
       },
     }, this);
+  }
+
+  save() {
+    save_note(this);
   }
 }
 

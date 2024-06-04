@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="StickyNoteCard" parent="GtkBox">
-    <property name="orientation">vertical</property>
+    <property name="orientation">1</property>
     <child>
       <object class="GtkBox" id="details">
         <property name="spacing">6</property>
@@ -10,7 +10,7 @@
           <object class="GtkImage" id="view_image">
             <property name="visible">false</property>
             <property name="icon-name">view-reveal-symbolic</property>
-            <property name="tooltip-text" translatable="yes">Note is Open</property>
+            <property name="tooltip-text" translatable="true">Note is Open</property>
             <style>
               <class name="dim-label"/>
             </style>
@@ -18,7 +18,7 @@
         </child>
         <child>
           <object class="GtkSeparator">
-            <property name="halign">end</property>
+            <property name="halign">2</property>
             <property name="hexpand">true</property>
             <style>
               <class name="spacer"/>
@@ -36,7 +36,9 @@
         <child>
           <object class="GtkButton" id="delete_button">
             <property name="icon-name">user-trash-symbolic</property>
-            <property name="tooltip-text" translatable="yes">Delete Note</property>
+            <property name="tooltip-text" translatable="true">Delete Note</property>
+            <property name="action-target">''</property>
+            <property name="action-name">app.delete-note</property>
             <style>
               <class name="flat"/>
             </style>
@@ -46,8 +48,16 @@
     </child>
     <child>
       <object class="GtkScrolledWindow" id="scrolled">
-        <property name="vscrollbar-policy">never</property>
+        <property name="vscrollbar-policy">2</property>
         <property name="vexpand">true</property>
+        <child>
+          <object class="ReadonlyStickyNote" id="view">
+            <property name="wrap-mode">3</property>
+                <style>
+                  <class name="card-text-view"/>
+                </style>
+          </object>
+        </child>
       </object>
     </child>
     <style>

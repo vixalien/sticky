@@ -307,18 +307,19 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
     );
   }
 
-  constructor(note?: Note) {
-    super(note);
+  // constructor(note?: Note) {
+  //   super(note);
 
-    this.note = note;
-    this.editable = false;
-    this.cursor_visible = false;
-    this.show_content();
-  }
+  //   this.note = note;
+  //   this.editable = false;
+  //   this.cursor_visible = false;
+  //   this.show_content();
+  // }
 
   set note(note: Note | undefined) {
-    this._note = super.note = note;
+    if (!(note instanceof Note)) return;
 
+    super.note = note;
     this.show_content();
   }
 
