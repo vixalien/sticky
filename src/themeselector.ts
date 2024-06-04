@@ -15,13 +15,12 @@ export class ThemeSelector extends Gtk.Widget {
         CssName: "themeselector",
         InternalChildren: ["follow"],
         Properties: {
-          theme: GObject.ParamSpec.string(
-            "theme", // Name
-            "Theme", // Nick
-            "Theme", // Blurb
+          theme: GObject.param_spec_string(
+            "theme",
+            "Theme",
+            "Theme",
+            null,
             GObject.ParamFlags.READWRITE,
-            /// @ts-expect-error
-            null, // Default value
           ),
         },
       },

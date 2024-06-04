@@ -30,8 +30,8 @@ import GLib from "gi://GLib";
 import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
 
-import { StickyNotes } from "./notes.js";
-import { Note, settings } from "./util/index.js";
+import { StickyAllNotesWindow } from "./notes.js";
+import { confirm_delete, Note, settings } from "./util/index.js";
 import {
   delete_note,
   load_notes,
@@ -40,23 +40,59 @@ import {
   save_notes,
 } from "./store.js";
 import { Window } from "./window.js";
+import { find_item, list_foreach, list_model_to_array } from "./util/list.js";
+import { AddActionEntries } from "types/extra.js";
 
 export class Application extends Adw.Application {
-  private window: StickyNotes | null = null;
-  private note_windows: Window[] = [];
+  private all_notes_window: StickyAllNotesWindow | null = null;
+  // private note_windows: Window[] = [];
 
   static {
     GObject.registerClass(this);
   }
 
-  notes_list = Gio.ListStore.new(Note.$gtype) as Gio.ListStore<Note>;
+  notes = new Gio.ListStore<Note>({ item_type: Note.$gtype });
+  private windows = new Gio.ListStore<Window>({ item_type: Window.$gtype });
 
-  open_new_note = false;
+  private notes_sorter = Gtk.CustomSorter.new((note1: Note, note2) => {
+    return note1.modified.compare(note2.modified);
+  });
+  private sorted_notes = new Gtk.SortListModel<Note>({
+    model: this.notes,
+    sorter: this.notes_sorter,
+  });
 
-  sort_notes() {
-    this.notes_list.sort((note1: Note, note2: Note) => {
-      return note1.modified.compare(note2.modified);
-    });
+  private open_new_note = false;
+  private load_notes = false;
+
+  private create_window_for_note(note: Note): Window {
+    return new Window({ application: this, note });
+  }
+
+  private setup_sync_windows() {
+    this.notes.connect(
+      "items-changed",
+      (
+        _self: typeof this.notes,
+        position: number,
+        removed: number,
+        added: number,
+      ) => {
+        // close removed windows
+        list_model_to_array(this.windows)
+          .slice(position, position + removed)
+          .forEach((window) => window.destroy());
+
+        // add new windows for newly created notes
+        this.windows.splice(
+          position,
+          removed,
+          list_model_to_array(this.notes)
+            .slice(position, position + added)
+            .map(this.create_window_for_note.bind(this)),
+        );
+      },
+    );
   }
 
   constructor() {
@@ -68,29 +104,10 @@ export class Application extends Adw.Application {
     GLib.set_application_name(_("Sticky Notes"));
 
     this.init_actions();
-
-    try {
-      const notes = load_notes();
-
-      notes.forEach((note) => {
-        note.connect("notify::modified", (_, x) => {
-          save_note(note);
-        });
-
-        // changing open doesn't change modified
-        note.connect("notify::open", () => {
-          save_note(note);
-        });
-
-        this.notes_list.append(note);
-      });
-
-      this.sort_notes();
-    } catch (error) {
-      console.error(error as any);
-    }
-
+    this.setup_sync_windows();
     this.add_cli_options();
+
+    this.load_notes = true;
 
     console.log("Storing Notes at: " + NewNotesDir.get_path());
   }
@@ -125,13 +142,7 @@ export class Application extends Adw.Application {
   }
 
   save() {
-    const array: Note[] = [];
-
-    this.foreach_note((note) => {
-      array.push(note);
-    });
-
-    return save_notes(array);
+    return save_notes(list_model_to_array(this.notes));
   }
 
   public vfunc_shutdown() {
@@ -141,31 +152,43 @@ export class Application extends Adw.Application {
   }
 
   public vfunc_activate() {
-    // this is used to track if there is atleast one window open. id there isn't,
-    // we show the all_notes
-    let has_one_open = false;
+    if (this.load_notes) {
+      try {
+        const notes = load_notes();
+
+        notes.forEach((note) => {
+          note.setup_autosave();
+        });
+
+        this.notes.splice(0, 0, notes);
+      } catch (error) {
+        console.error(error as any);
+      }
+
+      this.load_notes = false;
+    }
 
     if (this.open_new_note) {
       this.new_note();
     } else {
-      if (settings.get_boolean("show-all-notes")) this.all_notes();
+      if (settings.get_boolean("show-all-notes")) this.show_all_notes_window();
 
-      this.foreach_note((note) => {
-        if (note.open) {
-          if (has_one_open == false) has_one_open = true;
-          this.show_note(note.uuid);
-        }
+      let has_one_open = false;
+
+      list_foreach(this.notes, (note) => {
+        has_one_open = has_one_open || note.open;
       });
 
       if (!has_one_open) {
-        const last_open_note = this.notes_array()
-          .sort((a, b) => b.modified.compare(a.modified))[0];
+        const last_note = this.sorted_notes.get_item(
+          this.sorted_notes.n_items - 1,
+        );
 
-        if (has_one_open) {
-          this.show_note(last_open_note.uuid);
+        if (last_note) {
+          last_note.open = true;
         } else {
           settings.set_boolean("show-all-notes", true);
-          this.all_notes();
+          this.show_all_notes_window();
         }
       }
     }
@@ -181,13 +204,13 @@ export class Application extends Adw.Application {
     } else if (options.contains("new-note")) {
       this.open_new_note = true;
     } else if (options.contains("if-open-note")) {
-      let open = false;
+      let has_one_open = false;
 
-      this.foreach_note((note) => {
-        open = open || note.open;
+      list_foreach(this.notes, (note) => {
+        has_one_open = has_one_open || note.open;
       });
 
-      if (open == false) {
+      if (has_one_open == false) {
         console.log(
           "Sticky Notes not opening because the `-i` flag was passed and there are no open notes",
         );
@@ -198,11 +221,7 @@ export class Application extends Adw.Application {
     return super.vfunc_handle_local_options(options);
   }
 
-  is_note_open(uuid: string) {
-    return this.note_windows.some((w: Window) => w.note.uuid === uuid);
-  }
-
-  new_controller() {
+  private new_controller() {
     const controller = new Gtk.ShortcutController();
 
     const add_shortcut = (fn: () => void, accels: string[]) => {
@@ -233,64 +252,70 @@ export class Application extends Adw.Application {
     return controller;
   }
 
-  init_actions() {
-    const quit_action = new Gio.SimpleAction({ name: "quit" });
-    quit_action.connect("activate", () => this.quit());
-    this.add_action(quit_action);
+  private init_actions() {
+    (this.add_action_entries as AddActionEntries)([
+      {
+        name: "new-note",
+        activate: () => this.new_note(),
+      },
+      {
+        name: "delete-note",
+        parameter_type: "s",
+        activate: (_, params) => {
+          const uuid = params?.get_string()?.[0];
+          if (!uuid) return;
 
-    const show_about_action = new Gio.SimpleAction({ name: "about" });
-    show_about_action.connect("activate", () => this.show_about());
-    this.add_action(show_about_action);
+          this.delete_note(uuid);
+        },
+      },
+      {
+        name: "show-all-notes",
+        activate: () => {
+          this.show_all_notes_window();
+        },
+      },
+      {
+        name: "quit",
+        activate: () => this.quit(),
+      },
+      {
+        name: "about",
+        activate: () => this.show_about(),
+      },
+      {
+        name: "open-link",
+        parameter_type: "s",
+        activate: (_, param) => {
+          const uri = param?.get_string()[0];
+          if (!uri) return;
 
-    const new_note = new Gio.SimpleAction({ name: "new-note" });
-    new_note.connect("activate", () => this.new_note());
-    this.add_action(new_note);
-
-    const all_notes = new Gio.SimpleAction({ name: "all-notes" });
-    all_notes.connect("activate", () => {
-      GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
-        this.all_notes();
-        return GLib.SOURCE_REMOVE;
-      });
-    });
-    this.add_action(all_notes);
-
-    const open_link = new Gio.SimpleAction({
-      name: "open-link",
-      parameter_type: GLib.VariantType.new("s"),
-    });
-    open_link.connect("activate", (_, parameter) => {
-      if (!parameter) return;
-      const [uri] = parameter.get_string();
-
-      if (uri === "null") return;
-      Gtk.show_uri(
-        this.get_active_window(),
-        uri,
-        Gdk.CURRENT_TIME,
-      );
-    });
-    this.add_action(open_link);
-
-    const cycle_linear = new Gio.SimpleAction({ name: "cycle" });
-    cycle_linear.connect("activate", () => this.cycle_linear());
-    this.add_action(cycle_linear);
-
-    const cycle_reverse = new Gio.SimpleAction({ name: "cycle-reverse" });
-    cycle_reverse.connect("activate", () => this.cycle_reverse());
-    this.add_action(cycle_reverse);
-
-    const save = new Gio.SimpleAction({ name: "save" });
-    save.connect("activate", () => this.save());
-    this.add_action(save);
+          Gtk.show_uri(
+            this.get_active_window(),
+            uri,
+            Gdk.CURRENT_TIME,
+          );
+        },
+      },
+      {
+        name: "cycle",
+        activate: () => this.cycle_linear(),
+      },
+      {
+        name: "cycle-reverse",
+        activate: () => this.cycle_reverse(),
+      },
+      {
+        name: "save",
+        activate: () => this.save(),
+      },
+    ]);
 
     this.add_action(settings.create_action("color-scheme"));
 
-    this.set_accels_for_action("app.quit", ["<Primary>q"]);
     this.set_accels_for_action("app.new-note", ["<Primary>n"]);
-    this.set_accels_for_action("app.all-notes", ["<Primary>h"]);
-    // this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
-    // this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
+    this.set_accels_for_action("app.show-all-notes", ["<Primary>h"]);
+
+    this.set_accels_for_action("app.quit", ["<Primary>q"]);
     this.set_accels_for_action("app.save", ["<Primary>s"]);
 
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
@@ -303,32 +328,27 @@ export class Application extends Adw.Application {
     this.set_accels_for_action("win.strikethrough", ["<Primary>t"]);
   }
 
-  get_note_window(uuid: string) {
-    return this.note_windows.find((w) => w.note.uuid === uuid);
-  }
-
-  cycle(reverse = false) {
-    this.sort_notes();
-
-    if (this.notes_list.n_items <= 0) return;
+  /**
+   * Switch to the Next or Previous window
+   * usually in response to clicking Alt+Tab
+   */
+  private cycle(reverse = false) {
+    if (this.notes.n_items <= 0) return;
 
     const filter = Gtk.CustomFilter.new((item) => {
       const note = item as Note;
-      return this.is_note_open(note.uuid);
+      return note.open;
     });
 
     const notes = Gtk.FilterListModel.new(
-      this.notes_list,
+      this.sorted_notes,
       filter,
     ) as Gtk.FilterListModel<Note>;
 
     const presented = this.active_window;
 
-    if (presented instanceof StickyNotes) {
-      this.get_note_window(
-        notes.get_item(reverse ? notes.n_items - 1 : 0)!.uuid,
-      )
-        ?.present();
+    if (presented instanceof StickyAllNotesWindow) {
+      this.windows.get_item(reverse ? notes.n_items - 1 : 0)?.present();
     } else if (presented instanceof Window) {
       let id;
 
@@ -341,9 +361,9 @@ export class Application extends Adw.Application {
       const focus_id = id + (reverse ? -1 : 1);
 
       if (focus_id < 0 || focus_id >= notes.n_items) {
-        this.all_notes();
+        this.show_all_notes_window();
       } else {
-        this.get_note_window(notes.get_item(focus_id)!.uuid)?.present();
+        this.windows.get_item(focus_id)?.present();
       }
     }
   }
@@ -384,148 +404,43 @@ export class Application extends Adw.Application {
     aboutWindow.present();
   }
 
-  notes_array() {
-    const notes: Note[] = [];
+  private real_delete_note(uuid: string) {
+    const [position] = find_item(this.notes, (note) => note.uuid === uuid);
 
-    this.foreach_note((note) => {
-      notes.push(note);
-    });
+    if (position == false) return;
 
-    return notes;
-  }
-
-  foreach_note(cb: (note: Note, id?: number) => void) {
-    let id = 0;
-
-    while (id < this.notes_list.n_items) {
-      cb(this.notes_list.get_item(id)!, id);
-      id++;
-    }
-  }
-
-  find_note_id(uuid: string) {
-    return this.notes_array().findIndex((note) => note.uuid === uuid);
-  }
-
-  find_note(uuid: string) {
-    return this.notes_array().find((note) => note.uuid === uuid);
-  }
-
-  find_open_window(uuid: string) {
-    const win = this.note_windows.find((window) => window.note.uuid === uuid);
-
-    return win ?? undefined;
-  }
-
-  find_open_note(uuid: string) {
-    return this.find_open_window(uuid)?.note as Note ?? undefined;
-  }
-
-  changed_note(uuid: string) {
-    const found_id = this.find_note_id(uuid);
-    const found_note = this.find_open_note(uuid);
-
-    if (found_id !== undefined && found_note) {
-      // this.notes_list.splice(found_id, 1, [found_note]);
-    }
+    delete_note(uuid);
+    this.notes.remove(position);
   }
 
   delete_note(uuid: string) {
-    const found_id = this.find_note_id(uuid);
-    const found_window = this.find_open_window(uuid);
-
-    if (found_id !== undefined) this.notes_list.splice(found_id, 1, []);
-    if (found_window) found_window.close();
-
-    delete_note(uuid);
+    confirm_delete(this.get_active_window()!, () => {
+      this.real_delete_note(uuid);
+    });
   }
 
-  all_notes() {
-    if (!this.window) {
-      this.window = new StickyNotes({
+  private show_all_notes_window() {
+    if (!this.all_notes_window) {
+      this.all_notes_window = new StickyAllNotesWindow({
         application: this,
       });
 
-      this.window.connect("note-activated", (_, uuid) => {
-        this.show_note(uuid);
-      });
-
-      this.window.connect("deleted", (_, uuid) => {
-        this.delete_note(uuid);
-      });
-
-      this.window.connect("close-request", () => {
-        this.window = null;
+      this.all_notes_window.connect("close-request", () => {
+        this.all_notes_window = null;
         settings.set_boolean("show-all-notes", false);
       });
 
-      this.window.add_controller(this.new_controller());
+      this.all_notes_window.add_controller(this.new_controller());
     }
 
     settings.set_boolean("show-all-notes", true);
 
-    this.window.present();
+    this.all_notes_window.present();
   }
 
-  new_note() {
-    const note = Note.generate();
+  private new_note() {
+    const note = Note.new_with_autosave(true);
 
-    note.connect("notify::modified", () => {
-      save_note(note);
-    });
-
-    // changing open doesn't change modified
-    note.connect("notify::open", () => {
-      save_note(note);
-    });
-
-    this.notes_list.append(note);
-
-    this.show_note(note.uuid);
-  }
-
-  show_note(uuid: string) {
-    const note = this.find_note(uuid);
-
-    if (!note) return;
-
-    const note_window = this.note_windows.find((window) =>
-      window.note.uuid === uuid
-    );
-
-    if (note_window) {
-      note_window.present();
-      return;
-    }
-
-    const window = new Window({
-      application: this,
-      note,
-    });
-
-    this.note_windows.push(window);
-
-    window.add_controller(this.new_controller());
-
-    window.connect("close-request", () => {
-      // if this is the last window, it means that the app will be closed
-      // immediately after, so keep this as "open" when the all notes window
-      // is open (so that it's restored when the app is opened again)
-      if (!(this.note_windows.length === 1 && !this.window)) {
-        note.open = false;
-      }
-
-      this.note_windows = this.note_windows.filter((win) => win !== window);
-      this.window?.set_note_visible(note!.uuid, false);
-      return false;
-    });
-
-    window.connect("deleted", (_, uuid) => {
-      this.delete_note(uuid);
-    });
-
-    if (note.open === false) note.open = true;
-
-    window.present();
+    this.notes.append(note);
   }
 }
