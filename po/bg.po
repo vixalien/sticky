@@ -1,0 +1,347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sticky-notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-08 11:43+0300\n"
+"PO-Revision-Date: 2024-06-15 17:48+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7
+msgid "Pin notes to your desktop"
+msgstr "Закачете бележките си на работния плот"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:359
+msgid "Sticky Notes"
+msgstr "Лепкави бележки"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "лепкави;бележки;писане"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+"„Лепкави бележки“ е просто приложение за лепящи се бележки за GNOME. То ви "
+"позволява да създавате бележки и да ги форматирате."
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "Текущи функции:"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr "просто форматиране (получер, курсив, подчертано и зачертано)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr ""
+"бележките се възстановяват, ако са били отворени, когато приложението е било "
+"спряно."
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "промяна на цвета на бележките"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "Способност за тъмна тема"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:35
+msgid "Angelo Verlain"
+msgstr "Angelo Verlain"
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "Стандартна височина на прозореца за бележки"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "Стандартната височина на прозореца за нови бележки"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "Стандартна широчина на прозореца за бележки"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "Стандартната широчина на прозореца за нови бележки"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "Стандартен стил на бележките"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "Стандартният стил зададен на нови бележки"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "Потвърждаване на изтриването на бележката"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "Дали да потвърдите изтриването на бележката"
+
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr "Избраната цветова схема"
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr ""
+"Избраната цветова схема. 0 = Използване на системни стил, 1 = светла, 2 = "
+"тъмна"
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+msgid "Show all notes"
+msgstr "Показване на всички бележки"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr ""
+"Дали да се покаже прозореца за „Показване на всички бележки“ или бележката"
+
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "Бележката е отворена"
+
+#: data/ui/card.ui:39 data/ui/window.ui:142
+msgid "Delete Note"
+msgstr "Изтриване на бележката"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Общи"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Показване на клавишните комбинации"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Спиране на програмата"
+
+#: data/ui/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "Бележки"
+
+#: data/ui/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "Нова бележка"
+
+#: data/ui/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Close Note"
+msgstr "Затваряне на бележката"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Навигация"
+
+#: data/ui/help-overlay.ui:48
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "Показване на всички бележки"
+
+#: data/ui/help-overlay.ui:54
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "Преминаване през бележките"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr "Преминаване през бележките в обратен ред"
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Редактиране"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "Получер"
+
+#: data/ui/help-overlay.ui:77
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "Курсив"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "Подчертано"
+
+#: data/ui/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "Зачертано"
+
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "Нова бележка"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Основно меню"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "Търсене на бележки…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "Няма бележки"
+
+#: data/ui/notes.ui:74
+msgid "After you create notes, they will appear here"
+msgstr "След като създадете бележки, те ще се появят тук."
+
+#: data/ui/notes.ui:78
+msgid "_New Note"
+msgstr "_Нова бележка"
+
+#: data/ui/notes.ui:93
+msgid "No Results"
+msgstr "Няма резултати"
+
+#: data/ui/notes.ui:94
+msgid "Try a different search"
+msgstr "Oпитайте различно търсене"
+
+#: data/ui/notes.ui:126
+msgid "Keyboard Shortcuts"
+msgstr "Клавишни комбинации"
+
+#: data/ui/notes.ui:130
+msgid "About Sticky Notes"
+msgstr "Относно „Лепкави бележки“"
+
+#: data/ui/notes.ui:136
+msgid "Quit"
+msgstr "Спиране на програмата"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr "Използване на системни стил"
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "Светъл стил"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "Тъмен стил"
+
+#: data/ui/window.ui:98
+msgid "Bold"
+msgstr "Получер"
+
+#: data/ui/window.ui:106
+msgid "Italic"
+msgstr "Курсив"
+
+#: data/ui/window.ui:114
+msgid "Underline"
+msgstr "Подчертано"
+
+#: data/ui/window.ui:122
+msgid "Strikethrough"
+msgstr "Зачертано"
+
+#: data/ui/window.ui:138
+msgid "All Notes"
+msgstr "Всички бележки"
+
+#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
+#: src/application.ts:371
+msgid "translator-credits"
+msgstr "twlvnn kraftwerk <kraft_werk@tutanota.com>"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:45
+#, c-format
+msgid "Switch to %s style"
+msgstr "Превключване към %s стил"
+
+#: src/util.ts:74
+msgid "Yellow"
+msgstr "Жълто"
+
+#: src/util.ts:75
+msgid "Pink"
+msgstr "Розово"
+
+#: src/util.ts:76
+msgid "Green"
+msgstr "Зелено"
+
+#: src/util.ts:77
+msgid "Purple"
+msgstr "Лилаво"
+
+#: src/util.ts:78
+msgid "Blue"
+msgstr "Синьо"
+
+#: src/util.ts:79
+msgid "Gray"
+msgstr "Сиво"
+
+#: src/util.ts:80
+msgid "Charcoal"
+msgstr "Въглено"
+
+#: src/util.ts:81
+msgid "Window"
+msgstr "Прозорец"
+
+#: src/util.ts:293
+msgid "Delete Note?"
+msgstr "Изтриване на бележката?"
+
+#: src/util.ts:294
+msgid ""
+"This action cannot be undone. If you want to hide the note, you can close it "
+"instead."
+msgstr ""
+"Това действие не може да бъде отменено. Ако искате да скриете бележката, "
+"може да я затворите вместо това."
+
+#: src/util.ts:296
+msgid "Cancel"
+msgstr "Отказване, отменяне, прекрати"
+
+#: src/util.ts:297
+msgid "Delete"
+msgstr "Изтриване"
+
+#: src/view.ts:351
+msgid "Empty Note"
+msgstr "Празна бележка"
