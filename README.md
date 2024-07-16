@@ -22,9 +22,9 @@ Sticky Notes is available to download on
 
 <a href="https://flathub.org/apps/details/com.vixalien.sticky" title="Download on Flathub">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="data/resources/flathub-badges/download-i.svg">
-    <source media="(prefers-color-scheme: light)" srcset="data/resources/flathub-badges/download.svg">
-    <img alt="Download Sticky Notes on Flathub" src="data/resources/flathub-badges/download.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://flathub.org/api/badge?locale=en&light">
+    <source media="(prefers-color-scheme: light)" srcset="https://flathub.org/api/badge?locale=en">
+    <img alt="Download Sticky Notes on Flathub" src="https://flathub.org/api/badge?locale=en">
   </picture>
 </a>
 
