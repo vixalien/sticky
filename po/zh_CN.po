@@ -1,0 +1,337 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sticky-notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-08 11:43+0300\n"
+"PO-Revision-Date: 2024-06-13 11:13+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7
+msgid "Pin notes to your desktop"
+msgstr "固定便笺到桌面"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:359
+msgid "Sticky Notes"
+msgstr "便笺"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "便笺;笔记;文本;"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr "便笺是 GNOME 下简单易用的便利贴应用。其允许您创建笔记并应用样式。"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "当前特性："
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr "基础样式（粗体、斜体、下划线以及删除线）"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr "打开的便笺在关闭应用时会被保留，且在下次启动应用时恢复"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "可更改便笺颜色"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "支持暗色主题"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:35
+msgid "Angelo Verlain"
+msgstr ""
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "便笺窗口默认高度"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "新便笺的默认高度"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "便笺窗口默认宽度"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "新便笺的默认宽度"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "默认便笺样式"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "新便笺的默认样式"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "确认删除便笺"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "是否要求确认删除便笺"
+
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr "选中的颜色样式"
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr "选中的颜色样式。0 = 跟随系统样式，1 = 亮色，2 = 暗色"
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+msgid "Show all notes"
+msgstr "展示全部便笺"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr "展示“所有便笺”窗口或便笺"
+
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "便笺已打开"
+
+#: data/ui/card.ui:39 data/ui/window.ui:142
+msgid "Delete Note"
+msgstr "删除便笺"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "常规"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "快捷键"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: data/ui/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "便笺"
+
+#: data/ui/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "新建便笺"
+
+#: data/ui/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Close Note"
+msgstr "关闭便笺"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "导航"
+
+#: data/ui/help-overlay.ui:48
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "展示全部便笺"
+
+#: data/ui/help-overlay.ui:54
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "遍历便笺"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr "反向遍历便笺"
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "编辑"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "粗体"
+
+#: data/ui/help-overlay.ui:77
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "斜体"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "下划线"
+
+#: data/ui/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "删除线"
+
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "新建便笺"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "搜索便笺…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "无便笺"
+
+#: data/ui/notes.ui:74
+msgid "After you create notes, they will appear here"
+msgstr "在您创建便笺后，它们将显示在这里"
+
+#: data/ui/notes.ui:78
+msgid "_New Note"
+msgstr "_新建便笺"
+
+#: data/ui/notes.ui:93
+msgid "No Results"
+msgstr "未找到结果"
+
+#: data/ui/notes.ui:94
+msgid "Try a different search"
+msgstr "尝试其它搜索"
+
+#: data/ui/notes.ui:126
+msgid "Keyboard Shortcuts"
+msgstr "键盘快捷键"
+
+#: data/ui/notes.ui:130
+msgid "About Sticky Notes"
+msgstr "关于便笺"
+
+#: data/ui/notes.ui:136
+msgid "Quit"
+msgstr "退出"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr "跟随系统样式"
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "亮色样式"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "暗色样式"
+
+#: data/ui/window.ui:98
+msgid "Bold"
+msgstr "粗体"
+
+#: data/ui/window.ui:106
+msgid "Italic"
+msgstr "斜体"
+
+#: data/ui/window.ui:114
+msgid "Underline"
+msgstr "下划线"
+
+#: data/ui/window.ui:122
+msgid "Strikethrough"
+msgstr "删除线"
+
+#: data/ui/window.ui:138
+msgid "All Notes"
+msgstr "全部便笺"
+
+#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
+#: src/application.ts:371
+msgid "translator-credits"
+msgstr "Bu Kun"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:45
+#, c-format
+msgid "Switch to %s style"
+msgstr "切换到%s样式"
+
+#: src/util.ts:74
+msgid "Yellow"
+msgstr "黄色"
+
+#: src/util.ts:75
+msgid "Pink"
+msgstr "粉色"
+
+#: src/util.ts:76
+msgid "Green"
+msgstr "绿色"
+
+#: src/util.ts:77
+msgid "Purple"
+msgstr "紫色"
+
+#: src/util.ts:78
+msgid "Blue"
+msgstr "蓝色"
+
+#: src/util.ts:79
+msgid "Gray"
+msgstr "灰色"
+
+#: src/util.ts:80
+msgid "Charcoal"
+msgstr "炭黑"
+
+#: src/util.ts:81
+msgid "Window"
+msgstr "跟随窗口"
+
+#: src/util.ts:293
+msgid "Delete Note?"
+msgstr "删除便笺？"
+
+#: src/util.ts:294
+msgid ""
+"This action cannot be undone. If you want to hide the note, you can close it "
+"instead."
+msgstr "该操作不可撤销。如果要隐藏相应便笺，可以关闭它。"
+
+#: src/util.ts:296
+msgid "Cancel"
+msgstr "取消"
+
+#: src/util.ts:297
+msgid "Delete"
+msgstr "删除"
+
+#: src/view.ts:351
+msgid "Empty Note"
+msgstr "空便笺"
