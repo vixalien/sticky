@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the sticky-notes package.
-# alp10711 <93343276+alp10711@users.noreply.github.com>, 2024.
+# alp10711, 2024.
 #
 #, fuzzy
 msgid ""
@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: sticky-notes\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-08 11:43+0300\n"
-"PO-Revision-Date: 2024-08-27 18:31+0200\n"
-"Last-Translator: alp10711 <93343276+alp10711@users.noreply.github.com>\n"
+"PO-Revision-Date: 2024-08-27 23:37+0200\n"
+"Last-Translator: alp10711\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Notizen an deinen Desktop anheften"
 #: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
 #: src/application.ts:68 src/application.ts:359
 msgid "Sticky Notes"
-msgstr "Sticky Notes"
+msgstr "Kurznotizen"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.vixalien.sticky.desktop.in.in:12
@@ -39,7 +39,7 @@ msgid ""
 "Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
 "notes and format them."
 msgstr ""
-"Sticky Notes ist eine einfache Anwendung für Notizzettel für GNOME. Sie "
+"Kurznotizen ist eine einfache Anwendung für Notizzettel für GNOME. Sie "
 "ermöglicht es dir, Notizen zu erstellen und sie zu formatieren."
 
 #: data/com.vixalien.sticky.appdata.xml.in.in:13
@@ -241,7 +241,7 @@ msgstr "Tastenkombinationen"
 
 #: data/ui/notes.ui:130
 msgid "About Sticky Notes"
-msgstr "Über Sticky Notes"
+msgstr "Über Kurznotizen"
 
 #: data/ui/notes.ui:136
 msgid "Quit"
@@ -282,7 +282,7 @@ msgstr "Alle Notizen"
 #. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
 #: src/application.ts:371
 msgid "translator-credits"
-msgstr "alp10711 <93343276+alp10711@users.noreply.github.com>"
+msgstr "alp10711"
 
 #. focus_on_click: false,
 #: src/styleselector.ts:45
