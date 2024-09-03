@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="/com/vixalien/sticky">
     <file>ui/card.ui</file>
+    <file>ui/editor.ui</file>
     <file>ui/notes.ui</file>
     <file>ui/theme-selector.ui</file>
     <file>ui/window.ui</file>

@@ -32,14 +32,8 @@ import Gdk from "gi://Gdk?version=4.0";
 
 import { StickyAllNotesWindow } from "./notes.js";
 import { confirm_delete, Note, settings } from "./util/index.js";
-import {
-  delete_note,
-  load_notes,
-  NewNotesDir,
-  save_note,
-  save_notes,
-} from "./store.js";
-import { Window } from "./window.js";
+import { delete_note, load_notes, NewNotesDir, save_notes } from "./store.js";
+import { StickyNoteWindow } from "./window.js";
 import { find_item, list_foreach, list_model_to_array } from "./util/list.js";
 import { AddActionEntries } from "types/extra.js";
 
@@ -52,7 +46,9 @@ export class Application extends Adw.Application {
   }
 
   notes = new Gio.ListStore<Note>({ item_type: Note.$gtype });
-  private windows = new Gio.ListStore<Window>({ item_type: Window.$gtype });
+  private windows = new Gio.ListStore<StickyNoteWindow>({
+    item_type: StickyNoteWindow.$gtype,
+  });
 
   private notes_sorter = Gtk.CustomSorter.new((note1: Note, note2) => {
     return note1.modified.compare(note2.modified);
@@ -65,8 +61,8 @@ export class Application extends Adw.Application {
   private open_new_note = false;
   private load_notes = false;
 
-  private create_window_for_note(note: Note): Window {
-    return new Window({ application: this, note });
+  private create_window_for_note(note: Note): StickyNoteWindow {
+    return new StickyNoteWindow({ application: this, note });
   }
 
   private setup_sync_windows() {
@@ -349,7 +345,7 @@ export class Application extends Adw.Application {
 
     if (presented instanceof StickyAllNotesWindow) {
       this.windows.get_item(reverse ? notes.n_items - 1 : 0)?.present();
-    } else if (presented instanceof Window) {
+    } else if (presented instanceof StickyNoteWindow) {
       let id;
 
       for (id = 0; id < notes.n_items; id++) {

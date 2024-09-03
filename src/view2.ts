@@ -17,6 +17,8 @@ export class StickyNoteView extends Gtk.TextView {
   constructor() {
     super({
       wrap_mode: Gtk.WrapMode.WORD_CHAR,
+      editable: false,
+      cursor_visible: false,
     });
 
     this.add_css_class("card-text-view");
@@ -36,27 +38,29 @@ export class StickyNoteView extends Gtk.TextView {
   }
 
   set note(value: Note | null) {
-    if (!value || value === this._note) return;
+    if (value === this._note) return;
+    this.clear_note();
 
-    this.clear_note(this._note);
-    this.set_note(value);
+    if (!value) return;
+    this._note = value;
+    this.show_note();
   }
 
   private listeners = new SignalListeners();
 
-  private clear_note(_note: Note | null) {
+  private clear_note() {
     this.listeners.clear();
   }
 
-  private set_note(note: Note) {
-    this._note = note;
+  private show_note() {
+    if (!this.note) return;
 
     this.listeners.add(
-      note,
-      note.connect("notify::content", () => {
+      this.note,
+      this.note.connect("notify::content", () => {
         this.update_content();
       }),
-      note.connect("notify::tag-list", () => {
+      this.note.connect("notify::tag-list", () => {
         this.update_tags();
       }),
     );

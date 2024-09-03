@@ -161,3 +161,7 @@ export class StyleSelector extends Gtk.Box {
     }, this);
   }
 }
+
+export function get_style_css_name(style: Style) {
+  return `style-${Style[style]}`;
+}
