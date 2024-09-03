@@ -28,10 +28,10 @@ import Gtk from "gi://Gtk?version=4.0";
 import GLib from "gi://GLib";
 
 import { Note, Style } from "./util/index.js";
-import { ReadonlyStickyNote } from "./view.js";
 import { SignalListeners } from "./util/listeners.js";
+import { StickyNoteView } from "./view2.js";
 
-GObject.type_ensure(ReadonlyStickyNote.$gtype);
+GObject.type_ensure(StickyNoteView.$gtype);
 
 export class StickyNoteCard extends Gtk.Box {
   static {
@@ -62,7 +62,7 @@ export class StickyNoteCard extends Gtk.Box {
   private _modified_label!: Gtk.Label;
   private _view_image!: Gtk.Image;
   private _delete_button!: Gtk.Button;
-  private _view!: ReadonlyStickyNote;
+  private _view!: StickyNoteView;
 
   constructor(public window: Gtk.Window) {
     super();

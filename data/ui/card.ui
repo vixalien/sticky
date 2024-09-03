@@ -51,11 +51,7 @@
         <property name="vscrollbar-policy">2</property>
         <property name="vexpand">true</property>
         <child>
-          <object class="ReadonlyStickyNote" id="view">
-            <property name="wrap-mode">3</property>
-                <style>
-                  <class name="card-text-view"/>
-                </style>
+          <object class="StickyNoteView" id="view">
           </object>
         </child>
       </object>
