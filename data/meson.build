@@ -78,12 +78,9 @@ compile_local_schemas = custom_target(
 
 pkgdatadir = join_paths(get_option('datadir'), meson.project_name())
 
-subdir('stylus')
-
 data_res = gnome.compile_resources(
   'com.vixalien.sticky.data',
   'com.vixalien.sticky.data.gresource.xml',
-  dependencies: stylus,
   gresource_bundle: true,
   install: true,
   install_dir: pkgdatadir,

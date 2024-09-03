@@ -3,6 +3,9 @@
   <requires lib="gtk" version="4.0"/>
   <template class="StickyNoteCard" parent="GtkBox">
     <property name="orientation">1</property>
+    <style>
+      <class name="styled"/>
+    </style>
     <child>
       <object class="GtkBox" id="details">
         <property name="spacing">6</property>
@@ -59,7 +62,6 @@
     <style>
       <class name="card"/>
       <class name="activatable"/>
-      <class name="note-view"/>
       <class name="note-card"/>
     </style>
   </template>

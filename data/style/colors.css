@@ -1,0 +1,115 @@
+/* These styles apply for each styled element */
+
+.style-yellow {
+  --color: #000;
+  --background-color: #fff6cb;
+  --header-color: #ffee92;
+
+  --background-color-dark: #7c7348;
+  --color-dark: #fff;
+  --header-color-dark: #7c6b0f;
+  
+  --selection-color: #000;
+  --high-contrast-color: #ffdb28;
+  --link-color: #3f00ff;
+}
+
+.style-pink {
+  --color: #000;
+  --background-color: #ffe3f1;
+  --header-color: #ffc5e1;
+
+  --background-color-dark: #7c606e;
+  --color-dark: #fff;
+  --header-color-dark: #7c425e;
+  
+  --selection-color: #007041;
+  --high-contrast-color: #ff1988;
+  --link-color: #3f00ff;
+}
+
+.style-green {
+  --color: #000;
+  --background-color: #e7f6e4;
+  --header-color: #d1ebcb;
+
+  --background-color-dark: #647361;
+  --color-dark: #fff;
+  --header-color-dark: #4e6848;
+  
+  --selection-color: #8907c8;
+  --high-contrast-color: #50ff2d;
+  --link-color: #3f00ff;
+}
+
+.style-purple {
+  --color: #000;
+  --background-color: #f2e5ff;
+  --header-color: #e2d0f5;
+
+  --background-color-dark: #6f627c;
+  --color-dark: #fff;
+  --header-color-dark: #5f4d72;
+  
+  --selection-color: #016681;
+  --high-contrast-color: #9123ff;
+  --link-color: #3f00ff;
+}
+
+.style-blue {
+  --color: #000;
+  --background-color: #e7f3ff;
+  --header-color: #cce7ff;
+
+  --background-color-dark: #64707c;
+  --color-dark: #fff;
+  --header-color-dark: #49647c;
+  
+  --selection-color: #f14e00;
+  --high-contrast-color: #239fff;
+  --link-color: #3f00ff;
+}
+
+.style-gray {
+  --color: #000;
+  --background-color: #edebe9;
+  --header-color: #dddad8;
+
+  --background-color-dark: #6a6866;
+  --color-dark: #fff;
+  --header-color-dark: #5a5755;
+  
+  --selection-color: #302821;
+  --high-contrast-color: #e5e5e5;
+  --link-color: #3f00ff;
+
+}
+
+.style-charcoal {
+  --color: #fff;
+  --background-color: #5e5e5e;
+  --header-color: #3f3d3c;
+
+  --background-color-dark: #5e5e5e;
+  --color-dark: #fff;
+  --header-color-dark: #3f3d3c;
+  
+  --selection-color: #fff;
+  --high-contrast-color: #6d6d6d;
+  --link-color: #b4faff;
+}
+
+.style-window {
+  --color: var(--window-fg-color);
+  --background-color: hsl(from var(--accent-bg-color) h calc(s * 1.9) calc(l * 1.65));
+  --header-color: hsl(from var(--accent-bg-color) h calc(s * 1.9) calc(l * 1.5));
+
+  /* Currently just copying the above values verbatime */
+  --color-dark: var(--accent-fg-color);
+  --background-color-dark: hsl(from var(--accent-bg-color) h calc(s * 0.4) calc(l * 0.85));
+  --header-color-dark: hsl(from var(--accent-bg-color) h calc(s * 0.4) calc(l * 0.65));
+  
+  --selection-color: hsl(from var(--accent-bg-color) h calc(s * 0.7) calc(l * 0.7));
+  --high-contrast-color: var(--accent-bg-color);
+  --link-color: var(--accent-fg-color);
+}

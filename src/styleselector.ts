@@ -27,11 +27,8 @@
 
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
-import Gdk from "gi://Gdk?version=4.0";
 
 import { Style, StyleNames, styles } from "./util/index.js";
-
-let provider: Gtk.CssProvider | null = null;
 
 class StyleButton extends Gtk.CheckButton {
   style: Style;
@@ -108,18 +105,6 @@ export class StyleSelector extends Gtk.Box {
     this._style = this.style = params.style ?? Style.yellow;
     this.build_styles();
     this.hexpand = true;
-
-    if (!provider) {
-      provider = new Gtk.CssProvider();
-      provider.load_from_resource(
-        "/com/vixalien/sticky/style-selector.css",
-      );
-      Gtk.StyleContext.add_provider_for_display(
-        Gdk.Display.get_default()!,
-        provider,
-        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-      );
-    }
   }
 
   build_styles() {

@@ -1,0 +1,16 @@
+.styled {
+  --background-color: var(--background-color-dark);
+  --color: var(--color-dark);
+  --header-color: var(--header-color-dark);
+}
+
+.styled>toolbarview>.top-bar {
+  background-color: var(--header-color-dark);
+}
+
+.styled>toolbarview>.bottom-bar,
+.styled popover>arrow,
+.styled popover>contents {
+  background-color: var(--background-color-dark);
+  color: var(--color-dark);
+}

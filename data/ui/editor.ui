@@ -2,14 +2,15 @@
 <interface>
   <requires lib="gtk" version="4.0" />
   <template class="StickyNoteEditor" parent="AdwBin">
+    <style>
+      <class name="styled" />
+      <class name="sticky-note-editor" />
+    </style>
     <child>
       <object class="AdwToolbarView" id="container">
         <property name="bottom-bar-style">raised-border</property>
         <property name="extend-content-to-top-edge">true</property>
         <property name="extend-content-to-bottom-edge">true</property>
-        <style>
-          <class name="note-window" />
-        </style>
         <child type="top">
           <object class="AdwHeaderBar" id="headerbar">
             <property name="hexpand">true</property>

@@ -1,0 +1,85 @@
+.style-selector-box>* {
+  border-radius: 99px;
+}
+
+styleselector {
+  margin: 9px;
+}
+
+styleselector checkbutton {
+  padding: 0;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 1px;
+  background-clip: content-box;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 1px var(--border-color);
+}
+
+styleselector checkbutton:checked {
+  box-shadow: inset 0 0 0 2px var(--accent-bg-color);
+}
+
+styleselector checkbutton:focus-within {
+  box-shadow: inset 0 0 0 2px var(--accent-bg-color), 0 0 0 2px var(--border-color);
+  outline-color: transparent;
+}
+
+styleselector checkbutton.style-yellow {
+  background-color: #ffee92;
+  color: #000;
+}
+
+styleselector checkbutton.style-pink {
+  background-color: #ffc5e1;
+  color: #000;
+}
+
+styleselector checkbutton.style-green {
+  background-color: #d1ebcb;
+  color: #000;
+}
+
+styleselector checkbutton.style-purple {
+  background-color: #e2d0f5;
+  color: #000;
+}
+
+styleselector checkbutton.style-blue {
+  background-color: #cce7ff;
+  color: #000;
+}
+
+styleselector checkbutton.style-gray {
+  background-color: #dddad8;
+  color: #000;
+}
+
+styleselector checkbutton.style-charcoal {
+  background-color: #3f3d3c;
+  color: #fff;
+}
+
+styleselector checkbutton.style-window {
+  background-color: var(--headerbar-bg-color);
+  color: var(--window-fg-color);
+}
+
+styleselector checkbutton radio {
+  -gtk-icon-source: none;
+  border: none;
+  background: none;
+  box-shadow: none;
+  color: var(--accent-fg-color);
+  min-width: 12px;
+  min-height: 12px;
+  transform: translate(27px, 14px);
+  padding: 2px;
+}
+
+styleselector checkbutton radio:checked {
+  -gtk-icon-source: -gtk-icontheme('object-select-symbolic');
+  border: 2px solid var(--accent-bg-color);
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
+}

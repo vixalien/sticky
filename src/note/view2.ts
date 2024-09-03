@@ -21,7 +21,6 @@ export class StickyNoteView extends Gtk.TextView {
       cursor_visible: false,
     });
 
-    this.add_css_class("card-text-view");
     this.register_tags();
   }
 

@@ -42,11 +42,8 @@ export class StickyAllNotesWindow extends Adw.ApplicationWindow {
         GTypeName: "StickyAllNotesWindow",
         InternalChildren: [
           "search",
-          "notes_box",
-          "no_notes",
-          "no_results",
+          "listview",
           "search_entry",
-          "scrolled",
           "menu_button",
           "stack",
         ],
@@ -57,10 +54,7 @@ export class StickyAllNotesWindow extends Adw.ApplicationWindow {
 
   private _search!: Gtk.Box;
   private _search_entry!: Gtk.SearchEntry;
-  private _notes_box!: Gtk.ListView;
-  private _no_notes!: Adw.StatusPage;
-  private _no_results!: Adw.StatusPage;
-  private _scrolled!: Gtk.ScrolledWindow;
+  private _listview!: Gtk.ListView;
   private _menu_button!: Gtk.MenuButton;
   private _stack!: Gtk.Stack;
 
@@ -98,9 +92,6 @@ export class StickyAllNotesWindow extends Adw.ApplicationWindow {
       Gio.SettingsBindFlags.DEFAULT,
     );
 
-    // make it transparent
-    this._notes_box.remove_css_class("view");
-
     const factory = new Gtk.SignalListItemFactory();
     factory.connect("setup", this.setup_cb.bind(this));
     factory.connect("bind", this.bind_cb.bind(this));
@@ -127,19 +118,19 @@ export class StickyAllNotesWindow extends Adw.ApplicationWindow {
     this.last_model.bind_property_full(
       "n-items",
       this._stack,
-      "visible-child",
+      "visible-child-name",
       GObject.BindingFlags.SYNC_CREATE,
       (_, items: number) => {
-        let child;
+        let child_name;
         if (items > 0) {
-          child = this._notes_box;
+          child_name = "list";
         } else if (this.query) {
-          child = this._no_results;
+          child_name = "no-results";
         } else {
-          child = this._no_notes;
+          child_name = "empty";
         }
 
-        return [true, child];
+        return [true, child_name];
       },
       null,
     );
@@ -156,8 +147,8 @@ export class StickyAllNotesWindow extends Adw.ApplicationWindow {
       null,
     );
 
-    this._notes_box.set_factory(factory);
-    this._notes_box.set_model(this.last_model);
+    this._listview.set_factory(factory);
+    this._listview.set_model(this.last_model);
 
     // Popover menu theme switcher
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;

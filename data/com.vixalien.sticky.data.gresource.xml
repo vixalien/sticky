@@ -7,10 +7,12 @@
     <file>ui/theme-selector.ui</file>
     <file>ui/window.ui</file>
     <file alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
-    <file>style.css</file>
-    <file>style-dark.css</file>
-    <file>style-selector.css</file>
-    <file>theme-selector.css</file>
+
+    <file alias="style.css">style/style.css</file>
+    <file alias="style-dark.css">style/style-dark.css</file>
+    <file>style/colors.css</file>
+    <file>style/style-selector.css</file>
+    <file>style/theme-selector.css</file>
   </gresource>
   <gresource prefix="/com/vixalien/sticky/icons/symbolic/actions/">
     <file preprocess="xml-stripblanks" alias="com.vixalien.sticky-symbolic.svg">icons/hicolor/symbolic/apps/com.vixalien.sticky-symbolic.svg</file>

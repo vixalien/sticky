@@ -14,8 +14,6 @@ export class StickyNoteTextView extends Gtk.TextView {
   constructor(params: Partial<Gtk.TextView.ConstructorProperties>) {
     super(params);
 
-    this.add_css_class("text-view");
-
     this.buffer.connect("changed", this.buffer_changed_cb.bind(this));
   }
 

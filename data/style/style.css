@@ -1,0 +1,50 @@
+@import url("./style/colors.css");
+@import url("./style/style-selector.css");
+@import url("./style/theme-selector.css");
+
+textview {
+  color: inherit;
+  background-color: transparent;
+}
+
+.styled {
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+.styled selection:focus-within {
+  background-color: color-mix(in srgb, var(--selection-color) 30%, transparent);
+}
+
+.notes-listview {
+  border-spacing: 6px;
+  background-color: transparent;
+  padding: 0 6px 6px 6px;
+}
+
+.notes-listview row {
+  border-radius: 12px;
+}
+
+.note-card {
+  padding: 12px;
+}
+
+.styled>toolbarview>.bottom-bar,
+.styled popover>arrow,
+.styled popover>contents {
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+.styled>toolbarview>.top-bar {
+  background-color: var(--header-color);
+}
+
+/* These elements are animated */
+.sticky-note-editor>toolbarview>.top-bar,
+.sticky-note-editor>toolbarview>.bottom-bar,
+.sticky-note-editor popover>arrow,
+.sticky-note-editor popover>contents {
+  transition: background-color 0.35s, color 0.35s;
+}
