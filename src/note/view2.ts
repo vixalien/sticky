@@ -1,9 +1,9 @@
 import Gtk from "gi://Gtk?version=4.0";
 import GObject from "gi://GObject";
 
-import { Note } from "./util";
-import { SignalListeners } from "./util/listeners";
-import { get_tag_map } from "./tags";
+import { Note } from "../util";
+import { SignalListeners } from "../util/listeners";
+import { get_tag_map } from "../util/tags";
 
 export class StickyNoteView extends Gtk.TextView {
   static {

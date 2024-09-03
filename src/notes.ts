@@ -29,7 +29,7 @@ import Adw from "gi://Adw";
 import Gio from "gi://Gio";
 
 import type { Application } from "./application.js";
-import { StickyNoteCard } from "./card.js";
+import { StickyNoteCard } from "./note/card.js";
 import { Note, settings } from "./util/index.js";
 
 import { ThemeSelector } from "./themeselector.js";

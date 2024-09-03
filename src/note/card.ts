@@ -27,8 +27,8 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import GLib from "gi://GLib";
 
-import { Note, Style } from "./util/index.js";
-import { SignalListeners } from "./util/listeners.js";
+import { Note, Style } from "../util/index.js";
+import { SignalListeners } from "../util/listeners.js";
 import { StickyNoteView } from "./view2.js";
 
 GObject.type_ensure(StickyNoteView.$gtype);

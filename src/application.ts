@@ -33,7 +33,7 @@ import Gdk from "gi://Gdk?version=4.0";
 import { StickyAllNotesWindow } from "./notes.js";
 import { confirm_delete, Note, settings } from "./util/index.js";
 import { delete_note, load_notes, NewNotesDir, save_notes } from "./store.js";
-import { StickyNoteWindow } from "./window.js";
+import { StickyNoteWindow } from "./note/window.js";
 import { find_item, list_foreach, list_model_to_array } from "./util/list.js";
 import { AddActionEntries } from "types/extra.js";
 

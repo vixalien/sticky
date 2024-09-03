@@ -30,10 +30,10 @@ import GLib from "gi://GLib";
 
 import { find } from "linkifyjs";
 
-import { get_style_css_name, StyleSelector } from "./styleselector.js";
-import { Note, Style } from "./util/index.js";
-import { SignalListeners } from "./util/listeners.js";
-import { get_tag_map } from "./tags.js";
+import { get_style_css_name, StyleSelector } from "../styleselector.js";
+import { Note, Style } from "../util/index.js";
+import { SignalListeners } from "../util/listeners.js";
+import { get_tag_map } from "../util/tags.js";
 import { StickyNoteTextView } from "./textview.js";
 
 GObject.type_ensure(StickyNoteTextView.$gtype);

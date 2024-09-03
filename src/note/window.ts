@@ -28,7 +28,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
 import GLib from "gi://GLib";
 
-import { Note } from "./util/index.js";
+import { Note } from "../util/index.js";
 import { AddActionEntries } from "types/extra.js";
 import { StickyNoteEditor } from "./editor.js";
 

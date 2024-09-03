@@ -29,9 +29,9 @@ import Pango from "gi://Pango";
 
 import { find } from "linkifyjs";
 
-import { ITag, Note } from "./util/index.js";
-import { style_manager } from "./themeselector.js";
-import { Style } from "./util/index.js";
+import { ITag, Note } from "../util/index.js";
+import { style_manager } from "../themeselector.js";
+import { Style } from "../util/index.js";
 
 class AbstractStickyNote extends Gtk.TextView {
   static {
