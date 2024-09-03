@@ -4,10 +4,11 @@ export class SignalListeners {
   listeners = new Map<GObject.Object, number[]>();
   bindings: GObject.Binding[] = [];
 
-  add(widget: GObject.Object, listener: number | number[]) {
-    const listeners = this.listeners.get(widget) ?? [];
-    listeners.push(...[listener].flat());
-    this.listeners.set(widget, listeners);
+  add(widget: GObject.Object, ...listeners: number[]) {
+    this.listeners.set(widget, [
+      ...this.listeners.get(widget) ?? [],
+      ...listeners,
+    ]);
   }
 
   add_bindings(...bindings: GObject.Binding[]) {

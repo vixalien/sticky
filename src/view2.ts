@@ -3,6 +3,7 @@ import GObject from "gi://GObject";
 
 import { Note } from "./util";
 import { SignalListeners } from "./util/listeners";
+import { get_tag_map } from "./tags";
 
 export class StickyNoteView extends Gtk.TextView {
   static {
@@ -11,12 +12,21 @@ export class StickyNoteView extends Gtk.TextView {
     }, this);
   }
 
+  tag_map = get_tag_map();
+
   constructor() {
     super({
       wrap_mode: Gtk.WrapMode.WORD_CHAR,
     });
 
     this.add_css_class("card-text-view");
+    this.register_tags();
+  }
+
+  private register_tags() {
+    for (const tag of Object.values(this.tag_map)) {
+      this.buffer.tag_table.add(tag);
+    }
   }
 
   private _note: Note | null = null;
@@ -46,9 +56,13 @@ export class StickyNoteView extends Gtk.TextView {
       note.connect("notify::content", () => {
         this.update_content();
       }),
+      note.connect("notify::tag-list", () => {
+        this.update_tags();
+      }),
     );
 
     this.update_content();
+    this.update_tags();
   }
 
   /**
@@ -69,6 +83,37 @@ export class StickyNoteView extends Gtk.TextView {
       );
     } else {
       this.buffer.text = clip_content(text);
+    }
+  }
+
+  // TODO: track each tag and update it individually
+  private update_tags() {
+    if (!this.note) return;
+    this.clear_tags();
+
+    // first clear all current tags
+    const start = this.buffer.get_start_iter();
+    const end = this.buffer.get_end_iter();
+
+    for (const tag of Object.values(this.tag_map)) {
+      this.buffer.remove_tag(tag, start, end);
+    }
+
+    // then
+    for (const tag of this.note.tags) {
+      const start = this.buffer.get_iter_at_offset(tag.start);
+      const end = this.buffer.get_iter_at_offset(tag.end);
+
+      this.buffer.apply_tag_by_name(tag.name, start, end);
+    }
+  }
+
+  private clear_tags() {
+    const start = this.buffer.get_start_iter();
+    const end = this.buffer.get_end_iter();
+
+    for (const tag of Object.values(this.tag_map)) {
+      this.buffer.remove_tag(tag, start, end);
     }
   }
 }
