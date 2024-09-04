@@ -30,7 +30,7 @@ import GLib from "gi://GLib";
 
 import { find } from "linkifyjs";
 
-import { get_style_css_name, StyleSelector } from "../styleselector.js";
+import { get_style_css_name, StickyStyleSelector } from "../styleselector.js";
 import { Note, Style } from "../util/index.js";
 import { SignalListeners } from "../util/listeners.js";
 import { get_tag_map } from "../util/tags.js";
@@ -44,7 +44,7 @@ export class StickyNoteEditor extends Adw.Bin {
   private _action_button!: Gtk.ToggleButton;
   private _action_revealer!: Gtk.Revealer;
 
-  private selector: StyleSelector;
+  private selector: StickyStyleSelector;
 
   static {
     GObject.registerClass(
@@ -99,7 +99,7 @@ export class StickyNoteEditor extends Adw.Bin {
     // });
 
     // add the Style Selector
-    this.selector = new StyleSelector();
+    this.selector = new StickyStyleSelector();
 
     this.selector.bind_property(
       "style",

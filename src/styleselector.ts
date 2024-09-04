@@ -32,7 +32,7 @@ import Gtk from "gi://Gtk?version=4.0";
 
 import { Style, StyleNames, styles } from "./util/index.js";
 
-class StyleButton extends Gtk.CheckButton {
+class StickyStyleButton extends Gtk.CheckButton {
   style: Style;
 
   constructor(style: Style, group?: Gtk.CheckButton) {
@@ -50,7 +50,7 @@ class StyleButton extends Gtk.CheckButton {
       action_target: GLib.Variant.new_uint32(style),
     });
 
-    if (group) this.set_group(group)
+    if (group) this.set_group(group);
 
     this.style = style;
 
@@ -59,24 +59,13 @@ class StyleButton extends Gtk.CheckButton {
   }
 
   static {
-    GObject.registerClass({}, this);
+    GObject.registerClass({
+      GTypeName: "StickyStyleButton",
+    }, this);
   }
 }
 
-const props = {
-  orientation: Gtk.Orientation.HORIZONTAL,
-  spacing: 12,
-  hexpand: true,
-};
-
-export class StyleSelector extends Gtk.Box {
-  box1 = new Gtk.Box(props);
-  box2 = new Gtk.Box(props);
-  box = new Gtk.Box({
-    orientation: Gtk.Orientation.VERTICAL,
-    spacing: 12,
-  });
-
+export class StickyStyleSelector extends Gtk.Widget {
   private _style: Style;
 
   get style() {
@@ -93,10 +82,9 @@ export class StyleSelector extends Gtk.Box {
   constructor(params: { style?: Style } = {}) {
     super();
 
-    this.box.append(this.box1);
-    this.box.append(this.box2);
-
-    this.append(this.box);
+    const layout = this.get_layout_manager() as Gtk.GridLayout;
+    layout.row_homogeneous = layout.column_homogeneous = true;
+    layout.row_spacing = layout.column_spacing = 12;
 
     this._style = params.style ?? Style.yellow;
     this.build_styles();
@@ -115,20 +103,28 @@ export class StyleSelector extends Gtk.Box {
   }
 
   build_styles() {
+    const layout = this.get_layout_manager() as Gtk.GridLayout;
     let group: Gtk.CheckButton | undefined = undefined;
 
     styles.forEach((style, i) => {
-      const button = new StyleButton(style, group);
+      const button = new StickyStyleButton(style, group);
       button.active = style === this.style;
 
       group ??= button;
 
-      (i < 4 ? this.box1 : this.box2).append(button);
+      button.set_parent(this);
+
+      const layout_child = layout.get_layout_child(
+        button,
+      ) as Gtk.GridLayoutChild;
+      layout_child.column = i % 4;
+      layout_child.row = i < 4 ? 0 : 1;
     });
   }
 
   static {
     GObject.registerClass({
+      GTypeName: "StickyStyleSelector",
       CssName: "styleselector",
       Properties: {
         style: GObject.param_spec_uint(
@@ -142,6 +138,8 @@ export class StyleSelector extends Gtk.Box {
         ),
       },
     }, this);
+
+    this.set_layout_manager_type(Gtk.GridLayout.$gtype);
   }
 }
 
