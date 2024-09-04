@@ -57,6 +57,17 @@ export class StickyNoteEditor extends Adw.Bin {
           "action_revealer",
           "action_button",
         ],
+        Properties: {
+          style: GObject.param_spec_uint(
+            "style",
+            "style",
+            "The style of this card",
+            0,
+            Style.accent,
+            0,
+            GObject.ParamFlags.READWRITE,
+          ),
+        },
       },
       this,
     );
@@ -89,8 +100,16 @@ export class StickyNoteEditor extends Adw.Bin {
 
     // add the Style Selector
     this.selector = new StyleSelector();
-    this.selector.connect("style-changed", (_selector, style) => {
-      this.style_updated_cb(style);
+
+    this.selector.bind_property(
+      "style",
+      this,
+      "style",
+      GObject.BindingFlags.BIDIRECTIONAL,
+    );
+
+    this.selector.connect("notify::style", () => {
+      this.update_style_css_name(this.selector.style);
     });
 
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
@@ -185,25 +204,30 @@ export class StickyNoteEditor extends Adw.Bin {
         "text",
         GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL,
       ),
+      this.note.bind_property_full(
+        "style",
+        this.selector,
+        "style",
+        GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.BIDIRECTIONAL,
+        (_, value) => {
+          return [true, value];
+        },
+        (binding, value) => {
+          // also update the modified date
+          (binding.target as Note).modified_date = new Date();
+
+          return [true, value];
+        },
+      ),
     );
-
-    this.update_style(this.note.style);
   }
 
-  private style_updated_cb(style: Style) {
-    if (!this.note) return;
-
-    // update the note's style
-    this.note.modified_date = new Date();
-    this.note.style = style;
-
-    this.update_style(style);
-  }
+  style = Style.yellow;
 
   /**
    * Update our CSS classname based on the style
    */
-  private update_style(style: Style) {
+  private update_style_css_name(style: Style) {
     const style_css_name = get_style_css_name(style);
 
     for (const css_class of this.get_css_classes()) {

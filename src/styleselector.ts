@@ -25,6 +25,8 @@
 
 // Adapted from https://github.com/sonnyp/troll/blob/63392a57392fb8ed944e859269a3751f649f64ec/src/widgets/ThemeSelector.js
 
+import Gio from "gi://Gio";
+import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 
@@ -44,19 +46,16 @@ class StyleButton extends Gtk.CheckButton {
       height_request: 44,
       hexpand: true,
       halign: Gtk.Align.CENTER,
+      action_name: "style-selector.style",
+      action_target: GLib.Variant.new_uint32(style),
     });
 
-    if (group) {
-      this.set_group(group);
-    }
+    if (group) this.set_group(group)
 
     this.style = style;
 
-    this.set_css_classes([
-      ...this.css_classes,
-      `style-selector`,
-      `style-${style_name}`,
-    ]);
+    this.add_css_class("styled");
+    this.add_css_class(`style-${style_name}`);
   }
 
   static {
@@ -84,14 +83,11 @@ export class StyleSelector extends Gtk.Box {
     return this._style;
   }
 
-  set style(style: Style) {
-    if (this._style === style) {
-      return;
-    }
+  set style(value: Style) {
+    if (this.style === value) return;
 
-    this._style = style;
+    this._style = value;
     this.notify("style");
-    this.emit("style-changed", style);
   }
 
   constructor(params: { style?: Style } = {}) {
@@ -102,9 +98,20 @@ export class StyleSelector extends Gtk.Box {
 
     this.append(this.box);
 
-    this._style = this.style = params.style ?? Style.yellow;
+    this._style = params.style ?? Style.yellow;
     this.build_styles();
     this.hexpand = true;
+
+    this.add_actions();
+  }
+
+  add_actions() {
+    const action_group = Gio.SimpleActionGroup.new();
+
+    const action = Gio.PropertyAction.new("style", this, "style");
+    action_group.add_action(action);
+
+    this.insert_action_group("style-selector", action_group);
   }
 
   build_styles() {
@@ -113,14 +120,8 @@ export class StyleSelector extends Gtk.Box {
     styles.forEach((style, i) => {
       const button = new StyleButton(style, group);
       button.active = style === this.style;
-      button.connect("toggled", () => {
-        if (button.active) {
-          this.style = style;
-        }
-      });
-      if (!group) {
-        group = button;
-      }
+
+      group ??= button;
 
       (i < 4 ? this.box1 : this.box2).append(button);
     });
@@ -130,18 +131,15 @@ export class StyleSelector extends Gtk.Box {
     GObject.registerClass({
       CssName: "styleselector",
       Properties: {
-        style: GObject.ParamSpec.string(
+        style: GObject.param_spec_uint(
           "style",
-          "Style",
-          "The current style",
+          "style",
+          "The style of this card",
+          0,
+          Style.accent,
+          0,
           GObject.ParamFlags.READWRITE,
-          "window",
         ),
-      },
-      Signals: {
-        "style-changed": {
-          param_types: [GObject.TYPE_UINT],
-        },
       },
     }, this);
   }

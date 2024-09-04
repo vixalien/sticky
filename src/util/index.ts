@@ -68,7 +68,7 @@ export enum Style {
   "blue",
   "gray",
   "charcoal",
-  "window",
+  "accent",
 }
 
 export const StyleNames = new Map([
@@ -79,7 +79,7 @@ export const StyleNames = new Map([
   [Style.blue, _("Blue")],
   [Style.gray, _("Gray")],
   [Style.charcoal, _("Charcoal")],
-  [Style.window, _("Window")],
+  [Style.accent, _("Accent")],
 ]);
 
 export const styles = Object.values(Style).filter(

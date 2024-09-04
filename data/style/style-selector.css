@@ -25,46 +25,6 @@ styleselector checkbutton:focus-within {
   outline-color: transparent;
 }
 
-styleselector checkbutton.style-yellow {
-  background-color: #ffee92;
-  color: #000;
-}
-
-styleselector checkbutton.style-pink {
-  background-color: #ffc5e1;
-  color: #000;
-}
-
-styleselector checkbutton.style-green {
-  background-color: #d1ebcb;
-  color: #000;
-}
-
-styleselector checkbutton.style-purple {
-  background-color: #e2d0f5;
-  color: #000;
-}
-
-styleselector checkbutton.style-blue {
-  background-color: #cce7ff;
-  color: #000;
-}
-
-styleselector checkbutton.style-gray {
-  background-color: #dddad8;
-  color: #000;
-}
-
-styleselector checkbutton.style-charcoal {
-  background-color: #3f3d3c;
-  color: #fff;
-}
-
-styleselector checkbutton.style-window {
-  background-color: var(--headerbar-bg-color);
-  color: var(--window-fg-color);
-}
-
 styleselector checkbutton radio {
   -gtk-icon-source: none;
   border: none;

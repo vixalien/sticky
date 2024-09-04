@@ -51,7 +51,7 @@ export class StickyNoteCard extends Gtk.Box {
           "style",
           "The style of this card",
           -1,
-          Style.window,
+          Style.accent,
           -1,
           GObject.ParamFlags.READWRITE,
         ),

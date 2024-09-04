@@ -99,7 +99,7 @@
   --link-color: #b4faff;
 }
 
-.style-window {
+.style-accent {
   --color: var(--window-fg-color);
   --background-color: hsl(from var(--accent-bg-color) h calc(s * 1.9) calc(l * 1.65));
   --header-color: hsl(from var(--accent-bg-color) h calc(s * 1.9) calc(l * 1.5));
