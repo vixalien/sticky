@@ -260,7 +260,7 @@ class AbstractStickyNote extends Gtk.TextView {
       this.buffer.apply_tag(tag, start, end);
     }
 
-    this.emit("tag-toggle", tag.name, !has_tag);
+    this.emit("tag-toggle", tag.name, has_tag === false);
   }
 
   clear_tags() {
