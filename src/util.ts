@@ -51,6 +51,7 @@ export interface INote {
   v: 1;
   uuid: string;
   content: string;
+  title: string;
   style: Style;
   tags: ITag[];
   modified: Date;
@@ -151,6 +152,7 @@ export class Note extends GObject.Object {
   v: 1;
   uuid: string;
   content: string;
+  title: string;
   style: Style;
   tag_list: Gio.ListStore<Tag>;
   modified: GLib.DateTime;
@@ -201,6 +203,7 @@ export class Note extends GObject.Object {
     this.v = note.v;
     this.uuid = note.uuid;
     this.content = note.content;
+    this.title = note.title;
     this.style = note.style;
     this.tag_list = Gio.ListStore.new(Tag.$gtype) as Gio.ListStore<Tag>;
     this.tags = note.tags;
@@ -211,6 +214,23 @@ export class Note extends GObject.Object {
     this.width = note.width;
     this.height = note.height;
     this.open = note.open ?? false;
+
+    // @ts-expect-error incorrect types
+    this.bind_property_full(
+      "content",
+      this,
+      "title",
+      GObject.BindingFlags.SYNC_CREATE,
+      (_, content) => {
+        if (!content) return [false, ""];
+        return [true, content.substring(0, 24)]
+      },
+      null
+    );
+
+    this.connect("notify::title", () => {
+      this.emit('title-changed');
+    });
   }
 
   static generate() {
@@ -218,6 +238,7 @@ export class Note extends GObject.Object {
       v: 1,
       uuid: GLib.uuid_string_random(),
       content: "",
+      title: "",
       style: SETTINGS.DEFAULT_STYLE,
       tags: [],
       modified: new Date(),
@@ -232,6 +253,7 @@ export class Note extends GObject.Object {
       v: this.v,
       uuid: this.uuid,
       content: this.content,
+      title: this.title,
       style: this.style,
       tags: this.tags.map((tag) => ({
         name: tag.name,
@@ -250,6 +272,7 @@ export class Note extends GObject.Object {
       v: this.v,
       uuid: this.uuid,
       content: this.content,
+      title: this.title,
       style: this.style,
       tags: this.tags,
       modified: this.modified_date,
@@ -270,6 +293,8 @@ export class Note extends GObject.Object {
         // deno-fmt-ignore
         content: GObject.ParamSpec.string("content", "Content", "Content of the note", GObject.ParamFlags.READWRITE, ""),
         // deno-fmt-ignore
+        title: GObject.ParamSpec.string("title", "Title", "Title of the note", GObject.ParamFlags.READWRITE, ""),
+        // deno-fmt-ignore
         style: GObject.ParamSpec.int("style", "Style", "Style of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
         // deno-fmt-ignore
         tag_list: this.tag_list_pspec,
@@ -281,6 +306,9 @@ export class Note extends GObject.Object {
         height: GObject.ParamSpec.int("height", "Height", "Height of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
         // deno-fmt-ignore
         open: GObject.ParamSpec.boolean("open", "Open", "Whether the note was open when the application was closed", GObject.ParamFlags.READWRITE, false),
+      },
+      Signals: {
+        'title-changed': {},
       },
     }, this);
   }

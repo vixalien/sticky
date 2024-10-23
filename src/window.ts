@@ -98,6 +98,12 @@ export class Window extends Adw.ApplicationWindow {
     this.default_width = note.width;
     this.default_height = note.height;
 
+    this.update_title();
+
+    this.note.connect("title-changed", () => {
+      this.update_title();
+    });
+
     this.connect("close-request", () => {
       if (this.deleted) return;
 
@@ -149,6 +155,14 @@ export class Window extends Adw.ApplicationWindow {
 
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
     popover.add_child(this.selector, "notestyleswitcher");
+  }
+
+  update_title() {
+    if (this.note.title === "") {
+      this.set_title(_("Untitled Note"));
+      return;
+    }
+    this.set_title(this.note.title);
   }
 
   last_revealer = false;
