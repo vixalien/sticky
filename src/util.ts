@@ -223,14 +223,14 @@ export class Note extends GObject.Object {
       GObject.BindingFlags.SYNC_CREATE,
       (_, content) => {
         if (!content) return [false, ""];
-        return [true, content.substring(0, 24)]
+
+        const title = content.split("\n")[0];
+        return [true, title.length > 20 ? title.slice(0, 20) + "..." : title];
       },
       null
     );
 
-    this.connect("notify::title", () => {
-      this.emit('title-changed');
-    });
+
   }
 
   static generate() {
@@ -306,9 +306,6 @@ export class Note extends GObject.Object {
         height: GObject.ParamSpec.int("height", "Height", "Height of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
         // deno-fmt-ignore
         open: GObject.ParamSpec.boolean("open", "Open", "Whether the note was open when the application was closed", GObject.ParamFlags.READWRITE, false),
-      },
-      Signals: {
-        'title-changed': {},
       },
     }, this);
   }

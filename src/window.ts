@@ -100,7 +100,7 @@ export class Window extends Adw.ApplicationWindow {
 
     this.update_title();
 
-    this.note.connect("title-changed", () => {
+    this.note.connect("notify::title", () => {
       this.update_title();
     });
 
@@ -158,8 +158,8 @@ export class Window extends Adw.ApplicationWindow {
   }
 
   update_title() {
-    if (this.note.title === "") {
-      this.set_title(_("Untitled Note"));
+    if (!this.note.title) {
+      this.set_title("Untitled Note");
       return;
     }
     this.set_title(this.note.title);
