@@ -222,10 +222,10 @@ export class Note extends GObject.Object {
       "title",
       GObject.BindingFlags.SYNC_CREATE,
       (_, content) => {
-        if (!content) return [false, ""];
-
-        const title = content.split("\n")[0];
-        return [true, title.length > 20 ? title.slice(0, 20) + "..." : title];
+        if (!content) return [true, ""];
+        let title = content.split("\n")[0].slice(0, 20);
+        if (title.length != content.length) title += "…";
+        return [true, title];
       },
       null
     );
