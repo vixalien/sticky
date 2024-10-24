@@ -98,6 +98,20 @@ export class Window extends Adw.ApplicationWindow {
     this.default_width = note.width;
     this.default_height = note.height;
 
+    this.note.bind_property_full(
+      "title",
+      this,
+      "title",
+      GObject.BindingFlags.SYNC_CREATE,
+      (binding, title) => {
+        if (!title) {
+          return [true, _("Sticky Note")];
+        }
+        return [true, title];
+      },
+      null
+    );
+
     this.connect("close-request", () => {
       if (this.deleted) return;
 
