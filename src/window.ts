@@ -103,9 +103,9 @@ export class Window extends Adw.ApplicationWindow {
       this,
       "title",
       GObject.BindingFlags.SYNC_CREATE,
-      (_, title) => {
+      (binding, title) => {
         if (!title) {
-          return [true, "Untitled Note"];
+          return [true, _("Sticky Note")];
         }
         return [true, title];
       },
