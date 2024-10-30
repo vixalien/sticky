@@ -52,6 +52,7 @@ export class Application extends Adw.Application {
   notes_list = Gio.ListStore.new(Note.$gtype) as Gio.ListStore<Note>;
 
   open_new_note = false;
+  show_all_notes = false;
 
   sort_notes() {
     this.notes_list.sort((note1: Note, note2: Note) => {
@@ -91,6 +92,15 @@ export class Application extends Adw.Application {
     }
 
     this.add_main_option(
+      "all-notes",
+      "a".charCodeAt(0),
+      GLib.OptionFlags.NONE,
+      GLib.OptionArg.NONE,
+      "Show all notes",
+      null,
+    );
+
+    this.add_main_option(
       "version",
       "v".charCodeAt(0),
       GLib.OptionFlags.NONE,
@@ -124,6 +134,8 @@ export class Application extends Adw.Application {
          * leaving the running instance unaffected
          */
         return 0;
+      } else if (options.contains("all-notes")) {
+        this.show_all_notes = true;
       } else if (options.contains("new-note")) {
         this.open_new_note = true;
       } else if (options.contains("if-open-note")) {
@@ -167,7 +179,9 @@ export class Application extends Adw.Application {
     // we show the all_notes
     let has_one_open = false;
 
-    if (this.open_new_note) {
+    if (this.show_all_notes) {
+      this.all_notes();
+    } else if (this.open_new_note) {
       this.new_note();
     } else {
       if (settings.get_boolean("show-all-notes")) this.all_notes();
