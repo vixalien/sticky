@@ -1,5 +1,5 @@
 project('sticky-notes',
-          version: '0.2.1',
+          version: '0.2.6',
     meson_version: '>= 0.62.0',
   default_options: [ 'warning_level=2', 'werror=false', ],
 )
