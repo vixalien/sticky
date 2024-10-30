@@ -102,8 +102,6 @@ class AbstractStickyNote extends Gtk.TextView {
   ) {
     super();
 
-    this.buffer = new Gtk.TextBuffer();
-
     this.register_tags();
     if (note) this.note = note;
 
