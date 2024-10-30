@@ -12,6 +12,5 @@ Keywords=Sticky;Notes;Write;PostIt;
 Actions=new-note;
 
 [Desktop Action new-note]
-Comment=Create a new sticky note
 Name=New Note
 Exec=@app-id@ -n
