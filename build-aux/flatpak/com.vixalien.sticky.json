@@ -39,17 +39,11 @@
       "build-commands": [
         "/usr/lib/sdk/node20/enable.sh",
         "mkdir -p /app",
-        "cp -r $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror/ /app"
+        "cp -r $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror/ /app",
+        "echo $'yarn-offline-mirror \"/app/yarn-mirror\"' > /app/.yarnrc"
       ],
       "sources": [
         "generated-sources.json"
-      ]
-    },
-    {
-      "name": "write-yarnrc",
-      "buildsystem": "simple",
-      "build-commands": [
-        "echo yarn-offline-mirror \"/app/yarn-mirror\" > /app/.yarnrc"
       ]
     },
     {
