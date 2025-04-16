@@ -49,6 +49,11 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
+		<release version="0.2.7" date="2025-04-16">
+			<description>
+				<p>Fix an issue where launching the application would exit unsuccessfully</p>
+			</description>
+		</release>
 		<release version="0.2.6" date="2024-10-30">
 			<description translate="no">
 				<ul>
