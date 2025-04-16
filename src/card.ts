@@ -56,10 +56,10 @@ export class StickyNoteCard extends Gtk.Box {
     }, this);
   }
 
-  _scrolled!: Gtk.ScrolledWindow;
-  _modified_label!: Gtk.Label;
-  _view_image!: Gtk.Image;
-  _delete_button!: Gtk.Button;
+  declare _scrolled: Gtk.ScrolledWindow;
+  declare _modified_label: Gtk.Label;
+  declare _view_image: Gtk.Image;
+  declare _delete_button: Gtk.Button;
 
   private _note?: Note;
   view: ReadonlyStickyNote;

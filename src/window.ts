@@ -36,16 +36,16 @@ import { find } from "linkifyjs";
 import { Application } from "./application.js";
 
 export class Window extends Adw.ApplicationWindow {
-  _container!: Gtk.Box;
-  _text!: Gtk.TextView;
-  _menu_button!: Gtk.MenuButton;
+  declare _container: Gtk.Box;
+  declare _text: Gtk.TextView;
+  declare _menu_button: Gtk.MenuButton;
 
-  _bold_button!: Gtk.ToggleButton;
-  _underline_button!: Gtk.ToggleButton;
-  _italic_button!: Gtk.ToggleButton;
-  _strikethrough_button!: Gtk.ToggleButton;
-  _action_button!: Gtk.ToggleButton;
-  _action_revealer!: Gtk.Revealer;
+  declare _bold_button: Gtk.ToggleButton;
+  declare _underline_button: Gtk.ToggleButton;
+  declare _italic_button: Gtk.ToggleButton;
+  declare _strikethrough_button: Gtk.ToggleButton;
+  declare _action_button: Gtk.ToggleButton;
+  declare _action_revealer: Gtk.Revealer;
 
   // buffer = new Gtk.TextBuffer();
 
@@ -87,7 +87,7 @@ export class Window extends Adw.ApplicationWindow {
   }
 
   constructor(
-    { note, ...params }: Partial<Gtk.TextView.ConstructorProperties> & {
+    { note, ...params }: Partial<Adw.ApplicationWindow.ConstructorProps> & {
       note: Note;
     },
   ) {
@@ -103,13 +103,13 @@ export class Window extends Adw.ApplicationWindow {
       this,
       "title",
       GObject.BindingFlags.SYNC_CREATE,
-      (binding, title) => {
+      (__, title) => {
         if (!title) {
           return [true, _("Sticky Note")];
         }
         return [true, title];
       },
-      null
+      null,
     );
 
     this.connect("close-request", () => {
@@ -192,7 +192,7 @@ export class Window extends Adw.ApplicationWindow {
           this._text,
           this._text.bottom_margin,
           60 +
-            ((selected) ? this._action_revealer.get_allocated_height() : 0),
+            (selected ? this._action_revealer.get_allocated_height() : 0),
           this._action_revealer.transition_duration,
           target,
         );

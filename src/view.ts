@@ -97,7 +97,7 @@ class AbstractStickyNote extends Gtk.TextView {
 
   remove_listeners() {}
 
-  style_manager!: Adw.StyleManager;
+  style_manager: Adw.StyleManager;
 
   constructor(
     note?: Note,
@@ -511,6 +511,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
         search_limit.forward_chars(10);
 
         search_end.forward_find_char((ch) => {
+          console.log("forward char",ch);
           return ch === " ";
         }, search_limit);
         search_end.forward_char();

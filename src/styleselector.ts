@@ -31,6 +31,8 @@ import Gdk from "gi://Gdk?version=4.0";
 
 import { Style, StyleNames, styles } from "./util.js";
 
+const { vprintf } = imports.format;
+
 let provider: Gtk.CssProvider | null = null;
 
 class StyleButton extends Gtk.CheckButton {
@@ -42,7 +44,7 @@ class StyleButton extends Gtk.CheckButton {
 
     super({
       // focus_on_click: false,
-      tooltip_text: _("Switch to %s style").format(display_name),
+      tooltip_text: vprintf(_("Switch to %s style"), [display_name]),
       width_request: 44,
       height_request: 44,
       hexpand: true,

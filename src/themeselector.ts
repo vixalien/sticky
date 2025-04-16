@@ -29,9 +29,10 @@ export class ThemeSelector extends Gtk.Widget {
   }
 
   theme: string;
-  _follow!: Gtk.CheckButton;
 
-  style_manager!: Adw.StyleManager;
+  declare _follow: Gtk.CheckButton;
+
+  style_manager: Adw.StyleManager;
 
   constructor(params = {}) {
     super(params);
@@ -60,7 +61,9 @@ export class ThemeSelector extends Gtk.Widget {
   }
 
   _on_notify_system_supports_color_schemes() {
-    this._follow.set_visible(this.style_manager.get_system_supports_color_schemes());
+    this._follow.set_visible(
+      this.style_manager.get_system_supports_color_schemes(),
+    );
   }
 
   _on_notify_dark() {

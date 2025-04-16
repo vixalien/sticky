@@ -368,7 +368,7 @@ export class Application extends Adw.Application {
   }
 
   show_about() {
-    const aboutParams: Partial<Adw.AboutWindow.ConstructorProperties> = {
+    const aboutParams: Partial<Adw.AboutWindow.ConstructorProps> = {
       transient_for: this.active_window,
       application_name: _("Sticky Notes"),
       application_icon: pkg.name,

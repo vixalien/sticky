@@ -131,12 +131,12 @@ export class Tag extends GObject.Object {
 }
 
 export class Note extends GObject.Object {
-  private static tag_list_pspec = GObject.ParamSpec.object(
+  private static tag_list_pspec = GObject.param_spec_object(
     "tag_list",
     "Tags",
     "Tags of the note",
+    Gio.ListStore.$gtype,
     GObject.ParamFlags.READWRITE,
-    Gio.ListStore,
   );
 
   static $gtype: GObject.GType<Note>;
@@ -207,7 +207,6 @@ export class Note extends GObject.Object {
     this.height = note.height;
     this.open = note.open ?? false;
 
-    // @ts-expect-error incorrect types
     this.bind_property_full(
       "content",
       this,
