@@ -26,11 +26,11 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Pango from "gi://Pango";
+import Adw from "gi://Adw?version=1";
 
 import { find } from "linkifyjs";
 
 import { ITag, Note } from "./util.js";
-import { style_manager } from "./themeselector.js";
 import { Style } from "./util.js";
 
 class AbstractStickyNote extends Gtk.TextView {
@@ -97,10 +97,14 @@ class AbstractStickyNote extends Gtk.TextView {
 
   remove_listeners() {}
 
+  style_manager!: Adw.StyleManager;
+
   constructor(
     note?: Note,
   ) {
     super();
+
+    this.style_manager = Adw.StyleManager.get_default();
 
     this.register_tags();
     if (note) this.note = note;
@@ -159,7 +163,7 @@ class AbstractStickyNote extends Gtk.TextView {
     if (!this.note) return;
     let color;
 
-    if (style_manager.dark) {
+    if (this.style_manager.dark) {
       const accent_color = this.get_style_context().lookup_color(
         "accent_fg_color",
       );
@@ -190,8 +194,8 @@ class AbstractStickyNote extends Gtk.TextView {
 
     this.link_tag.underline = Pango.Underline.SINGLE;
 
-    if (style_manager.system_supports_color_schemes) {
-      style_manager.connect(
+    if (this.style_manager.system_supports_color_schemes) {
+      this.style_manager.connect(
         "notify::dark",
         this.update_link_tag_color.bind(this),
       );
@@ -415,7 +419,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
   constructor(note?: Note) {
     super(note);
 
-    this.buffer.connect_after('insert-text', (buffer, loc, text, length) => {
+    this.buffer.connect_after("insert-text", (buffer, loc, text, length) => {
       this.on_text_inserted(buffer, loc, text, length);
     });
 
@@ -475,8 +479,13 @@ export class WriteableStickyNote extends AbstractStickyNote {
     this.change("tags", tags);
   }
 
-  on_text_inserted(buffer: Gtk.TextBuffer, loc: Gtk.TextIter, text: string, length: number) {
-    if (text === '\n') {
+  on_text_inserted(
+    buffer: Gtk.TextBuffer,
+    loc: Gtk.TextIter,
+    text: string,
+    length: number,
+  ) {
+    if (text === "\n") {
       const start_iter = loc.copy();
       start_iter.backward_char();
       start_iter.set_line_offset(0);
@@ -494,15 +503,17 @@ export class WriteableStickyNote extends AbstractStickyNote {
           start_iter.set_line_offset(0);
           buffer.delete(start_iter, loc);
         } else {
-          buffer.insert(loc, bullet + ' ', -1);
+          buffer.insert(loc, bullet + " ", -1);
         }
-      } else{
+      } else {
         const search_limit = start_iter.copy();
         const search_end = start_iter.copy();
         search_limit.forward_chars(10);
 
-        search_end.forward_find_char((ch) => {return ch === ' '}, search_limit);
-        search_end.forward_char()
+        search_end.forward_find_char((ch) => {
+          return ch === " ";
+        }, search_limit);
+        search_end.forward_char();
         const chars = buffer.get_text(start_iter, search_end, false);
 
         const ordered_regex_pattern = /^\d+\. $/;
@@ -513,7 +524,9 @@ export class WriteableStickyNote extends AbstractStickyNote {
           const line_end = loc.copy();
           line_end.backward_char();
 
-          if (line_end.get_line_offset() === current_order.toString().length + 2) {
+          if (
+            line_end.get_line_offset() === current_order.toString().length + 2
+          ) {
             start_iter.set_line_offset(0);
             buffer.delete(start_iter, loc);
           } else {

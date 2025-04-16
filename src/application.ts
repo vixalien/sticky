@@ -537,4 +537,16 @@ export class Application extends Adw.Application {
 
     window.present();
   }
+
+  vfunc_startup() {
+    super.vfunc_startup();
+
+    const style_manager = Adw.StyleManager.get_default();
+    function setColorScheme() {
+      const color_scheme = settings.get_int("color-scheme");
+      style_manager.set_color_scheme(color_scheme);
+    }
+    setColorScheme();
+    settings.connect("changed::color-scheme", setColorScheme);
+  }
 }
