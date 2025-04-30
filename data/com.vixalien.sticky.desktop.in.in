@@ -3,6 +3,7 @@ Comment=Pin notes to your desktop
 Name=Sticky Notes
 Exec=@app-id@
 Icon=@app-id@
+StartupWMClass=@app-id@
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Utility;
