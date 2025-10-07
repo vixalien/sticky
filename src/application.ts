@@ -97,7 +97,7 @@ export class Application extends Adw.Application {
       GLib.OptionFlags.NONE,
       GLib.OptionArg.NONE,
       "Show all notes",
-      null
+      null,
     );
 
     this.add_main_option(
@@ -106,7 +106,7 @@ export class Application extends Adw.Application {
       GLib.OptionFlags.NONE,
       GLib.OptionArg.NONE,
       "Print version information and exit",
-      null
+      null,
     );
 
     this.add_main_option(
@@ -115,7 +115,7 @@ export class Application extends Adw.Application {
       GLib.OptionFlags.NONE,
       GLib.OptionArg.NONE,
       "Open a new note",
-      null
+      null,
     );
 
     this.add_main_option(
@@ -124,7 +124,7 @@ export class Application extends Adw.Application {
       GLib.OptionFlags.NONE,
       GLib.OptionArg.NONE,
       "Only show the app if there is atleast one open note",
-      null
+      null,
     );
 
     this.connect("handle-local-options", (_app, options: GLib.VariantDict) => {
@@ -147,7 +147,7 @@ export class Application extends Adw.Application {
 
         if (open == false) {
           console.log(
-            "Sticky Notes not opening because the `-i` flag was passed and there are no open notes"
+            "Sticky Notes not opening because the `-i` flag was passed and there are no open notes",
           );
           this.quit();
         }
@@ -194,9 +194,8 @@ export class Application extends Adw.Application {
       });
 
       if (!has_one_open) {
-        const last_open_note = this.notes_array().sort((a, b) =>
-          b.modified.compare(a.modified)
-        )[0];
+        const last_open_note = this.notes_array()
+          .sort((a, b) => b.modified.compare(a.modified))[0];
 
         if (has_one_open) {
           this.show_note(last_open_note.uuid);
@@ -274,7 +273,11 @@ export class Application extends Adw.Application {
       const [uri] = parameter.get_string();
 
       if (uri === "null") return;
-      Gtk.show_uri(this.get_active_window(), uri, Gdk.CURRENT_TIME);
+      Gtk.show_uri(
+        this.get_active_window(),
+        uri,
+        Gdk.CURRENT_TIME,
+      );
     });
     this.add_action(open_link);
 
@@ -298,11 +301,12 @@ export class Application extends Adw.Application {
     // this.set_accels_for_action("app.cycle", ["<Primary><Shift>a"]);
     // this.set_accels_for_action("app.cycle-reverse", ["<Primary><Shift>b"]);
     this.set_accels_for_action("app.save", ["<Primary>s"]);
+    this.set_accels_for_action("win.delete", ["<Primary>d"]);
+
 
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
     this.set_accels_for_action("win.show-help-overlay", ["<Primary>question"]);
     this.set_accels_for_action("window.close", ["<Primary>w"]);
-    this.set_accels_for_action("win.delete", ["<Primary>d"]);
 
     this.set_accels_for_action("win.bold", ["<Primary>b"]);
     this.set_accels_for_action("win.italic", ["<Primary>i"]);
@@ -326,15 +330,16 @@ export class Application extends Adw.Application {
 
     const notes = Gtk.FilterListModel.new(
       this.notes_list,
-      filter
+      filter,
     ) as Gtk.FilterListModel<Note>;
 
     const presented = this.active_window;
 
     if (presented instanceof StickyNotes) {
       this.get_note_window(
-        notes.get_item(reverse ? notes.n_items - 1 : 0)!.uuid
-      )?.present();
+        notes.get_item(reverse ? notes.n_items - 1 : 0)!.uuid,
+      )
+        ?.present();
     } else if (presented instanceof Window) {
       let id;
 
@@ -375,7 +380,9 @@ export class Application extends Adw.Application {
         "Angelo Verlain <hey@vixalien.com>",
         "Christopher Davis <christopherdavis@gnome.org>",
       ],
-      designers: ["David Lapshin"],
+      designers: [
+        "David Lapshin",
+      ],
       // TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
       translator_credits: _("translator-credits"),
       copyright: "© 2023 Angelo Verlain, Christopher Davis",
@@ -422,7 +429,7 @@ export class Application extends Adw.Application {
   }
 
   find_open_note(uuid: string) {
-    return (this.find_open_window(uuid)?.note as Note) ?? undefined;
+    return this.find_open_window(uuid)?.note as Note ?? undefined;
   }
 
   changed_note(uuid: string) {
@@ -493,8 +500,8 @@ export class Application extends Adw.Application {
 
     if (!note) return;
 
-    const note_window = this.note_windows.find(
-      (window) => window.note.uuid === uuid
+    const note_window = this.note_windows.find((window) =>
+      window.note.uuid === uuid
     );
 
     if (note_window) {
