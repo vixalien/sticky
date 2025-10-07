@@ -303,7 +303,6 @@ export class Application extends Adw.Application {
     this.set_accels_for_action("app.save", ["<Primary>s"]);
     this.set_accels_for_action("win.delete", ["<Primary>d"]);
 
-
     this.set_accels_for_action("win.open-primary-menu", ["F10"]);
     this.set_accels_for_action("win.show-help-overlay", ["<Primary>question"]);
     this.set_accels_for_action("window.close", ["<Primary>w"]);
