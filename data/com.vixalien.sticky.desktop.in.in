@@ -9,3 +9,12 @@ Categories=GNOME;GTK;Utility;
 StartupNotify=true
 # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 Keywords=Sticky;Notes;Write;PostIt;
+Actions=new-note;all-notes;
+
+[Desktop Action new-note]
+Name=New Note
+Exec=@app-id@ -n
+
+[Desktop Action all-notes]
+Name=All Notes
+Exec=@app-id@ -a

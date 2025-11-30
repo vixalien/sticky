@@ -49,11 +49,25 @@
 		<control>tablet</control>
 	</recommends>
 	<releases>
+		<release version="0.2.7" date="2025-04-16">
+			<description>
+				<p>Fix an issue where launching the application would exit unsuccessfully</p>
+			</description>
+		</release>
+		<release version="0.2.6" date="2024-10-30">
+			<description translate="no">
+				<ul>
+					<li>Sticky Notes now have a more identifiable name in the activities view</li>
+					<li>You can now quickly open a new note or the all notes view from the command line</li>
+					<li>Added the Bulgarian, Hebrew, Hindi, German and Simplified Chinese translations</li>
+					<li>Writing more list items will be automatic if you start list items with the "-". "*" or "+" symbols for unordered lists, and numbers for ordered lists.</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.2.5" date="2024-03-20">
 			<description translate="no">
 				<p>a maintenace update for GNOME 46</p>
 				<ul>
-					<li>Writing more list items will be automatic if you start list items with the "-". "*" or "+" symbols for unordered lists, and numbers for ordered lists.</li>
 					<li>Added or updated the French, Occitan, Spanish, Italian and Turkish translations</li>
 				</ul>
 			</description>

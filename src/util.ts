@@ -51,6 +51,7 @@ export interface INote {
   v: 1;
   uuid: string;
   content: string;
+  title: string;
   style: Style;
   tags: ITag[];
   modified: Date;
@@ -94,14 +95,6 @@ const get_settings = () => ({
   CONFIRM_DELETE: settings.get_boolean("confirm-delete"),
 });
 
-const style_manager = Adw.StyleManager.get_default();
-function setColorScheme() {
-  const color_scheme = settings.get_int("color-scheme");
-  style_manager.set_color_scheme(color_scheme);
-}
-setColorScheme();
-settings.connect("changed::color-scheme", setColorScheme);
-
 export let SETTINGS = get_settings();
 
 settings.connect("changed", () => {
@@ -138,12 +131,12 @@ export class Tag extends GObject.Object {
 }
 
 export class Note extends GObject.Object {
-  private static tag_list_pspec = GObject.ParamSpec.object(
+  private static tag_list_pspec = GObject.param_spec_object(
     "tag_list",
     "Tags",
     "Tags of the note",
+    Gio.ListStore.$gtype,
     GObject.ParamFlags.READWRITE,
-    Gio.ListStore,
   );
 
   static $gtype: GObject.GType<Note>;
@@ -151,6 +144,7 @@ export class Note extends GObject.Object {
   v: 1;
   uuid: string;
   content: string;
+  title: string;
   style: Style;
   tag_list: Gio.ListStore<Tag>;
   modified: GLib.DateTime;
@@ -201,6 +195,7 @@ export class Note extends GObject.Object {
     this.v = note.v;
     this.uuid = note.uuid;
     this.content = note.content;
+    this.title = note.title;
     this.style = note.style;
     this.tag_list = Gio.ListStore.new(Tag.$gtype) as Gio.ListStore<Tag>;
     this.tags = note.tags;
@@ -211,6 +206,22 @@ export class Note extends GObject.Object {
     this.width = note.width;
     this.height = note.height;
     this.open = note.open ?? false;
+
+    this.bind_property_full(
+      "content",
+      this,
+      "title",
+      GObject.BindingFlags.SYNC_CREATE,
+      (_, content) => {
+        if (!content) return [true, ""];
+        let title = content.split("\n")[0].slice(0, 20);
+        if (title.length != content.length) title += "…";
+        return [true, title];
+      },
+      null
+    );
+
+
   }
 
   static generate() {
@@ -218,6 +229,7 @@ export class Note extends GObject.Object {
       v: 1,
       uuid: GLib.uuid_string_random(),
       content: "",
+      title: "",
       style: SETTINGS.DEFAULT_STYLE,
       tags: [],
       modified: new Date(),
@@ -232,6 +244,7 @@ export class Note extends GObject.Object {
       v: this.v,
       uuid: this.uuid,
       content: this.content,
+      title: this.title,
       style: this.style,
       tags: this.tags.map((tag) => ({
         name: tag.name,
@@ -250,6 +263,7 @@ export class Note extends GObject.Object {
       v: this.v,
       uuid: this.uuid,
       content: this.content,
+      title: this.title,
       style: this.style,
       tags: this.tags,
       modified: this.modified_date,
@@ -269,6 +283,8 @@ export class Note extends GObject.Object {
         uuid: GObject.ParamSpec.string("uuid", "UUID", "UUID of the note", GObject.ParamFlags.READWRITE, ""),
         // deno-fmt-ignore
         content: GObject.ParamSpec.string("content", "Content", "Content of the note", GObject.ParamFlags.READWRITE, ""),
+        // deno-fmt-ignore
+        title: GObject.ParamSpec.string("title", "Title", "Title of the note", GObject.ParamFlags.READWRITE, ""),
         // deno-fmt-ignore
         style: GObject.ParamSpec.int("style", "Style", "Style of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
         // deno-fmt-ignore

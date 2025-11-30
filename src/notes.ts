@@ -62,14 +62,14 @@ export class StickyNotes extends Adw.ApplicationWindow {
     );
   }
 
-  _search!: Gtk.Box;
-  _search_entry!: Gtk.SearchEntry;
-  _notes_box!: Gtk.ListView;
-  _no_notes!: Adw.StatusPage;
-  _no_results!: Adw.StatusPage;
-  _scrolled!: Gtk.ScrolledWindow;
-  _menu_button!: Gtk.MenuButton;
-  _stack!: Gtk.Stack;
+  declare _search: Gtk.Box;
+  declare _search_entry: Gtk.SearchEntry;
+  declare _notes_box: Gtk.ListView;
+  declare _no_notes: Adw.StatusPage;
+  declare _no_results: Adw.StatusPage;
+  declare _scrolled: Gtk.ScrolledWindow;
+  declare _menu_button: Gtk.MenuButton;
+  declare _stack: Gtk.Stack;
 
   cards: StickyNoteCard[] = [];
 
@@ -124,7 +124,7 @@ export class StickyNotes extends Adw.ApplicationWindow {
   }
 
   constructor(
-    params: Partial<Gtk.Window.ConstructorProperties>,
+    params: Partial<Gtk.Window.ConstructorProps>,
   ) {
     super(params);
 
