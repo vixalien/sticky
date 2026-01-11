@@ -1,0 +1,348 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sticky-notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# a <a>, 2026.
+# Ibai Oihanguren Sala <ibaios@disroot.org>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sticky-notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-08 11:43+0300\n"
+"PO-Revision-Date: 2026-01-09 16:38+0100\n"
+"Last-Translator: Ibai Oihanguren Sala <ibaios@disroot.org>\n"
+"Language-Team: Basque\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
+
+#: data/com.vixalien.sticky.desktop.in.in:3
+#: data/com.vixalien.sticky.appdata.xml.in.in:7
+msgid "Pin notes to your desktop"
+msgstr "Itsatsi oharrak mahaigainean"
+
+#: data/com.vixalien.sticky.desktop.in.in:4
+#: data/com.vixalien.sticky.appdata.xml.in.in:6 data/ui/notes.ui:32
+#: src/application.ts:68 src/application.ts:359
+msgid "Sticky Notes"
+msgstr "Sticky Notes"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.vixalien.sticky.desktop.in.in:12
+msgid "Sticky;Notes;Write;"
+msgstr "Sticky;Notes;Oharrak;Itsasgarriak;Itsaskorrak;Idatzi;"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:9
+msgid ""
+"Sticky Notes is a simple sticky notes app for GNOME. It allows you to create "
+"notes and format them."
+msgstr ""
+"Sticky Notes GNOMErako ohar itsaskorren aplikazioa sinplea da. Oharrak sortu "
+"eta hauei formatua ematea ahalbidetzen du."
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:13
+msgid "Current features:"
+msgstr "Uneko eginbideak:"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:15
+msgid "simple formatting (bold, italic, underline and strikethrough)"
+msgstr ""
+"formatua emateko aukera sinpleak (lodia, etzana, azpimarratua, marratua)"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:16
+msgid "notes are restored if they were open when the application was closed"
+msgstr ""
+"aplikazioa ixtean irekita zeuden oharrak berriro irekitzen dira hurrengo "
+"aldian"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:17
+msgid "changing color of notes"
+msgstr "oharren kolorea aldatzeko aukera"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:18
+msgid "dark theme support"
+msgstr "gai iluna erabilgarri"
+
+#: data/com.vixalien.sticky.appdata.xml.in.in:35
+msgid "Angelo Verlain"
+msgstr "Angelo Verlain"
+
+#: data/com.vixalien.sticky.gschema.xml.in:16
+msgid "Note window default height"
+msgstr "Ohar-leihoaren altuera lehenetsia"
+
+#: data/com.vixalien.sticky.gschema.xml.in:17
+msgid "The default height of a new sticky note"
+msgstr "Ohar berrien altuera lehenetsia"
+
+#: data/com.vixalien.sticky.gschema.xml.in:21
+msgid "Note window default width"
+msgstr "Ohar-leihoaren zabalera lehenetsia"
+
+#: data/com.vixalien.sticky.gschema.xml.in:22
+msgid "The default width of a new sticky note"
+msgstr "Ohar berrien zabalera lehenetsia"
+
+#: data/com.vixalien.sticky.gschema.xml.in:26
+msgid "Default note style"
+msgstr "Oharren estilo lehenetsia"
+
+#: data/com.vixalien.sticky.gschema.xml.in:27
+msgid "The default style assigned to a new note"
+msgstr "Ohar berriei emango zaien estilo lehenetsia"
+
+#: data/com.vixalien.sticky.gschema.xml.in:31
+msgid "Confirm note deletion"
+msgstr "Berretsi oharra ezabatzea"
+
+#: data/com.vixalien.sticky.gschema.xml.in:32
+msgid "Whether to confirm note deletion"
+msgstr "Oharrak ezabatu aurretik berrespena eskatuko den"
+
+#: data/com.vixalien.sticky.gschema.xml.in:36
+msgid "The selected color scheme"
+msgstr "Hautatutako kolore-eskema"
+
+#: data/com.vixalien.sticky.gschema.xml.in:37
+msgid "The selected color scheme. 0 = follow system style, 1 = light, 2 = dark"
+msgstr ""
+"Hautatutako kolore-eskema. 0 = jarraitu sistemaren estiloa, 1 = argia, 2 = "
+"iluna"
+
+#: data/com.vixalien.sticky.gschema.xml.in:43
+msgid "Show all notes"
+msgstr "Erakutsi ohar guztiak"
+
+#: data/com.vixalien.sticky.gschema.xml.in:44
+msgid "Whether to show the all notes window or note"
+msgstr "Ohar guztien leihoa erakutsiko den"
+
+#: data/ui/card.ui:13
+msgid "Note is Open"
+msgstr "Oharra irekita dago"
+
+#: data/ui/card.ui:39 data/ui/window.ui:142
+msgid "Delete Note"
+msgstr "Ezabatu oharra"
+
+#: data/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Orokorra"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Erakutsi lasterbideak"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Irten"
+
+#: data/ui/help-overlay.ui:28
+msgctxt "shortcut window"
+msgid "Notes"
+msgstr "Oharrak"
+
+#: data/ui/help-overlay.ui:31
+msgctxt "shortcut window"
+msgid "New Note"
+msgstr "Ohar berria"
+
+#: data/ui/help-overlay.ui:37
+msgctxt "shortcut window"
+msgid "Close Note"
+msgstr "Itxi oharra"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Nabigazioa"
+
+#: data/ui/help-overlay.ui:48
+msgctxt "shortcut window"
+msgid "Show all notes"
+msgstr "Erakutsi ohar guztiak"
+
+#: data/ui/help-overlay.ui:54
+msgctxt "shortcut window"
+msgid "Cycle between notes"
+msgstr "Nabigatu oharretan"
+
+#: data/ui/help-overlay.ui:60
+msgctxt "shortcut window"
+msgid "Cycle between notes in reverse order"
+msgstr "Nabigatu oharretan atzerantz"
+
+#: data/ui/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Editatzen"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Bold"
+msgstr "Lodia"
+
+#: data/ui/help-overlay.ui:77
+msgctxt "shortcut window"
+msgid "Italic"
+msgstr "Etzana"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Underline"
+msgstr "Azpimarratua"
+
+#: data/ui/help-overlay.ui:89
+msgctxt "shortcut window"
+msgid "Strikethrough"
+msgstr "Marratua"
+
+#: data/ui/notes.ui:18 data/ui/window.ui:23
+msgid "New Note"
+msgstr "Ohar berria"
+
+#: data/ui/notes.ui:26 data/ui/window.ui:30
+msgid "Main Menu"
+msgstr "Menu nagusia"
+
+#: data/ui/notes.ui:60
+msgid "Search notes…"
+msgstr "Bilatu oharrak…"
+
+#: data/ui/notes.ui:73
+msgid "No Notes"
+msgstr "Oharrik ez"
+
+#: data/ui/notes.ui:74
+msgid "After you create notes, they will appear here"
+msgstr "Oharrak sortzen dituzunean hemen azalduko dira"
+
+#: data/ui/notes.ui:78
+msgid "_New Note"
+msgstr "Ohar _berria"
+
+#: data/ui/notes.ui:93
+msgid "No Results"
+msgstr "Emaitzarik ez"
+
+#: data/ui/notes.ui:94
+msgid "Try a different search"
+msgstr "Saiatu beste bilaketa batekin"
+
+#: data/ui/notes.ui:126
+msgid "Keyboard Shortcuts"
+msgstr "Laster-teklak"
+
+#: data/ui/notes.ui:130
+msgid "About Sticky Notes"
+msgstr "Sticky Notesi buruz"
+
+#: data/ui/notes.ui:136
+msgid "Quit"
+msgstr "Irten"
+
+#: data/ui/theme-selector.ui:21 data/ui/theme-selector.ui:23
+msgid "Follow system style"
+msgstr "Jarraitu sistemaren estiloa"
+
+#: data/ui/theme-selector.ui:38 data/ui/theme-selector.ui:40
+msgid "Light style"
+msgstr "Estilo argia"
+
+#: data/ui/theme-selector.ui:56 data/ui/theme-selector.ui:58
+msgid "Dark style"
+msgstr "Estilo iluna"
+
+#: data/ui/window.ui:98
+msgid "Bold"
+msgstr "Lodia"
+
+#: data/ui/window.ui:106
+msgid "Italic"
+msgstr "Etzana"
+
+#: data/ui/window.ui:114
+msgid "Underline"
+msgstr "Azpimarratua"
+
+#: data/ui/window.ui:122
+msgid "Strikethrough"
+msgstr "Marratua"
+
+#: data/ui/window.ui:138
+msgid "All Notes"
+msgstr "Ohar guztiak"
+
+#. TRANSLATORS: eg. 'Translator Name <your.email@domain.com>' or 'Translator Name https://website.example'
+#: src/application.ts:371
+msgid "translator-credits"
+msgstr "Ibai Oihanguren Sala <ibaios@disroot.org>"
+
+#. focus_on_click: false,
+#: src/styleselector.ts:45
+#, c-format
+msgid "Switch to %s style"
+msgstr "Aldatu %s estilora"
+
+#: src/util.ts:74
+msgid "Yellow"
+msgstr "Horia"
+
+#: src/util.ts:75
+msgid "Pink"
+msgstr "Arrosa"
+
+#: src/util.ts:76
+msgid "Green"
+msgstr "Berdea"
+
+#: src/util.ts:77
+msgid "Purple"
+msgstr "Morea"
+
+#: src/util.ts:78
+msgid "Blue"
+msgstr "Urdina"
+
+#: src/util.ts:79
+msgid "Gray"
+msgstr "Grisa"
+
+#: src/util.ts:80
+msgid "Charcoal"
+msgstr "Ikatza"
+
+#: src/util.ts:81
+msgid "Window"
+msgstr "Leihoa"
+
+#: src/util.ts:293
+msgid "Delete Note?"
+msgstr "Oharra ezabatu?"
+
+#: src/util.ts:294
+msgid ""
+"This action cannot be undone. If you want to hide the note, you can close it "
+"instead."
+msgstr ""
+"Ekintza hau ezin da desegin. Oharra ezkutatu nahi baduzu, ezabatu beharrean "
+"itxi egin dezakezu."
+
+#: src/util.ts:296
+msgid "Cancel"
+msgstr "Utzi"
+
+#: src/util.ts:297
+msgid "Delete"
+msgstr "Ezabatu"
+
+#: src/view.ts:351
+msgid "Empty Note"
+msgstr "Ohar hutsa"
