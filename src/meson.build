@@ -4,6 +4,7 @@ sources = [
   'application.ts',
   'card.ts',
   'errors.ts',
+  'fontsize.ts',
   'main.ts',
   'notes.ts',
   'styleselector.ts',

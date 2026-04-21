@@ -1,0 +1,21 @@
+@import 'util.styl';
+
+fontsizeselector {
+  .font-size-item {
+    border-radius: 6px;
+    min-width: 50px;
+    min-height: 32px;
+
+    &.selected {
+      box-shadow: inset 0 0 0 2px at(accent_bg_color);
+    }
+  }
+
+  .font-size-tick {
+    color: at(accent_fg_color);
+    background-color: at(accent_bg_color);
+    border-radius: 9999px;
+    padding: 2px;
+    transform: translate(7px, 7px);
+  }
+}

@@ -132,6 +132,9 @@
       <item>
         <attribute name="custom">notestyleswitcher</attribute>
       </item>
+      <item>
+        <attribute name="custom">fontsize</attribute>
+      </item>
     </section>
     <section>
       <item>

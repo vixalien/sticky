@@ -43,5 +43,10 @@
 			<summary>Show all notes</summary>
 			<description>Whether to show the all notes window or note</description>
 		</key>
+		<key name="font-size" type="i">
+			<default>12</default>
+			<summary>Font size for notes</summary>
+			<description>The font size used for note text in points</description>
+		</key>
 	</schema>
 </schemalist>

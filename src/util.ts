@@ -53,6 +53,7 @@ export interface INote {
   content: string;
   title: string;
   style: Style;
+  font_size?: number;
   tags: ITag[];
   modified: Date;
   width: number;
@@ -93,6 +94,7 @@ const get_settings = () => ({
   DEFAULT_WIDTH: settings.get_int("default-width"),
   DEFAULT_HEIGHT: settings.get_int("default-height"),
   CONFIRM_DELETE: settings.get_boolean("confirm-delete"),
+  FONT_SIZE: settings.get_int("font-size"),
 });
 
 export let SETTINGS = get_settings();
@@ -146,6 +148,7 @@ export class Note extends GObject.Object {
   content: string;
   title: string;
   style: Style;
+  font_size: number;
   tag_list: Gio.ListStore<Tag>;
   modified: GLib.DateTime;
   width: number;
@@ -197,6 +200,7 @@ export class Note extends GObject.Object {
     this.content = note.content;
     this.title = note.title;
     this.style = note.style;
+    this.font_size = note.font_size ?? SETTINGS.FONT_SIZE;
     this.tag_list = Gio.ListStore.new(Tag.$gtype) as Gio.ListStore<Tag>;
     this.tags = note.tags;
     this.modified = GLib.DateTime.new_from_iso8601(
@@ -231,6 +235,7 @@ export class Note extends GObject.Object {
       content: "",
       title: "",
       style: SETTINGS.DEFAULT_STYLE,
+      font_size: SETTINGS.FONT_SIZE,
       tags: [],
       modified: new Date(),
       width: 300,
@@ -246,6 +251,7 @@ export class Note extends GObject.Object {
       content: this.content,
       title: this.title,
       style: this.style,
+      font_size: this.font_size,
       tags: this.tags.map((tag) => ({
         name: tag.name,
         start: tag.start,
@@ -265,6 +271,7 @@ export class Note extends GObject.Object {
       content: this.content,
       title: this.title,
       style: this.style,
+      font_size: this.font_size,
       tags: this.tags,
       modified: this.modified_date,
       width: this.width,
@@ -287,6 +294,8 @@ export class Note extends GObject.Object {
         title: GObject.ParamSpec.string("title", "Title", "Title of the note", GObject.ParamFlags.READWRITE, ""),
         // deno-fmt-ignore
         style: GObject.ParamSpec.int("style", "Style", "Style of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
+        // deno-fmt-ignore
+        font_size: GObject.ParamSpec.int("font_size", "Font Size", "Font size of the note", GObject.ParamFlags.READWRITE, 6, 72, 12),
         // deno-fmt-ignore
         tag_list: this.tag_list_pspec,
         // // deno-fmt-ignore

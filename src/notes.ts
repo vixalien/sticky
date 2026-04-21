@@ -32,6 +32,7 @@ import { StickyNoteCard } from "./card.js";
 import { Note, settings } from "./util.js";
 
 import { ThemeSelector } from "./themeselector.js";
+import { FontSizeSelector } from "./fontsize.js";
 
 export class StickyNotes extends Adw.ApplicationWindow {
   static {
@@ -197,6 +198,20 @@ export class StickyNotes extends Adw.ApplicationWindow {
     // Popover menu theme switcher
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
     popover.add_child(new ThemeSelector(), "themeswitcher");
+
+    const font_size_selector = new FontSizeSelector({
+      font_size: settings.get_int("font-size"),
+      label_text: _("Default font-size"),
+    });
+    font_size_selector.connect("font-size-changed", (_selector, size) => {
+      settings.set_int("font-size", size);
+    });
+
+    settings.connect("changed::font-size", () => {
+      font_size_selector.set_font_size(settings.get_int("font-size"));
+    });
+
+    popover.add_child(font_size_selector, "fontsize");
   }
 
   set_status() {

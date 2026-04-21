@@ -6,6 +6,7 @@
     <file>ui/theme-selector.ui</file>
     <file>ui/window.ui</file>
     <file alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
+    <file>font-size-selector.css</file>
     <file>style.css</file>
     <file>style-dark.css</file>
     <file>style-selector.css</file>

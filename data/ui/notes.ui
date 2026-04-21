@@ -120,6 +120,9 @@
       <item>
         <attribute name="custom">themeswitcher</attribute>
       </item>
+      <item>
+        <attribute name="custom">fontsize</attribute>
+      </item>
     </section>
     <section>
       <item>

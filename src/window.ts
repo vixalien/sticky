@@ -30,6 +30,7 @@ import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 
 import { StyleSelector } from "./styleselector.js";
+import { FontSizeSelector } from "./fontsize.js";
 import { confirm_delete, Note, Style } from "./util.js";
 import { WriteableStickyNote } from "./view.js";
 import { find } from "linkifyjs";
@@ -154,6 +155,7 @@ export class Window extends Adw.ApplicationWindow {
     this._text.buffer = this.view.buffer;
 
     this.add_actions();
+    this.apply_font_size();
 
     this.selector = new StyleSelector({ style: note.style });
     this.selector.connect("style-changed", (_selector, style) => {
@@ -161,8 +163,16 @@ export class Window extends Adw.ApplicationWindow {
       this.note.style = style;
     });
 
+    const font_size_selector = new FontSizeSelector({ font_size: this.note.font_size });
+    font_size_selector.connect("font-size-changed", (_selector, size) => {
+      this.note.font_size = size;
+      this.note.modified_date = new Date();
+      this.apply_font_size();
+    });
+
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
     popover.add_child(this.selector, "notestyleswitcher");
+    popover.add_child(font_size_selector, "fontsize");
   }
 
   last_revealer = false;
@@ -226,6 +236,16 @@ export class Window extends Adw.ApplicationWindow {
       action.connect("activate", () => this.view.apply_tag(tag));
       this.add_action(action);
     }
+  }
+
+  apply_font_size() {
+    const class_prefix = "font-size-";
+    for (const css of this._text.get_css_classes()) {
+      if (css.startsWith(class_prefix)) {
+        this._text.remove_css_class(css);
+      }
+    }
+    this._text.add_css_class(`${class_prefix}${this.note.font_size}`);
   }
 
   set_style(style: Style, is_init = false) {
