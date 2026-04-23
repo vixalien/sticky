@@ -504,3 +504,24 @@ msgstr "Nota vazia"
 
 #~ msgid "First beta release!"
 #~ msgstr "Primeiro lançamento beta!"
+
+#: src/application.ts:552
+msgid "Export Notes"
+msgstr "Exportar notas"
+
+#: src/application.ts:581
+msgid "Failed to Export Notes"
+msgstr "Falha ao exportar notas"
+
+#: src/application.ts:584 src/application.ts:613
+msgid "OK"
+msgstr "OK"
+
+#: src/application.ts:592
+msgid "Import Notes"
+msgstr "Importar notas"
+
+#: src/application.ts:610
+msgid "Failed to Import Notes"
+msgstr "Falha ao importar notas"
+

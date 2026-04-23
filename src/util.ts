@@ -41,6 +41,9 @@ Gio._promisify(
   "replace_contents_finish",
 );
 
+Gio._promisify(Gtk.FileDialog.prototype, "save", "save_finish");
+Gio._promisify(Gtk.FileDialog.prototype, "open", "open_finish");
+
 export interface ITag {
   name: string;
   start: number;

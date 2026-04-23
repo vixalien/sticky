@@ -127,6 +127,14 @@
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes">Import Notes…</attribute>
+        <attribute name="action">app.import</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Export All Notes…</attribute>
+        <attribute name="action">app.export</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">About Sticky Notes</attribute>
         <attribute name="action">app.about</attribute>
       </item>

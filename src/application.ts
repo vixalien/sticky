@@ -31,7 +31,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
-import { Note, settings } from "./util.js";
+import { INote, Note, settings } from "./util.js";
 import {
   delete_note,
   load_notes,
@@ -293,6 +293,14 @@ export class Application extends Adw.Application {
     save.connect("activate", () => this.save());
     this.add_action(save);
 
+    const export_notes = new Gio.SimpleAction({ name: "export" });
+    export_notes.connect("activate", () => this.export_notes());
+    this.add_action(export_notes);
+
+    const import_notes = new Gio.SimpleAction({ name: "import" });
+    import_notes.connect("activate", () => this.import_notes());
+    this.add_action(import_notes);
+
     this.add_action(settings.create_action("color-scheme"));
 
     this.set_accels_for_action("app.quit", ["<Primary>q"]);
@@ -537,6 +545,87 @@ export class Application extends Adw.Application {
     if (note.open === false) note.open = true;
 
     window.present();
+  }
+
+  async export_notes() {
+    const dialog = new Gtk.FileDialog({
+      title: _("Export Notes"),
+      initial_name: "notes.json",
+    });
+
+    try {
+      const file = await dialog.save(this.active_window, null);
+      if (!file) return;
+
+      const notes = this.notes_array();
+      const data = {
+        v: 1,
+        notes: notes.map((n) => n.toJSON()),
+      };
+      const encoder = new TextEncoder();
+      file.replace_contents(
+        encoder.encode(JSON.stringify(data, null, 2)),
+        null,
+        false,
+        Gio.FileCreateFlags.NONE,
+        null,
+      );
+    } catch (err) {
+      if (err instanceof GLib.Error && err.matches(Gio.io_error_quark(), Gio.IOErrorEnum.CANCELLED)) {
+        return;
+      }
+      console.error("Failed to export notes:", err);
+      const error_dialog = Adw.MessageDialog.new(
+        this.active_window,
+        _("Failed to Export Notes"),
+        err instanceof Error ? err.message : String(err)
+      );
+      error_dialog.add_response("ok", _("OK"));
+      error_dialog.present();
+    }
+  }
+
+  async import_notes() {
+    const dialog = new Gtk.FileDialog({
+      title: _("Import Notes"),
+    });
+
+    try {
+      const file = await dialog.open(this.active_window, null);
+      if (!file) return;
+
+      const [success, contents] = file.load_contents(null);
+      if (!success) return;
+
+      const decoder = new TextDecoder();
+      const data = JSON.parse(decoder.decode(contents));
+
+      if (data.v !== 1 || !Array.isArray(data.notes)) return;
+
+      data.notes.forEach((noteData: INote) => {
+        // Avoid duplicates by UUID
+        if (!this.find_note(noteData.uuid)) {
+          const note = new Note(noteData);
+          note.connect("notify::modified", () => save_note(note));
+          note.connect("notify::open", () => save_note(note));
+          this.notes_list.append(note);
+          save_note(note);
+        }
+      });
+      this.sort_notes();
+    } catch (err) {
+      if (err instanceof GLib.Error && err.matches(Gio.io_error_quark(), Gio.IOErrorEnum.CANCELLED)) {
+        return;
+      }
+      console.error("Failed to import notes:", err);
+      const error_dialog = Adw.MessageDialog.new(
+        this.active_window,
+        _("Failed to Import Notes"),
+        err instanceof Error ? err.message : String(err)
+      );
+      error_dialog.add_response("ok", _("OK"));
+      error_dialog.present();
+    }
   }
 
   vfunc_startup() {
