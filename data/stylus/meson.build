@@ -1,5 +1,4 @@
 stylus_sources = [
-  'font-size-selector.styl',
   'style.styl',
   'style-selector.styl',
   'style-dark.styl',

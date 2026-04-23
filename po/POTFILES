@@ -10,7 +10,6 @@ data/ui/theme-selector.ui
 data/ui/window.ui
 src/application.ts
 src/card.ts
-src/fontsize.ts
 src/main.ts
 src/notes.ts
 src/styleselector.ts

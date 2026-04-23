@@ -30,7 +30,6 @@ import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 
 import { StyleSelector } from "./styleselector.js";
-import { FontSizeSelector } from "./fontsize.js";
 import { confirm_delete, Note, Style } from "./util.js";
 import { WriteableStickyNote } from "./view.js";
 import { find } from "linkifyjs";
@@ -163,16 +162,8 @@ export class Window extends Adw.ApplicationWindow {
       this.note.style = style;
     });
 
-    const font_size_selector = new FontSizeSelector({ font_size: this.note.font_size });
-    font_size_selector.connect("font-size-changed", (_selector, size) => {
-      this.note.font_size = size;
-      this.note.modified_date = new Date();
-      this.apply_font_size();
-    });
-
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
     popover.add_child(this.selector, "notestyleswitcher");
-    popover.add_child(font_size_selector, "fontsize");
   }
 
   last_revealer = false;
@@ -230,6 +221,22 @@ export class Window extends Adw.ApplicationWindow {
     const delete_ = Gio.SimpleAction.new("delete", null);
     delete_.connect("activate", () => this.delete());
     this.add_action(delete_);
+
+    const set_font_size = Gio.SimpleAction.new_stateful(
+      "set-font-size",
+      GLib.VariantType.new("i"),
+      GLib.Variant.new_int32(this.note.font_size),
+    );
+    set_font_size.connect("change-state", (_, value) => {
+      if (!value) return;
+
+      const size = (value as GLib.Variant).get_int32();
+      this.note.font_size = size;
+      this.note.modified_date = new Date();
+      this.apply_font_size();
+      set_font_size.set_state(GLib.Variant.new_int32(size));
+    });
+    this.add_action(set_font_size);
 
     for (const [name, tag] of this.view.actions) {
       const action = Gio.SimpleAction.new(name, null);
