@@ -120,6 +120,33 @@
       <item>
         <attribute name="custom">themeswitcher</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">Default Font Size</attribute>
+        <link name="submenu">
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Small</attribute>
+              <attribute name="action">win.font-size</attribute>
+              <attribute name="target" type="i">10</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Normal</attribute>
+              <attribute name="action">win.font-size</attribute>
+              <attribute name="target" type="i">12</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Large</attribute>
+              <attribute name="action">win.font-size</attribute>
+              <attribute name="target" type="i">14</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Extra Large</attribute>
+              <attribute name="action">win.font-size</attribute>
+              <attribute name="target" type="i">16</attribute>
+            </item>
+          </section>
+        </link>
+      </item>
     </section>
     <section>
       <item>

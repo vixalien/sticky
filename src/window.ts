@@ -154,6 +154,7 @@ export class Window extends Adw.ApplicationWindow {
     this._text.buffer = this.view.buffer;
 
     this.add_actions();
+    this.apply_font_size();
 
     this.selector = new StyleSelector({ style: note.style });
     this.selector.connect("style-changed", (_selector, style) => {
@@ -221,11 +222,37 @@ export class Window extends Adw.ApplicationWindow {
     delete_.connect("activate", () => this.delete());
     this.add_action(delete_);
 
+    const set_font_size = Gio.SimpleAction.new_stateful(
+      "set-font-size",
+      GLib.VariantType.new("i"),
+      GLib.Variant.new_int32(this.note.font_size),
+    );
+    set_font_size.connect("change-state", (_, value) => {
+      if (!value) return;
+
+      const size = (value as GLib.Variant).get_int32();
+      this.note.font_size = size;
+      this.note.modified_date = new Date();
+      this.apply_font_size();
+      set_font_size.set_state(GLib.Variant.new_int32(size));
+    });
+    this.add_action(set_font_size);
+
     for (const [name, tag] of this.view.actions) {
       const action = Gio.SimpleAction.new(name, null);
       action.connect("activate", () => this.view.apply_tag(tag));
       this.add_action(action);
     }
+  }
+
+  apply_font_size() {
+    const class_prefix = "font-size-";
+    for (const css of this._text.get_css_classes()) {
+      if (css.startsWith(class_prefix)) {
+        this._text.remove_css_class(css);
+      }
+    }
+    this._text.add_css_class(`${class_prefix}${this.note.font_size}`);
   }
 
   set_style(style: Style, is_init = false) {

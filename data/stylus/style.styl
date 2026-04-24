@@ -18,6 +18,12 @@ for color, variables in colors {
 .text-view {
   background-color: transparent;
   color: inherit;
+
+  for size in 10 12 14 16 {
+    &.font-size-{size} {
+      font-size: (size)pt;
+    }
+  }
 }
 
 toolbarview.note-window {

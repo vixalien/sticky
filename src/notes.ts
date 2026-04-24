@@ -194,6 +194,8 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
     this.set_status();
 
+    this.add_action(settings.create_action("font-size"));
+
     // Popover menu theme switcher
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
     popover.add_child(new ThemeSelector(), "themeswitcher");
