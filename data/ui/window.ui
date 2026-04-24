@@ -152,7 +152,7 @@
               <attribute name="target" type="i">14</attribute>
             </item>
             <item>
-              <attribute name="label" translatable="yes">X-Large</attribute>
+              <attribute name="label" translatable="yes">Extra Large</attribute>
               <attribute name="action">win.set-font-size</attribute>
               <attribute name="target" type="i">16</attribute>
             </item>
