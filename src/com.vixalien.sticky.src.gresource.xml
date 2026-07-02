@@ -9,6 +9,7 @@
     <file>styleselector.js</file>
     <file>store.js</file>
     <file>themeselector.js</file>
+    <file>trayicon.js</file>
     <file>view.js</file>
     <file>window.js</file>
     <file>util.js</file>

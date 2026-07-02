@@ -16,7 +16,14 @@
 			<li>notes are restored if they were open when the application was closed</li>
 			<li>changing color of notes</li>
 			<li>dark theme support</li>
+			<li>tray icon with quick access to all notes</li>
 		</ul>
+		<p>
+			The tray icon requires a status notifier host: it works out of the box on
+			KDE Plasma and most other desktop environments, but on GNOME you need to
+			install and enable the "AppIndicator and KStatusNotifierItem Support"
+			extension to see it.
+		</p>
 	</description>
 	<screenshots>
 		<screenshot type="default">

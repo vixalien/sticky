@@ -18,6 +18,7 @@
     "--device=dri",
     "--socket=wayland",
     "--socket=fallback-x11",
+    "--talk-name=org.kde.StatusNotifierWatcher",
     "--env=GJS_DISABLE_JIT=1"
   ],
   "cleanup": [
