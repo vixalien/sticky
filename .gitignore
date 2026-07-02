@@ -6,3 +6,7 @@ node_modules/
 # local flatpak build
 /repo
 /.flatpak-builder/
+
+# local nix build
+/build/
+/result

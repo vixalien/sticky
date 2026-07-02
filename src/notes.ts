@@ -29,7 +29,7 @@ import Adw from "gi://Adw";
 
 import type { Application } from "./application.js";
 import { StickyNoteCard } from "./card.js";
-import { Note, settings } from "./util.js";
+import { compare_notes_newest_first, Note, settings } from "./util.js";
 
 import { ThemeSelector } from "./themeselector.js";
 
@@ -156,11 +156,9 @@ export class StickyNotes extends Adw.ApplicationWindow {
       filter,
     );
 
-    this.sorter = Gtk.CustomSorter.new((note1, note2) => {
-      const date1 = (note1 as Note).modified;
-      const date2 = (note2 as Note).modified;
-      return date2.compare(date1);
-    });
+    this.sorter = Gtk.CustomSorter.new((note1, note2) =>
+      compare_notes_newest_first(note1 as Note, note2 as Note)
+    );
 
     const sorter_model = Gtk.SortListModel.new(filter_model, this.sorter);
 
@@ -197,6 +195,10 @@ export class StickyNotes extends Adw.ApplicationWindow {
     // Popover menu theme switcher
     const popover = this._menu_button.get_popover() as Gtk.PopoverMenu;
     popover.add_child(new ThemeSelector(), "themeswitcher");
+  }
+
+  focus_search() {
+    this._search_entry.grab_focus();
   }
 
   set_status() {

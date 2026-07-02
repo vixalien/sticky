@@ -302,6 +302,10 @@ export class Note extends GObject.Object {
   }
 }
 
+// newest first; the order shared by the all notes view and the tray menu
+export const compare_notes_newest_first = (note1: Note, note2: Note) =>
+  note2.modified.compare(note1.modified);
+
 export const confirm_delete = (window: Gtk.Window, cb: () => void) => {
   if (SETTINGS.CONFIRM_DELETE) {
     const dialog = Adw.MessageDialog.new(

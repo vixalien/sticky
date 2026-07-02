@@ -31,7 +31,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
 
 import { StickyNotes } from "./notes.js";
-import { Note, settings } from "./util.js";
+import { compare_notes_newest_first, Note, settings } from "./util.js";
 import {
   delete_note,
   load_notes,
@@ -40,10 +40,13 @@ import {
   save_notes,
 } from "./store.js";
 import { Window } from "./window.js";
+import { TrayIcon } from "./trayicon.js";
 
 export class Application extends Adw.Application {
   private window: StickyNotes | null = null;
   private note_windows: Window[] = [];
+  private tray: TrayIcon | null = null;
+  private tray_holding = false;
 
   static {
     GObject.registerClass(this);
@@ -195,7 +198,7 @@ export class Application extends Adw.Application {
 
       if (!has_one_open) {
         const last_open_note = this.notes_array()
-          .sort((a, b) => b.modified.compare(a.modified))[0];
+          .sort(compare_notes_newest_first)[0];
 
         if (has_one_open) {
           this.show_note(last_open_note.uuid);
@@ -539,8 +542,29 @@ export class Application extends Adw.Application {
     window.present();
   }
 
+  search_notes() {
+    this.all_notes();
+    this.window?.focus_search();
+  }
+
   vfunc_startup() {
     super.vfunc_startup();
+
+    this.tray = new TrayIcon(this);
+    // keep the application running without windows while the tray icon is
+    // shown, so that it stays reachable from the tray
+    this.tray.registered_changed = (registered) => {
+      if (registered === this.tray_holding) return;
+
+      if (registered) {
+        this.hold();
+      } else {
+        this.release();
+      }
+
+      this.tray_holding = registered;
+    };
+    this.tray.start();
 
     const style_manager = Adw.StyleManager.get_default();
     function setColorScheme() {

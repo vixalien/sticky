@@ -13,6 +13,7 @@ src/card.ts
 src/main.ts
 src/notes.ts
 src/styleselector.ts
+src/trayicon.ts
 src/util.ts
 src/view.ts
 src/window.ts

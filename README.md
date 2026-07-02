@@ -13,6 +13,18 @@ written in GJS and uses GTK4.
 
 </div>
 
+## Tray icon
+
+Sticky Notes provides a tray icon with quick access to all your notes. It uses
+the freedesktop [StatusNotifierItem][spec] specification, which KDE Plasma and
+most other desktop environments support out of the box. GNOME Shell does not:
+to see the tray icon on GNOME, install and enable the
+[AppIndicator and KStatusNotifierItem Support][extension] extension.
+Without it, the app still works normally — the tray icon just won't be shown.
+
+[spec]: https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/
+[extension]: https://extensions.gnome.org/extension/615/appindicator-support/
+
 ## Installation
 
 ### From Flathub
