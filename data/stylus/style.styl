@@ -55,6 +55,20 @@ toolbarview.note-window {
         color: info.fg;
         background-color: info.header;
       }
+
+      // the title is edited in place, so the entry it turns into keeps the
+      // colors of the note rather than standing out against its header
+      .note-title text {
+        color: info.fg;
+        background-color: info.bg;
+
+        selection:focus-within {
+          background-color: gtkalpha(
+            info.ink,
+            0.3
+          );
+        }
+      }
     }
   }
 }

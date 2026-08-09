@@ -37,6 +37,7 @@ export class StickyNoteCard extends Gtk.Box {
       Template: "resource:///com/vixalien/sticky/ui/card.ui",
       InternalChildren: [
         "modified_label",
+        "title_label",
         "view_image",
         "delete_button",
         "scrolled",
@@ -58,6 +59,7 @@ export class StickyNoteCard extends Gtk.Box {
 
   declare _scrolled: Gtk.ScrolledWindow;
   declare _modified_label: Gtk.Label;
+  declare _title_label: Gtk.Label;
   declare _view_image: Gtk.Image;
   declare _delete_button: Gtk.Button;
 
@@ -86,7 +88,19 @@ export class StickyNoteCard extends Gtk.Box {
 
     this._note = this.view.note = note;
 
+    this.update_title_label();
     this.update_modified_label();
+  }
+
+  /**
+   * Shows the note's title, but only when it has one of its own: the content
+   * it would otherwise be derived from is right below it in the card.
+   */
+  update_title_label() {
+    const title = this._note?.title;
+
+    this._title_label.label = title ?? "";
+    this._title_label.visible = !!title;
   }
 
   get uuid() {

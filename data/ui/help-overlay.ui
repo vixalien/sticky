@@ -34,6 +34,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Rename Note</property>
+                <property name="action-name">win.rename</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Close Note</property>
                 <property name="action-name">window.close</property>
               </object>

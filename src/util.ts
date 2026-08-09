@@ -86,6 +86,17 @@ export const styles = Object.values(Style).filter(
   (style) => typeof style === "number",
 ) as Style[];
 
+/**
+ * The title a note falls back to when it hasn't been given one: the start of
+ * its first line.
+ */
+export const derive_title = (content: string) => {
+  if (!content) return "";
+  let title = content.split("\n")[0].slice(0, 20);
+  if (title.length != content.length) title += "…";
+  return title;
+};
+
 export const settings = new Gio.Settings({ schema_id: "com.vixalien.sticky" });
 
 const get_settings = () => ({
@@ -144,7 +155,16 @@ export class Note extends GObject.Object {
   v: 1;
   uuid: string;
   content: string;
+  /**
+   * The title the note was given, or an empty string when it has none and
+   * follows its content instead. Use `display_title` to show a note's title.
+   */
   title: string;
+  /**
+   * The title as shown to the user: the note's own title, falling back to one
+   * derived from its content. Derived, so never set it directly.
+   */
+  display_title: string;
   style: Style;
   tag_list: Gio.ListStore<Tag>;
   modified: GLib.DateTime;
@@ -195,7 +215,11 @@ export class Note extends GObject.Object {
     this.v = note.v;
     this.uuid = note.uuid;
     this.content = note.content;
-    this.title = note.title;
+    // notes saved before titles could be edited stored the derived title, so
+    // drop those: they are meant to keep following the content
+    const title = note.title ?? "";
+    this.title = title === derive_title(note.content) ? "" : title;
+    this.display_title = this.title || derive_title(this.content);
     this.style = note.style;
     this.tag_list = Gio.ListStore.new(Tag.$gtype) as Gio.ListStore<Tag>;
     this.tags = note.tags;
@@ -207,21 +231,14 @@ export class Note extends GObject.Object {
     this.height = note.height;
     this.open = note.open ?? false;
 
-    this.bind_property_full(
-      "content",
-      this,
-      "title",
-      GObject.BindingFlags.SYNC_CREATE,
-      (_, content) => {
-        if (!content) return [true, ""];
-        let title = content.split("\n")[0].slice(0, 20);
-        if (title.length != content.length) title += "…";
-        return [true, title];
-      },
-      null
-    );
+    const update_display_title = () => {
+      const display_title = this.title || derive_title(this.content);
+      if (display_title === this.display_title) return;
+      this.display_title = display_title;
+    };
 
-
+    this.connect("notify::title", update_display_title);
+    this.connect("notify::content", update_display_title);
   }
 
   static generate() {
@@ -285,6 +302,8 @@ export class Note extends GObject.Object {
         content: GObject.ParamSpec.string("content", "Content", "Content of the note", GObject.ParamFlags.READWRITE, ""),
         // deno-fmt-ignore
         title: GObject.ParamSpec.string("title", "Title", "Title of the note", GObject.ParamFlags.READWRITE, ""),
+        // deno-fmt-ignore
+        display_title: GObject.ParamSpec.string("display-title", "Display Title", "Title of the note, or one derived from its content", GObject.ParamFlags.READWRITE, ""),
         // deno-fmt-ignore
         style: GObject.ParamSpec.int("style", "Style", "Style of the note", GObject.ParamFlags.READWRITE, 0, 100, 0),
         // deno-fmt-ignore

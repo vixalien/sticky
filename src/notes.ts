@@ -102,6 +102,10 @@ export class StickyNotes extends Adw.ApplicationWindow {
       this.sorter.changed(Gtk.SorterChange.DIFFERENT);
     });
 
+    note.connect("notify::title", () => {
+      card.update_title_label();
+    });
+
     note.connect("notify::open", (_) => {
       card.show_visible_image = note.open;
     });
@@ -146,9 +150,9 @@ export class StickyNotes extends Adw.ApplicationWindow {
 
     const filter = Gtk.CustomFilter.new((note) => {
       const query = this.query;
-      const content = (note as Note).content.toLowerCase();
+      const { title, content } = note as Note;
       if (!query.replace(/\s/g, "")) return true;
-      return content.includes(query);
+      return `${title}\n${content}`.toLowerCase().includes(query);
     });
 
     const filter_model = Gtk.FilterListModel.new(
