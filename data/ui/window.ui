@@ -91,35 +91,73 @@
               <class name="toolbar" />
             </style>
             <child>
-              <object class="GtkToggleButton" id="bold_button">
-                <property name="icon-name">format-text-bold-symbolic</property>
-                <property name="action-name">win.bold</property>
-                <property name="focus-on-click">false</property>
-                <property name="tooltip-text" translatable="yes">Bold</property>
+              <object class="GtkBox">
+                <style>
+                  <class name="linked" />
+                </style>
+                <child>
+                  <object class="GtkToggleButton" id="bold_button">
+                    <property name="icon-name">format-text-bold-symbolic</property>
+                    <property name="action-name">win.bold</property>
+                    <property name="focus-on-click">false</property>
+                    <property name="tooltip-text" translatable="yes">Bold</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="italic_button">
+                    <property name="icon-name">format-text-italic-symbolic</property>
+                    <property name="action-name">win.italic</property>
+                    <property name="focus-on-click">false</property>
+                    <property name="tooltip-text" translatable="yes">Italic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="underline_button">
+                    <property name="icon-name">format-text-underline-symbolic</property>
+                    <property name="action-name">win.underline</property>
+                    <property name="focus-on-click">false</property>
+                    <property name="tooltip-text" translatable="yes">Underline</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="strikethrough_button">
+                    <property name="icon-name">format-text-strikethrough-symbolic</property>
+                    <property name="action-name">win.strikethrough</property>
+                    <property name="focus-on-click">false</property>
+                    <property name="tooltip-text" translatable="yes">Strikethrough</property>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="GtkToggleButton" id="italic_button">
-                <property name="icon-name">format-text-italic-symbolic</property>
-                <property name="action-name">win.italic</property>
-                <property name="focus-on-click">false</property>
-                <property name="tooltip-text" translatable="yes">Italic</property>
+              <object class="GtkBox">
+                <style>
+                  <class name="linked" />
+                </style>
+                <child>
+                  <object class="GtkButton" id="checklist_button">
+                    <property name="icon-name">checkbox-checked-symbolic</property>
+                    <property name="action-name">win.checklist</property>
+                    <property name="focus-on-click">false</property>
+                    <property name="tooltip-text" translatable="yes">Toggle Checklist</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="bullets_button">
+                    <property name="icon-name">view-list-bullet-symbolic</property>
+                    <property name="action-name">win.bullets</property>
+                    <property name="focus-on-click">false</property>
+                    <property name="tooltip-text" translatable="yes">Toggle Bullets</property>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="GtkToggleButton" id="underline_button">
-                <property name="icon-name">format-text-underline-symbolic</property>
-                <property name="action-name">win.underline</property>
+              <object class="GtkMenuButton" id="format_button">
+                <property name="icon-name">format-text-rich-symbolic</property>
+                <property name="menu-model">format_menu</property>
                 <property name="focus-on-click">false</property>
-                <property name="tooltip-text" translatable="yes">Underline</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkToggleButton" id="strikethrough_button">
-                <property name="icon-name">format-text-strikethrough-symbolic</property>
-                <property name="action-name">win.strikethrough</property>
-                <property name="focus-on-click">false</property>
-                <property name="tooltip-text" translatable="yes">Strikethrough</property>
+                <property name="tooltip-text" translatable="yes">More Formatting</property>
               </object>
             </child>
           </object>
@@ -127,6 +165,45 @@
       </object>
     </child>
   </template>
+  <menu id="format_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Header</attribute>
+        <attribute name="action">win.header</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Highlight</attribute>
+        <attribute name="action">win.highlight</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Fixed Width</attribute>
+        <attribute name="action">win.monospace</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="label" translatable="yes">Text Size</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Small</attribute>
+        <attribute name="action">win.text-size</attribute>
+        <attribute name="target">small</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Normal</attribute>
+        <attribute name="action">win.text-size</attribute>
+        <attribute name="target">normal</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Large</attribute>
+        <attribute name="action">win.text-size</attribute>
+        <attribute name="target">large</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Larger</attribute>
+        <attribute name="action">win.text-size</attribute>
+        <attribute name="target">larger</attribute>
+      </item>
+    </section>
+  </menu>
   <menu id="app_menu">
     <section>
       <item>

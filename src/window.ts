@@ -31,7 +31,7 @@ import GLib from "gi://GLib";
 
 import { StyleSelector } from "./styleselector.js";
 import { confirm_delete, Note, Style } from "./util.js";
-import { WriteableStickyNote } from "./view.js";
+import { TextSize, WriteableStickyNote } from "./view.js";
 import { find } from "linkifyjs";
 import { Application } from "./application.js";
 
@@ -44,6 +44,7 @@ export class Window extends Adw.ApplicationWindow {
   declare _underline_button: Gtk.ToggleButton;
   declare _italic_button: Gtk.ToggleButton;
   declare _strikethrough_button: Gtk.ToggleButton;
+  declare _format_button: Gtk.MenuButton;
   declare _action_button: Gtk.ToggleButton;
   declare _action_revealer: Gtk.Revealer;
 
@@ -68,6 +69,7 @@ export class Window extends Adw.ApplicationWindow {
           "underline_button",
           "italic_button",
           "strikethrough_button",
+          "format_button",
           "menu_button",
           "action_revealer",
           "action_button",
@@ -152,6 +154,7 @@ export class Window extends Adw.ApplicationWindow {
     });
 
     this._text.buffer = this.view.buffer;
+    this.view.attach_checkbox_gesture(this._text);
 
     this.add_actions();
 
@@ -204,15 +207,37 @@ export class Window extends Adw.ApplicationWindow {
     );
   }
 
+  /**
+   * Formats that are only reachable from the formatting menu. They keep their
+   * state so the menu item can show whether they are on, in place of the
+   * toolbar button the other formats have.
+   */
+  static menu_formats = ["monospace", "highlight", "header"];
+
   check_tags() {
     for (const [name, tag] of this.view.actions) {
-      const button =
-        this[`_${name}_button` as keyof typeof this] as Gtk.ToggleButton;
       const active = this.view.has_tag(tag) !== false;
-      if (active === button.active) {
-        continue;
+
+      const button = this[`_${name}_button` as keyof typeof this] as
+        | Gtk.ToggleButton
+        | undefined;
+
+      if (button && button.active !== active) {
+        button.active = active;
       }
-      button.active = active;
+
+      const action = this.lookup_action(name) as Gio.SimpleAction | null;
+
+      if (action?.state_type && action.get_state()?.get_boolean() !== active) {
+        action.set_state(GLib.Variant.new_boolean(active));
+      }
+    }
+
+    const size = this.view.get_text_size();
+    const size_action = this.lookup_action("text-size") as Gio.SimpleAction;
+
+    if (size_action.get_state()?.deepUnpack<string>() !== size) {
+      size_action.set_state(GLib.Variant.new_string(size));
     }
   }
 
@@ -222,10 +247,41 @@ export class Window extends Adw.ApplicationWindow {
     this.add_action(delete_);
 
     for (const [name, tag] of this.view.actions) {
-      const action = Gio.SimpleAction.new(name, null);
-      action.connect("activate", () => this.view.apply_tag(tag));
+      const action = Window.menu_formats.includes(name)
+        ? new Gio.SimpleAction({ name, state: GLib.Variant.new_boolean(false) })
+        : Gio.SimpleAction.new(name, null);
+
+      action.connect("activate", () => {
+        this.view.apply_tag(tag);
+        this.check_tags();
+      });
       this.add_action(action);
     }
+
+    const text_size = new Gio.SimpleAction({
+      name: "text-size",
+      parameter_type: GLib.VariantType.new("s"),
+      state: GLib.Variant.new_string("normal"),
+    });
+    text_size.connect("activate", (_action, parameter) => {
+      if (!parameter) return;
+
+      this.view.set_text_size(parameter.deepUnpack<TextSize>());
+      this.check_tags();
+    });
+    this.add_action(text_size);
+
+    const checklist = Gio.SimpleAction.new("checklist", null);
+    checklist.connect("activate", () => this.view.toggle_checklist());
+    this.add_action(checklist);
+
+    const bullets = Gio.SimpleAction.new("bullets", null);
+    bullets.connect("activate", () => this.view.toggle_bullets());
+    this.add_action(bullets);
+
+    const toggle_checkbox = Gio.SimpleAction.new("toggle-checkbox", null);
+    toggle_checkbox.connect("activate", () => this.view.toggle_checkboxes());
+    this.add_action(toggle_checkbox);
   }
 
   set_style(style: Style, is_init = false) {

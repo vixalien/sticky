@@ -311,6 +311,18 @@ export class Application extends Adw.Application {
     this.set_accels_for_action("win.italic", ["<Primary>i"]);
     this.set_accels_for_action("win.underline", ["<Primary>u"]);
     this.set_accels_for_action("win.strikethrough", ["<Primary>t"]);
+    this.set_accels_for_action("win.monospace", ["<Primary>m"]);
+    this.set_accels_for_action("win.highlight", ["<Primary>g"]);
+    // <Primary>h already shows all notes
+    this.set_accels_for_action("win.header", ["<Primary><Shift>h"]);
+    this.set_accels_for_action("win.checklist", ["<Primary>e"]);
+    this.set_accels_for_action("win.bullets", ["<Primary>l"]);
+    this.set_accels_for_action("win.toggle-checkbox", ["<Primary>Return"]);
+
+    this.set_accels_for_action("win.text-size::small", ["<Primary>2"]);
+    this.set_accels_for_action("win.text-size::normal", ["<Primary>3"]);
+    this.set_accels_for_action("win.text-size::large", ["<Primary>4"]);
+    this.set_accels_for_action("win.text-size::larger", ["<Primary>5"]);
   }
 
   get_note_window(uuid: string) {

@@ -33,6 +33,22 @@ import { find } from "linkifyjs";
 import { ITag, Note } from "./util.js";
 import { Style } from "./util.js";
 
+/**
+ * Checklist and bullet items are stored as plain characters at the start of a
+ * line. This keeps notes readable when copied elsewhere, and means the note
+ * format doesn't change: a checklist survives saving, searching and the
+ * read-only previews shown in the "All Notes" window for free.
+ */
+export const UNCHECKED = "☐";
+export const CHECKED = "☑";
+export const BULLET = "•";
+
+const CHECK_PREFIXES = [`${UNCHECKED} `, `${CHECKED} `];
+const BULLET_PREFIXES = [`${BULLET} `];
+const LIST_PREFIXES = [...CHECK_PREFIXES, ...BULLET_PREFIXES];
+
+export type TextSize = "normal" | "small" | "large" | "larger";
+
 class AbstractStickyNote extends Gtk.TextView {
   static {
     GObject.registerClass(
@@ -57,14 +73,47 @@ class AbstractStickyNote extends Gtk.TextView {
   underline_tag = Gtk.TextTag.new("underline");
   italic_tag = Gtk.TextTag.new("italic");
   strikethrough_tag = Gtk.TextTag.new("strikethrough");
+  monospace_tag = Gtk.TextTag.new("monospace");
+  highlight_tag = Gtk.TextTag.new("highlight");
+  header_tag = Gtk.TextTag.new("header");
+  small_tag = Gtk.TextTag.new("small");
+  large_tag = Gtk.TextTag.new("large");
+  larger_tag = Gtk.TextTag.new("larger");
   link_tag = Gtk.TextTag.new("link");
+
+  /**
+   * Draws the list markers larger than the text they sit next to, so a
+   * checkbox looks like something you can tick.
+   *
+   * It is deliberately nameless: the note format stores tags by name, and this
+   * one is presentation the app re-applies on its own rather than something
+   * worth saving.
+   */
+  marker_tag = Gtk.TextTag.new(null);
 
   actions = [
     ["bold", this.bold_tag],
     ["underline", this.underline_tag],
     ["italic", this.italic_tag],
     ["strikethrough", this.strikethrough_tag],
+    ["monospace", this.monospace_tag],
+    ["highlight", this.highlight_tag],
+    ["header", this.header_tag],
   ] as [string, Gtk.TextTag][];
+
+  size_tags = [
+    ["small", this.small_tag],
+    ["large", this.large_tag],
+    ["larger", this.larger_tag],
+  ] as [Exclude<TextSize, "normal">, Gtk.TextTag][];
+
+  /**
+   * Tags that all change the size of the text, so only one of them may be
+   * applied to a range at a time.
+   */
+  private get scale_tags() {
+    return [this.header_tag, ...this.size_tags.map(([, tag]) => tag)];
+  }
 
   _note?: Note;
 
@@ -79,6 +128,7 @@ class AbstractStickyNote extends Gtk.TextView {
     this.clear_tags();
     this.buffer.text = note.content;
     this.init_tags(note.tags);
+    this.update_markers();
 
     this.update_link_tag_color();
     this.remove_listeners();
@@ -191,8 +241,26 @@ class AbstractStickyNote extends Gtk.TextView {
     this.underline_tag.underline = Pango.Underline.SINGLE;
     this.italic_tag.style = Pango.Style.ITALIC;
     this.strikethrough_tag.strikethrough = true;
+    this.monospace_tag.family = "Monospace";
+
+    // the highlighter also sets a foreground, as the notes it is used on can
+    // be dark, and white on yellow is unreadable
+    this.highlight_tag.background = "#f9f06b";
+    this.highlight_tag.foreground = "#241f31";
+
+    this.header_tag.scale = 1.5;
+    this.header_tag.pixels_above_lines = 14;
+    this.header_tag.pixels_below_lines = 4;
+
+    // the same steps Pango uses for small/large/x-large
+    this.small_tag.scale = 1 / 1.2;
+    this.large_tag.scale = 1.2;
+    this.larger_tag.scale = 1.2 * 1.2;
 
     this.link_tag.underline = Pango.Underline.SINGLE;
+
+    this.marker_tag.scale = 1.4;
+    this.buffer.tag_table.add(this.marker_tag);
 
     if (this.style_manager.system_supports_color_schemes) {
       this.style_manager.connect(
@@ -201,10 +269,14 @@ class AbstractStickyNote extends Gtk.TextView {
       );
     }
 
-    this.buffer.tag_table.add(this.bold_tag);
-    this.buffer.tag_table.add(this.underline_tag);
-    this.buffer.tag_table.add(this.italic_tag);
-    this.buffer.tag_table.add(this.strikethrough_tag);
+    for (const [, tag] of this.actions) {
+      this.buffer.tag_table.add(tag);
+    }
+
+    for (const [, tag] of this.size_tags) {
+      this.buffer.tag_table.add(tag);
+    }
+
     this.buffer.tag_table.add(this.link_tag);
   }
 
@@ -236,9 +308,13 @@ class AbstractStickyNote extends Gtk.TextView {
     return false;
   }
 
-  apply_tag(tag: Gtk.TextTag) {
+  /**
+   * The range the next formatting operation applies to: the selection, or a
+   * spot at the cursor the user can type into.
+   */
+  private get_format_range(): [Gtk.TextIter, Gtk.TextIter] {
     let [selection, start, end] = this.buffer.get_selection_bounds();
-    // if no selection, apply to the current word
+
     if (!selection) {
       /**
        * If the user has not selected anything, we insert zero-width spaces
@@ -254,31 +330,218 @@ class AbstractStickyNote extends Gtk.TextView {
       this.buffer.place_cursor(selec);
     }
 
+    return [start, end];
+  }
+
+  /** Tags that cannot be combined with `tag` on the same range. */
+  private conflicting_tags(tag: Gtk.TextTag) {
+    const scale_tags = this.scale_tags;
+
+    if (!scale_tags.includes(tag)) return [];
+
+    return scale_tags.filter((other) => other !== tag);
+  }
+
+  apply_tag(tag: Gtk.TextTag) {
+    const [start, end] = this.get_format_range();
+
     const has_tag = this.has_tag(tag);
 
-    if (this.has_tag(tag) !== false) {
+    if (has_tag !== false) {
       this.buffer.remove_tag(tag, start, end);
     } else {
+      for (const other of this.conflicting_tags(tag)) {
+        this.buffer.remove_tag(other, start, end);
+        this.emit("tag-toggle", other.name, false);
+      }
+
       this.buffer.apply_tag(tag, start, end);
     }
 
     this.emit("tag-toggle", tag.name, has_tag === false);
   }
 
+  get_text_size(): TextSize {
+    for (const [name, tag] of this.size_tags) {
+      if (this.has_tag(tag) !== false) return name;
+    }
+
+    return "normal";
+  }
+
+  set_text_size(size: TextSize) {
+    const [start, end] = this.get_format_range();
+
+    for (const [name, tag] of this.size_tags) {
+      this.buffer.remove_tag(tag, start, end);
+      this.emit("tag-toggle", name, false);
+    }
+
+    // a header has a size of its own, so picking a size drops it
+    this.buffer.remove_tag(this.header_tag, start, end);
+    this.emit("tag-toggle", "header", false);
+
+    if (size === "normal") return;
+
+    const tag = this.size_tags.find(([name]) => name === size)?.[1];
+    if (!tag) return;
+
+    this.buffer.apply_tag(tag, start, end);
+    this.emit("tag-toggle", size, true);
+  }
+
   clear_tags() {
     const start = this.buffer.get_start_iter();
     const end = this.buffer.get_end_iter();
 
-    for (const [name, tag] of this.actions) {
+    for (const [name, tag] of [...this.actions, ...this.size_tags]) {
       this.buffer.remove_tag(tag, start, end);
       this.emit("tag-toggle", name, false);
     }
+  }
+
+  private get_line_text(line: number) {
+    const [found, start] = this.buffer.get_iter_at_line(line);
+    if (!found) return null;
+
+    const end = start.copy();
+    if (!end.ends_line()) end.forward_to_line_end();
+
+    return this.buffer.get_text(start, end, false);
+  }
+
+  /** The list marker `line` starts with, if it is one of `prefixes`. */
+  private get_line_prefix(line: number, prefixes: string[]) {
+    const text = this.get_line_text(line);
+    if (text === null) return null;
+
+    return prefixes.find((prefix) => text.startsWith(prefix)) ?? null;
+  }
+
+  private get_selected_lines(): [number, number] {
+    const [selection, start, end] = this.buffer.get_selection_bounds();
+
+    if (!selection) {
+      const cursor = this.buffer.get_iter_at_mark(this.buffer.get_insert());
+      return [cursor.get_line(), cursor.get_line()];
+    }
+
+    return [start.get_line(), end.get_line()];
+  }
+
+  private remove_line_prefix(line: number, prefix: string) {
+    const [found, start] = this.buffer.get_iter_at_line(line);
+    if (!found) return;
+
+    const end = start.copy();
+    end.forward_chars(prefix.length);
+
+    this.buffer.delete(start, end);
+  }
+
+  private add_line_prefix(line: number, prefix: string) {
+    const [found, start] = this.buffer.get_iter_at_line(line);
+    if (!found) return;
+
+    this.buffer.insert(start, prefix, -1);
+  }
+
+  /**
+   * Turn every selected line into a list of the given kind, or strip the
+   * markers if all of them already are one.
+   */
+  private toggle_list(prefixes: string[]) {
+    const [first, last] = this.get_selected_lines();
+
+    let remove = true;
+    for (let line = first; line <= last; line++) {
+      if (!this.get_line_prefix(line, prefixes)) {
+        remove = false;
+        break;
+      }
+    }
+
+    for (let line = first; line <= last; line++) {
+      // a line is only ever one kind of list item, so swapping replaces
+      const existing = this.get_line_prefix(line, LIST_PREFIXES);
+      if (existing) this.remove_line_prefix(line, existing);
+
+      if (!remove) this.add_line_prefix(line, prefixes[0]);
+    }
+  }
+
+  toggle_checklist() {
+    this.toggle_list(CHECK_PREFIXES);
+  }
+
+  toggle_bullets() {
+    this.toggle_list(BULLET_PREFIXES);
+  }
+
+  /** Re-applies the marker styling to every list item in the note. */
+  protected update_markers() {
+    this.buffer.remove_tag(
+      this.marker_tag,
+      this.buffer.get_start_iter(),
+      this.buffer.get_end_iter(),
+    );
+
+    const lines = this.buffer.get_line_count();
+
+    for (let line = 0; line < lines; line++) {
+      if (!this.get_line_prefix(line, LIST_PREFIXES)) continue;
+
+      const [found, start] = this.buffer.get_iter_at_line(line);
+      if (!found) continue;
+
+      const end = start.copy();
+      end.forward_char();
+
+      this.buffer.apply_tag(this.marker_tag, start, end);
+    }
+  }
+
+  /** Whether a click at this spot lands on a checkbox rather than on text. */
+  protected is_checkbox_at(iter: Gtk.TextIter) {
+    return iter.get_line_offset() <= 1 &&
+      this.get_line_prefix(iter.get_line(), CHECK_PREFIXES) !== null;
+  }
+
+  /** Tick or untick every checkbox in the selection. */
+  toggle_checkboxes() {
+    const [first, last] = this.get_selected_lines();
+
+    for (let line = first; line <= last; line++) {
+      this.toggle_checkbox(line);
+    }
+  }
+
+  /** Tick or untick the checkbox `line` starts with. */
+  toggle_checkbox(line: number) {
+    const prefix = this.get_line_prefix(line, CHECK_PREFIXES);
+    if (!prefix) return false;
+
+    const [found, start] = this.buffer.get_iter_at_line(line);
+    if (!found) return false;
+
+    const end = start.copy();
+    end.forward_char();
+
+    // swapping one character for another leaves every tag offset in the note
+    // untouched
+    this.buffer.delete(start, end);
+    this.buffer.insert(start, prefix[0] === UNCHECKED ? CHECKED : UNCHECKED, -1);
+
+    return true;
   }
 
   get_tags() {
     const tags: Note["tags"] = [];
 
     this.buffer.get_tag_table().foreach((tag) => {
+      // nameless tags are styling the app applies itself, not part of the note
+      if (!tag.name) return;
+
       const start = this.buffer.get_start_iter();
 
       do {
@@ -357,6 +620,7 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
       this.buffer.text = this.clip_content(this.note!.content);
       this.clear_tags();
       this.init_tags(this.note!.tags);
+      this.update_markers();
     }
   }
 
@@ -372,6 +636,7 @@ export class ReadonlyStickyNote extends AbstractStickyNote {
     this.listeners.add(this.note.connect("notify::tag_list", () => {
       this.clear_tags();
       this.init_tags(this.note!.tags);
+      this.update_markers();
     }));
   }
 
@@ -429,6 +694,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
         return;
       }
       this.update_links();
+      this.update_markers();
       if (this.buffer.text == this.note!.content) return;
       this.change("content", this.buffer.text);
     });
@@ -440,6 +706,68 @@ export class WriteableStickyNote extends AbstractStickyNote {
       if (compare_tags(tags, this.note.tags)) return;
       this.note.tags = tags;
     });
+
+  }
+
+  /**
+   * Lets a checkbox be ticked by clicking the box itself.
+   *
+   * The window shows the note in a text view of its own that only shares this
+   * one's buffer, so the view the clicks arrive on has to be passed in.
+   */
+  attach_checkbox_gesture(text_view: Gtk.TextView) {
+    const gesture = new Gtk.GestureClick();
+
+    gesture.connect("released", (_gesture, _n_press, x, y) => {
+      // a click that ended a selection was a drag, not a tick
+      if (this.buffer.get_has_selection()) return;
+
+      const [buffer_x, buffer_y] = text_view.window_to_buffer_coords(
+        Gtk.TextWindowType.WIDGET,
+        x,
+        y,
+      );
+
+      const [over_text, iter] = text_view.get_iter_at_location(
+        buffer_x,
+        buffer_y,
+      );
+
+      // only the box toggles, so the rest of the line stays editable
+      if (!over_text || !this.is_checkbox_at(iter)) return;
+
+      this.toggle_checkbox(iter.get_line());
+    });
+
+    text_view.add_controller(gesture);
+    this.attach_checkbox_cursor(text_view);
+  }
+
+  /** Points the cursor at the boxes, so they read as something to click. */
+  private attach_checkbox_cursor(text_view: Gtk.TextView) {
+    const motion = new Gtk.EventControllerMotion();
+
+    const update = (x: number, y: number) => {
+      const [buffer_x, buffer_y] = text_view.window_to_buffer_coords(
+        Gtk.TextWindowType.WIDGET,
+        x,
+        y,
+      );
+
+      const [over_text, iter] = text_view.get_iter_at_location(
+        buffer_x,
+        buffer_y,
+      );
+
+      text_view.set_cursor_from_name(
+        over_text && this.is_checkbox_at(iter) ? "pointer" : "text",
+      );
+    };
+
+    motion.connect("motion", (_motion, x, y) => update(x, y));
+    motion.connect("leave", () => text_view.set_cursor_from_name("text"));
+
+    text_view.add_controller(motion);
   }
 
   clear_links() {
@@ -494,9 +822,12 @@ export class WriteableStickyNote extends AbstractStickyNote {
       end_iter.forward_chars(2);
       const chars = buffer.get_text(start_iter, end_iter, false);
 
-      const simple_regex_pattern = /^[-+*] $/;
+      const simple_regex_pattern = new RegExp(
+        `^[-+*${BULLET}${UNCHECKED}${CHECKED}] $`,
+      );
       if (simple_regex_pattern.test(chars)) {
-        const bullet = chars[0];
+        // a ticked item carries on as a fresh, unticked one
+        const bullet = chars[0] === CHECKED ? UNCHECKED : chars[0];
         const line_end = loc.copy();
         line_end.backward_char();
         if (line_end.get_line_offset() === 2) {
@@ -510,10 +841,7 @@ export class WriteableStickyNote extends AbstractStickyNote {
         const search_end = start_iter.copy();
         search_limit.forward_chars(10);
 
-        search_end.forward_find_char((ch) => {
-          console.log("forward char",ch);
-          return ch === " ";
-        }, search_limit);
+        search_end.forward_find_char((ch) => ch === " ", search_limit);
         search_end.forward_char();
         const chars = buffer.get_text(start_iter, search_end, false);
 
