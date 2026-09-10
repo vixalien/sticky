@@ -55,6 +55,8 @@ export class Window extends Adw.ApplicationWindow {
 
   note: Note;
   deleted = false;
+  cursor_scroll_source: number | null = null;
+  last_revealer = false;
 
   static {
     GObject.registerClass(
@@ -113,6 +115,8 @@ export class Window extends Adw.ApplicationWindow {
     );
 
     this.connect("close-request", () => {
+      this.cancel_cursor_scroll();
+
       if (this.deleted) return;
 
       if (this.view.note && this.view.note.content.trim().length === 0) {
@@ -130,6 +134,7 @@ export class Window extends Adw.ApplicationWindow {
         this.note.height = height;
       }
     });
+    this.connect("unrealize", this.cancel_cursor_scroll.bind(this));
 
     this.set_style(note.style, true);
 
@@ -152,6 +157,11 @@ export class Window extends Adw.ApplicationWindow {
     });
 
     this._text.buffer = this.view.buffer;
+    this.view.buffer.connect(
+      "notify::cursor-position",
+      this.queue_cursor_scroll.bind(this),
+    );
+    this.view.buffer.connect("changed", this.queue_cursor_scroll.bind(this));
 
     this.add_actions();
 
@@ -165,12 +175,55 @@ export class Window extends Adw.ApplicationWindow {
     popover.add_child(this.selector, "notestyleswitcher");
   }
 
-  last_revealer = false;
+  queue_cursor_scroll() {
+    if (!this.get_realized() || this.cursor_scroll_source !== null) return;
+
+    this.cursor_scroll_source = GLib.idle_add(
+      GLib.PRIORITY_DEFAULT_IDLE,
+      () => {
+        this.cursor_scroll_source = null;
+        this.scroll_cursor_into_view();
+        return GLib.SOURCE_REMOVE;
+      },
+    );
+  }
+
+  cancel_cursor_scroll() {
+    if (this.cursor_scroll_source === null) return;
+
+    GLib.source_remove(this.cursor_scroll_source);
+    this.cursor_scroll_source = null;
+  }
+
+  scroll_cursor_into_view() {
+    const cursor = this.view.buffer.get_iter_at_mark(
+      this.view.buffer.get_insert(),
+    );
+    const cursor_rect = this._text.get_iter_location(cursor);
+    const visible_rect = this._text.get_visible_rect();
+    const visible_top = visible_rect.y + this._text.top_margin;
+    const visible_bottom = visible_rect.y + visible_rect.height -
+      this._text.bottom_margin;
+
+    let offset = 0;
+    if (cursor_rect.y < visible_top) {
+      offset = cursor_rect.y - visible_top;
+    } else if (cursor_rect.y + cursor_rect.height > visible_bottom) {
+      offset = cursor_rect.y + cursor_rect.height - visible_bottom;
+    }
+
+    if (offset === 0) return;
+    this._text.vadjustment.value += offset;
+  }
 
   update_link(selected: boolean, text: string) {
     if (selected) {
-      const href = find(text)[0].href;
-      this._action_button.action_target = GLib.Variant.new_string(href);
+      const link = find(text)[0];
+      if (link) {
+        this._action_button.action_target = GLib.Variant.new_string(link.href);
+      } else {
+        selected = false;
+      }
     }
 
     if (this.last_revealer === selected) return;
