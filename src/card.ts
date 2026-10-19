@@ -27,7 +27,7 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import GLib from "gi://GLib";
 
-import { confirm_delete, Note, Style } from "./util.js";
+import { confirm_delete, Note, settings, Style } from "./util.js";
 import { ReadonlyStickyNote } from "./view.js";
 
 export class StickyNoteCard extends Gtk.Box {
@@ -79,6 +79,12 @@ export class StickyNoteCard extends Gtk.Box {
     this._delete_button.connect("clicked", this.delete.bind(this));
 
     if (note) this._note = this.note = note;
+
+    this.update_colors_follow_theme();
+    settings.connect(
+      "changed::colors-follow-theme",
+      () => this.update_colors_follow_theme(),
+    );
   }
 
   set note(note: Note) {
@@ -116,6 +122,12 @@ export class StickyNoteCard extends Gtk.Box {
     }
 
     this.add_css_class(`style-${Style[style]}`);
+  }
+
+  update_colors_follow_theme() {
+    const follow = settings.get_boolean("colors-follow-theme");
+    if (follow) this.add_css_class("colors-follow-theme");
+    else this.remove_css_class("colors-follow-theme");
   }
 
   delete() {

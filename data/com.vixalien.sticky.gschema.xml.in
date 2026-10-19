@@ -31,6 +31,11 @@
 			<summary>Confirm note deletion</summary>
 			<description>Whether to confirm note deletion</description>
 		</key>
+		<key name='colors-follow-theme' type='b'>
+			<default>false</default>
+			<summary>Note colors follow the theme</summary>
+			<description>Whether note colors switch to muted variants when the system uses a dark style. When disabled, notes always keep the color the user selected.</description>
+		</key>
 		<key name="color-scheme" type="i">
 			<default>0</default>
 			<summary>The selected color scheme</summary>

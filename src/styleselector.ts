@@ -28,8 +28,9 @@
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 import Gdk from "gi://Gdk?version=4.0";
+import Gio from "gi://Gio";
 
-import { Style, StyleNames, styles } from "./util.js";
+import { settings, Style, StyleNames, styles } from "./util.js";
 
 const { vprintf } = imports.format;
 
@@ -109,6 +110,7 @@ export class StyleSelector extends Gtk.Box {
 
     this._style = this.style = params.style ?? Style.yellow;
     this.build_styles();
+    this.build_follow_theme_switch();
     this.hexpand = true;
 
     if (!provider) {
@@ -141,6 +143,40 @@ export class StyleSelector extends Gtk.Box {
 
       (i < 4 ? this.box1 : this.box2).append(button);
     });
+  }
+
+  build_follow_theme_switch() {
+    const label = new Gtk.Label({
+      label: _("Note colors follow theme"),
+      hexpand: true,
+      halign: Gtk.Align.START,
+      wrap: true,
+      tooltip_text: _(
+        "When enabled, notes switch to muted colors when the system style is dark. Otherwise notes always keep the color you pick.",
+      ),
+    });
+
+    const toggle = new Gtk.Switch({
+      valign: Gtk.Align.CENTER,
+      tooltip_text: label.tooltip_text,
+    });
+
+    settings.bind(
+      "colors-follow-theme",
+      toggle,
+      "active",
+      Gio.SettingsBindFlags.DEFAULT,
+    );
+
+    const row = new Gtk.Box({
+      orientation: Gtk.Orientation.HORIZONTAL,
+      spacing: 12,
+      margin_top: 6,
+    });
+    row.append(label);
+    row.append(toggle);
+
+    this.box.append(row);
   }
 
   static {

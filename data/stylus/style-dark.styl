@@ -4,7 +4,7 @@
 
 toolbarview.note-window {
   for name, info in colors {
-    &.style-{name} {
+    &.colors-follow-theme.style-{name} {
       .text-view, .bottom-bar, popover > arrow, popover > contents {
         color: info.fg_dark;
         background-color: info.bg_dark;
