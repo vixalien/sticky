@@ -30,7 +30,7 @@ import Gio from "gi://Gio";
 import GLib from "gi://GLib";
 
 import { StyleSelector } from "./styleselector.js";
-import { confirm_delete, Note, settings, Style } from "./util.js";
+import { confirm_delete, Note, Style } from "./util.js";
 import { WriteableStickyNote } from "./view.js";
 import { find } from "linkifyjs";
 import { Application } from "./application.js";
@@ -132,12 +132,6 @@ export class Window extends Adw.ApplicationWindow {
     });
 
     this.set_style(note.style, true);
-
-    this.update_colors_follow_theme();
-    settings.connect(
-      "changed::colors-follow-theme",
-      () => this.update_colors_follow_theme(),
-    );
 
     this.view = new WriteableStickyNote(note);
     this.view.connect("selection-changed", this.check_tags.bind(this));
@@ -244,12 +238,6 @@ export class Window extends Adw.ApplicationWindow {
     this._container.add_css_class(`style-${Style[style]}`);
 
     if (!is_init) this.note.modified_date = new Date();
-  }
-
-  update_colors_follow_theme() {
-    const follow = settings.get_boolean("colors-follow-theme");
-    if (follow) this._container.add_css_class("colors-follow-theme");
-    else this._container.remove_css_class("colors-follow-theme");
   }
 
   delete() {
